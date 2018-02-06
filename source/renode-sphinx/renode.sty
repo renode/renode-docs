@@ -1,0 +1,25 @@
+\usepackage{xcolor}
+
+\definecolor{RenodeBlue}{rgb}{0,0.49,0.93}
+
+% Redefine these colors to your liking in the preamble.
+\definecolor{TitleColor}{named}{RenodeBlue}
+\definecolor{InnerLinkColor}{named}{RenodeBlue}
+\definecolor{OuterLinkColor}{named}{RenodeBlue}
+
+\makeatletter
+  \fancypagestyle{normal}{
+    \fancyhf{}
+    \headheight 40pt
+    \setlength{\topmargin}{-20mm}
+    \fancyfoot[R]{{\py@HeaderFamily\thepage}}
+    \fancyfoot[L]{{\py@HeaderFamily \@title}}
+    \fancyhead[R]{{\sphinxincludegraphics[width=100pt]{logo-latex.pdf}}}
+    \renewcommand{\headrulewidth}{0.4pt}
+    \renewcommand{\footrulewidth}{0.4pt}
+  }
+\makeatother
+
+\PassOptionsToClass{openany}{\sphinxdocclass}
+
+\renewcommand{\releasename}{}

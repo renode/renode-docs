@@ -1,0 +1,29 @@
+image: $DOCKER_IMAGE
+
+stages:
+  - build
+  - deploy
+
+variables:
+  DOCS_DIR: '.'
+  CONF_PY_STRING: '\nhtml_context = {"conf_py_path": "$DOCS_DIR/source/"}'
+
+doc-build:
+    stage: build
+    script:
+        - cd $DOCS_DIR
+        - echo -e $CONF_PY_STRING >> source/conf.py
+        - make html
+        - rm -R build/html/_sources
+        - make text
+        - find build/text/ -type f -name '*.txt' -execdir rename 's/\.txt/\.rst\.txt/' {} \;
+        - mv build/text build/html/_sources
+
+    artifacts:
+        paths:
+            - $DOCS_DIR/build/html/
+    
+doc-deploy:
+    stage: deploy
+    script:
+        - curl "$DEPLOY_URL&build_id=$(($CI_BUILD_ID-1))"
