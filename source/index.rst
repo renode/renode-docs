@@ -4,5 +4,7 @@
 .. toctree::
     :maxdepth: 2
 
-    content.rst
+    basic.rst
+    debugging.rst
+    networking.rst
 

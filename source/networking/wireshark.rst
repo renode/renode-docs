@@ -31,8 +31,8 @@ Similarly, to log the traffic of a wireless network, run::
 
 This command creates a new ``host.wireshark-allWirelessTraffic`` object.
 
-Observing specific interface
-............................
+Observing a specific interface
+..............................
 
 Renode allows you to inspect the traffic of a specific switch or wireless medium.
 You can also limit the observation to a specific interface connected to that switch or medium.
