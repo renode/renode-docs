@@ -8,4 +8,5 @@
     debugging.rst
     networking.rst
     tutorials.rst
+    advanced.rst
 

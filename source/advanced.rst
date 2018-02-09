@@ -1,0 +1,7 @@
+Advanced topics
+---------------
+
+.. toctree::
+    :maxdepth: 2
+
+    advanced/building_from_sources
