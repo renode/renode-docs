@@ -7,4 +7,5 @@
     basic.rst
     debugging.rst
     networking.rst
+    tutorials.rst
 
