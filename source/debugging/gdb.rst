@@ -1,5 +1,5 @@
 Debugging with GDB
-++++++++++++++++++
+..................
 
 Renode allows you to debug applications running on emulated machines using `GDB <https://www.gnu.org/software/gdb/>`_.
 
@@ -9,7 +9,7 @@ The most important difference to debugging on the real hardware, is that the vir
 This makes the debugging process transparent for the emulated machines.
 
 Connecting to  GDB
-..................
+''''''''''''''''''
 
 To start a GDB server on port 3333, run::
 
@@ -21,7 +21,7 @@ This allows you to start GDB from an appropriate toolchain and connect to a remo
     (gdb) target remote :3333
 
 Starting emulation
-..................
+''''''''''''''''''
 
 After GDB connects to Renode, the emulation needs to be started.
 Simply telling GDB to continue is not enough to start the time flow, as it would disrupt more complicated multinode scenarios.

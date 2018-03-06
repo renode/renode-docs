@@ -17,6 +17,6 @@ To build a PDF file run::
    make latexpdf
 
 Requirements
-++++++++++++
+............
 
 * Sphinx 1.5

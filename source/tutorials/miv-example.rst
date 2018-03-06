@@ -1,5 +1,5 @@
 Microsemi Mi-V example
-----------------------
+......................
 
 In this tutorial you will learn how to setup a fully functional emulation of a single Mi-V board by Microsemi, with a RISC-V CPU.
 It covers topics ranging from installing Renode, through basic commands, to the process of :ref:`integrating with Microsemi's SoftConsole IDE <softconsole>`.

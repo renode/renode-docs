@@ -1,5 +1,5 @@
 Inspecting the traffic with Wireshark
-+++++++++++++++++++++++++++++++++++++
+.....................................
 
 `Wireshark <https://www.wireshark.org>`_ is an open source network packet analyzer.
 It can be used to sniff the network traffic between emulated nodes and/or the host network interface.
@@ -7,7 +7,7 @@ It can be used to sniff the network traffic between emulated nodes and/or the ho
 Renode uses the libpcap format to provide data to Wireshark.
 
 Logging the whole traffic
-.........................
+'''''''''''''''''''''''''
 
 To log the network traffic to Wireshark, you must decide if you want to focus on the wireless or ethernet network.
 
@@ -32,7 +32,7 @@ Similarly, to log the traffic of a wireless network, run::
 This command creates a new ``host.wireshark-allWirelessTraffic`` object.
 
 Observing a specific interface
-..............................
+''''''''''''''''''''''''''''''
 
 Renode allows you to inspect the traffic of a specific switch or wireless medium.
 You can also limit the observation to a specific interface connected to that switch or medium.
