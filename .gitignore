@@ -1,3 +1,4 @@
 build/
 *.sw*
 .vscode
+*.pyc

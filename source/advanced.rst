@@ -5,3 +5,4 @@ Advanced topics
     :maxdepth: 2
 
     advanced/building_from_sources
+    advanced/platform_description_format
