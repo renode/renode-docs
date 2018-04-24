@@ -1,3 +1,5 @@
+.. _basic-control:
+
 Basic control
 .............
 

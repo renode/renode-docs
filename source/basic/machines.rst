@@ -1,3 +1,5 @@
+.. _working-with-machines:
+
 Working with machines
 .....................
 

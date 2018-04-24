@@ -1,3 +1,5 @@
+.. _miv-tutorial:
+
 Microsemi Mi-V example
 ......................
 
