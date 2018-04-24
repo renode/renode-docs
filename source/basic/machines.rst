@@ -93,6 +93,8 @@ To load a predefined platform (in this example *Microsemi MiV*), type::
     └── uart (MiV_CoreUART)
           <0x70001000, 0x70001017>
 
+The format of ``.repl`` (Renode platform) files is presented in the :ref:`describing-platforms` section.
+
 Accessing and manipulating peripherals
 ''''''''''''''''''''''''''''''''''''''
 
