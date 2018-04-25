@@ -1,12 +1,12 @@
 .. _basic-control:
 
 Basic control
-.............
+=============
 
 Renode allows you to precisely control the execution of the emulation.
 
 Starting and pausing the execution
-''''''''''''''''''''''''''''''''''
+----------------------------------
 
 At the beginning emulation is in *paused* state which means that no machine is running and *virtual time* is not progressing.
 
@@ -21,7 +21,7 @@ To pause it type::
     Pausing emulation...
 
 Executing instruction-by-instruction
-''''''''''''''''''''''''''''''''''''
+------------------------------------
 
 When you need to analyze in details how the execution of your binary influences the state of a hardware you can switch to *stepping* execution mode::
 
@@ -38,7 +38,7 @@ When you want to return to the *normal* execution mode type::
 More advance control can be obtained by connecting external GDB.
 
 Inspecting current location
-'''''''''''''''''''''''''''
+---------------------------
 
 Renode allows you to easily examine the current state of your application::
 

@@ -2,12 +2,44 @@
 =========
 
 .. toctree::
-    :maxdepth: 2
+   :caption: Introduction
+   :maxdepth: 2
 
-    intro.rst
-    basic.rst
-    debugging.rst
-    networking.rst
-    tutorials.rst
-    advanced.rst
+   introduction/installing
+   introduction/using
 
+.. toctree::
+   :caption: Basic usage
+   :maxdepth: 2
+
+   basic/machines
+   basic/describing_platforms
+   basic/control
+   basic/logger
+   basic/saving
+
+.. toctree::
+   :caption: Debugging
+   :maxdepth: 2
+
+   debugging/gdb
+
+.. toctree::
+   :caption: Networking
+   :maxdepth: 2
+
+   networking/wireshark
+
+.. toctree::
+   :caption: Tutorials
+   :maxdepth: 2
+
+   tutorials/miv-example
+
+.. toctree::
+   :caption: Advanced topics
+   :maxdepth: 2
+
+   advanced/building_from_sources
+   advanced/platform_description_format
+   advanced/time_framework

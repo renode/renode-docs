@@ -1,5 +1,5 @@
 State saving and loading
-........................
+========================
 
 Renode offers a capability to save the state of the emulation to a file.
 

@@ -1,12 +1,12 @@
 Using the logger
-................
+================
 
 The first window that appears after starting Renode is dedicated to the logger.
 
 There are many logging options you can use to improve your experience with the presented information.
 
 Logging level
-'''''''''''''
+-------------
 
 There are five available logging levels:
 
@@ -48,7 +48,7 @@ This is the output of this command after some configuration::
 .. _log-file:
 
 Logging to file
-'''''''''''''''
+---------------
 
 To analyze the output from a long-running emulation, it is often a good idea to redirect the log to a file.
 
@@ -68,7 +68,7 @@ Peripherals can also have different log levels on different backends::
   (machine-0) logLevel 1 file sysbus.uart
 
 Logging access to peripherals
-'''''''''''''''''''''''''''''
+-----------------------------
 
 Apart from the regular logger configuration, you can enable logging of accesses to specific peripherals.
 This feature is enabled only for peripherals registered on a system bus.

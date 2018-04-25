@@ -1,7 +1,7 @@
 .. _miv-tutorial:
 
 Microsemi Mi-V example
-......................
+======================
 
 In this tutorial you will learn how to setup a fully functional emulation of a single Mi-V board by Microsemi, with a RISC-V CPU.
 It covers topics ranging from installing Renode, through basic commands, to the process of :ref:`integrating with Microsemi's SoftConsole IDE <softconsole>`.
@@ -9,14 +9,14 @@ It covers topics ranging from installing Renode, through basic commands, to the 
 While this tutorial focuses on a single Mi-V platform, Renode supports multiple devices running in the same simulation - and it should be fairly simple to extend this scenario to multiple interconnected nodes.
 
 Installation
-''''''''''''
+------------
 
 The Renode framework is hosted `on GitHub <https://github.com/renode/renode>`_.
 You can download and install it following the process described in the `README <https://github.com/renode/renode/blob/master/README.rst>`_ file, but the easiest way to start is by downloading a binary release from https://github.com/renode/renode/releases.
 The precompiled packages are provided as deb and rpm packages for Linux, dmg package for macOS and a zip archive for Windows.
 
 Starting Renode
-'''''''''''''''
+---------------
 
 One of the many ways to interact with Renode is via its command line interface.
 
@@ -27,7 +27,7 @@ Once Renode is started, you will see two windows - one for Renode’s smart logg
 From this window you will be able to create and control the whole emulation environment.
 
 Scripts
-'''''''
+-------
 
 While you can type all commands interactively, it’s a good idea to group them into reusable Renode scripts, which typically have the ".resc" extension.
 Their purpose is to load binaries, set starting conditions, prepare the environment, connect machines to the network etc.
@@ -36,7 +36,7 @@ For the purpose of this article we will use the script available in the Renode p
 For details about the particular script you will be running, please inspect the file in the Renode installation directory (e.g. for Linux it is "/opt/renode/scripts").
 
 Loading our setup
-'''''''''''''''''
+-----------------
 
 The provided script creates a single machine and loads a sample LiteOS-based application.
 
@@ -54,15 +54,15 @@ The emulation is now loaded, but not started.
 You can control it using ``start`` and ``pause`` - and other commands, as described in the next section.
 
 Simple commands
-'''''''''''''''
+---------------
 
 Start and pause
-~~~~~~~~~~~~~~~
++++++++++++++++
 
 To control whether the simulation is running, use ``start`` and ``pause``.
 
 Machines
-~~~~~~~~
+++++++++
 
 In the provided script, we use the ``mach create`` command to create the machine.
 This switches the context in the Monitor.
@@ -75,13 +75,13 @@ All machines can be listed with the ``mach`` command.
 To clear the current selection use ``mach clear``.
 
 Accessing peripherals
-~~~~~~~~~~~~~~~~~~~~~
++++++++++++++++++++++
 
 All peripherals are accessible in the Monitor, with most of their methods and properties exposed to the user.
 To list all available peripherals use the ``peripherals`` command.
 
 Peripheral methods and properties
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++++++++++++++++++++++++++++++++++
 
 To access a peripheral you have to provide its fully qualified name.
 All peripherals are registered in ``sysbus``, so use ``sysbus.uart`` to access the UART or ``sysbus.gpioOutputs.led0`` to access one of the LEDs.
@@ -94,13 +94,13 @@ The list is automatically generated, so most of the accessible members are not d
 The list shows examples of correct Monitor syntax for each member type.
 
 Other commands
-~~~~~~~~~~~~~~
+++++++++++++++
 
 To find information about built-in Monitor commands, type ``help`` and refer to the documentation.
 Running ``help builtin_command_name`` prints out the help for the given command.
 
 Debugging and inspection
-''''''''''''''''''''''''
+------------------------
 
 Renode offers you many ways to verify the behavior of your applications.
 Thanks to having full control over the environment, you can add logging, hooks on events, interactive code debugging and more in a way that is 100% transparent to the emulated application.
@@ -108,7 +108,7 @@ Thanks to having full control over the environment, you can add logging, hooks o
 Here we will present just a few of the available debugging options.
 
 Function name logging
-~~~~~~~~~~~~~~~~~~~~~
++++++++++++++++++++++
 
 When the application is stuck or misbehaves it is always a good idea to inspect the trace of function calls.
 To enable logging of function names in a selected machine run ``cpu LogFunctionNames true`` (and ``false``, respectively, to disable it).
@@ -117,7 +117,7 @@ Since the amount of logged data may be too overwhelming to be useful, you can fi
 For example ``cpu LogFunctionNames true "UART_ LOS_"`` will only log functions that begin with either "UART\_" or "LOS\_" prefix.
 
 Logging of peripheral accesses
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+++++++++++++++++++++++++++++++
 
 If your driver does not behave correctly, it may be a good idea to investigate the communication with the device it controls.
 To enable logging of each interaction between the CPU and the UART peripheral, run ``sysbus LogPeripheralAccess uart``.
@@ -125,7 +125,7 @@ To enable logging of each interaction between the CPU and the UART peripheral, r
 This feature is available only for peripherals registered directly on the system bus.
 
 GDB
-~~~
++++
 
 A popular tool for debugging, GDB, can be used to analyze applications running in Renode.
 It uses the same remote protocol as OpenOCD, so it can be easily integrated with most GDB-based IDEs, such as SoftConsole or Eclipse.
@@ -138,7 +138,7 @@ You can also use the ``monitor`` command in GDB to send commands directly to the
 .. _softconsole:
 
 SoftConsole integration
-'''''''''''''''''''''''
+-----------------------
 
 One of the Renode's main goals is to easily integrate with tools that are used for a developer's everyday work.
 A great example of such a tool is `SoftConsole, an Eclipse-based IDE from Microsemi <https://www.microsemi.com/products/fpga-soc/design-resources/design-software/softconsole>`_.

@@ -1,7 +1,7 @@
 .. _describing-platforms:
 
 Describing platforms
-....................
+====================
 
 Renode uses a text-based format to describe platforms.
 Platform description files typically have the ``.repl`` extension, but this is not a requirement.
@@ -10,7 +10,7 @@ The broad description of the format and its grammar is available in the :ref:`pl
 Here we present the basic usage and most common scenarios.
 
 Defining peripherals
-''''''''''''''''''''
+--------------------
 
 To add a peripheral, you need to know its type, choose its name and the registration point.
 Most peripherals will be registered on the ``sysbus`` - a peripheral that is always available and does not have to be explicitly defined.
@@ -32,7 +32,7 @@ They are placed below the declaration, with four spaces of indentation::
 Constructor parameters begin with a lower case letter, and properties with an upper case letter.
 
 Connecting peripherals
-''''''''''''''''''''''
+----------------------
 
 In the example above the ``uart0`` peripheral was connected to the system bus at a specific address.
 It is possible, however, to connect peripherals to other buses as well, like I2C or SPI, to a GPIO controller, etc.
@@ -50,7 +50,7 @@ To connect a timer to the 31-st interrupt on the ``plic`` interrupt controller, 
         -> plic @ 31
 
 Including files
-'''''''''''''''
+---------------
 
 You can include an existing REPL file in your platform with the ``using`` keyword::
 
