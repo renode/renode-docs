@@ -5500,7 +5500,7 @@ footer span.commit code, footer span.commit .rst-content tt, .rst-content footer
 }
 #search-results .context {
   color: gray;
-  font-size: 90%; white-space: pre; font-family: monospace;
+  font-size: 90%; white-space: pre-wrap; font-family: monospace;
 }
 
 @media screen and (max-width: 768px) {
