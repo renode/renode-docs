@@ -46,8 +46,8 @@ You can type the commands interactively or load a script using::
 In Renode, the "@" sign represents a path to a file.
 
 To start the loaded emulation, run ``start``; to quit Renode type ``quit``.
-More on interacting with the emulation can be found in the :ref:`basic control <basic-control>` section.
+More on interacting with the emulation can be found in the :ref:`basic-control` section.
 
-Renode supports emulation of multiple nodes - for details see the :ref:`working with machines <working-with-machines>` section.
+Renode supports emulation of multiple nodes - for details see the :ref:`working-with-machines` section.
 
 There is also a :ref:`tutorial <miv-tutorial>` that wraps all the information in a real-world usage scenario.
