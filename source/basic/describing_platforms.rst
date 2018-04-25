@@ -4,9 +4,9 @@ Describing platforms
 ....................
 
 Renode uses a text-based format to describe platforms.
-The platform description files typically have the ``.repl`` extension, but this is not a requirement.
+Platform description files typically have the ``.repl`` extension, but this is not a requirement.
 
-The broad description of the format and its grammar is available in :ref:`platform-description-format` section.
+The broad description of the format and its grammar is available in the :ref:`platform-description-format` section.
 Here we present the basic usage and most common scenarios.
 
 Defining peripherals
@@ -18,7 +18,7 @@ Most peripherals will be registered on the ``sysbus`` - a peripheral that is alw
 The type name has to indicate the class of the peripheral model.
 This has to be a full name with a namespace, but the default namespace, ``Antmicro.Renode.Peripherals``, can be omitted.
 
-For example, to create a UART object of type ``Antmicro.Renode.Peripherals.UART.MiV_CoreUART``, connected to the system bus at address 0x80000000, use::
+For example, to create a UART object of type ``Antmicro.Renode.Peripherals.UART.MiV_CoreUART``, connected to the system bus at ``0x80000000``, use::
 
     uart0: UART.MiV_CoreUART @ sysbus 0x80000000
 
@@ -37,14 +37,14 @@ Connecting peripherals
 In the example above the ``uart0`` peripheral was connected to the system bus at a specific address.
 It is possible, however, to connect peripherals to other buses as well, like I2C or SPI, to a GPIO controller, etc.
 
-For example, to connect temperature sensor to an I2C controller called ``i2c0``, at address 0x80, type::
+For example, to connect a temperature sensor to an I2C controller called ``i2c0`` at ``0x80``, type::
 
     sensor: Sensors.SI70xx @ i2c0 0x80
 
 Peripherals can also be connected via GPIOs or interrupts.
 Renode treats these signals similarly, and allows you to create a connection with the ``->`` operator.
 
-To connect a timer to a 31-st interrupt on the ``plic`` interrupt controller, run::
+To connect a timer to the 31-st interrupt on the ``plic`` interrupt controller, run::
 
     timer: Timers.MiV_CoreTimer @ sysbus 0x1000000
         -> plic @ 31
