@@ -31,6 +31,8 @@ To list all created machines together with their names and indices, type::
 
     (my-machine) help mach
 
+.. _machine-context:
+
 Switching between machines
 --------------------------
 
