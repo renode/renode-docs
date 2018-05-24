@@ -34,7 +34,7 @@ The value of a *quant* is expressed in *virtual seconds* (or a fraction of it) a
 
 Once a *quant* is granted to the *sinks*, the *source* waits for them to finish execution.
 After all slaves report back, it is time for a *synchronization phase*.
-As it is guaranteed that no nodes work during this phase, it is safe to process all intra-node communication during it.
+As it is guaranteed that no nodes work during this phase, it is safe to process all inter-node communication during it.
 Only when the *synchronization phase* is finised, a new *quant* can be granted to all *sinks*.
 
 It is possible to introduce *slave time sources* in the *domain* that divides the quantum into smaller fragments and allows for tighter synchronization of selected nodes.
