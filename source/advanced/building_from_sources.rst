@@ -108,7 +108,7 @@ Installing python modules
 
 Install additional modules required for Robot Framework integration::
 
-    python -m pip install robotframework netifaces requests psutils
+    python -m pip install robotframework netifaces requests psutil
 
 Downloading the source code
 ---------------------------
