@@ -82,11 +82,11 @@ Python 2.7
 C build tools
 ~~~~~~~~~~~~~
 
-1. Download the `MinGW installer <https://sourceforge.net/projects/mingw/files/Installer/mingw-get-setup.exe>`_.
+1. Download the `MinGW-w64 installer <https://sourceforge.net/projects/mingw-w64/files/latest/download?source=files>`_.
 
-2. Install it with the ``mingw32-base`` and ``mingw32-pthreads-w32`` modules.
+2. Install the latest version with the ``x86_64`` architecture and ``win32`` threads.
 
-3. Add location of the binaries (``C:\MinGW\bin`` by default) to the system ``PATH`` variable.
+3. Add location of the binaries (it depends on the MinGW version and installation settings e.g. ``C:\Program Files\mingw-w64\x86_64-8.1.0-win32-sjlj-rt_v6-rev0\mingw64\bin``) to the system ``PATH`` variable.
 
 C# build tools
 ~~~~~~~~~~~~~~
