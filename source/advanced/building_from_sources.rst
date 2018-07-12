@@ -20,7 +20,7 @@ To install them, use::
    echo "deb http://download.mono-project.com/repo/ubuntu xenial main" | sudo tee /etc/apt/sources.list.d/mono-xamarin.list
    sudo apt-get update
    sudo apt-get install git mono-complete automake autoconf libtool g++ realpath \
-                        gksu libgtk2.0-dev screen uml-utilities gtk-sharp2 python2.7
+                        policykit-1 libgtk2.0-dev screen uml-utilities gtk-sharp2 python2.7
 
 .. note::
 
