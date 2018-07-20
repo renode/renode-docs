@@ -44,13 +44,6 @@ Windows
 
 Building Renode on Windows is based on Cygwin and requires you to properely set up the system environment.
 
-Gtk#
-~~~~
-
-1. Download and install *Gtk# 2.12.30* (this precise version is required) from `the Xamarin website <http://download.xamarin.com/GTKforWindows/Windows/gtk-sharp-2.12.30.msi>`_.
-
-2. Add location of the binaries (``C:\Program Files (x86)\GtkSharp\2.12\bin`` by default) to the system ``PATH`` variable.
-
 Cygwin
 ~~~~~~
 
