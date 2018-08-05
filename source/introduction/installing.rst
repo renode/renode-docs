@@ -6,4 +6,4 @@ Please use the packages available on `Renode's Github <https://github.com/renode
 
 The complete installation instructions are described in the `Renode project README <https://github.com/renodeio/renode/blob/master/README.rst#installation>`_.
 
-For instructions how to install Renode from sources (advanced users) see :ref:`building-from-source`.
+For instructions how to install Renode from sources (for advanced users) see :ref:`building-from-source`.
