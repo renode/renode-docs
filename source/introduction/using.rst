@@ -26,15 +26,35 @@ The CLI provides commands history (arrows :kbd:`up`/:kbd:`down`) with interactiv
 Pasting with :kbd:`Control-Shift-v`, as well as via the context menu upon right click, is also available.
 To cancel entering of the current command and return to a clean prompt, use :kbd:`Control-c`.
 
-You can type the commands interactively or load a script using::
+You can type the commands interactively or load a script (which in Renode typically use the ``.resc`` extension) using::
 
-    include @/path/to/script
+    include @/path/to/script.resc
 
 In Renode, the "@" sign represents a path to a file.
+If in the above command you use ``start`` (or just ``s``) instead of include, the emulation will start immediately after loading the script.
 
-To start the loaded emulation, run ``start``; to quit Renode type ``quit``.
-More on interacting with the emulation can be found in the :ref:`basic-control` section.
+To start a previously loaded emulation, use ``start`` without any parameters. To quit Renode type ``quit``.
+
+Some more commands and info on interacting with the emulation can be found in the :ref:`basic-control` section.
 
 Renode supports emulation of multiple nodes - for details see the :ref:`working-with-machines` section.
 
 There is also a :ref:`tutorial <miv-tutorial>` that wraps all the information in a real-world usage scenario.
+
+Running your first demo
+-----------------------
+
+Your Renode installation contains a number of example scripts, located in the `scripts/ directory <https://github.com/renode/renode/tree/master/scripts>`_  (if you installed from packages, on Linux this will be in ``/opt/renode/scripts`` on your machine).
+
+You can run any of those demos using the ``include`` or ``start`` command with the script's path (by default relative to the Renode root directory - for Linux package installations ``/opt/renode``)  as a parameter.
+For example, run a single node STM32F4 Discovery demo as follows::
+
+   s @scripts/single-node/stm32f4_discovery.resc
+
+Remember about tab auto-completion, which will hint you what demos are available.
+
+The binaries for the demos are hosted on our servers, and can be replaced with your own by setting the ``$BIN`` variable before loading the script (or changing its value inside the script).
+
+You are free to copy any of the provided demo scripts as needed and update them to match your needs, they should work even from within a different path as they typically only use paths relative to the Renode installation directory.
+
+On Linux, you can also run a script by passing its path to the ``renode`` command, this will be interpreted as running Renode and using ``include @/path/to/script.resc`` (note that you will have to start the emulation manually).
