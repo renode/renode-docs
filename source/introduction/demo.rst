@@ -1,14 +1,14 @@
 Running your first demo
 =======================
 
-Your Renode installation contains a number of example scripts, located in the `scripts/ directory <https://github.com/renode/renode/tree/master/scripts>`_  (if you installed from Linux packages, this will be in ``/opt/renode/scripts`` on your machine).
+Your Renode installation contains a number of example scripts, located in the `scripts/ directory <https://github.com/renode/renode/tree/master/scripts>`_  (for example, if you installed from Linux packages, this will be in ``/opt/renode/scripts`` on your PC).
 
-You can run any of those demos using the ``include`` or ``start`` command with the script's path (by default relative to the Renode root directory - for Linux package installations ``/opt/renode`` and your current working directory) as a parameter.
+You can run any of those demos using the ``include`` or ``start`` command (``i`` and ``s`` for short) with the script's path (by default relative to the Renode installation directory and your current working directory) as a parameter.
 For example, run a single node STM32F4 Discovery demo as follows::
 
    s @scripts/single-node/stm32f4_discovery.resc
 
-Remember about tab auto-completion, which will hint you what demos are available.
+Remember about :kbd:`Tab` autocompletion, which will hint you what demos are available.
 
 The binaries for the demos are hosted on our servers, and can be replaced with your own by setting the ``$bin`` variable before loading the script (or changing its value inside the script).
 
