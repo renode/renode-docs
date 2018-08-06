@@ -1,7 +1,7 @@
 .. _basic-control:
 
-Basic control
-=============
+Basic execution control
+=======================
 
 Renode allows you to precisely control the execution of the emulation.
 
