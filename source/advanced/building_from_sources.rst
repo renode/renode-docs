@@ -13,7 +13,7 @@ Core prerequisites
 
 .. tabs::
 
-   .. tab:: Linux
+   .. group-tab:: Linux
 
       The following instructions have been tested on Ubuntu 16.04, however there should not be any major issues preventing you from using other (especially Debian-based) distributions as well.
 
@@ -25,7 +25,7 @@ Core prerequisites
          sudo apt-get install git automake autoconf libtool g++ realpath policykit-1 \
                       libgtk2.0-dev screen uml-utilities gtk-sharp2 python2.7
 
-   .. tab:: macOS
+   .. group-tab:: macOS
 
       On macOS, the Mono package can be obtained by using `a download link on the Mono project website <https://download.mono-project.com/archive/mdk-latest-stable.pkg>`_.
 
@@ -37,7 +37,7 @@ Core prerequisites
 
          This requires `homebrew <http://brew.sh/>`_ to be installed in your system.
 
-   .. tab:: Windows
+   .. group-tab:: Windows
 
       Building Renode on Windows is based on Cygwin and requires you to properly set up the system environment.
 
@@ -119,8 +119,55 @@ There are some optional flags you can use::
 You can also build ``Renode.sln`` from your IDE (like MonoDevelop or Visual Studio), but the ``build.sh`` script has to be run at least once.
 
 Creating packages
-+++++++++++++++++
+-----------------
 
 The build script can create native packages only, i.e., you must run it on Windows to create an ``.msi`` installer package, on Linux for ``.deb``, ``.rpm`` and ``.pkg.tar.xz`` packages or on macOS for the ``.dmg`` image.
 
-After completing successfully, the script will print the location of the files created.
+Prerequisites
++++++++++++++
+
+Depending on the system, there may be some prerequisites for building packages.
+
+.. tabs::
+
+    .. group-tab:: Linux
+
+        Run commands::
+
+            sudo apt-get install ruby rpm bsdtar
+            sudo gem install fpm
+
+    .. group-tab:: Windows
+
+        .. note::
+
+            On Windows 10, it is important to enable .NET 3.5 in the system before installing WiX Toolset.
+
+            The packaging process described in this section can only be executed in Cygwin shell.
+
+        1. Download and install `The WiX Toolset installer <http://wixtoolset.org/releases/>`_ (version at least 3.11).
+        2. Add the ``zip`` package to Cygwin.
+
+Building
+++++++++
+
+To build binary packages, run::
+
+    ./build.sh -p
+
+The packages will have a version assigned to them, defined by the contents of ``tools/version`` file.
+
+You can also build nightly packages with::
+
+    ./build.sh -pn
+
+This will append a date and a commit SHA to the output files.
+
+Location of packages
+++++++++++++++++++++
+
+After completing successfully, the script will print the location of the files created::
+
+    Linux:              renode/output/packages/renode_<version>.{deb|rpm|tar.gz}
+    Windows:            renode/output/pakcages/renode_<version>.msi
+    macOS:              renode/output/packages/renode_<version>.dmg
