@@ -13,25 +13,20 @@ Linux
 
 The following instructions have been tested on Ubuntu 16.04, however there should not be any major issues preventing you from using other (especially Debian-based) distributions as well.
 
-Renode requires Mono >= 5.0 and several other packages.
-To install them, use::
+First, install the ``mono-complete`` package as per the installation instructions for various Linux distributions which can be found on `the Mono project website <https://www.mono-project.com/download/stable/#download-lin>`_.
 
-   sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
-   echo "deb http://download.mono-project.com/repo/ubuntu xenial main" | sudo tee /etc/apt/sources.list.d/mono-xamarin.list
+To install the remaining dependencies, use::
+
    sudo apt-get update
-   sudo apt-get install git mono-complete automake autoconf libtool g++ realpath \
-                        policykit-1 libgtk2.0-dev screen uml-utilities gtk-sharp2 python2.7
+   sudo apt-get install git automake autoconf libtool g++ realpath policykit-1 \
+                libgtk2.0-dev screen uml-utilities gtk-sharp2 python2.7
 
-.. note::
+macOS
++++++
 
-    Modify the distribution name (i.e., `ubuntu xenial` in the second command) according to your setup.
+On macOS, the Mono package can be obtained by using `a download link on the Mono project website <https://download.mono-project.com/archive/mdk-latest-stable.pkg>`_.
 
-Mac
-+++
-
-Renode requires the Mono framework, which can be downloaded from `the official Mono project website <https://download.mono-project.com/archive/mdk-latest-stable.pkg>`_.
-
-To install the remaining prerequisites of Renode, use::
+To install the remaining prerequisites, use::
 
    brew install binutils gnu-sed coreutils homebrew/versions/gcc49 dialog
 
@@ -42,7 +37,7 @@ To install the remaining prerequisites of Renode, use::
 Windows
 +++++++
 
-Building Renode on Windows is based on Cygwin and requires you to properely set up the system environment.
+Building Renode on Windows is based on Cygwin and requires you to properly set up the system environment.
 
 Cygwin
 ~~~~~~
@@ -96,10 +91,11 @@ C# build tools
 
 4. Add location of the binaries (``C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\Bin\amd64`` by default) to the system ``PATH`` variable.
 
-Installing python modules
--------------------------
+Additional prerequisites (for Robot framework testing)
+++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Install additional modules required for Robot Framework integration::
+If you followed the instructions above, Python should be installed in your system.
+Install the ``pip`` package manager and some additional modules to enable writing and running test cases with the Robot framework::
 
     python -m pip install robotframework netifaces requests psutil
 
@@ -117,7 +113,7 @@ Building Renode
 
 .. note::
 
-    On Windows, the building process described in this section can only be executed in Cygwin shell.
+    On Windows, the building process described in this section can only be executed in a Cygwin shell.
 
 To build Renode, run::
 
@@ -135,6 +131,6 @@ You can also build ``Renode.sln`` from your IDE (like MonoDevelop or Visual Stud
 Creating packages
 +++++++++++++++++
 
-The build script can create native packages only, i.e., you must run it on Windows to create a zip archive, on linux for deb, rpm and tar.xz packages or on OSX for the dmg image.
+The build script can create native packages only, i.e., you must run it on Windows to create an ``.msi`` installer package, on Linux for ``.deb``, ``.rpm`` and ``.pkg.tar.xz`` packages or on macOS for the ``.dmg`` image.
 
 After completing successfully, the script will print the location of the files created.
