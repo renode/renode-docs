@@ -7,6 +7,7 @@
 
    introduction/installing
    introduction/using
+   introduction/demo
 
 .. toctree::
    :caption: Basic usage
