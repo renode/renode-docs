@@ -11,6 +11,7 @@ variables:
 doc-build:
     stage: build
     script:
+        - pip install sphinx_tabs
         - cd $DOCS_DIR
         - echo -e $CONF_PY_STRING >> source/conf.py
         - make html
