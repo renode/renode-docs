@@ -134,7 +134,7 @@ Depending on the system, there may be some prerequisites for building packages.
 
         Run commands::
 
-            sudo apt-get install ruby rpm bsdtar
+            sudo apt-get install ruby ruby-dev rpm bsdtar
             sudo gem install fpm
 
     .. group-tab:: Windows
