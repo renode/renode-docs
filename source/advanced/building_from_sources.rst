@@ -141,11 +141,11 @@ Depending on the system, there may be some prerequisites for building packages.
 
         .. note::
 
-            On Windows 10, it is important to enable .NET 3.5 in the system before installing WiX Toolset.
+            On Windows 10, it is important to enable .NET 3.5 in the system before installing the WiX Toolset.
 
-            The packaging process described in this section can only be executed in Cygwin shell.
+            The packaging process described in this section can only be executed in a Cygwin shell.
 
-        1. Download and install `The WiX Toolset installer <http://wixtoolset.org/releases/>`_ (version at least 3.11).
+        1. Download and install the `WiX Toolset installer <http://wixtoolset.org/releases/>`_ (version at least 3.11).
         2. Add the ``zip`` package to Cygwin.
 
 Building
@@ -155,7 +155,7 @@ To build binary packages, run::
 
     ./build.sh -p
 
-The packages will have a version assigned to them, defined by the contents of ``tools/version`` file.
+The packages will have a version assigned to them, defined by the contents of the ``tools/version`` file.
 
 You can also build nightly packages with::
 
