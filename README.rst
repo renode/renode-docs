@@ -16,7 +16,9 @@ To build a PDF file run::
 
    make latexpdf
 
-Requirements
-............
+Requirements for Linux
+----------------------
 
 * Sphinx 1.5
+* sphinx_tabs module
+* texlive-full (for the PDF version)
