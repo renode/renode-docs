@@ -42,7 +42,7 @@ Core prerequisites
       Building Renode on Windows is based on Cygwin and requires you to properly set up the system environment.
 
       .. rubric:: Cygwin
-      
+
       1. Download `Cygwin installer <https://cygwin.com/setup-x86_64.exe>`_.
       2. Install it with an additional module: ``openssh``.
       3. You need to have ``git`` installed, either as a Cygwin package, or natively. If you use it as a native Windows application, you have to add the installation directory to the system ``PATH`` variable.
@@ -126,16 +126,20 @@ The build script can create native packages only, i.e., you must run it on Windo
 Prerequisites
 +++++++++++++
 
-Depending on the system, there may be some prerequisites for building packages.
+Depending on the system, there may be some prerequisites for building Renode packages.
 
 .. tabs::
 
     .. group-tab:: Linux
 
-        Run commands::
+        Run::
 
             sudo apt-get install ruby ruby-dev rpm bsdtar
             sudo gem install fpm
+
+    .. group-tab:: macOS
+
+        No additional prerequisites for macOS.
 
     .. group-tab:: Windows
 
@@ -166,8 +170,18 @@ This will append a date and a commit SHA to the output files.
 Location of packages
 ++++++++++++++++++++
 
-After completing successfully, the script will print the location of the files created::
+After completing successfully, the script will print the location of the files created:
 
-    Linux:              renode/output/packages/renode_<version>.{deb|rpm|tar.gz}
-    Windows:            renode/output/pakcages/renode_<version>.msi
-    macOS:              renode/output/packages/renode_<version>.dmg
+.. tabs::
+
+    .. group-tab:: Linux
+
+       ``renode/output/packages/renode_<version>.{deb|rpm|tar.gz}``
+
+    .. group-tab:: macOS
+
+       ``renode/output/packages/renode_<version>.dmg``
+
+    .. group-tab:: Windows
+
+       ``renode/output/pakcages/renode_<version>.msi``
