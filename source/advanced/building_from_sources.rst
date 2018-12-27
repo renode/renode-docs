@@ -184,4 +184,4 @@ After completing successfully, the script will print the location of the files c
 
     .. group-tab:: Windows
 
-       ``renode/output/pakcages/renode_<version>.msi``
+       ``renode/output/packages/renode_<version>.msi``
