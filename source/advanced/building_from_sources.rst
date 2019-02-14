@@ -48,8 +48,11 @@ Core prerequisites
 
       .. rubric:: Git
 
-      1. Download and install ``git`` as a **native** application. You can get it from `the official website <https://git-scm.com/downloads>`_. You can use either a regular installation or a portable version.
-      2. Ensure the installation directory (``C:\Program Files\Git`` by default) is in the system ``PATH`` variable. The installer offers to install a subset of ``git`` tools in ``PATH``, this is the recommended option.
+      1. Download and install ``git`` as a **native** application.
+         You can get it from `the official website <https://git-scm.com/downloads>`_.
+         You can use either a regular installation or a portable version.
+      2. Ensure the installation directory (``C:\Program Files\Git`` by default) is in the system ``PATH`` variable.
+         The installer offers to install a subset of ``git`` tools in ``PATH``, this is the recommended option.
 
       .. note::
 
@@ -64,7 +67,8 @@ Core prerequisites
 
       .. note::
 
-         Do not use the module provided by ``Cygwin``. If you have Cygwin's version of Python already installed, make sure that the native's version location is included at the beginning of Cygwin's PATH variable.
+         Do not use the module provided by ``Cygwin``.
+         If you have Cygwin's version of Python already installed, make sure that the native's version location is included at the beginning of Cygwin's PATH variable.
 
       2. Add location of the binaries (``C:\Python27`` by default) to the system ``PATH`` variable.
 
