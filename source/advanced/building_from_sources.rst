@@ -45,7 +45,11 @@ Core prerequisites
 
       1. Download `Cygwin installer <https://cygwin.com/setup-x86_64.exe>`_.
       2. Install it with an additional module: ``openssh``.
-      3. You need to have ``git`` installed, either as a Cygwin package, or natively. If you use it as a native Windows application, you have to add the installation directory to the system ``PATH`` variable.
+
+      .. rubric:: Git
+
+      1. Download and install ``git`` as a **native** application. You can get it from `the official website <https://git-scm.com/downloads>`_. You can use either a regular installation or a portable version.
+      2. Ensure the installation directory (``C:\Program Files\Git`` by default) is in the system ``PATH`` variable. The installer offers to install a subset of ``git`` tools in ``PATH``, this is the recommended option.
 
       .. note::
 
