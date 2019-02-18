@@ -252,6 +252,13 @@ The ``none`` keyword can also be used instead of a value.
 Having it there means that the property is not set using any value and its value *before applying the description* is kept.
 It can be useful when some entry sets some value and we want to update this entry but not set any value.
 
+The ``empty`` keyword can be used to set the default value of property or constructor parameter:
+
+- numerical values are set to ``0``;
+- string values are set to ``null``;
+- enum values are set to value corresponding to ``index 0`` in this enum;
+- reference types are set to ``null``;
+
 Constructor attributes are merged in a similar way, i.e. attributes from all entries belonging to the given variable are analyzed and for each name we take the last one value with this name.
 The constructor of the peripheral is chosen based on the set of merged attributes.
 For each possible constructor of the type specified in the creating entry we check whether:
