@@ -306,6 +306,16 @@ Where ``irq1`` connects to ``irqDest1`` etc.
 Again, ``irq`` s can be names or numbers (if ``INumberedGPIOOutput`` is implemented) and ``irqDest`` s have to be numbers.
 Naturally, the arity of sources and destinations has to match.
 
+There is also a possibility of connecting a single source to multiple destinations with the ``|`` sign, which can be used with every interrupt attribute format:
+
+.. code-block:: none
+
+    -> destination@number | another_destination@number
+    propertyName -> destination@number | another_destination@number
+    [irq1, irq2, ..., irqN] -> destination@[irqDest1, irqDest2, ..., irqDestN] | another_destination@[irqDest1, irqDest2, ..., irqDestN]
+
+Note that every attribute separated by the ``|`` sign has to be of the same arity as the source.
+
 There is also a notation used in case of local interrupts:
 
 .. code-block:: none
