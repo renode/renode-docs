@@ -37,6 +37,7 @@
    :maxdepth: 2
 
    tutorials/miv-example
+   tutorials/zephyr-ptp-testing
 
 .. toctree::
    :caption: Advanced topics
