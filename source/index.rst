@@ -31,6 +31,7 @@
    :maxdepth: 2
 
    networking/wired
+   networking/wireless
    networking/wireshark
 
 .. toctree::
