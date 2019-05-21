@@ -41,6 +41,18 @@ To disconnect from all connected switches, use::
 
     (machine-0) connector DisconnectFromAll sysbus.ethernet
 
+Starting the interface
+----------------------
+
+A ``Switch`` object is created as "paused".
+To enable communication via a switch you must start it manually, either by running::
+
+    (monitor) start
+
+or, if your emulation is already started, with::
+
+    (monitor) switch Start
+
 Controlling the traffic
 -----------------------
 
