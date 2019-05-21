@@ -30,6 +30,7 @@
    :caption: Networking
    :maxdepth: 2
 
+   networking/wired
    networking/wireshark
 
 .. toctree::
