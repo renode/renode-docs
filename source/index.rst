@@ -32,6 +32,7 @@
 
    networking/wired
    networking/wireless
+   networking/host-network
    networking/wireshark
 
 .. toctree::
