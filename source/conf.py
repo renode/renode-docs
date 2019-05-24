@@ -38,7 +38,7 @@ master_doc = 'index'
 project = u'Renode - documentation'
 basic_filename = 'renode-docs'
 authors = u'Antmicro Ltd'
-copyright = authors + u', 2018'
+copyright = authors + u', 2019'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
