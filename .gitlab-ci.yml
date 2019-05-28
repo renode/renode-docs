@@ -8,20 +8,20 @@ variables:
   CONF_PY_STRING: '\nhtml_context = {"conf_py_path": "$DOCS_DIR/source/"}'
 
 build-and-deploy:
-    tags:
-        - docs
-    script:
-        - pip install sphinx_tabs
-        - cd $DOCS_DIR
-        - echo -e $CONF_PY_STRING >> source/conf.py
-        - make html
-        - rm -R build/html/_sources
-        - make text
-        - find build/text/ -type f -name '*.txt' -execdir rename 's/\.txt/\.rst\.txt/' {} \;
-        - mv build/text build/html/_sources
-        - mv build/html $CI_PROJECT_NAME
-        - cp -r $CI_PROJECT_NAME /opt/docs/
+  tags:
+    - docs
+  script:
+    - pip install sphinx_tabs
+    - cd $DOCS_DIR
+    - echo -e $CONF_PY_STRING >> source/conf.py
+    - make html
+    - rm -R build/html/_sources
+    - make text
+    - find build/text/ -type f -name '*.txt' -execdir rename 's/\.txt/\.rst\.txt/' {} \;
+    - mv build/text build/html/_sources
+    - mv build/html $CI_PROJECT_NAME
+    - cp -r $CI_PROJECT_NAME /opt/docs/
 
-    artifacts:
-        paths:
-            - $DOCS_DIR/$CI_PROJECT_NAME
+  artifacts:
+    paths:
+      - $DOCS_DIR/$CI_PROJECT_NAME
