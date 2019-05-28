@@ -123,7 +123,7 @@ For example:
 
     local cpu: SomeCPU
         StringProp: "a"
-    
+
     cpu:
         IntProp: 32
 
@@ -385,7 +385,7 @@ So, for example, these codes lead to the same effect:
 
     variable: SomeType
         SomeProperty: point
-    
+
     point: Point
         x: 5
         y: 3
