@@ -1,15 +1,15 @@
 image: $DOCKER_IMAGE
 
-stages:
-  - build
-  - deploy
+before_script:
+  - pip install sphinx_tabs
 
 variables:
   DOCS_DIR: '.'
   CONF_PY_STRING: '\nhtml_context = {"conf_py_path": "$DOCS_DIR/source/"}'
 
-doc-build:
-    stage: build
+build-and-deploy:
+    tags:
+        - docs
     script:
         - pip install sphinx_tabs
         - cd $DOCS_DIR
@@ -19,12 +19,9 @@ doc-build:
         - make text
         - find build/text/ -type f -name '*.txt' -execdir rename 's/\.txt/\.rst\.txt/' {} \;
         - mv build/text build/html/_sources
+        - mv build/html $CI_PROJECT_NAME
+        - cp -r $CI_PROJECT_NAME /opt/docs/
 
     artifacts:
         paths:
-            - $DOCS_DIR/build/html/
-    
-doc-deploy:
-    stage: deploy
-    script:
-        - curl "$DEPLOY_URL&build_id=$(($CI_BUILD_ID-1))"
+            - $DOCS_DIR/$CI_PROJECT_NAME
