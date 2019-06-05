@@ -15,9 +15,31 @@ The test suite is using `Robot Framework <https://robotframework.org/>`_ and can
 To create your own Zephyr binaries to be tested, you need to follow `Zephyr's Getting Started Guide <https://docs.zephyrproject.org/latest/getting_started/getting_started.html>`_.
 
 The tests require two Zephyr ELF files built from the ``zephyr/samples/net/gptp`` sample, targeting the ``sam_e70_xplained`` board.
-One of the binaries, acting as a Grand Master node, must be built with ``CONFIG_NET_GPTP_GM_CAPABLE=y``.
-Both binaries must have the ``CONFIG_ETH_SAM_GMAC_RANDOM_MAC=y`` setting.
 
+To build them, create two overlay files, one for the Grand Master node, one for the slave.
+
+Config for the Grand Master (gm.conf)::
+
+  CONFIG_NET_GPTP_GM_CAPABLE=y
+  CONFIG_ETH_SAM_GMAC_RANDOM_MAC=y
+
+  CONFIG_NET_CONFIG_MY_IPV4_ADDR="192.0.2.1"
+  CONFIG_NET_CONFIG_MY_IPV6_ADDR="2001:db8::1"
+  CONFIG_NET_GPTP_NEIGHBOR_PROP_DELAY_THR=200000
+
+Config for the slave node (slave.conf)::
+
+  CONFIG_NET_GPTP_GM_CAPABLE=n
+  CONFIG_ETH_SAM_GMAC_RANDOM_MAC=y
+
+  CONFIG_NET_CONFIG_MY_IPV4_ADDR="192.0.2.2"
+  CONFIG_NET_CONFIG_MY_IPV6_ADDR="2001:db8::2"
+  CONFIG_NET_GPTP_NEIGHBOR_PROP_DELAY_THR=200000
+
+Follow the Zephyr documentation to build these samples.
+For example, to build the Grand Master application, run::
+
+  west build --board sam_e70_xplained -- -DOVERLAY_CONFIG=gm.conf
 
 The test suite
 --------------
