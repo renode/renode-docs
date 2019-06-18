@@ -165,6 +165,7 @@ There are three kinds of values:
 - *simple values* that can be further divided into:
 
   * strings (delimited by a double quote with ``\"`` used as an escaped double quote);
+  * multiline strings (delimited by triple quotes ``'''``  with ``\'''`` used as escaped triple quotes) (example below);
   * boolean values (either ``true`` or ``false``);
   * numbers (decimal or hexadecimal with the ``0x`` prefix);
   * ranges (described below)
@@ -177,6 +178,15 @@ A range represents an interval and can be supplied in two forms:
 - ``<begin, +size>`` where ``begin``, ``end`` and ``size`` are decimal or hexadecimal numbers.
 
 Examples: ``<0, 100>``, ``<0x10000, +0x200>``.
+
+Example of a multline string with an escaped delimiter:
+
+.. code-block:: none
+
+    name: '''this is \'''
+    some 
+    multiline
+    name'''
 
 Registration info
 -----------------
