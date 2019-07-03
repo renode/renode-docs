@@ -41,6 +41,7 @@
 
    tutorials/miv-example
    tutorials/zephyr-ptp-testing
+   tutorials/fomu-example
 
 .. toctree::
    :caption: Advanced topics
