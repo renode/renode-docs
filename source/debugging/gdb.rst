@@ -13,7 +13,7 @@ Connecting to  GDB
 
 To start a GDB server on port 3333, run::
 
-    (machine-0) sysbus.cpu StartGdbServer 3333
+    (machine-0) machine StartGdbServer 3333
 
 This allows you to start GDB from an appropriate toolchain and connect to a remote target::
 
@@ -44,4 +44,30 @@ Alternatively, GDB's ``monitor`` command may be used to pass the commands to Ren
 The third option, suited for the simplest scenarios, makes Renode start the whole emulation as soon as GDB connects.
 It requires an additional parameter for ``StartGdbServer``, named ``autostartEmulation``::
 
-    (machine-0) sysbus.cpu StartGdbServer 3333 true
+    (machine-0) machine StartGdbServer 3333 true
+
+Complex scenarios
+-----------------
+
+By default, the command ``StartGdbServer`` adds all CPUs of a machine to the newly created server.
+
+It can be also used to add a specific CPU to an existing server, or create a new server with that CPU.
+This allows you to create more complex setups, with multiple GDB instances running debug sessions with different CPUs.
+
+To start a GDB server on port 3333 with one CPU, two more paramaters are required - previously mentioned ``autostartEmulation``, and ``cpu``::
+
+    (machine-0) machine StartGdbServer 3333 true sysbus.cpu1
+
+To add a second CPU to that server, run::
+
+    (machine-0) machine StartGdbServer 3333 true sysbus.cpu2
+
+To start a new GDB server on port 3334 with another CPU, run::
+
+    (machine-0) machine StartGdbServer 3334 true sysbus.cpu3
+
+These commands will give you a setup consisting of two GDB servers - on port 3333 with two CPUs, and on port 3334 with one CPU.
+
+Furthermore, the ``StartGdbServer`` command will prohibit you from adding one CPU to more than one GDB server.
+
+If a CPU was added to a GDB server by providing the ``autostartEmulation`` and ``cpu`` parameters, it will be impossible to run the general version of the command on that machine.
