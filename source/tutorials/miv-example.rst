@@ -129,7 +129,7 @@ GDB
 
 A popular tool for debugging, GDB, can be used to analyze applications running in Renode.
 It uses the same remote protocol as OpenOCD, so it can be easily integrated with most GDB-based IDEs, such as SoftConsole or Eclipse.
-To start a GDB stub in Renode, run ``cpu StartGdbServer 3333`` (where 3333 is a sample port number) and connect from GDB by calling  ``(gdb) target remote :3333``.
+To start a GDB stub in Renode, run ``machine StartGdbServer 3333`` (where 3333 is a sample port number) and connect from GDB by calling  ``(gdb) target remote :3333``.
 To start the emulation you have to run both ``start`` in Renode and ``continue`` in GDB.
 
 You can use most of GDB’s regular features: breakpoints, watchpoints, stepping, reading/writing to variables, etc.
@@ -149,7 +149,7 @@ By altering the project settings you can connect it to Renode.
 Start by running the GDB server in renode::
 
     (monitor) inlude @scripts/single-node/miv.resc
-    (MI-V) cpu StartGdbServer 3333 true
+    (MI-V) machine StartGdbServer 3333 true
 
 Please note the ``true`` parameter - it forces Renode to autostart as soon as the GDB client connects.
 
