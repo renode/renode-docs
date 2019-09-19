@@ -114,7 +114,7 @@ doctest:
 	      "results in $(BUILDDIR)/doctest/output.txt."
 
 lh:
-	gnome-terminal -- bash -c '$(MAKE) html ; python -B -c "import live; live.livehtml()"'
+	xterm -hold -e bash -c '$(MAKE) html ; python -B -c "import live; live.livehtml()"'
 
 lp:
-	gnome-terminal -- bash -c '$(MAKE) latexpdf ; python -B -c "import live; live.livepdf()"'
+	xterm -hold -e bash -c '$(MAKE) latexpdf ; python -B -c "import live; live.livepdf()"'

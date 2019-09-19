@@ -38,7 +38,7 @@ def livepdf():
                     if event.name and event.name[-3:-1] != 'sw' and event.name[-1] != '!':
                         names.add(sourcedir + event.name)
                 if len(names) > 0:
-                    print '%s modified' % ','.join(names)
+                    print('%s modified' % ','.join(names))
                     subprocess.call(['make','latexpdf'])
 
         except KeyboardInterrupt:
