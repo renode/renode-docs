@@ -8,6 +8,7 @@
    introduction/installing
    introduction/using
    introduction/demo
+   introduction/supported-boards
 
 .. toctree::
    :caption: Basic usage
