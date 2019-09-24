@@ -2,7 +2,9 @@ Supported boards
 ================
 
 Renode supports a wide array of hardware platforms, covering multiple architectures, CPU families and providing various I/O capabilities. 
+
 This chapter contains an (incomplete) list of selected supported hardware targets - all of these include sample software binaries that run both on real hardware and in Renode.
+
 The ultimate goal of Renode is to run any binary-compatible software targeted for any of those hardware platforms without modification, although of course your specific use case may require extending the provided hardware description / models.
 
 .. raw:: html
@@ -106,3 +108,6 @@ The ultimate goal of Renode is to run any binary-compatible software targeted fo
        `Xilinx ZedBoard <http://www.zedboard.org/product/zedboard>`_
 
        `zedboard.resc <https://github.com/renode/renode/blob/master/scripts/single-node/zedboard.resc>`_
+
+And many more - Renode makes it easy to create your own platform which reuses the same peripherals / CPUs that exist in other platforms.
+We provide commerical services to add new platforms - if you need help in this regard, please write to `support@renode.io <mailto:support@renode.io>`_.
