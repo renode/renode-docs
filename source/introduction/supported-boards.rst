@@ -7,6 +7,8 @@ This chapter contains an (incomplete) list of selected supported hardware target
 
 The ultimate goal of Renode is to run any binary-compatible software targeted for any of those hardware platforms without modification, although of course your specific use case may require extending the provided hardware description / models.
 
+To run example software on any of the below boards, simply run Renode and use the ``s @scripts/single-node/PLATFORM-SCRIPT-NAME.resc`` command.
+
 .. raw:: html
 
    <style>
@@ -110,4 +112,5 @@ The ultimate goal of Renode is to run any binary-compatible software targeted fo
        `zedboard.resc <https://github.com/renode/renode/blob/master/scripts/single-node/zedboard.resc>`_
 
 And many more - Renode makes it easy to create your own platform which reuses the same peripherals / CPUs that exist in other platforms.
+
 We provide commerical services to add new platforms - if you need help in this regard, please write to `support@renode.io <mailto:support@renode.io>`_.
