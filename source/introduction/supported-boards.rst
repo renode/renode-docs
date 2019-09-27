@@ -24,7 +24,7 @@ Supported boards include:
 
    * - .. image:: img/stm32f103.png
 
-       `ST Micro STM3210E-EVAL <https://www.st.com/en/evaluation-tools/stm3210e-eval.html>`_
+       `ST Micro STM32 Nucleo-64 <https://www.st.com/en/evaluation-tools/nucleo-f103rb.html>`_
        
        `stm32f103.resc <https://github.com/renode/renode/blob/master/scripts/single-node/stm32f103.resc>`_
        
@@ -112,6 +112,16 @@ Supported boards include:
        `Xilinx ZedBoard <http://www.zedboard.org/product/zedboard>`_
 
        `zedboard.resc <https://github.com/renode/renode/blob/master/scripts/single-node/zedboard.resc>`_
+
+   * - .. image:: img/bluepill.png
+
+       `ST Micro STM32F103 Blue Pill <https://stm32-base.org/boards/STM32F103C8T6-Blue-Pill>`_
+
+       `stm32f103.resc <https://github.com/renode/renode/blob/master/scripts/single-node/stm32f103.resc>`_
+
+     -
+
+     -
 
 And many more - Renode makes it easy to create your own platform which reuses the same peripherals / CPUs that exist in other platforms.
 
