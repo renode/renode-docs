@@ -43,6 +43,7 @@
    tutorials/miv-example
    tutorials/zephyr-ptp-testing
    tutorials/fomu-example
+   tutorials/usbip
 
 .. toctree::
    :caption: Advanced topics
