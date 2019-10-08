@@ -1,3 +1,5 @@
+.. _gdb-debugging:
+
 Debugging with GDB
 ==================
 

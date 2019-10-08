@@ -1,3 +1,5 @@
+.. _using-logger:
+
 Using the logger
 ================
 
