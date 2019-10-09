@@ -36,7 +36,7 @@ is started.
 Now you can connect to it from your host machine.
 First, you need to import the ``vhci_hcd`` kernel module::
 
-    $ sudo modprobe hvci_hcd
+    $ sudo modprobe vhci_hcd
 
 Now, you can list exported devices::
 
