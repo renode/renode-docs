@@ -31,7 +31,8 @@ Core prerequisites
 
       To install the remaining prerequisites, use::
 
-         brew install binutils gnu-sed coreutils homebrew/versions/gcc49 dialog
+         brew install binutils gnu-sed coreutils dialog
+         xcode-select --install
 
       .. note::
 
