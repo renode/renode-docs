@@ -22,11 +22,11 @@ Opening a TAP interface
 
 To create and open a TAP interface which will be listed on your host system as ``tap0`` and inside Renode as ``host.tap``, run::
 
-    (monitor) emulation CrateTap "tap0" "tap"
+    (monitor) emulation CreateTap "tap0" "tap"
 
 If you want the interface to be retained after Renode closes, add a ``true`` parameter::
 
-    (monitor) emulation CrateTap "tap0" "tap" true
+    (monitor) emulation CreateTap "tap0" "tap" true
 
 Depending on your system configuration, you may be asked for a password to open the interface.
 
