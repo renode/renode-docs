@@ -26,7 +26,7 @@ To connect an interface to a wireless medium you have to set a proper :ref:`mach
 
 Then, use the ``connector`` mechanism to attach the interface::
 
-    (machine-0) connector Connect sysbus.radio wirele
+    (machine-0) connector Connect sysbus.radio wireless
 
 Although it is not a common setup, each interface can be connected to many media at the same time.
 
