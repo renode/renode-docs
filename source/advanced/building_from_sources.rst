@@ -132,6 +132,8 @@ Creating packages
 
 The build script can create native packages only, i.e., you must run it on Windows to create an ``.msi`` installer package, on Linux for ``.deb``, ``.rpm`` and ``.pkg.tar.xz`` packages or on macOS for the ``.dmg`` image.
 
+There is also a separate procedure to create `Conda <https://docs.conda.io/en/latest/>`_ packages, described in a `dedicated README <https://github.com/renode/renode/tree/master/tools/packaging/conda>`_.
+
 Prerequisites
 +++++++++++++
 
