@@ -96,7 +96,7 @@ Additional prerequisites (for Robot framework testing)
 If you followed the instructions above, Python should be installed in your system.
 Install the ``pip`` package manager and some additional modules to enable writing and running test cases with the Robot framework::
 
-    python -m pip install robotframework==3.0.4 netifaces requests psutil
+    python -m pip install -r tools/requirements.txt
 
 Downloading the source code
 ---------------------------
