@@ -75,8 +75,8 @@ Core prerequisites
 
       .. rubric:: C build tools
 
-      1. Download the `MinGW-w64 installer <https://sourceforge.net/projects/mingw-w64/files/latest/download?source=files>`_.
-      2. Install the latest version with the ``x86_64`` architecture and ``win32`` threads.
+      1. Download the `MinGW-w64 installer <https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/installer/mingw-w64-install.exe>`_.
+      2. Install the latest version with the ``x86_64`` architecture, ``win32`` threads and ``sjlj`` exception handling.
       3. Add the location of the binaries (it depends on the MinGW version and installation settings e.g. ``C:\Program Files\mingw-w64\x86_64-8.1.0-win32-sjlj-rt_v6-rev0\mingw64\bin``) to the system ``PATH`` variable.
 
       .. rubric:: C# build tools
