@@ -18,7 +18,7 @@ The USB/IP protocol allows to share USB devices between a server (exporting part
 over the IP network.
 
 The protocol is `well supported in Linux <https://github.com/torvalds/linux/tree/master/tools/usb/usbip>`_, and there exists
-a `corresponding project for Windows as well <https://github.com/cezuni/usbip-win>`_, the latter however has not been tested.
+a `corresponding project for Windows as well <https://github.com/cezanne/usbip-win>`_, the latter however has not been tested.
 
 Renode currently works as a server only - it is able to support exporting devices only, but is *not able* to
 connect physical USB devices to the emulation.

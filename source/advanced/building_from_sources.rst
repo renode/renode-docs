@@ -36,7 +36,7 @@ Core prerequisites
 
       .. note::
 
-         This requires `homebrew <http://brew.sh/>`_ to be installed in your system.
+         This requires `homebrew <https://brew.sh/>`_ to be installed in your system.
 
    .. group-tab:: Windows
 
@@ -75,13 +75,13 @@ Core prerequisites
 
       .. rubric:: C build tools
 
-      1. Download the `MinGW-w64 installer <https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/installer/mingw-w64-install.exe>`_.
+      1. Download the `MinGW-w64 installer <https://netix.dl.sourceforge.net/project/mingw-w64/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/installer/mingw-w64-install.exe>`_.
       2. Install the latest version with the ``x86_64`` architecture, ``win32`` threads and ``sjlj`` exception handling.
       3. Add the location of the binaries (it depends on the MinGW version and installation settings e.g. ``C:\Program Files\mingw-w64\x86_64-8.1.0-win32-sjlj-rt_v6-rev0\mingw64\bin``) to the system ``PATH`` variable.
 
       .. rubric:: C# build tools
 
-      1. Download `VS Build Tools 2017 <https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=15#>`_.
+      1. Download `VS Build Tools 2017 <https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=15>`_.
       2. Run the installer, select the *Visual Studio Build Tools 2017* product and click *Install* or *Modify*.
       3. Switch to the *Individual components* pane and select:
 
@@ -160,7 +160,7 @@ Depending on the system, there may be some prerequisites for building Renode pac
 
             The packaging process described in this section can only be executed in a Cygwin shell.
 
-        1. Download and install the `WiX Toolset installer <http://wixtoolset.org/releases/>`_ (version at least 3.11).
+        1. Download and install the `WiX Toolset installer <https://wixtoolset.org/releases/>`_ (version at least 3.11).
         2. Add the ``zip`` package to Cygwin.
 
 Building

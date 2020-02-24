@@ -141,7 +141,7 @@ SoftConsole integration
 -----------------------
 
 One of the Renode's main goals is to easily integrate with tools that are used for a developer's everyday work.
-A great example of such a tool is `SoftConsole, an Eclipse-based IDE from Microsemi <https://www.microsemi.com/products/fpga-soc/design-resources/design-software/softconsole>`_.
+A great example of such a tool is `SoftConsole, an Eclipse-based IDE from Microsemi <https://www.microsemi.com/product-directory/design-tools/4879-softconsole>`_.
 
 SoftConsole offers debugging capabilities that can be normally used when attached to hardware.
 By altering the project settings you can connect it to Renode.
