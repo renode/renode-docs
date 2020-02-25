@@ -5,7 +5,9 @@ Renode supports a wide array of hardware platforms, covering multiple architectu
 
 This chapter contains an (incomplete) list of selected supported hardware targets - all of these include sample software binaries that run both on real hardware and in Renode.
 
-To run example software on any of the below boards, simply run Renode and use the ``s @scripts/PATH/TO/SCRIPT-NAME.resc`` command.
+To run example software on any of the below boards, simply run Renode and use::
+
+    s @scripts/PATH/TO/SCRIPT-NAME.resc
 
 The ultimate goal of Renode is to run any binary-compatible software targeted for any of those hardware platforms without modification, although of course your specific use case may require extending the provided hardware description / models.
 
