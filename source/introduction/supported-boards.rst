@@ -124,9 +124,13 @@ Supported boards include:
 
        `Kendryte K210 <https://www.seeedstudio.com/Sipeed-MAix-BiT-for-RISC-V-AI-IoT-p-2872.html>`_
 
-       :script:`single-node/kendryte_k210.resc`
+       :script:`single-node/zolertia.resc`
 
-     -
+     - .. image:: img/zolertia-firefly.jpg
+
+       `Zolertia Firefly <https://zolertia.io/product/firefly/>`_
+
+       :script:`single-node/zolertia.resc`
 
 And many more - Renode makes it easy to create your own platform which reuses the same peripherals / CPUs that exist in other platforms.
 
