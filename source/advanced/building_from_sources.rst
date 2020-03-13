@@ -90,14 +90,6 @@ Core prerequisites
 
       4. Add the location of the binaries (``C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\Bin\amd64`` by default) to the system ``PATH`` variable.
 
-Additional prerequisites (for Robot framework testing)
-++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-If you followed the instructions above, Python should be installed in your system.
-Install the ``pip`` package manager and some additional modules to enable writing and running test cases with the Robot framework::
-
-    python -m pip install -r tools/requirements.txt
-
 Downloading the source code
 ---------------------------
 
@@ -106,6 +98,14 @@ Renode’s source code is available on GitHub::
    git clone https://github.com/renode/renode.git
 
 Submodules will be automatically initialised and downloaded during the build process, so you do not need to do it at this point.
+
+Additional prerequisites (for Robot framework testing)
+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+If you followed the instructions above, Python should be installed in your system.
+Install the ``pip`` package manager and some additional modules to enable writing and running test cases with the Robot framework::
+
+    python -m pip install -r tools/requirements.txt
 
 Building Renode
 ---------------
