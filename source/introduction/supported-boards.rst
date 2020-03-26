@@ -132,6 +132,16 @@ Supported boards include:
 
        :script:`single-node/zolertia.resc`
 
+   * - .. image:: img/quickfeather.png
+
+       `QuickFeather Development Kit <https://www.quicklogic.com/products/eos-s3/quickfeather-development-kit/>`_
+
+       :script:`single-node/quickfeather.resc`
+
+     -
+
+     -
+
 And many more - Renode makes it easy to create your own platform which reuses the same peripherals / CPUs that exist in other platforms.
 
 We provide commerical services to add new platforms - if you need help in this regard, please write to `support@renode.io <mailto:support@renode.io>`_.
