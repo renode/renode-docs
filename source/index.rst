@@ -52,3 +52,4 @@
    advanced/building_from_sources
    advanced/platform_description_format
    advanced/time_framework
+   advanced/using-platformio
