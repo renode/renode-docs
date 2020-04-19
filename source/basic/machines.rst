@@ -56,7 +56,8 @@ To list all peripherals, execute::
 
     (machine-0) peripherals
     Available peripherals:
-    sysbus (SystemBus)
+
+      sysbus (SystemBus)
 
 To load a predefined platform (in this example *Microsemi MiV*), type::
 
