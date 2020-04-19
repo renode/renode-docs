@@ -1,7 +1,7 @@
 image: $DOCKER_IMAGE
 
 before_script:
-  - pip install -r requirements.txt
+  - pip3 install -r requirements.txt
 
 variables:
   DOCS_DIR: '.'
