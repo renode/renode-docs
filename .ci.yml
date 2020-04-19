@@ -1,7 +1,7 @@
 image: $DOCKER_IMAGE
 
 before_script:
-  - pip install sphinx_tabs
+  - pip install -r requirements.txt
 
 variables:
   DOCS_DIR: '.'
@@ -11,7 +11,6 @@ build-and-deploy:
   tags:
     - docs
   script:
-    - pip install sphinx_tabs
     - cd $DOCS_DIR
     - echo -e $CONF_PY_STRING >> source/conf.py
     - make html
