@@ -9,6 +9,8 @@ To run example software on any of the below boards, simply run Renode and use::
 
     s @scripts/PATH/TO/SCRIPT-NAME.resc
 
+Tab completion is available also for filenames, so be sure to explore the available demos.
+
 The ultimate goal of Renode is to run any binary-compatible software targeted for any of those hardware platforms without modification, although of course your specific use case may require extending the provided hardware description / models.
 
 Supported boards include:
@@ -28,7 +30,7 @@ Supported boards include:
 
        `ST Micro STM32 Nucleo-64 <https://www.st.com/en/evaluation-tools/nucleo-f103rb.html>`_
        
-       :script:`single-node/stm32f103.resc`
+       `https://github.com/renode/renode/tree/master/scripts/single-node/stm32f103.resc <stm32f103.resc>`_
        
      - .. image:: img/stm_discovery.png
 
