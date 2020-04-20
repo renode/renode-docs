@@ -30,7 +30,7 @@ Supported boards include:
 
        `ST Micro STM32 Nucleo-64 <https://www.st.com/en/evaluation-tools/nucleo-f103rb.html>`_
        
-       `https://github.com/renode/renode/tree/master/scripts/single-node/stm32f103.resc <stm32f103.resc>`_
+       `stm32f103.resc <https://github.com/renode/renode/tree/master/scripts/single-node/stm32f103.resc>`_
        
      - .. image:: img/stm_discovery.png
 
