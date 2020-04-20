@@ -126,7 +126,7 @@ Supported boards include:
 
        `Kendryte K210 <https://www.seeedstudio.com/Sipeed-MAix-BiT-for-RISC-V-AI-IoT-p-2872.html>`_
 
-       :script:`kendryte_k210.resc.resc <single-node/kendryte_k210.resc.resc>`
+       :script:`kendryte_k210.resc <single-node/kendryte_k210.resc>`
 
      - .. image:: img/zolertia-firefly.jpg
 
