@@ -140,7 +140,11 @@ Supported boards include:
 
        :script:`quickfeather.resc <single-node/quickfeather.resc>`
 
-     -
+     - .. image:: img/nexys-video.png
+
+       `OpenPOWER Microwatt <https://github.com/antonblanchard/microwatt>`_ on `Digilent Nexys Video <https://reference.digilentinc.com/reference/programmable-logic/nexys-video/start>`_ 
+
+       :script:`microwatt.resc <single-node/microwatt.resc>`
 
      -
 
