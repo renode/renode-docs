@@ -5651,6 +5651,7 @@ footer span.commit code, footer span.commit .rst-content tt, .rst-content footer
   left: auto;
   border: none;
   max-width: 300px;
+  display: contents !important;
 }
 .rst-versions.rst-badge .icon-book {
   float: none;
