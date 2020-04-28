@@ -8,7 +8,7 @@
 # All configuration values have a default; values that are commented out
 # serve to show the default.
 
-import sys, os
+import sys, os, datetime
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -43,7 +43,7 @@ master_doc = 'index'
 project = u'Renode - documentation'
 basic_filename = 'renode-docs'
 authors = u'Antmicro Ltd'
-copyright = authors + u', 2019'
+copyright = authors + u', 2010-' + str(datetime.date.today().year)
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
