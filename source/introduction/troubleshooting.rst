@@ -10,8 +10,12 @@ The Renode team and external users may also be aware of some workarounds or alte
 To speed up the process of getting help, please:
 
 a) reduce your example to the minimal example that still does not work for you
-b) state your platform, Renode version used, and if possible, what you are trying to achieve (context helps!)
-c) provide all the files needed to reproduce the problem 1:1 (``.repl``, ``.resc`` and software files), preferably with a precompiled binary
+b) state the operating system you're working on, Renode version used, and if possible, what you are trying to achieve (context helps!)
+c) provide all the files and commands needed to reproduce the problem 1:1 (``.repl``, ``.resc`` and software files), preferably with a precompiled binary in the ELF format
 d) provide logs - the Renode log and UART terminal output where relevant.
+e) it helps if you can provide sources for your example, along with compilation instructions
 
 Especially c) and d) help us confirm the bug and act on it.
+
+Please note that Antmicro provides commercial services for Renode.
+For more information, please contact support@renode.io.
