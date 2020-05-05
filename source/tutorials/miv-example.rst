@@ -148,7 +148,7 @@ By altering the project settings you can connect it to Renode.
 
 Start by running the GDB server in renode::
 
-    (monitor) inlude @scripts/single-node/miv.resc
+    (monitor) include @scripts/single-node/miv.resc
     (MI-V) machine StartGdbServer 3333 true
 
 Please note the ``true`` parameter - it forces Renode to autostart as soon as the GDB client connects.
