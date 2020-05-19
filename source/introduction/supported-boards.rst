@@ -146,7 +146,9 @@ Supported boards include:
 
        :script:`microwatt.resc <single-node/microwatt.resc>`
 
-     -
+     - .. image:: img/microchip_icicle.png
+
+       `Microchip PolarFire SoC Icicle Kit <https://www.microsemi.com/product-directory/soc-fpgas/5498-polarfire-soc-fpga>`_
 
 And many more - Renode makes it easy to create your own platform which reuses the same peripherals / CPUs that exist in other platforms.
 
