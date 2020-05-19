@@ -149,6 +149,8 @@ Supported boards include:
      - .. image:: img/microchip_icicle.png
 
        `Microchip PolarFire SoC Icicle Kit <https://www.microsemi.com/product-directory/soc-fpgas/5498-polarfire-soc-fpga>`_
+       
+       `mpfs-icicle-kit.repl <https://github.com/renode/renode/blob/master/platforms/boards/mpfs-icicle-kit.repl>`_
 
 And many more - Renode makes it easy to create your own platform which reuses the same peripherals / CPUs that exist in other platforms.
 
