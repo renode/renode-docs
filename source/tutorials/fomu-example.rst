@@ -20,7 +20,9 @@ Prerequisites
 Simulation
 ++++++++++
 
-For the simulation part, you need to build Renode from sources according to the :ref:`building instructions <building-from-source>`.
+For the simulation part, you need to have the latest version of Renode available in your system.
+
+You can install `a prebuilt pacakge for your OS <https://https://github.com/renode/renode/releases>`_ or build a copy from sources as specified in the :ref:`building instructions <building-from-source>`.
 
 Hardware
 ++++++++
