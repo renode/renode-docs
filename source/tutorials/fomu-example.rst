@@ -128,7 +128,7 @@ Run the Zephyr OS image in simulation using the script shipped with Renode:
 
     (monitor) start @scripts/complex/fomu/renode_etherbone_fomu.resc
 
-Now you can control the HW LED form Zephyr's shell using special commands:
+Now you can control the HW LED from Zephyr's shell using special commands:
 
 .. code-block:: bash
 
