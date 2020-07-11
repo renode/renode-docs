@@ -75,7 +75,7 @@ There are several properties provided by a *time source* that can be used to tun
     Value lower than *1.0* means that the *virtual time* should pass slower than the *real* one - it can be used to slow down emulation when a lot of events is happening in a short period.
 
     The performance of the host machine puts a natural limit on an effective values of this parameter (see ``CurrentLoad``).
-    It is possible to temporarily overwrite this setting by using ``AdanveImmediately`` property.
+    It is possible to temporarily overwrite this setting by using ``AdvanceImmediately`` property.
 
 *AdvanceImmediately*
     Boolean value that can be used to overwrite the current value of ``Performance`` and force the emulation to execute as fast as possible.
