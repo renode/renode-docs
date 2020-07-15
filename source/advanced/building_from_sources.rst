@@ -23,7 +23,7 @@ Core prerequisites
 
          sudo apt-get update
          sudo apt-get install git automake autoconf libtool g++ realpath policykit-1 \
-                      libgtk2.0-dev screen uml-utilities gtk-sharp2 python2.7
+                      libgtk2.0-dev screen uml-utilities gtk-sharp2 python3
 
    .. group-tab:: macOS
 
@@ -62,16 +62,16 @@ Core prerequisites
               git config --global core.autocrlf false
               git config --global core.symlinks true
 
-      .. rubric:: Python 2.7
+      .. rubric:: Python 3
 
-      1. Download and install **native** Windows Python framework from `the Python website <https://www.python.org/downloads/>`_.
+      1. Download and install **native** Windows Python 3 framework from `the Python website <https://www.python.org/downloads/>`_.
 
       .. note::
 
          Do not use the module provided by ``Cygwin``.
          If you have Cygwin's version of Python already installed, make sure that the native's version location is included at the beginning of Cygwin's PATH variable.
 
-      2. Add location of the binaries (``C:\Python27`` by default) to the system ``PATH`` variable.
+      2. Add location of the binaries (``C:\Program Files (x86)\Python38-32`` for a 32-bit version of Python 3.8 by default) to the system ``PATH`` variable.
 
       .. rubric:: C build tools
 
@@ -105,7 +105,7 @@ Additional prerequisites (for Robot framework testing)
 If you followed the instructions above, Python should be installed in your system.
 Install the ``pip`` package manager and some additional modules to enable writing and running test cases with the Robot framework::
 
-    python -m pip install -r tools/requirements.txt
+    python3 -m pip install -r tools/requirements.txt
 
 Building Renode
 ---------------
