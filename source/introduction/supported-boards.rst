@@ -152,6 +152,16 @@ Supported boards include:
        
        `mpfs-icicle-kit.repl <https://github.com/renode/renode/blob/master/platforms/boards/mpfs-icicle-kit.repl>`_
 
+   * - 
+
+     - .. image:: img/nxp_k64f.png
+
+       `NXP FRDM-K64F <https://www.nxp.com/design/development-boards/freedom-development-boards/mcu-boards/freedom-development-platform-for-kinetis-k64-k63-and-k24-mcus:FRDM-K64F>`_
+        
+       `nxp_k64f.repl <https://github.com/renode/renode/blob/master/platforms/cpus/nxp-k6xf.repl>`_
+
+     - 
+
 And many more - Renode makes it easy to create your own platform which reuses the same peripherals / CPUs that exist in other platforms.
 
 We provide commerical services to add new platforms - if you need help in this regard, please write to `support@renode.io <mailto:support@renode.io>`_.
