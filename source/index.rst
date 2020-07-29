@@ -10,6 +10,7 @@
    introduction/demo
    introduction/supported-boards
    introduction/troubleshooting
+   introduction/testing
 
 .. toctree::
    :caption: Basic usage
