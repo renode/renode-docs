@@ -152,7 +152,11 @@ Supported boards include:
        
        :script:`icicle-kit.resc <single-node/icicle-kit.resc>`
 
-   * - 
+   * - .. image:: img/nRF52840.png
+
+       `Nordic nRF52840 Development Kit <https://www.nordicsemi.com/Software-and-Tools/Development-Kits/nRF52840-DK>`_
+        
+       `nRF52840.repl <https://github.com/renode/renode/blob/master/platforms/cpus/nrf52840.repl>`_
 
      - .. image:: img/nxp_k64f.png
 
