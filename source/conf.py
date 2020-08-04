@@ -45,7 +45,7 @@ master_doc = 'index'
 # General information about the project.
 project = u'Renode - documentation'
 basic_filename = 'renode-docs'
-authors = u'Antmicro Ltd'
+authors = u'Antmicro'
 copyright = authors + u', 2010-' + str(datetime.date.today().year)
 
 # The version info for the project you're documenting, acts as replacement for
