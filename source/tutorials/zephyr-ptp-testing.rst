@@ -11,7 +11,7 @@ Prerequisites
 To start the test you need to download and build Renode according to the :ref:`building instructions <building-from-source>`.
 
 The test suite is using `Robot Framework <https://robotframework.org/>`_ and can be run with a single script.
-,
+
 To create your own Zephyr binaries to be tested, you need to follow `Zephyr's Getting Started Guide <https://docs.zephyrproject.org/latest/getting_started/index.html>`_.
 
 The tests require two Zephyr ELF files built from the ``zephyr/samples/net/gptp`` sample, targeting the ``sam_e70_xplained`` board.
