@@ -100,7 +100,7 @@ The `basic keywords <https://github.com/renode/renode/blob/master/src/Renode/Rob
 * clear the emulation (``Reset Emulation``),
 * execute a command in the Monitor (``Execute Command``),
 * allocate a file in the Renode temporary folder (``Allocate Temporary File``),
-* download a file to the Renode temporary folder (``Downlaod File``),
+* download a file to the Renode temporary folder (``Download File``),
 
 and more (see the source code for details).
 
