@@ -42,7 +42,7 @@ The provided script creates a single machine and loads a sample LiteOS-based app
 
 To run a script, use the ``include`` command (or ``i``, for short), with a path to the script to load, prepended with the ``@`` sign, like this::
 
-    include @scripts/single-node/miv.repl
+    include @scripts/single-node/miv.resc
 
 After the script is loaded, you will see a new terminal - a UART window opened by the ``showAnalyzer`` command.
 
