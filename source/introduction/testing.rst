@@ -233,3 +233,36 @@ What's more, it is also possible to show the Monitor and analyzers windows and i
 
     Note that interacting with the running test may influence the results.
 
+Saving state of failed tests
+++++++++++++++++++++++++++++
+
+Renode's testing framework allows automatic creation of snapshots of failed tests in order to load them later to inspect the state of the simulation and/or run it further.
+This feature is specially helpful in the non-interactive CI environments.
+
+To enable automatic creation of snapshots for failed tests, set the ``RENODE_CI_MODE`` environment variable before running the ``renode-test`` command::
+
+    $ RENODE_CI_MODE=YES renode-test my_test.robot
+
+Each time the snapshot is created it will be given a name corresponding to the failed test and you will see the message in console informing about the path to it.
+All snapshots will be saved in the ``output/tests/snapshots`` directory.
+
+.. note::
+
+    Enabling the CI mode will also influence the way external resources are handled - the binaries cache will be disabled, so each external file will be downloaded every time it's referenced.
+
+Inspecting failed tests interactively
++++++++++++++++++++++++++++++++++++++
+
+With Renode it is possible to stop the execution of the test suite in order to interactively debug a failed test case using the standard Renode interface (monitor, UART analyzers, etc).
+
+To enable this feature run the ``renode-test`` command with the following switch::
+
+    $ renode-test --debug-on-error my_test.robot
+
+This will result in pausing the execution of the test suite on error, displaying Renode monitor and peripheral analyzers and allowing the user to inspect the state of the simulation.
+Once the interactive session is done, it's possible to resume the execution of tests by pressing a button in a prompt window.
+
+
+.. note::
+
+    This feature is currently not available in headless environments.
