@@ -39,6 +39,12 @@
    networking/wireshark
 
 .. toctree::
+    :caption: Host integration
+    :maxdepth: 2
+
+    host-integration/uart
+
+.. toctree::
    :caption: Tutorials
    :maxdepth: 2
 
