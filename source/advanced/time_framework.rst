@@ -28,6 +28,8 @@ Each *sink* is connected to exactly one *source* (at any time, although it can c
 There are objects that play both roles: *sink* and *source* - they are called *slave time sources*.
 The reason for having a *slave time source* is explained in the following section.
 
+.. _time-framework_synchronization:
+
 Synchronization
 ---------------
 
