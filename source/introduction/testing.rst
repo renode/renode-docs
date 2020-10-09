@@ -82,7 +82,7 @@ The ``Should Print Help`` test case executes the ``help`` command in Renode's mo
 
 Integration with Renode is achieved by adding entries to the settings section.
 The ``RENODEKEYWORDS`` variable (initialized by the ``renode-test`` script) contains the path to the `renode-keywords.robot <https://github.com/renode/renode/blob/master/src/Renode/RobotFrameworkEngine/renode-keywords.robot>`_ script responsible for setting up the connection with Renode.
-The rest of the settings configure the suite/test setup and teardowns.
+Other settings configure the suite/test setup and teardowns.
 
 It is recommented to copy the above ``Settings`` section to each new robot test file.
 
@@ -105,17 +105,17 @@ The `basic keywords <https://github.com/renode/renode/blob/master/src/Renode/Rob
 and more (see the source code for details).
 
 Additionally, Renode provides `a set of keywords for interacting with UART devices <https://github.com/renode/renode/blob/master/src/Renode/RobotFrameworkEngine/UartKeywords.cs>`_.
-They allow to:
+They allow:
 
-* write a text to UART (``Send Key To Uart``, ``Write Char On Uart``, ``Write Line To Uart``),
-* wait for a specific line to appear on UART (``Wait For Line On Uart``, ``Wait For Prompt On Uart``),
-* wait for any output on UART (``Wait For Next Line On Uart``),
-* wait for the lack of output on UART (``Test If Uart Is Idle``).
+* writing a text to UART (``Send Key To Uart``, ``Write Char On Uart``, ``Write Line To Uart``),
+* waiting for a specific line to appear on UART (``Wait For Line On Uart``, ``Wait For Prompt On Uart``),
+* waiting for any output on UART (``Wait For Next Line On Uart``),
+* waiting for the lack of output on UART (``Test If Uart Is Idle``).
 
-There is also `a set of keywords for interacting with network devices <https://github.com/renode/renode/blob/master/src/Renode/RobotFrameworkEngine/NetworkInterfaceKeywords.cs>`_ that allows to:
+There is also `a set of keywords for interacting with network devices <https://github.com/renode/renode/blob/master/src/Renode/RobotFrameworkEngine/NetworkInterfaceKeywords.cs>`_ that allow:
 
-* wait for a next outgoing network packet (``Wait For Outgoing Packet``),
-* wait for a specific outgoing network packet (``Wait For Outgoing Packet With Bytes At Index``).
+* waiting for the next outgoing network packet (``Wait For Outgoing Packet``),
+* waiting for a specific outgoing network packet (``Wait For Outgoing Packet With Bytes At Index``).
 
 It is possible to extend the Renode-Robot Frameworkd interface by implementing more keywords in C# if necessary.
 
@@ -133,7 +133,7 @@ In order to do that, you need to pass many test files as an argument to ``renode
 
     $ renode-test my_tests.robot additional_tests.robot extra_tests.robot
 
-The tests will be executed in the same order as the arguments were provided in.
+The tests will be executed in the order the arguments were provided in.
 
 An alternative way is to prepare a ``yaml`` file with the list of tests to execute, e.g.::
 
@@ -158,7 +158,7 @@ In order to do that, execute the ``renote-test`` command with a special switch::
 
     $ renode-test -j12 my_tests.yaml
 
-This will allow to run up to 12 Renode instances, each one running test cases from a different file.
+This will allow you to run up to 12 Renode instances, each one running test cases from a different file.
 Using the ``yaml`` file allows grouping entries that should not be executed in parallel (because, e.g., they use a shared resource like a port number)::
 
     - my_tests.robot
@@ -217,7 +217,7 @@ Running tests interactively
 +++++++++++++++++++++++++++
 
 By default, ``renode-test`` command will run tests in the background and just report results on the console.
-It is, however, possible to enable printing log messages to the console just like when running the ``renode`` command::
+It is possible, however, to enable printing log messages to the console in the same way as when running the ``renode`` command::
 
     $ renode-test --show-log my_tests.robot
 
