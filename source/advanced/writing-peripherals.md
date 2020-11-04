@@ -110,7 +110,7 @@ Writing a non-zero value to a read-only field will be ignored and generate a war
 Reading from the write-only field will return the default value of 0 (but will not generate a warning in the log, as it's impossible to infer which fields are read).
 
 By default each register provides an automatic backing field. It means that the software will read the previously written value (assuming that fields are writable and readable).
-It is possible to access the backing field and modify its value from the code. In order to do that use an `out` parameter - {risrc}see `an example </src/Emulator/Peripherals/Peripherals/UART/LiteX_UART.cs#L42>`.
+It is possible to access the backing field and modify its value from the code. In order to do that use an `out` parameter - see {risrc}`an example </src/Emulator/Peripherals/Peripherals/UART/LiteX_UART.cs#L42>`.
 
 There are helper methods for generating groups of registers - see the {risrc}`DefineMany </src/Emulator/Peripherals/Peripherals/Timers/LiteX_Timer.cs#L59-L67>` usage example.
 
