@@ -26,7 +26,9 @@ extensions = ['sphinx.ext.todo', 'sphinx.ext.ifconfig', 'sphinx_tabs.tabs', 'sph
 numfig = True
 
 extlinks = {
-    'script'    : ('https://github.com/renode/renode/blob/master/scripts/%s', '')
+    'script'    : ('https://github.com/renode/renode/blob/master/scripts/%s', ''),
+    'risrc'     : ('https://github.com/renode/renode-infrastructure/blob/3f1abde88ac5a2dae326b77ab91892f335e78f80/%s', ''),
+    'rsrc'      : ('https://github.com/renode/renode/blob/c16c7bceca07734f6f49b4e107d299aa04b8857c/%s' , '')
 }
 
 
