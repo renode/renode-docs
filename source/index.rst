@@ -22,6 +22,7 @@
    basic/logger
    basic/saving
    basic/environment
+   basic/metrics
 
 .. toctree::
    :caption: Debugging
