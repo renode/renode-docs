@@ -45,6 +45,7 @@
     :maxdepth: 2
 
     host-integration/uart
+    host-integration/arduino
 
 .. toctree::
    :caption: Tutorials
