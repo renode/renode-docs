@@ -52,4 +52,4 @@ If you want to know the name of the function that is currently executed (assumin
     (machine-0) sysbus FindSymbolAt `sysbus.cpu PC` # equivalent of 0xC01890A8
     uart_console_write
 
-This will print the name of the name of the symbol.
+This will print the name of the symbol.
