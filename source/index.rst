@@ -55,6 +55,7 @@
    tutorials/zephyr-ptp-testing
    tutorials/fomu-example
    tutorials/usbip
+   tutorials/verilator-cosimulation.rst
 
 .. toctree::
    :caption: Advanced topics
