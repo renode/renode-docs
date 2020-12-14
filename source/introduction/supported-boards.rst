@@ -170,6 +170,16 @@ Supported boards include:
 
        `arduino_nano_33_ble.repl <https://github.com/renode/renode/blob/master/platforms/boards/arduino_nano_33_ble.repl>`_
 
+   * - 
+
+     - .. image:: img/ice40up5k-mdp-env.png
+
+       `iCE40 Ultra Plus MDP <http://www.latticesemi.com/products/developmentboardsandkits/ice40ultraplusmobiledevplatform>`_
+        
+       `ice40up5k-mdp-evn.repl <https://github.com/renode/renode/blob/master/platforms/boards/ice40up5k-mdp-evn.repl>`_
+
+     - 
+
 And many more - Renode makes it easy to create your own platform which reuses the same peripherals / CPUs that exist in other platforms.
 
 We provide commerical services to add new platforms - if you need help in this regard, please write to `support@renode.io <mailto:support@renode.io>`_.
