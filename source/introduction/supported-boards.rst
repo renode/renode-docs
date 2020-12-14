@@ -164,7 +164,11 @@ Supported boards include:
         
        `nxp_k64f.repl <https://github.com/renode/renode/blob/master/platforms/cpus/nxp-k6xf.repl>`_
 
-     - 
+     - .. image:: img/arduino_nano_33_ble.jpg
+
+       `Arduino Nano 33 BLE <https://store.arduino.cc/arduino-nano-33-ble>`_
+
+       `arduino_nano_33_ble.repl <https://github.com/renode/renode/blob/master/platforms/boards/arduino_nano_33_ble.repl>`_
 
 And many more - Renode makes it easy to create your own platform which reuses the same peripherals / CPUs that exist in other platforms.
 
