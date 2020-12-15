@@ -164,7 +164,7 @@ Supported boards include:
         
        `nxp_k64f.repl <https://github.com/renode/renode/blob/master/platforms/cpus/nxp-k6xf.repl>`_
 
-     - .. image:: img/arduino_nano_33_ble.jpg
+     - .. image:: img/arduino_nano_33_ble.png
 
        `Arduino Nano 33 BLE <https://store.arduino.cc/arduino-nano-33-ble>`_
 
