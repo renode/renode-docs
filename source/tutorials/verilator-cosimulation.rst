@@ -83,9 +83,11 @@ As part of the last step, in the ``main`` function, you have to call ``simulate`
     Init();
     uart->simulate(atoi(argv[1]), atoi(argv[2]));
 
+This project uses the `ZeroMQ <https://zeromq.org>`_ messaging library that you need to install in your system.
+
 Now you can compile your project with Verilator::
 
-    verilator -cc top.v --exe -CFLAGS "-Wpedantic -Wall -I$(INTEGRATION_DIR)" sim_main.cpp $(INTEGRATION_DIR)/src/renode.cpp $(INTEGRATION_DIR)/src/buses/axilite.cpp $(INTEGRATION_DIR)/src/peripherals/uart.cpp
+    verilator -LDFLAGS "-lzmq -lpthread" -cc top.v --exe -CFLAGS "-Wpedantic -Wall -I$(INTEGRATION_DIR)" sim_main.cpp $(INTEGRATION_DIR)/src/renode.cpp $(INTEGRATION_DIR)/src/buses/axilite.cpp $(INTEGRATION_DIR)/src/peripherals/uart.cpp
 
     make -j 4 -C obj_dir -f Vtop.mk
 
