@@ -145,7 +145,7 @@ Depending on the system, there may be some prerequisites for building Renode pac
 
         Run::
 
-            sudo apt-get install ruby ruby-dev rpm bsdtar
+            sudo apt-get install ruby ruby-dev rpm 'bsdtar|libarchive-tools'
             sudo gem install fpm
 
     .. group-tab:: macOS
