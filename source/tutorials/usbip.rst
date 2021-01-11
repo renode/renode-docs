@@ -74,9 +74,9 @@ Attaching exported device to host
 
 The next step is to attach the exported virtual USB device to the host machine::
 
-    $ sudo usbip attach -r 127.0.0.1 -d 1-0
+    $ sudo usbip attach -r 127.0.0.1 -b 1-0
 
-Note that the ``-d`` argument must match the device id returned by the ``usb list`` command.
+Note that the ``-b`` argument must match the device id returned by the ``usb list`` command.
 
 A new USB mouse should be now visible in the host.
 Confirm it by reading the system logs::
@@ -194,7 +194,7 @@ Use it on your host machine
 
 Import Fomu on the host::
 
-    $ sudo usbip attach -r 127.0.0.1 -d 1-0
+    $ sudo usbip attach -r 127.0.0.1 -b 1-0
 
 Upload software using ``dfu-util``::
 
