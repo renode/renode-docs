@@ -143,7 +143,7 @@ An alternative way is to prepare a ``yaml`` file with the list of tests to execu
 
 and to call ``renode-test`` with a special switch::
 
-    $ renote-test -t my_tests.yaml
+    $ renode-test -t my_tests.yaml
 
 .. note::
 
@@ -154,7 +154,7 @@ Running tests in parallel
 +++++++++++++++++++++++++
 
 Test cases from a single file will always be executed in serial (in the order they are defined in the file), but it's possible to run test from different files in parallel.
-In order to do that, execute the ``renote-test`` command with a special switch::
+In order to do that, execute the ``renode-test`` command with a special switch::
 
     $ renode-test -j12 my_tests.yaml
 
