@@ -81,9 +81,11 @@ To enable it, run::
 
 Now, whenever the CPU tries to read or write to this peripheral, you will see a message similar to this one::
 
-    14:32:28.6083 [DEBUG] uart: ReadByte from 0x0 (TransmitData), returned 0x0.
+    14:32:28.6083 [INFO] uart: ReadByte from 0x0 (TransmitData), returned 0x0.
 
-As these messages are logged with the DEBUG level, the minimal log level for the analyzed peripheral has to be set accordingly.
+To enable logging access to all peripherals, run::
+
+    (machine-0) sysbus LogAllPeripheralsAccesses true
 
 Creating a trace of the execution
 '''''''''''''''''''''''''''''''''
