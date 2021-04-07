@@ -22,7 +22,7 @@ Core prerequisites
       To install the remaining dependencies, use::
 
          sudo apt-get update
-         sudo apt-get install git automake autoconf libtool g++ realpath policykit-1 \
+         sudo apt-get install git automake autoconf libtool g++ coreutils policykit-1 \
                       libgtk2.0-dev screen uml-utilities gtk-sharp2 python3
 
    .. group-tab:: macOS
