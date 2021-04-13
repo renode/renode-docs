@@ -107,15 +107,15 @@ The set of available properties and operations depends on the type of peripheral
 
 For example to check memory size, execute::
 
-    (machine-0) sysbus.ram Size
+    (machine-0) sysbus.ddr Size
 
 To call an action on the peripheral use the same syntax - replace ``Size`` with action name, e.g., ``ZeroAll``::
 
-    (machine-0) sysbus.ram ZeroAll
+    (machine-0) sysbus.ddr ZeroAll
 
 To get the complete list of available properties or actions just enter the peripheral's name::
 
-    (machine-0) sysbus.ram
+    (machine-0) sysbus.ddr
     The following methods are available:
     - Void DebugLog (String message)
     - Void Dispose ()
@@ -123,7 +123,7 @@ To get the complete list of available properties or actions just enter the perip
     - Void WriteWordUsingDwordBigEndian (Int64 address, UInt16 value)
     - Void ZeroAll ()
     Usage:
-    sysbus.ram MethodName param1 param2 ...
+    sysbus.ddr MethodName param1 param2 ...
     The following properties are available:
     - Int32 SegmentCount
         available for 'get'
@@ -132,8 +132,8 @@ To get the complete list of available properties or actions just enter the perip
     - Int64 Size
         available for 'get'
     Usage:
-    - get: sysbus.ram PropertyName
-    - set: sysbus.ram PropertyName Value
+    - get: sysbus.ddr PropertyName
+    - set: sysbus.ddr PropertyName Value
 
 The ``Usage`` sections describe the proper syntax for accessing the peripheral's features.
 
