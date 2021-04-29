@@ -8,7 +8,7 @@ This document describes how to use the integration layer on a TensorFlow Lite's 
 
 .. note::
     
-    The Renode-Arudino integration layer is available on linux only.
+    The Renode-Arudino integration layer is available on Linux only.
 
 Installing TensorFlow examples
 ------------------------------
