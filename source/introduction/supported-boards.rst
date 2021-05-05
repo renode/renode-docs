@@ -188,13 +188,17 @@ Supported boards include:
 
        `imxrt1064.repl <https://github.com/renode/renode/blob/master/platforms/cpus/imxrt1064.repl>`_
 
-   * -
-
-     - .. image:: img/beaglev_starlight.png
+   * - .. image:: img/beaglev_starlight.png
 
        `BeagleV StarLight <https://beagleboard.org/beaglev>`_
 
        `beaglev_starlight.resc <https://github.com/renode/renode/blob/master/scripts/single-node/beaglev_starlight.resc>`_
+
+     - .. image:: img/arvsom.png
+
+       `ARVSOM - Antmicro RISC-V System on Module <https://github.com/antmicro/arvsom>`_
+
+       `arvsom.resc <https://github.com/renode/renode/blob/master/scripts/single-node/arvsom.resc>`_
 
      -
 
