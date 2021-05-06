@@ -182,7 +182,11 @@ Supported boards include:
 
        `crosslink-nx-evn.repl <https://github.com/renode/renode/blob/master/platforms/boards/crosslink-nx-evn.repl>`_
 
-     -
+     - .. image:: img/imxrt1064.jpg
+
+       `NXP i.MX RT1064 Evaluation Kit <https://www.nxp.com/design/development-boards/i-mx-evaluation-and-development-boards/mimxrt1064-evk-i-mx-rt1064-evaluation-kit:MIMXRT1064-EVK>`_
+
+       `imxrt1064.repl <https://github.com/renode/renode/blob/master/platforms/cpus/imxrt1064.repl>`_
 
 And many more - Renode makes it easy to create your own platform which reuses the same peripherals / CPUs that exist in other platforms.
 
