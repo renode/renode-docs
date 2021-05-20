@@ -11,6 +11,7 @@
    introduction/supported-boards
    introduction/troubleshooting
    introduction/testing
+   introduction/paths
 
 .. toctree::
    :caption: Basic usage
