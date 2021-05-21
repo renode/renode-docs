@@ -39,6 +39,10 @@ It acts as a USB device (CDC/ACM profile) and implements the arduino bootloader 
 
 In order to connect Renode to Arduino IDE/CLI, perform the following steps:
 
+0. Enable support for USB/IP in the host machine::
+
+    $ sudo modprobe vhci_hcd
+
 1. Create the Arduino Nano 33 BLE platform in Monitor::
 
       (monitor) mach create
@@ -49,11 +53,11 @@ In order to connect Renode to Arduino IDE/CLI, perform the following steps:
 2. Start the USB/IP server in Renode and attach the loader to it::
 
       (machine-0) emulation CreateUSBIPServer
-      (machine-0) host.usb CreateArduinoLoader sysbus.cpu 0x1000 0 "arduinoLoader"
+      (machine-0) host.usb CreateArduinoLoader sysbus.cpu 0x10000 0 "arduinoLoader"
 
 .. note::
 
-    When creating the loader, you can specify the binary load address (`0x1000` in the case of Arduino Nano 33 BLE board), the port through which the bootloader is connected to the `host.usb` controller (should be changed if you have other devices already connected) and the name of the loader (`arduinoLoader` in this case).
+    When creating the loader, you can specify the binary load address (`0x10000` in the case of Arduino Nano 33 BLE board), the port through which the bootloader is connected to the `host.usb` controller (should be changed if you have other devices already connected) and the name of the loader (`arduinoLoader` in this case).
 
     The values below are the default ones, so you can skip all of them leaving just::
 
@@ -79,12 +83,12 @@ Start the Arduino IDE and select your sketchbook (in this example we will use th
 
 .. image:: img/arduino_ide_examples.png
 
-Select the ``Arduino Nano 33 BLE`` board from the :guilabel:`Tools -> Board` menu.
-
 .. note::
 
    The Arduino Nano 33 BLE board support does not come with Arduino IDE by default.
-   You need to add it in the :guilabel:`Tools -> Board -> Boards Manager` menu by installing the "Arduino nRF528x Boards (Mbed OS)" package.
+   You need to add it in the :guilabel:`Tools -> Board -> Boards Manager` menu by installing the "Arduino Mbed OS Nano Boards" package.
+
+Select the ``Arduino Nano 33 BLE`` board from the :guilabel:`Tools -> Board -> Arduino Mbed OS Nano Boards` menu.
 
 Compile your project by pressing the :guilabel:`Verify` button.
 
