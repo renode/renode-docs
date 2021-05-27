@@ -23,7 +23,7 @@ Core prerequisites
 
          sudo apt-get update
          sudo apt-get install git automake autoconf libtool g++ coreutils policykit-1 \
-                      libgtk2.0-dev screen uml-utilities gtk-sharp2 python3
+                      libgtk2.0-dev uml-utilities gtk-sharp2 python3
 
    .. group-tab:: macOS
 
