@@ -25,7 +25,7 @@ Executing instruction-by-instruction
 
 When you need to analyze in details how the execution of your binary influences the state of a hardware you can switch to *stepping* execution mode::
 
-    (machine-0) sysbus.cpu ExecutionMode SingleStep
+    (machine-0) sysbus.cpu ExecutionMode SingleStepBlocking
 
 This will stop the emulation after execution of each instruction. In order to move to the next one type::
 
@@ -36,6 +36,18 @@ When you want to return to the *normal* execution mode type::
     (machine-0) sysbus.cpu ExecutionMode Continuous
 
 More advance control can be obtained by connecting external GDB.
+
+Blocking and non-blocking stepping
+----------------------------------
+
+When you use ``SingleStepBlocking`` mode the emulation won't progress between steps.
+This can cause problems with blocking the emulation when executing multiple cores instruction-by-instruction, in which case ``SingleStepNonBlocking`` mode is the preferred option.
+The drawback of the non-blocking mode is that the virtual time will progress between steps, which might introduce desynchronization and timeout-related issues.
+
+The ``Step`` command will preserve the current mode when in instruction-by-instruction flow and use the default value (``SingleStepBlocking``) otherwise.
+This behavior can be overridden by selecting the non-blocking mode explicitly::
+
+    (machine-0) sysbus.cpu Step false
 
 Inspecting current location
 ---------------------------
