@@ -76,3 +76,28 @@ Scripts can ``include`` further scripts which is useful e.g. to create complex m
 
 Renode ships with a number of demo scripts which are a great entry point - to run your first demo, proceed to the :doc:`demo` chapter.
 
+Configuring the user interface
+------------------------------
+
+The appearance of the user interface can be customized via the user
+configuration file ``config``. It is located in directory ``~/.config/renode``
+on Unix-like systems and in ``AppData\Roaming\renode`` on Windows.
+
+In the section ``[termsharp]`` the following settings are available:
+
+append-CR-to-LF
+    this setting controls if a carriage return is appended to each line feed.
+    Allowable values are ``true`` and ``false``. The default value is ``true``.
+
+font-face
+    name of the TrueType font used in the log and monitor windows. The default
+    value is ``Roboto Mono``.
+
+font-size
+    font size in points. The default value is 12 on Windows and 10 on Linux.
+
+window-width
+    initial width (in pixels) of the log and monitor windows
+
+window-height
+    initial height (in pixels) of the log and the monitor windows
