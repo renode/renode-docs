@@ -20,5 +20,5 @@ Requirements for Linux
 ----------------------
 
 * Sphinx 1.5
-* sphinx_tabs module
+* myst-parser, sphinx_tabs, sphinxcontrib-svg2pdfconverter modules
 * texlive-full (for the PDF version)
