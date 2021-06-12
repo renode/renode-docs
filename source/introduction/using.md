@@ -106,3 +106,18 @@ Remember about path autocompletion using the <kbd>Tab</kbd> key after `@`, as de
 Scripts can `include` further scripts, which is useful e.g. to create complex multinode setups like in the [nRF52840 BLE demo](https://github.com/renode/renode/blob/master/scripts/multi-node/nrf52840-ble-zephyr.resc).
 
 [Built-in Renode demo scripts](https://github.com/renode/renode/tree/master/scripts) are a great entry point - to run your first demo, proceed to the {doc}`demo` chapter.
+
+## Configuring the user interface
+
+The appearance of the user interface can be customized via the user configuration file `config`.
+It is located in the directory `~/.config/renode` on Unix-like systems and in `AppData\Roaming\renode` on Windows.
+
+In the section `[termsharp]`, the following settings are available:
+  
+| Name            | Description                                                                                                                                        |
+|-----------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
+| append-CR-to-LF | This setting controls if a carriage return is appended to each line feed.<br>Allowable values are `true` and `false`. The default value is `true`. |
+| font-face       | Name of the TrueType font used in the log and monitor windows.<br>The default value is `Roboto Mono`.                                              |
+| font-size       | Font size in points. The default value is 12 on Windows and 10 on Linux.                                                                           |
+| window-width    | Initial width (in pixels) of the log and monitor windows.                                                                                          |
+| window-height   | Initial height (in pixels) of the log and the monitor windows.                                                                                     |
