@@ -24,6 +24,7 @@
    basic/saving
    basic/environment
    basic/metrics
+   basic/running
 
 .. toctree::
    :caption: Debugging
