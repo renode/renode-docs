@@ -2,7 +2,7 @@ Running Renode in different modes
 =================================
 
 By default Renode runs in GUI mode.
-When started, it opens a new window for the Monitor and additional windows for different analyzers (e.g., UART).
+When started, it opens a new window for :ref:`the Monitor <monitor>` and additional windows for different analyzers (e.g., UART).
 
 It is, however, possible to start Renode in other modes too. 
 Below we present alternative ways of running and interacting with Renode.
