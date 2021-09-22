@@ -33,10 +33,18 @@ help:
 	@echo "  lh         to build html + open webserver + rebuild/reload on change"
 	@echo "  lp         to build pdf + open in pdf viewer + rebuild on change"
 
+clone_renode:
+	mkdir -p build
+	(cd build && git clone https://github.com/renode/renode && cd renode && git submodule update --init --recursive)
+
+generate_peripherals: clone_renode
+	mkdir -p build/html/introduction
+	python3 tools/peripherals_scanner.py --dir build/renode -H > source/introduction/renode_supported_peripherals.html
+
 clean:
 	-rm -rf $(BUILDDIR)/*
 
-html:
+html: generate_peripherals
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."

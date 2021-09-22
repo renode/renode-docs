@@ -2,3 +2,5 @@ build/
 *.sw*
 .vscode
 *.pyc
+
+source/introduction/renode_supported_peripherals.html
