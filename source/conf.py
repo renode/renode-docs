@@ -9,6 +9,7 @@
 # serve to show the default.
 
 import sys, os, datetime
+import subprocess
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -266,3 +267,6 @@ rst_prolog = """
 rst_epilog = """
 .. |project| replace:: %s
 """ % project
+
+def setup(app):
+    subprocess.call("./generate-renode-platforms.sh", shell=True, cwd=os.path.join(os.path.dirname(os.path.realpath(__file__)), '..'))
