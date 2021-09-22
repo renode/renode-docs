@@ -140,6 +140,7 @@ def try_get_category(platform):
         "stm32f072b_discovery":    "STM",
         "stm32f103":   "STM",
         "stm32f4": "STM",
+        "stm32l552": "STM",
         "stm32f429":   "STM",
         "stm32f4_discovery":   "STM",
         "stm32f4_discovery-additional_gpios":  "STM",
