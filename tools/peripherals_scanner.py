@@ -109,6 +109,7 @@ def try_get_category(platform):
         "mars_zx3":    "ZYNQ",
         "mars_zx3-externals":  "ZYNQ",
         "microwatt":   "POWERPC",
+        "mimxrt1064_evk":   "NXP I.MX",
         "miv": "MIV",
         "miv-board":   "MIV",
         "miv-board-additional-uarts":  "MIV",
