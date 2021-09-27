@@ -345,7 +345,7 @@ def platform_to_html(platform):
 def platform_peripherals_table(platform):
     res = ''
 
-    res += '<table class="boards-table docutils align-default">\n'
+    res += '<table class="boards-table docutils align-default" style="margin-top: 10px">\n'
     res += '<tr>\n'
     res += '<th>kind</td>\n'
     res += '<th>type</td>\n'
