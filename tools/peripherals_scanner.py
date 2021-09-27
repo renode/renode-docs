@@ -417,7 +417,8 @@ div.platform {
 </style>
 """
 
-    for category in CATEGORIES:
+    PLATFORMS.sort(key=lambda x: x.get_name())
+    for category in sorted(CATEGORIES):
         res += '<div class="category">\n'.format(category)
         res += '  <h3 onclick="toggleCategory(this)">{}</h3>\n'.format(category)
         for platform in [x for x in PLATFORMS if x._category == category]:
