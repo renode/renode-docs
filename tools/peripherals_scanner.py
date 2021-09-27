@@ -418,6 +418,7 @@ div.platform {
 """
 
     PLATFORMS.sort(key=lambda x: x.get_name())
+    res += '<div style="margin-top: 10px; margin-bottom: 10px">\n'
     for category in sorted(CATEGORIES):
         res += '<div class="category">\n'.format(category)
         res += '  <h3 onclick="toggleCategory(this)">{}</h3>\n'.format(category)
@@ -426,6 +427,7 @@ div.platform {
             res += platform_to_html(platform)
             res += '  </div>\n'
         res += '</div>\n'
+    res += '</div>\n'
 
     for platform in PLATFORMS:
         res += '  <div id="peripherals-{}" class="peripherals-table" style="display: none">\n'.format(platform.get_name())
