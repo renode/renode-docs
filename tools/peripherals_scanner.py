@@ -281,7 +281,7 @@ class Peripheral:
         self._type = type
         self._count = 1
 
-        path = find_file('renode/src/Infrastructure', self._type + '.cs')
+        path = find_file(TOP_DIR + '/src/Infrastructure', self._type + '.cs')
         self._uri = '{}{}'.format(PERIPHERALS_URI_PREFIX, path)
 
     @staticmethod
