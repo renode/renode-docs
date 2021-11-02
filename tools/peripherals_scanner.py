@@ -83,6 +83,8 @@ def try_get_category(platform):
         "ezr32lg330":  "EFM",
         "ezr32wg330":  "EMF",
         "fomu":    "LITEX",
+        "gr716":   "LEON",
+        "gr716-devboard": "LEON",
         "i386":    "X86",
         "ice40up5k-mdp-evn":   "LITEX",
         "imxrt1064":   "NXP I.MX",

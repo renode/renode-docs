@@ -200,7 +200,12 @@ Supported boards include:
 
        `arvsom.resc <https://github.com/renode/renode/blob/master/scripts/single-node/arvsom.resc>`_
 
-     -
+     - .. image:: img/gr716.png
+
+       `GR716 Development Board <https://www.gaisler.com/index.php/products/boards/gr716-boards>`_
+
+       `gr716_zephyr.resc <https://github.com/renode/renode/blob/master/scripts/single-node/gr716_zephyr.resc>`_
+
 
 And many more - Renode makes it easy to create your own platform which reuses the same peripherals / CPUs that exist in other platforms.
 
