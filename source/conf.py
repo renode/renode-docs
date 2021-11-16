@@ -269,4 +269,6 @@ rst_epilog = """
 """ % project
 
 def setup(app):
-    subprocess.call("./generate-renode-platforms.sh", shell=True, cwd=os.path.join(os.path.dirname(os.path.realpath(__file__)), '..'))
+    ret = subprocess.call("./generate-renode-platforms.sh", shell=True, cwd=os.path.join(os.path.dirname(os.path.realpath(__file__)), '..'))
+    if ret != 0:
+        raise Exception("Failed to generated the supported peripherals list")
