@@ -26,9 +26,11 @@ In order to expose a virtual UART device, create the UART pty terminal with the 
 
 This will create a new file in the host filesystem (``/tmp/uart``) that can be referenced from within the simulation as ``term``.
 
-Now, connect the newly created UART pty terminal to the simulated UART device::
+Now you need to :ref:`load your platform <loading-platforms>` and connect the newly created UART pty terminal to the simulated UART device::
 
     (machine-0) connector Connect sysbus.uart0 term
+
+This assumes your UART is called ``sysbus.uart0``, but you might need to adjust it to match your platform.
 
 Finally, open the terminal application on your host machine (``screen``/``picocom``/``PuTTY``/etc.) and attach it to the ``/tmp/uart`` file.
 You can interact with it just like with the hardware.

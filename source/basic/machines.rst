@@ -46,6 +46,8 @@ Instead of the machine's name you can use its index as well::
     (machine-1) mach set 0
     (machine-0)
 
+.. _loading-platforms:
+
 Loading platforms
 -----------------
 
