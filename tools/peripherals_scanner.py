@@ -160,6 +160,7 @@ def try_get_category(platform):
         "vexpress":    "GENERIC ARM",
         "vexpress-externals":  "GENERIC ARM",
         "vybrid":  "NXP I.MX",
+        "xtensa-sample-controller": "XTENSA",
         "zedboard":    "ZYNQ",
         "zedboard-externals":  "ZYNQ",
         "zolertia-firefly":    "ZYNQ",
