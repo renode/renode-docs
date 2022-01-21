@@ -48,6 +48,7 @@
 
     host-integration/uart
     host-integration/arduino
+    host-integration/sharing-files
 
 .. toctree::
    :caption: Tutorials
