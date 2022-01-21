@@ -1,3 +1,5 @@
+.. _host-network:
+
 Connecting to the host network
 ==============================
 
@@ -55,3 +57,16 @@ To enable communication with the host system you must start it manually, either 
 or, if your emulation is already started, with::
 
     (monitor) host.tap Start
+
+Transferring files from host
+----------------------------
+
+If you successfully created a TAP interface, files can be transferred from the host computer to emulation using ``wget``.
+To do it you will need to use an IP address associated with the TAP interface on the host machine, for example::
+
+	wget http://192.168.100.1/home/user/file.txt
+
+.. note::
+
+    There are other methods of file transfer: :ref:`built-in TFTP server and Virtio <sharing-files>`.
+    Those methods are recommended if you want to avoid the limitations of the host-guest networking via TAP.
