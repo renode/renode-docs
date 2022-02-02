@@ -107,3 +107,13 @@ As a result the names of the functions will be printed to the log at ``INFO`` le
 If you are interested only in a subset of functions, you can limit the results by providing space-separated names prefixes::
 
     (machine-0) sysbus.cpu LogFunctionNames true "dev kobject"
+
+You can also avoid logging subsequent duplicate function names by adding another ``true`` argument either instead or after the optional function name prefixes::
+
+    (machine-0) sysbus.cpu LogFunctionNames true ["dev kobject"] true
+
+Only such three lines would remain printed in the aforementioned example with both function name filtering and duplicate removal applied::
+
+    17:05:23.8834 [INFO] cpu: Entering function kobject_uevent_env at 0xC014CD9C
+    17:05:23.8834 [INFO] cpu: Entering function dev_uevent_name (entry) at 0xC018FA5C
+    17:05:23.8834 [INFO] cpu: Entering function kobject_uevent_env at 0xC014CDA8
