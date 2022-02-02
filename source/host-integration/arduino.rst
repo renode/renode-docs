@@ -66,14 +66,14 @@ In order to connect Renode to Arduino IDE/CLI, perform the following steps:
 
 3. Once your simulation is fully set-up and you are ready to receive and run the binary, start the loader::
 
-      (machine-0) arduinoLoader WaitForBinary 120 True
+      (machine-0) arduinoLoader WaitForBinary 120 true
 
 This will automatically connect Renode to the host using the ``usbip`` command (this uses ``sudo`` so you might be asked for your password)
 and wait 120 seconds for the binary to be uploaded by the Arduino IDE/CLI.
 
 .. note::
 
-   If you don't want Renode to automatically connect to your host with the usbip command, do not pass the last argument (``True``).
+   If you don't want Renode to automatically connect to your host with the usbip command, do not pass the last argument (``true``).
    Remember that in such case you must do it manually before uploading the binary, as otherwise Arduino IDE/CLI won't be able to detect Renode and the process will fail.
 
 Loading from Arduino IDE
@@ -133,7 +133,7 @@ Starting the simulation
 
 Once the binary is received, you'll see the following message in Monitor::
 
-   (machine-0) arduinoLoader WaitForBinary 120 True
+   (machine-0) arduinoLoader WaitForBinary 120 true
    Binary of size 217088 bytes loaded at 0x10000
 
 Now you can start the simulation with::

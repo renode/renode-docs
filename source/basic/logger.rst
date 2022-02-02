@@ -92,7 +92,7 @@ Creating a trace of the execution
 
 It is possible to create a trace of every function executed by the binary::
 
-    (machine-0) sysbus.cpu LogFunctionNames True
+    (machine-0) sysbus.cpu LogFunctionNames true
 
 As a result the names of the functions will be printed to the log at ``INFO`` level::
 
@@ -106,4 +106,4 @@ As a result the names of the functions will be printed to the log at ``INFO`` le
 
 If you are interested only in a subset of functions, you can limit the results by providing space-separated names prefixes::
 
-    (machine-0) sysbus.cpu LogFunctionNames True "dev kobject"
+    (machine-0) sysbus.cpu LogFunctionNames true "dev kobject"

@@ -68,7 +68,7 @@ By default Server Socket will emit the following initial configuration bytes in 
     0xff, 0xfb, 0x03, // IAC WILL  SUPPRESS_GO_AHEAD
     0xff, 0xfc, 0x22  // IAC WONT  LINEMODE
 
-In order to avoid generating them, pass additional ``False`` argument when creating the Socket terminal::
+In order to avoid generating them, pass additional ``false`` argument when creating the Socket terminal::
 
-    (monitor) emulation CreateServerSocketTerminal 3456 "term" False
+    (monitor) emulation CreateServerSocketTerminal 3456 "term" false
 
