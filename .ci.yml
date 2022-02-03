@@ -17,7 +17,7 @@ build-and-deploy:
     - make html
     - rm -R build/html/_sources
     - make text
-    - find build/text/ -type f -name '*.txt' -execdir rename 's/\.txt/\.rst\.txt/' {} \;
+    - for file in $(find build/text -type f -name '*.txt'); do mv "$file" "${file%.txt}.rst.txt"; done
     - mv build/text build/html/_sources
     - mv build/html $CI_PROJECT_NAME
     - cp -r $CI_PROJECT_NAME /opt/docs/
