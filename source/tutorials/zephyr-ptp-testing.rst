@@ -58,7 +58,7 @@ Running the test
 
 To start the test, simply run the following command from the Renode root directory::
 
-    ./test.sh tests/platforms/SAME70.robot
+    renode-test tests/platforms/SAME70.robot
 
 This will run the whole suite of tests.
 After the test is finished, the result will be stored in ``output/tests/report.html``.
@@ -66,4 +66,4 @@ After the test is finished, the result will be stored in ``output/tests/report.h
 To switch the binaries used in these tests, edit the provided ``.robot`` file.
 Alternatively, if you don't want to make any changes, you can use the ``--variable`` switch to specify the files you want to use::
 
-    ./test.sh --variable ZEPHYR_MASTER_ELF:path/to/zephyr.elf --variable ZEPHYR_SLAVE_ELF:path/to/another/zephyr.elf tests/platforms/SAME70.robot
+    renode-test --variable ZEPHYR_MASTER_ELF:path/to/zephyr.elf --variable ZEPHYR_SLAVE_ELF:path/to/another/zephyr.elf tests/platforms/SAME70.robot

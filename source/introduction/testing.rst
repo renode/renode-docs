@@ -17,11 +17,6 @@ Running a robot test script in Renode is as simple as executing a single command
 
     $ renode-test my_test.robot
 
-.. note::
-    
-    The ``renode-test`` command is available if Renode is installed in the system from package.
-    For a version built from the source code, use ``test.sh`` instead.
-
 The above command will:
 
 * start a Renode instance in the background,
