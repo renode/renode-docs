@@ -4,7 +4,7 @@ mkdir -p build/html/introduction
 
 cd build
 if [ ! -d renode ]; then
-    git clone https://github.com/renode/renode
+    git clone --depth=1 --shallow-submodules https://github.com/renode/renode
 fi
 (cd renode && git submodule update --init --recursive)
 cd ..
