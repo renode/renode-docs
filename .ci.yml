@@ -2,7 +2,7 @@ image: $DOCKER_IMAGE
 
 before_script:
   - python3 -m pip install -r requirements.txt
-  - apt update && apt install -y git
+  - apt update && apt install -y git librsvg2-bin
 
 variables:
   DOCS_DIR: '.'
