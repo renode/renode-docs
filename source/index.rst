@@ -25,6 +25,7 @@
    basic/environment
    basic/metrics
    basic/running
+   basic/using-python
 
 .. toctree::
    :caption: Debugging
