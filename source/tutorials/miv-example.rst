@@ -32,7 +32,7 @@ Scripts
 While you can type all commands interactively, it’s a good idea to group them into reusable Renode scripts, which typically have the ".resc" extension.
 Their purpose is to load binaries, set starting conditions, prepare the environment, connect machines to the network etc.
 
-For the purpose of this article we will use the script available in the Renode package named: `scripts/single-node/miv.resc <https://github.com/renode/renode/blob/master/scripts/single-node/miv.resc>`_.
+For the purpose of this article we will use the script available in the Renode package named: :script:`scripts/single-node/miv.resc <single-node/miv.resc>`.
 For details about the particular script you will be running, please inspect the file in the Renode installation directory (e.g. for Linux it is "/opt/renode/scripts").
 
 Loading our setup

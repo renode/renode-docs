@@ -192,19 +192,19 @@ Supported boards include:
 
        `BeagleV StarLight <https://beagleboard.org/beaglev>`_
 
-       `beaglev_starlight.resc <https://github.com/renode/renode/blob/master/scripts/single-node/beaglev_starlight.resc>`_
+       :script:`beaglev_starlight.resc <single-node/beaglev_starlight.resc>`
 
      - .. image:: img/arvsom.png
 
        `ARVSOM - Antmicro RISC-V System on Module <https://github.com/antmicro/arvsom>`_
 
-       `arvsom.resc <https://github.com/renode/renode/blob/master/scripts/single-node/arvsom.resc>`_
+       :script:`arvsom.resc <single-node/arvsom.resc>`
 
      - .. image:: img/gr716.png
 
        `GR716 Development Board <https://www.gaisler.com/index.php/products/boards/gr716-boards>`_
 
-       `gr716_zephyr.resc <https://github.com/renode/renode/blob/master/scripts/single-node/gr716_zephyr.resc>`_
+       :script:`gr716_zephyr.resc <single-node/gr716_zephyr.resc>`
 
 
 And many more - Renode makes it easy to create your own platform which reuses the same peripherals / CPUs that exist in other platforms.
