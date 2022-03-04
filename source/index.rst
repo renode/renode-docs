@@ -59,6 +59,7 @@
    tutorials/fomu-example
    tutorials/usbip
    tutorials/verilator-cosimulation.rst
+   tutorials/ble-simulation
 
 .. toctree::
    :caption: Advanced topics
