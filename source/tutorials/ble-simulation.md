@@ -47,7 +47,7 @@ To use these binaries in the demo shipped with Renode, you can override the rele
 
 ## Looking into the script
 
-Bellow you can find a full example which creates 2 devices that generate and read heart-rate monitor data over BLE:
+Below you can find a full example which creates 2 devices that generate and read heart-rate monitor data over BLE:
 
 ```
 using sysbus
@@ -85,7 +85,7 @@ echo "Script loaded. Now start with the 'start' command."
 echo ""
 ```
 
-The script is responsible for creating two machines, opening up their UART analyzers, connecting them in a single network and loading the provided binaries.
+The script is responsible for creating two machines, opening up their UART analyzers, connecting them in a single network, and loading the provided binaries.
 
 The first Renode "machine" - dubbed `central` - runs the [central_hr sample](https://github.com/zephyrproject-rtos/zephyr/tree/main/samples/bluetooth/central_hr) which looks for active heart-rate monitors using BLE and connects to the device with the strongest signal.
 The second one - `peripheral` - runs the [peripheral_hr sample](https://github.com/zephyrproject-rtos/zephyr/tree/main/samples/bluetooth/peripheral_hr), which creates a machine that functions as a heart-rate monitor and generates dummy heart-rate values.
@@ -98,7 +98,7 @@ To learn more about specific commands, see the {doc}`../basic/machines` chapter 
 ## Packet interception hooks with BLE
 
 You can make your simulated machine react to a wireless networking (e.g. BLE) packet appearing on the radio medium by means of a Python hook.
-Such a hook hook will execute Python code either directly from the Monitor or from a designated file.
+Such a hook will execute Python code either directly from the Monitor or from a designated file.
 To set up a packet interception hook on the machine from the example above, you would run:
 
 ```
