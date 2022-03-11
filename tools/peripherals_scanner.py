@@ -128,6 +128,7 @@ def try_get_category(platform):
         "quark_c1000-cc2520":  "X86",
         "ri5cy":   "OTHER RISC-V",
         "riscv_verilated_uartlite":    "OTHER RISC-V",
+        "s32k118": "NXP S32K",
         "sam_e70": "ATMEL",
         "sifive-fe310":    "SIFIVE",
         "sifive-fu540":    "SIFIVE",
