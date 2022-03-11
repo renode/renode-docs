@@ -10,7 +10,7 @@ Renode support for BLE has primarily been developed in the context of the [Zephy
 You can start with a precompiled demo which will just run two nodes communicating over BLE. Use the following command in the Monitor to do that:
 
 ```
-(monitor) include scripts/multi-node/nrf52840-ble-zephyr.resc
+(monitor) include @scripts/multi-node/nrf52840-ble-zephyr.resc
 ```
 
 You should see two serial ports open and packets being sent.
