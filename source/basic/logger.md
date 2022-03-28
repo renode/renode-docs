@@ -102,7 +102,7 @@ Now, whenever the CPU tries to read or write to this peripheral, you will see a 
 To enable logging access to all peripherals, run:
 
 ```
-(machine-0) sysbus LogAllPeripheralsAccesses true
+(machine-0) sysbus LogAllPeripheralsAccess true
 ```
 
 ### Creating a trace of the execution
