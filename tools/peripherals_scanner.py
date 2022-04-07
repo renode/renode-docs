@@ -128,6 +128,7 @@ def try_get_category(platform):
         "quark_c1000-cc2520":  "X86",
         "ri5cy":   "OTHER RISC-V",
         "riscv_verilated_uartlite":    "OTHER RISC-V",
+        "riscv_virt":   "OTHER RISC-V",
         "s32k118": "NXP S32K",
         "sam_e70": "ATMEL",
         "sifive-fe310":    "SIFIVE",
@@ -152,6 +153,7 @@ def try_get_category(platform):
         "stm32f4_discovery-kit":   "STM",
         "stm32f746":   "STM",
         "stm32f7_discovery-bb":    "STM",
+        "stm32g0":      "STM",
         "stm32h743":    "STM",
         "stm32l151":   "STM",
         "stm32l552": "STM",
@@ -198,7 +200,7 @@ class Platform:
     def get_peripherals(self):
         if self._cached_res:
             return self._cached_res
-            
+
         res = {}
 
         for u in self._usings:
@@ -221,7 +223,7 @@ class Platform:
     def get_all_peripherals(self):
         # if self._cached_res:
         #     return self._cached_res
-            
+
         res = []
 
         for u in self._usings:
