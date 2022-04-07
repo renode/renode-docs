@@ -55,7 +55,7 @@ using sysbus
 $central_bin?=@zephyr-ble-central_hr.elf
 $peripheral_bin?=@zephyr-ble-central_hr.elf
 
-emulation CreateWirelessMedium "wireless"
+emulation CreateBLEMedium "wireless"
 
 mach create "central"
 machine LoadPlatformDescription @platforms/cpus/nrf52840.repl

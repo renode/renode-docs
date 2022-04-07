@@ -15,9 +15,16 @@ The exchanged packets are not transfered between these media, so you can treat t
 
 The network traffic is not affected by the number of nodes connected to one wireless medium.
 
-To create a wireless medium called ``wireless``, run::
+Renode supports two types of wireless media: ``IEEE802_15_4Medium`` and ``BLEMedium``.
+Each one creates an abstration of different type of wireless connection. They're using IEEE802_15_4 standard and Bluetooth Low Energy accordingly.
 
-    (monitor) emulation CreateWirelessMedium "wireless"
+To create an IEEE802_15_4 medium called ``wireless``, run::
+
+    (monitor) emulation CreateIEEE802_15_4Medium "wireless"
+
+Analogously for a BLE medium::
+   
+    (monitor) emulation CreateBLEMedium "wireless"
 
 Connecting interfaces
 ---------------------

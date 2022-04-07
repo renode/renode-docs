@@ -25,9 +25,15 @@ You can start it manually (e.g. after you close the Wireshark window) with::
 
     (monitor) host.wireshark-allEthernetTraffic Run
 
-Similarly, to log the traffic of a wireless network, run::
+Similarly, to log the traffic of a BLE or IEEE802_15_4 network, run::
 
-    (monitor) emulation LogWirelessTraffic
+    (monitor) emulation LogIEEE802_15_4Traffic
+
+or::
+
+    (monitor) emulation LogBLETraffic
+
+accordingly.
 
 This command creates a new ``host.wireshark-allWirelessTraffic`` object.
 
