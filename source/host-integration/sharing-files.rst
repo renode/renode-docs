@@ -86,7 +86,7 @@ Then you need to add the Virtio device support to the simulated Linux and the vi
 
 .. note::
 
-    Since Linux v2.6.25 Virtio drivers are supported and should be enabled by default (check the CONFIG_VIRTIO and CONFIG_VIRTIO_BLK configuration options).
+    Since Linux v2.6.25 Virtio drivers are supported and should be enabled by default (check the CONFIG_VIRTIO, CONFIG_VIRTIO_MMIO and CONFIG_VIRTIO_BLK configuration options).
 
 To enable Virtio, add a device tree entry describing device bus location and interrupt configuration::
 
