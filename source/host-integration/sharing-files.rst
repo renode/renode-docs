@@ -92,7 +92,7 @@ To enable Virtio, add a device tree entry describing device bus location and int
 
 
     virtio@100d0000 {
-        compatible = “virtio,mmio”;
+        compatible = "virtio,mmio";
         reg = <0x100d0000 0x150>;
         interrupt-parent = <&plic>;
         interrupts = <42>;
