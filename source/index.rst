@@ -41,7 +41,7 @@
    networking/wireless
    networking/host-network
    networking/wireshark
-   networking/uart-hub
+   networking/machine-to-machine-connections
 
 .. toctree::
     :caption: Host integration
