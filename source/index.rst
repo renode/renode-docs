@@ -11,14 +11,14 @@
    introduction/supported-boards
    introduction/troubleshooting
    introduction/testing
-   introduction/paths
-
+   
 .. toctree::
    :caption: Basic usage
    :maxdepth: 2
 
    basic/machines
    basic/describing_platforms
+   basic/monitor-syntax
    basic/control
    basic/logger
    basic/saving
