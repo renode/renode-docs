@@ -267,7 +267,55 @@ To enable the UART analyzer window and start simulation, type::
 Verilator Trace
 ---------------
 
-You can also enable signal trace dumping by setting the ``VERILATOR_TRACE=1`` variable in the shell in which you compile the Verilated model.
-The resulting trace is written into a vcd file and can be viewed in e.g. `GTKWave viewer <http://gtkwave.sourceforge.net/>`_.
+You can also enable signal trace dumping by setting the ``--trace`` or ``--trace-fst`` Verilator option in ``CMakeList.txt`` corresponding to your Verilated model.
+
+Follow directions below to ensure correct initialization and use of verilated dump object.
+
+Firstly, include the following definitions.
+These will enable tracing and will allow you to switch between ``fst`` and ``vcd`` file types with the aforementioned Verilator options.
+  
+.. code-block:: cpp
+
+   #if VM_TRACE_VCD                      
+   # include <verilated_vcd_c.h>         
+   # define VERILATED_DUMP VerilatedVcdC 
+   # define DEF_TRACE_FILEPATH "simx.vcd"
+   #elif VM_TRACE_FST                    
+   # include <verilated_fst_c.h>         
+   # define VERILATED_DUMP VerilatedFstC 
+   # define DEF_TRACE_FILEPATH "simx.fst"
+   #endif                                
+
+Next, declare verilated dump object and include collecting signal data with each model evaluation.
+
+.. code-block:: cpp
+                           
+   #if VM_TRACE                  
+   VERILATED_DUMP *tfp;          
+   #endif                        
+   vluint64_t main_time = 0;     
+                                 
+   void eval() {                 
+   #if VM_TRACE                  
+           main_time++;          
+           tfp->dump(main_time); 
+           tfp->flush();         
+   #endif                        
+       top->eval();              
+   }                             
+
+Finally, initialize verilated dump and run the trace.
+If you would like to acquire the verilated dump from your co-simulation ran on sockets please include this part within the ``main()`` function, otherwise place it within ``Init()`` function.
+
+.. code-block:: cpp
+
+   #if VM_TRACE                      
+      Verilated::traceEverOn(true); 
+      tfp = new VERILATED_DUMP;     
+      top->trace(tfp, 99);          
+      tfp->open(DEF_TRACE_FILEPATH);
+   #endif                            
+
+The resulting trace is written into a vcd or fst file depending on specified option and can be viewed in e.g. `GTKWave viewer <http://gtkwave.sourceforge.net/>`_.
 
 .. image:: img/gtkwave-trace.png
