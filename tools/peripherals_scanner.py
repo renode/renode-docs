@@ -113,6 +113,7 @@ def try_get_category(platform):
         "microwatt":   "POWERPC",
         "mimxrt1064_evk":   "NXP I.MX",
         "miv": "MIV",
+        "miv_rv32": "MIV",
         "miv-board":   "MIV",
         "miv-board-additional-uarts":  "MIV",
         "mpc5567": "NXP PPC",
