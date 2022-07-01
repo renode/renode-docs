@@ -6,9 +6,9 @@ Renode's testing capabilities
 
 Renode is very well suited to be a part of an automated tests scenario, e.g. run in the background on a CI server.
 
-Renode is integrated with the Robot Framework testing suite and provides user-friendly scripts for running tests.
+Renode is integrated with the `Robot Framework <https://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html#introduction>`_ testing suite and provides user-friendly scripts for running tests.
 
-It comes with a variety of prepared test scripts but it also allows you to extend them or add new ones.
+It comes with a variety of prepared test scripts, but it also allows you to extend them or add new ones.
 
 Running the robot test script
 -----------------------------
@@ -79,14 +79,14 @@ Integration with Renode is achieved by adding entries to the settings section.
 The ``RENODEKEYWORDS`` variable (initialized by the ``renode-test`` script) contains the path to the `renode-keywords.robot <https://github.com/renode/renode/blob/master/src/Renode/RobotFrameworkEngine/renode-keywords.robot>`_ script responsible for setting up the connection with Renode.
 Other settings configure the suite/test setup and teardowns.
 
-It is recommented to copy the above ``Settings`` section to each new robot test file.
+It is recommended to copy the above ``Settings`` section to each new robot test file.
 
 Adding new test cases
 +++++++++++++++++++++
 
 Each robot test file might contain many test cases.
 For general instructions on how to define tests cases, please refer to `the Robot Framework documentation <http://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html>`_.
-In this section we will focus on using the Robot Framework-Renode integration.
+In this section, we will focus on using the Robot Framework-Renode integration.
 
 The Robot Framework-Renode integration layer provides keywords allowing the user to control and inspect the state of the simulation directly from the Robot Framework test file in a similar manner to the built-in keywords.
 The `basic keywords <https://github.com/renode/renode/blob/master/src/Renode/RobotFrameworkEngine/RenodeKeywords.cs>`_ allow the user to:
@@ -112,7 +112,7 @@ There is also `a set of keywords for interacting with network devices <https://g
 * waiting for the next outgoing network packet (``Wait For Outgoing Packet``),
 * waiting for a specific outgoing network packet (``Wait For Outgoing Packet With Bytes At Index``).
 
-It is possible to extend the Renode-Robot Frameworkd interface by implementing more keywords in C# if necessary.
+It is possible to extend the Renode-Robot Framework interface by implementing more keywords in C# if necessary.
 
 For reference on how to use the keywords mentioned in this section, see the robot test files that Renode comes with.
  
@@ -148,7 +148,7 @@ and to call ``renode-test`` with a special switch::
 Running tests in parallel
 +++++++++++++++++++++++++
 
-Test cases from a single file will always be executed in serial (in the order they are defined in the file), but it's possible to run test from different files in parallel.
+Test cases from a single file will always be executed in serial (in the order they are defined in the file), but it's possible to run tests from different files in parallel.
 In order to do that, execute the ``renode-test`` command with a special switch::
 
     $ renode-test -j12 my_tests.yaml
@@ -171,20 +171,20 @@ You can also pass many test files as arguments (i.e., without the ``yaml`` file)
 Stopping on error
 +++++++++++++++++
 
-By default ``renode-test`` will run all the provided test cases.
+By default, ``renode-test`` will run all the provided test cases.
 It is possible, however, to stop the execution on the first encountered error.
 In order to do that, run the ``renode-test`` script with::
 
     $ renode-test --stop-on-error my_tests.robot
 
 
-Running multiple instance of renode-test at the same time
+Running multiple instances of renode-test at the same time
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 Renode communicates with the Robot Framework executor over a network socket.
 This means that running two ``test-renode`` instances at the same time will result in a network port conflict.
 
-In order to avoid that, you can explicitly specify the port number to be used for the communication between Robot Framework and Renode::
+In order to avoid that, you can explicitly specify the port number to be used for the communication between the Robot Framework and Renode::
 
     $ renode-test -P 9997 my_test.robot &
     $ renode-test -P 9998 my_test2.robot &
@@ -218,7 +218,7 @@ It is possible, however, to enable printing log messages to the console in the s
 
 .. note::
 
-    Note that this will cause the test progress report messages to be mixed with the log messages.
+    This will cause the test progress report messages to be mixed with the log messages.
 
 What's more, it is also possible to show the Monitor and analyzers windows and interact with them::
 
@@ -226,19 +226,19 @@ What's more, it is also possible to show the Monitor and analyzers windows and i
 
 .. note::
 
-    Note that interacting with the running test may influence the results.
+    Interacting with the running test may influence the results.
 
 Saving state of failed tests
 ++++++++++++++++++++++++++++
 
-Renode's testing framework allows automatic creation of snapshots of failed tests in order to load them later to inspect the state of the simulation and/or run it further.
-This feature is specially helpful in the non-interactive CI environments.
+Renode's testing framework allows the automatic creation of snapshots of failed tests in order to load them later to inspect the state of the simulation and/or run them further.
+This feature is especially helpful in non-interactive CI environments.
 
 To enable automatic creation of snapshots for failed tests, set the ``RENODE_CI_MODE`` environment variable before running the ``renode-test`` command::
 
     $ RENODE_CI_MODE=YES renode-test my_test.robot
 
-Each time the snapshot is created it will be given a name corresponding to the failed test and you will see the message in console informing about the path to it.
+Each time the snapshot is created, it will be given a name corresponding to the failed test and you will see the message in the console informing you about the path to it.
 All snapshots will be saved in the ``output/tests/snapshots`` directory.
 
 .. note::
@@ -248,13 +248,13 @@ All snapshots will be saved in the ``output/tests/snapshots`` directory.
 Inspecting failed tests interactively
 +++++++++++++++++++++++++++++++++++++
 
-With Renode it is possible to stop the execution of the test suite in order to interactively debug a failed test case using the standard Renode interface (monitor, UART analyzers, etc).
+With Renode, it is possible to stop the execution of the test suite in order to interactively debug a failed test case using the standard Renode interface (monitor, UART analyzers, etc).
 
-To enable this feature run the ``renode-test`` command with the following switch::
+To enable this feature, run the ``renode-test`` command with the following switch::
 
     $ renode-test --debug-on-error my_test.robot
 
-This will result in pausing the execution of the test suite on error, displaying Renode monitor and peripheral analyzers and allowing the user to inspect the state of the simulation.
+This will result in pausing the execution of the test suite on error, displaying the Renode Monitor and peripheral analyzers and allowing the user to inspect the state of the simulation.
 Once the interactive session is done, it's possible to resume the execution of tests by pressing a button in a prompt window.
 
 
