@@ -110,6 +110,7 @@ def try_get_category(platform):
         "litex_zephyr_vexriscv_i2s":   "LITEX",
         "mars_zx3":    "ZYNQ",
         "mars_zx3-externals":  "ZYNQ",
+        "max32652": "MAXIM",
         "microwatt":   "POWERPC",
         "mimxrt1064_evk":   "NXP I.MX",
         "miv": "MIV",
