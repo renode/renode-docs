@@ -34,7 +34,8 @@ To change the log level only for a selected peripheral (in this case - the UART 
 
     (machine-0) logLevel -1 sysbus.uart
 
-Please be advised that increasing the number of logged messages may affect the performance of the emulation.
+.. note::
+	Increasing the number of logged messages may affect the performance of the emulation.
 
 The current log level can be verified by running ``logLevel`` without parameters.
 
@@ -56,11 +57,11 @@ Logging to file
 
 To analyze the output from a long-running emulation, it is often a good idea to redirect the log to a file.
 
-To achive that, use the ``logFile`` command::
+To achieve that, use the ``logFile`` command::
 
     (machine-0) logFile @some_file_name
 
-This will not disable the console logger, but will add a new sink, to be configured separately.
+This will not disable the console logger but will add a new sink, to be configured separately.
 From the performance point of view, depending on the scenario, it can be beneficial to increase the minimal console log level and keep the more detailed data in the log file.
 
 To set the ERROR log level for a file backend, type::
@@ -74,7 +75,7 @@ Peripherals can also have different log levels on different backends::
 Logging access to peripherals
 -----------------------------
 
-Apart from the regular logger configuration, you can enable logging of accesses to specific peripherals.
+Apart from the standard logger configuration, you can enable logging of accesses to specific peripherals.
 This feature is enabled only for peripherals registered on a system bus.
 
 To enable it, run::
@@ -96,7 +97,7 @@ It is possible to create a trace of every function executed by the binary::
 
     (machine-0) sysbus.cpu LogFunctionNames true
 
-As a result the names of the functions will be printed to the log at ``INFO`` level::
+As a result, the names of the functions will be printed to the log at ``INFO`` level::
 
     17:05:23.8834 [INFO] cpu: Entering function kobject_uevent_env at 0xC014CD9C
     17:05:23.8834 [INFO] cpu: Entering function dev_uevent_name (entry) at 0xC018FA5C
@@ -110,11 +111,11 @@ If you are interested only in a subset of functions, you can limit the results b
 
     (machine-0) sysbus.cpu LogFunctionNames true "dev kobject"
 
-You can also avoid logging subsequent duplicate function names by adding another ``true`` argument either instead or after the optional function name prefixes::
+You can also avoid logging subsequent duplicate function names by adding another ``true`` argument either instead of or after the optional function name prefixes::
 
     (machine-0) sysbus.cpu LogFunctionNames true ["dev kobject"] true
 
-Only such three lines would remain printed in the aforementioned example with both function name filtering and duplicate removal applied::
+Only these three lines would remain printed in the aforementioned example with both function name filtering and duplicate removal applied::
 
     17:05:23.8834 [INFO] cpu: Entering function kobject_uevent_env at 0xC014CD9C
     17:05:23.8834 [INFO] cpu: Entering function dev_uevent_name (entry) at 0xC018FA5C
