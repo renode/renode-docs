@@ -136,6 +136,7 @@ def try_get_category(platform):
         "sifive-fe310":    "SIFIVE",
         "sifive-fu540":    "SIFIVE",
         "sltb001a":    "EFM",
+        "sltb004a":    "EFM",
         "slwstk6220a": "EFM",
         "starfive-jh7100": "STARFIVE",
         "stk3200": "EFM",
