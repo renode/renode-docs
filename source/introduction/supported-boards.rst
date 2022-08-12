@@ -206,6 +206,16 @@ Supported boards include:
 
        :script:`gr716_zephyr.resc <single-node/gr716_zephyr.resc>`
 
+   * - .. image:: img/max32652-evkit.png
+
+       `MAX32652 Evaluation Kit <https://www.maximintegrated.com/en/products/microcontrollers/MAX32650-EVKIT.html>`_
+
+       :script:`max32652-evkit.resc <single-node/max32652-evkit.resc>`
+
+     -
+
+     -
+
 
 And many more - Renode makes it easy to create your own platform which reuses the same peripherals / CPUs that exist in other platforms.
 
