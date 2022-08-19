@@ -45,6 +45,7 @@ def try_get_category(platform):
     mapping = {
         "A2_CV32E40P": "OHG",
         "a20": "ALLWINNER",
+        "ambiq-apollo4": "AMBIQ",
         "arduino_101-shield":  "NRF",
         "arduino_nano_33_ble": "NRF",
         "arty_litex_vexriscv": "LITEX",
