@@ -3,7 +3,11 @@ Supported boards
 
 Renode supports a wide array of hardware platforms, covering multiple architectures, CPU families and providing various I/O capabilities. 
 
-This chapter contains an (incomplete) list of selected supported hardware targets - all of these include sample software binaries that run both on real hardware and in Renode.
+You can see a summary of over 200 IoT development boards supported as part of the `Zephyr dashboard effort <https://zephyr-dashboard.renode.io/>`_ and learn more about them in `Renodepedia <https://zephyr-dashboard.renode.io/renodepedia/>`_.
+
+In Renodepedia, you can see pre-executed runs of different embedded software binaries as well as use the available artifacts to run the demos yourself.
+
+On top of that, this chapter contains an (incomplete) list of selected supported hardware targets with dedicated demos - all of these include sample software binaries that run both on real hardware and in Renode.
 
 To run example software on any of the below boards, simply run Renode and use::
 
@@ -13,7 +17,7 @@ Tab completion is available also for filenames, so be sure to explore the availa
 
 The ultimate goal of Renode is to run any binary-compatible software targeted for any of those hardware platforms without modification, although of course your specific use case may require extending the provided hardware description / models.
 
-Supported boards include:
+Boards supported in this way include:
 
 .. raw:: html
 
@@ -217,10 +221,9 @@ Supported boards include:
      -
 
 
-And many more - Renode makes it easy to create your own platform which reuses the same peripherals / CPUs that exist in other platforms.
+There are of course more, and new ones are being added quickly - Renode makes it easy to create your own platform which reuses the same peripherals / CPUs that exist in other platforms.
 
 We provide commerical services to add new platforms - if you need help in this regard, please write to `support@renode.io <mailto:support@renode.io>`_.
-
 
 Supported peripherals
 =====================
