@@ -7,6 +7,8 @@ The first window that appears after starting Renode is dedicated to the logger.
 
 There are many logging options you can use to improve your experience with the presented information.
 
+.. _log-level:
+
 Logging level
 -------------
 
@@ -117,3 +119,29 @@ Only such three lines would remain printed in the aforementioned example with bo
     17:05:23.8834 [INFO] cpu: Entering function kobject_uevent_env at 0xC014CD9C
     17:05:23.8834 [INFO] cpu: Entering function dev_uevent_name (entry) at 0xC018FA5C
     17:05:23.8834 [INFO] cpu: Entering function kobject_uevent_env at 0xC014CDA8
+
+Hushing excessive unhandled access logs
+---------------------------------------
+
+Renode, by default, informs you about unhandled accesses to memory ranges that are not covered by any model.
+You may see logs like this::
+
+    09:21:8.1960 [WARNING] sysbus: [cpu: 0x08001200] WriteDoubleWord to non existing peripheral at 0x400D0114, value 0xFFFFFFFF.
+    09:21:9.4538 [WARNING] sysbus: [cpu: 0x080012E6] ReadDoubleWord from non existing peripheral at 0x400D0118, returning 0x0.
+
+These logs are there to inform you that your platform's description is not complete and if you observe issues with your simulation it might be one of the possible cases.
+
+Very often these unhandled regions will not affect any important aspects of the execution and you might want to silence these logs.
+
+While changing the :ref:`log-level` to ``ERROR`` to hide warnings might be one option, it could be a too radical solution as you might want to continue seeing other warnings. 
+
+The best way to achieve fine-grained logging control in this case is with the ``SilenceRange`` feature.
+E.g. if you want to disable logging for addresses in the range between ``0x80000`` and ``0x801000``, run::
+
+    sysbus SilenceRange <0x80000 0x1000>
+
+You can do it from the REPL level in the ``sysbus`` init section as well::
+
+    sysbus:
+        init:
+            SilenceRange <0x80000 0x1000>
