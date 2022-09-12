@@ -67,7 +67,7 @@ To list all peripherals, execute:
 ```
 (machine-0) peripherals
 Available peripherals:
-    
+
   sysbus (SystemBus)
 ```
 
@@ -161,8 +161,8 @@ The `Usage` sections describe the proper syntax for accessing the peripheral's f
 Once the platform is created and configured, you can upload the software onto it.
 Renode allows you to run exactly the same executable as on the real hardware, which means there is no need to alter the binary or recompile the source.
 
-In Renode, you can use local binaries or load them via HTTP[S].
-If you do not have a binary at your disposal, you can use this [sample binary](https://dl.antmicro.com/projects/renode/shell-demo-miv.elf-s_803248-ea4ddb074325b2cc1aae56800d099c7cf56e592a).
+In Renode, you can use local binaries or load them via HTTPS.
+If you do not have a binary at your disposal, you can use this [sample Zephyr Shell sample for MiV](https://dl.antmicro.com/projects/renode/shell-demo-miv.elf-s_803248-ea4ddb074325b2cc1aae56800d099c7cf56e592a).
 
 To load a local `.elf` file into memory, execute:
 
@@ -170,14 +170,14 @@ To load a local `.elf` file into memory, execute:
 (machine-0) sysbus LoadELF @my-project.elf
 ```
 
-To load a binary via HTTP[S]:
+To load a binary via HTTPS:
 
 ```
-(machine-0) sysbus LoadELF @https://link-to-binary.com
+(machine-0) sysbus LoadELF @https://remote-server.com/my-project.elf
 ```
 
-Renode supports other executable formats like raw `binary` and `UImage` as well.
-To load them, use `LoadBinary` or `LoadUImage` accordingly.
+Renode supports other executable formats like raw binary, `UImage` and `HEX` as well.
+To load them, use `LoadBinary`, `LoadUImage` or `LoadHEX` accordingly.
 
 ## Clearing the emulation
 
