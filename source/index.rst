@@ -68,5 +68,6 @@
 
    advanced/building_from_sources
    advanced/platform_description_format
+   advanced/execution-tracing
    advanced/time_framework
    advanced/writing-peripherals
