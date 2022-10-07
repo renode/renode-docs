@@ -22,7 +22,7 @@
    basic/control
    basic/logger
    basic/saving
-   basic/environment
+   basic/sensors
    basic/metrics
    basic/running
    basic/using-python
