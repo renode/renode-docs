@@ -44,12 +44,12 @@
    networking/machine-to-machine-connections
 
 .. toctree::
-    :caption: Host integration
-    :maxdepth: 2
+   :caption: Host integration
+   :maxdepth: 2
 
-    host-integration/uart
-    host-integration/arduino
-    host-integration/sharing-files
+   host-integration/uart
+   host-integration/arduino
+   host-integration/sharing-files
 
 .. toctree::
    :caption: Tutorials
