@@ -264,6 +264,27 @@ To enable the UART analyzer window and start simulation, type::
    (machine-0) showAnalyzer verilated_uart
    (machine-0) s
 
+Performance of the simulation
++++++++++++++++++++++++++++++
+
+You can control the performance of the verilated peripheral in two aspects: its virtual time performance in relation to the main CPU and the real time performance of execution.
+
+As presented in the example above, each peripheral has to have the clock frequency defined.
+The ``frequency`` parameter expects the value in ``Hz``.
+
+This value is used to drive the clock signal of the verilated design, and is defined in the virtual time domain.
+It means that each instruction executed by the CPU, configured with a specific ``PerformanceInMips`` value, leads to a constant number of clock ticks in the design.
+For more details, please see :ref:`the chapter on Time Framework <time-framework>`.
+
+Since it would be impractical to trigger clock signals after every instruction executed by the CPU, you can buffer these events and send them when you reach a certain threshold.
+This can be easily configured with the optional ``limitBuffer`` constructor parameter::
+
+   myVerilatedPeripheral: Verilated.VerilatedUART @ sysbus <0x70000000, +0x100>
+       frequency: 100000000
+       limitBuffer: 10000
+
+The default value for the ``limitBuffer`` is 1000000, meaning that Renode will not trigger clock signals until it accumulates 1 million ticks.
+
 Verilator Trace
 ---------------
 
