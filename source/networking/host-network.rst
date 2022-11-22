@@ -8,9 +8,6 @@ Renode allows you to connect a host network interface to :ref:`a simulated wired
 To do that you need to be able to create a ``TAP`` interface.
 Renode will try to create one, provided you have sufficient privileges.
 
-.. note::
-   Host-guest networking is currently available on Linux and macOS only.
-
 Regarding time flow
 -------------------
 
@@ -18,6 +15,12 @@ All devices simulated in Renode operate in :ref:`virtual time <time-framework>`,
 Moreover, network packets are delivered in periodical synchronisation points, delaying the communication even further.
 
 This means that time constraints (e.g. timeouts) placed by applications trying to connect to the simulated network from the host may need to be altered to take these delays into account.
+
+Using TAP interface on Windows
+------------------------------
+
+In order to create a TAP device on Windows, a third-party driver, that is a part of `OpenVPN project <https://openvpn.net/community-downloads/>`_, has to be installed.
+The feature has been specifically tested with ``OpenVPN 2.5.6``.
 
 Opening a TAP interface
 -----------------------
