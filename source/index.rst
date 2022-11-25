@@ -52,6 +52,17 @@
    host-integration/sharing-files
 
 .. toctree::
+   :caption: Advanced topics
+   :maxdepth: 2
+
+   advanced/co-simulating-with-verilator
+   advanced/building_from_sources
+   advanced/platform_description_format
+   advanced/execution-tracing
+   advanced/time_framework
+   advanced/writing-peripherals
+
+.. toctree::
    :caption: Tutorials
    :maxdepth: 2
 
@@ -59,15 +70,5 @@
    tutorials/zephyr-ptp-testing
    tutorials/fomu-example
    tutorials/usbip
-   tutorials/verilator-cosimulation.rst
+   tutorials/co-simulating-custom-hdl
    tutorials/ble-simulation
-
-.. toctree::
-   :caption: Advanced topics
-   :maxdepth: 2
-
-   advanced/building_from_sources
-   advanced/platform_description_format
-   advanced/execution-tracing
-   advanced/time_framework
-   advanced/writing-peripherals
