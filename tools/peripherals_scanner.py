@@ -147,6 +147,7 @@ def try_get_category(platform):
         "stk3700": "EFM",
         "stk3800": "EFM",
         "stm32f0": "STM",
+        "stm32f042": "STM",
         "stm32f072":   "STM",
         "stm32f072b_discovery":    "STM",
         "stm32f103":   "STM",
