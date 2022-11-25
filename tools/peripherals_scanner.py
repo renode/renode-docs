@@ -126,6 +126,7 @@ def try_get_category(platform):
         "nrf52840":    "NORDIC",
         "nxp-k6xf":    "NXP KINETIS",
         "opentitan-earlgrey":  "OTHER RISC-V",
+        "opentitan-earlgrey-cw310":  "OTHER RISC-V",
         "picosoc": "OTHER RISC-V",
         "polarfire-soc":   "PFSOC",
         "quark-c1000": "X86",
