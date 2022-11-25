@@ -51,6 +51,7 @@ def try_get_category(platform):
         "arty_litex_vexriscv": "LITEX",
         "arvsom":  "STARFIVE",
         "at91rm9200":  "ATMEL",
+        "atsamd51g19a": "ATMEL",
         "beaglev_starlight":   "STARFIVE",
         "brd4162a":    "EFM",
         "cc2538":  "TI",
