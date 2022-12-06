@@ -200,6 +200,15 @@ set var """
 """
 ```
 
+```{note}
+When loading a script, you can use slightly different syntax for multiline variables, with the `"""` mark put below the first line:
+
+    set var
+    """
+    "hello"
+    """
+```
+
 Variables in Renode are contextual, which means that for each machine you can have different variables with the same name.
 You can access them by their full path.
 To create a variable within the machine context of `machine-0`, you would use:
@@ -383,15 +392,6 @@ The macro below loads the previously specified ELF file:
 
 ```
     sysbus LoadELF $bin
-```
-
-```{note}
-When loading a script, you can use slightly different syntax for multiline variables, with the `"""` mark put below the `macro` line:
-
-    macro newVar
-    """
-    "hello"
-    """
 ```
 
 Lastly, we call the macro to run it, as it is only executed after it is invoked:
