@@ -255,7 +255,7 @@ You can check and modify the path configuration using the `path` command in Moni
 
 You can also pass paths as `"string"`, but completion suggestions will not work in that case.
 
-```{note
+```{note}
 In Renode, you can use paths that are absolute or relative to the current directory.
 ```
 
