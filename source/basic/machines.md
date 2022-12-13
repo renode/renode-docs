@@ -176,6 +176,23 @@ To load a binary via HTTPS:
 (machine-0) sysbus LoadELF @https://remote-server.com/my-project.elf
 ```
 
+````{note}
+If you load multiple ELF files, Renode will look for the lowest loaded section of the last ELF file to locate the initial PC (or vector table offset on Cortex-M machines).
+That means the last ELF you load will set up your CPU starting point.
+
+To override this, you can set the initial values manually, using:
+
+```
+cpu PC 0xYourValue
+```
+
+or, on Cortex-M:
+
+```
+cpu VectorTableOffset 0xYourValue
+```
+````
+
 Renode supports other executable formats like raw binary, `UImage` and `HEX` as well.
 To load them, use `LoadBinary`, `LoadUImage` or `LoadHEX` accordingly.
 
