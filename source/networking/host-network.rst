@@ -16,12 +16,6 @@ Moreover, network packets are delivered in periodical synchronisation points, de
 
 This means that time constraints (e.g. timeouts) placed by applications trying to connect to the simulated network from the host may need to be altered to take these delays into account.
 
-Using TAP interface on Windows
-------------------------------
-
-In order to create a TAP device on Windows, a third-party driver, that is a part of `OpenVPN project <https://openvpn.net/community-downloads/>`_, has to be installed.
-The feature has been specifically tested with ``OpenVPN 2.5.6``.
-
 Opening a TAP interface
 -----------------------
 
@@ -42,6 +36,37 @@ Depending on your system configuration, you may be asked for a password to open 
 
    Please refer to your system documentation for further instructions.
 
+Using TAP interface on Windows
+------------------------------
+
+In order to create a TAP device on Windows, you need to install a third-party driver that is a part of the `OpenVPN project <https://openvpn.net/community-downloads/>`_.
+If OpenVPN is installed on your computer, Renode should detect it when trying to create a TAP interface.
+The feature has been specifically tested with ``OpenVPN 2.5.6``.
+
+.. note::
+    You need Administrator Privileges to create a TAP on Windows.
+
+To create a TAP interface on your Windows PC, first, you need to create a new TAP interface in Renode using the usual command:::
+
+    (monitor) emulation CreateTap "tap0" "tap"
+
+Then you need to assign an IP address to your TAP using the command prompt::
+
+    netsh interface ipv4 set address name=tap0 static X.X.X.X
+
+.. note::
+    You can also create a TAP interface directly using the ``tapctl.exe`` driver from OpenVPN::
+
+        tapctl.exe create --name tap0
+
+    Then assign it an IP address::
+
+        netsh interface ipv4 set address name=tap0 static X.X.X.X
+
+    Finally, connect it to Renode using::
+
+        (monitor) emulation CreateTap "tap0" "tap"
+   
 Connecting TAP interface switch
 -------------------------------
 
