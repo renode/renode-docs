@@ -22,6 +22,7 @@
    basic/control
    basic/logger
    basic/saving
+   basic/resd
    basic/sensors
    basic/metrics
    basic/running
