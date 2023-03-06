@@ -120,6 +120,55 @@ For reference on how to use the keywords mentioned in this section, see the robo
 
 ## Advanced usage
 
+(robot-dependencies)=
+
+### Test cases dependencies
+
+Normally tests cases in a single `.robot` file should be independent of each other.
+In fact, the default test teardown keyword calls `Reset Emulation` to ensure that the state of a test does not influence the next one.
+
+There are situations though when splitting one long-running test scenario into mulitple test cases might be desired.
+This allows for better reporting of the execution progress as well as improves overall performance (compared to re-running a common part of the test).
+
+Renode provides custom Robot keywords to annotate situations when one test should continue execution from a state provided by another one:
+
+* `Provides` - creates a named snapshot of the simulation state (see {ref}`State saving and loading <state-saving>`),
+* `Requires` - loads a named snapshot and continues execution of the test from this state.
+
+An example of usage:
+```
+*** Test Cases ***
+Boot Linux
+    [...]
+    Provides               booted-linux
+
+Write to flash
+    Requires               booted-linux
+    Write Line To Uart     ...
+    [...]
+
+Ping another node
+    Requires               booted-linux
+    Write Line To Uart     ...
+    [...]
+```
+
+See [Zedboard.robot](https://github.com/renode/renode/blob/master/tests/platforms/Zedboard.robot#L29) for a real-life example.
+
+````{note}
+There is also an alternative implementation of the mechanism available, where instead of state snapshots we use keywords recording.
+In this case when the `Requires` keyword is used, all the keywords executed before the corresponding `Provides` are re-executed.
+To use this mode, pass `Reexecution` as an additional parameter when using the `Provides` keyword:
+
+```
+*** Test Cases ***
+Boot Linux
+    [...]
+    Provides               booted-linux        Reexecution
+```
+
+````
+
 ### Running many test files with a single command
 
 The example in the previous section presented how to run a single test file (which might still contain many test cases).

@@ -1,3 +1,5 @@
+(state-saving)=
+
 # State saving and loading
 
 Renode offers a capability to save the state of the emulation to a file.
@@ -35,3 +37,7 @@ After the state is loaded, you must manually set the Monitor's context and reope
 ```
 ````
 
+## State saving in tests
+
+It's possible to use the state saving and loading mechanism when defining complex Robot tests.
+For details see the {ref}`Test cases dependencies <robot-dependencies>` section.
