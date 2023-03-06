@@ -64,16 +64,16 @@ In order for the robot files to work with Renode, proper configuration (explaine
 Here is an example of a simple robot test file that works with Renode:
 
 ```
-*** Settings *** 
-Suite Setup     Setup 
-Suite Teardown  Teardown 
-Test Teardown   Test Teardown 
-Resource        ${RENODEKEYWORDS} 
-     
-*** Test Cases *** 
-Should Print Help 
-    ${x}=  Execute Command     help 
-           Should Contain      ${x}    Available commands: 
+*** Settings ***
+Suite Setup     Setup
+Suite Teardown  Teardown
+Test Teardown   Test Teardown
+Resource        ${RENODEKEYWORDS}
+
+*** Test Cases ***
+Should Print Help
+    ${x}=  Execute Command     help
+           Should Contain      ${x}    Available commands:
 ```
 
 The `Should Print Help` test case executes the `help` command in Renode's monitor and verifies the result.
@@ -117,7 +117,7 @@ There is also [a set of keywords for interacting with network devices](https://g
 It is possible to extend the Renode-Robot Framework interface by implementing more keywords in C# if necessary.
 
 For reference on how to use the keywords mentioned in this section, see the robot test files that Renode comes with.
- 
+
 ## Advanced usage
 
 ### Running many test files with a single command
@@ -272,7 +272,6 @@ $ renode-test --debug-on-error my_test.robot
 
 This will result in pausing the execution of the test suite on error, displaying the Renode Monitor and peripheral analyzers and allowing the user to inspect the state of the simulation.
 Once the interactive session is done, it's possible to resume the execution of tests by pressing a button in a prompt window.
-
 
 ```{note}
 This feature is currently not available in headless environments.
