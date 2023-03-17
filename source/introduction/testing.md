@@ -132,8 +132,7 @@ This allows for better reporting of execution progress and improves overall perf
 
 Renode provides custom Robot keywords to annotate situations where a test should continue execution from a state provided by another test:
 
-* `Provides` - creates a named snapshot of the simulation state (see {ref}`State saving and loading
-`),
+* `Provides` - creates a named snapshot of the simulation state (see {ref}`State saving and loading <state-saving>`),
 * `Requires` - loads a named snapshot and resumes execution of the test from that state.
 
 An example of usage:
