@@ -2,7 +2,7 @@
 
 # State saving and loading
 
-Renode offers a capability to save the state of the emulation to a file.
+Renode allows you to save the state of the emulation to a file.
 
 Such a file can be transferred to another user and then loaded to fully recreate the original setup.
 No additional binaries or configuration files are required.
@@ -29,7 +29,7 @@ Please note that loading the state file clears the current emulation, and is equ
 ```
 
 ````{note}
-After the state is loaded, you must manually set the Monitor's context and reopen UART windows:
+After the state is loaded, you must manually set the Monitor's context and reopen the UART windows:
 
 ```
 (monitor) mach set 0
