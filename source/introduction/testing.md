@@ -21,7 +21,7 @@ The above command will:
 * start a Renode instance in the background,
 * enable Renode's built-in Robot Framework server (providing an interface between Robot Framework and Renode) on port 9999 (the port number can be changed by the user),
 * start the Robot Framework test engine and connect to Renode,
-* run the provided ``my_test.robot`` test case,
+* run the provided `my_test.robot` test case,
 * print the progress status on the console,
 * generate the log and the summary after finishing the test.
 
@@ -52,8 +52,8 @@ The second message contains information about the test's duration and status.
 
 The details of the run can be found in:
 
-* the ``robot_output.xml`` report (suitable for automatic parsing),
-* the ``log.html`` and ``report.html`` documents (suitable for an interactive inspection).
+* the `robot_output.xml` report (suitable for automatic parsing),
+* the `log.html` and `report.html` documents (suitable for an interactive inspection).
 
 ## Creating the test file
 
@@ -93,11 +93,11 @@ In this section we will focus on using the Robot Framework-Renode integration.
 The Robot Framework-Renode integration layer provides keywords allowing the user to control and inspect the state of the simulation directly from the Robot Framework test file in a similar manner to the built-in keywords.
 The [basic keywords](https://github.com/renode/renode/blob/master/src/Renode/RobotFrameworkEngine/RenodeKeywords.cs) allow the user to:
 
-* start the emulation (``Start Emulation``),
-* clear the emulation (``Reset Emulation``),
-* execute a command in the Monitor (``Execute Command``),
-* allocate a file in the Renode temporary folder (``Allocate Temporary File``),
-* download a file to the Renode temporary folder (``Download File``),
+* start the emulation (`Start Emulation`),
+* clear the emulation (`Reset Emulation`),
+* execute a command in the Monitor (`Execute Command`),
+* allocate a file in the Renode temporary folder (`Allocate Temporary File`),
+* download a file to the Renode temporary folder (`Download File`),
 
 and more (see the source code for details).
 
@@ -122,18 +122,19 @@ For reference on how to use the keywords mentioned in this section, see the robo
 
 (robot-dependencies)=
 
-### Test cases dependencies
+### Test-case dependencies
 
-Normally tests cases in a single `.robot` file should be independent of each other.
-In fact, the default test teardown keyword calls `Reset Emulation` to ensure that the state of a test does not influence the next one.
+Normally, test cases in a single `.robot` file should be independent of each other.
+In fact, the default test teardown keyword calls `Reset Emulation` to ensure that the state of one test does not affect the next.
 
-There are situations though when splitting one long-running test scenario into mulitple test cases might be desired.
-This allows for better reporting of the execution progress as well as improves overall performance (compared to re-running a common part of the test).
+However, there are situations where it may be desirable to split a long-running test scenario into multiple test cases.
+This allows for better reporting of execution progress and improves overall performance (compared to re-running a common part of the test).
 
-Renode provides custom Robot keywords to annotate situations when one test should continue execution from a state provided by another one:
+Renode provides custom Robot keywords to annotate situations where a test should continue execution from a state provided by another test:
 
-* `Provides` - creates a named snapshot of the simulation state (see {ref}`State saving and loading <state-saving>`),
-* `Requires` - loads a named snapshot and continues execution of the test from this state.
+* `Provides` - creates a named snapshot of the simulation state (see {ref}`State saving and loading
+`),
+* `Requires` - loads a named snapshot and resumes execution of the test from that state.
 
 An example of usage:
 ```
@@ -166,22 +167,21 @@ Boot Linux
     [...]
     Provides               booted-linux        Reexecution
 ```
-
 ````
 
 ### Running many test files with a single command
 
-The example in the previous section presented how to run a single test file (which might still contain many test cases).
+The example in the previous section showed how to run a single test file (which may still contain many test cases).
 It is possible to run many test files and aggregate the results into a single report.
-In order to do that, you need to pass many test files as an argument to `renode-test` command:
+To do this, you need to pass many test files as arguments to the `renode-test` command:
 
 ```
-$ renode-test my_tests.robot additional_tests.robot extra_tests.robot
+renode-test my_tests.robot additional_tests.robot extra_tests.robot
 ```
 
-The tests will be executed in the order the arguments were provided in.
+The tests will be executed in the order in which the arguments were provided.
 
-An alternative way is to prepare a `yaml` file with the list of tests to execute, e.g.:
+An alternative is to prepare a `yaml` file with the list of tests to run, e.g:
 
 ```
 - my_tests.robot
@@ -189,27 +189,27 @@ An alternative way is to prepare a `yaml` file with the list of tests to execute
 - extra_tests.robot
 ```
 
-and to call `renode-test` with a special switch:
+and call `renode-test` with a special switch:
 
 ```
 $ renode-test -t my_tests.yaml
 ```
 
 ```{note}
-The `.yaml` notation allows the user to include other `.yaml` files and to group entries that should not be executed in parallel (see the next section).
+The `.yaml` notation allows the user to include other `.yaml` files and to group items that should not be executed in parallel (see the next section).
 ```
 
 ### Running tests in parallel
 
-Test cases from a single file will always be executed in serial (in the order they are defined in the file), but it's possible to run tests from different files in parallel.
-In order to do that, execute the `renode-test` command with a special switch:
+Test cases from a single file are always executed serially (in the order defined in the file), but it's possible to run tests from different files in parallel.
+To do this, run the `renode-test` command with a special switch:
 
 ```
 $ renode-test -j12 my_tests.yaml
 ```
 
-This will allow you to run up to 12 Renode instances, each one running test cases from a different file.
-Using the `.yaml` file allows grouping entries that should not be executed in parallel (because, e.g., they use a shared resource like a port number):
+This will allow you to run up to 12 Renode instances, each running test cases from a different file.
+Using the `.yaml` file allows you to group items that should not be run in parallel (e.g. because they share a resource such as a port number):
 
 ```
 - my_tests.robot
@@ -218,9 +218,9 @@ Using the `.yaml` file allows grouping entries that should not be executed in pa
     - my_test3.robot
 ```
 
-In the example above, `my_test2.robot` will be executed before `my_test3.robot` but in parallel with `my_tests.robot`.
+In the above example, `my_test2.robot` is executed before `my_test3.robot`, but in parallel with `my_tests.robot`.
 
-You can also pass many test files as arguments (i.e., without the `.yaml` file), but this won't allow you to do the grouping:
+You can also pass many test files as arguments (i.e. without the `.yaml` file), but you won't be able to do the grouping:
 
 ```
 $ renode-test -j3 my_tests.robot my_tests2.robot my_tests3.robot
@@ -229,19 +229,19 @@ $ renode-test -j3 my_tests.robot my_tests2.robot my_tests3.robot
 ### Stopping on error
 
 By default, `renode-test` will run all the provided test cases.
-It is possible, however, to stop the execution on the first encountered error.
-In order to do that, run the `renode-test` script with:
+However, it is possible to stop execution on the first error encountered.
+To do this, run the `renode-test` script with
 
 ```
-$ renode-test --stop-on-error my_tests.robot
+renode-test --stop-on-error my_tests.robot
 ```
 
-### Running multiple instances of renode-test at the same time
+### Running multiple instances of renode-test at once
 
-Renode communicates with the Robot Framework executor over a network socket.
+Renode communicates with the Robot Framework executor via a network socket.
 This means that running two `test-renode` instances at the same time will result in a network port conflict.
 
-In order to avoid that, you can explicitly specify the port number to be used for the communication between the Robot Framework and Renode:
+To avoid this, you can explicitly specify the port number to be used for communication between the Robot Framework and Renode:
 
 ```
 $ renode-test -P 9997 my_test.robot &
@@ -250,13 +250,13 @@ $ renode-test -P 9998 my_test2.robot &
 
 ### Repeating tests
 
-It is possible to run the specified tests multiple times using:
+It is possible to run the specified tests multiple times using
 
 ```
 $ renode-test -n 10 my_test.robot
 ```
 
-This will repeat all the test cases from `my_tests.robot` 10 times.
+This will re-run all test cases from `my_tests.robot` 10 times.
 
 ### Running selected fixtures
 
@@ -266,29 +266,29 @@ It is possible to run only selected test cases from the file using:
 $ renode-test -f "*GDB*" my_tests.robot
 ```
 
-In the example above only test cases with `GDB` in their name will be run.
+In the above example, only test cases with `GDB` in their name will be executed.
 
 ### Running tests interactively
 
-By default, `renode-test` command will run tests in the background and just report results on the console.
-It is possible, however, to enable printing log messages to the console in the same way as when running the `renode` command:
+By default, the `renode-test` command runs tests in the background and only reports results to the console.
+However, it is possible to enable printing of log messages to the console in the same way as when running the `renode` command:
 
 ```
 $ renode-test --show-log my_tests.robot
 ```
 
 ```{note}
-This will cause the test progress report messages to be mixed with the log messages.
+This will cause the test progress messages to be mixed in with the log messages.
 ```
 
-What's more, it is also possible to show the Monitor and analyzers windows and interact with them:
+You can also show and interact with the monitor and analyzer windows:
 
 ```
 $ renode-test --enable-xwt my_tests.robot
 ```
 
 ```{note}
-Interacting with the running test may influence the results.
+Interacting with the running test may affect the results.
 ```
 
 ### Saving state of failed tests
@@ -296,14 +296,14 @@ Interacting with the running test may influence the results.
 Renode's testing framework allows the automatic creation of snapshots of failed tests in order to load them later to inspect the state of the simulation and/or run them further.
 This feature is especially helpful in non-interactive CI environments.
 
-To enable automatic creation of snapshots for failed tests, set the `RENODE_CI_MODE` environment variable before running the `renode-test` command:
+To enable the automatic creation of failed test snapshots, set the `RENODE_CI_MODE` environment variable before running the `renode-test` command:
 
 ```
 $ RENODE_CI_MODE=YES renode-test my_test.robot
 ```
 
 Each time the snapshot is created, it will be given a name corresponding to the failed test and you will see the message in the console informing you about the path to it.
-All snapshots will be saved in the `output/tests/snapshots` directory.
+All snapshots are stored in the `output/tests/snapshots` directory.
 
 ```{note}
 Enabling the CI mode will also influence the way external resources are handled - the binaries cache will be disabled, so each external file will be downloaded every time it's referenced.
@@ -319,9 +319,9 @@ To enable this feature, run the `renode-test` command with the following switch:
 $ renode-test --debug-on-error my_test.robot
 ```
 
-This will result in pausing the execution of the test suite on error, displaying the Renode Monitor and peripheral analyzers and allowing the user to inspect the state of the simulation.
-Once the interactive session is done, it's possible to resume the execution of tests by pressing a button in a prompt window.
+This will cause the execution of the test suite to stop on error, display the Renode Monitor and peripheral analyzers, and allow the user to inspect the state of the simulation.
+Once the interactive session is complete, it's possible to resume test execution by pressing a button in a command prompt window.
 
 ```{note}
-This feature is currently not available in headless environments.
+This feature is not currently available in headless environments.
 ```
