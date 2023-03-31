@@ -76,30 +76,14 @@ There are several properties provided by a *time source* that can be used to tun
 
     It is illegal to set *quantum* to *zero* as it would not allow the *virtual time* to pass at all.
 
-*Performance*
-    Floating-point value describing the ratio of *virtual* to *real* time flow.
-    Value of *1.0* means that the *virtual time* should in average pass in the same pace as a *real* one - the user feels like using real hardware; software that sleeps for 1 second should sleep for 1 real-world second.
-    Value higher than *1.0* means that the *virtual time* should pass faster than the *real* one - it can be used to speed up long emulations (e.g., test what happens in the emulated system after 24 hours of uptime).
-    Value lower than *1.0* means that the *virtual time* should pass slower than the *real* one - it can be used to slow down emulation when a lot of events is happening in a short period.
-
-    The performance of the host machine puts a natural limit on an effective values of this parameter (see ``CurrentLoad``).
-    It is possible to temporarily overwrite this setting by using ``AdvanceImmediately`` property.
-
 *AdvanceImmediately*
-    Boolean value that can be used to overwrite the current value of ``Performance`` and force the emulation to execute as fast as possible.
-
+    Boolean value that can be used to force the emulation to execute as fast as the host system allows for.
+    By default (i.e., when *AdvanceImmediately* is not enabled) Renode slows down the execution of instructions whenever it detects *virtual time* passes faster than *real time*.
 
 There are also some read-only properties that can be used to monitor the current state of the *source*:
 
 *CurrentLoad*
-    Floating-point value indicating the stress the emulation puts on a host CPU.
-
-    Value of *1.0* (the maximal possible) means that the host uses all its CPU resources to run the current emulation and it is not possible to execute it faster.
-    In other words, increasing *Performance* will not have any effect.
-
-    Value of *0.5* means that the host is loaded only in 50% so it is possible to speed up the emulation by a factor of 2.
-
-    This value is calculated as an avarage of *10* samples.
+    Floating-point value being a ratio of *real time* required to emulate a given interval of *virtual time*, calculated as an avarage of *10* samples.
 
 *CummulativeLoad*
     The same as ``Load`` but calculated as an average over all samples since the beginning of the emulation.
@@ -112,7 +96,6 @@ There are also some read-only properties that can be used to monitor the current
 
 *NumberOfSyncPoints*
     The number of *synchronization phases* executed so far.
-
 
 CPU pausing vs. halting
 -----------------------
