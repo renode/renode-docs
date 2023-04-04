@@ -57,6 +57,7 @@ def try_get_category(platform):
         "cc2538":  "TI",
         "colibri-vf61":    "NXP I.MX",
         "core-v-mcu":  "OHG",
+        "cortex-a53": "GENERIC ARM",
         "crosslink-nx-evn":    "LITEX",
         "efm32g210":   "EFM",
         "efm32g222":   "EFM",
