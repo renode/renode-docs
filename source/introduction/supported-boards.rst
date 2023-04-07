@@ -23,8 +23,10 @@ Boards supported in this way include:
 
    <style>
    .boards-table { table-layout: fixed; width: 100%; text-align: center; }
-   .boards-table td { white-space: normal !important; }
-   .rst-content .boards-table img { object-fit: scale-down; height: 200px !important }
+   .boards-table td { line-height: 0; white-space: normal !important; padding: 0!important; }
+   .boards-table img { object-fit: scale-down; height: 400px !important; width: 100%; border: .05rem solid var(--md-typeset-table-color);}
+   .boards-table row { padding: 0; border: .05rem solid var(--md-typeset-table-color);}
+   .boards-table p { line-height: initial; height: 50px; margin: 0; padding: .75rem .75rem 2rem .75rem; border: .05rem solid var(--md-typeset-table-color);}
    </style>
 
 .. list-table::
@@ -84,7 +86,7 @@ Boards supported in this way include:
 
        :script:`polarfire-soc.resc <single-node/polarfire-soc.resc>`
 
-   * - .. image:: img/tegra3.jpg
+   * - .. image:: img/tegra3.png
 
        `Toradex Colibri T30 <https://www.toradex.com/computer-on-modules/colibri-arm-family/nvidia-tegra-3>`_
        
@@ -186,7 +188,7 @@ Boards supported in this way include:
 
        `crosslink-nx-evn.repl <https://github.com/renode/renode/blob/master/platforms/boards/crosslink-nx-evn.repl>`_
 
-     - .. image:: img/imxrt1064.jpg
+     - .. image:: img/imxrt1064.png
 
        `NXP i.MX RT1064 Evaluation Kit <https://www.nxp.com/design/development-boards/i-mx-evaluation-and-development-boards/mimxrt1064-evk-i-mx-rt1064-evaluation-kit:MIMXRT1064-EVK>`_
 
