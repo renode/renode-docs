@@ -132,7 +132,7 @@ Boards supported in this way include:
 
        :script:`kendryte_k210.resc <single-node/kendryte_k210.resc>`
 
-     - .. image:: img/zolertia-firefly.jpg
+     - .. image:: img/zolertia-firefly.png
 
        `Zolertia Firefly <https://zolertia.io/product/firefly/>`_
 
