@@ -46,6 +46,30 @@ Using the `print` Python command will output the text on the Monitor:
 Hello
 ```
 
+## Creating Monitor commands in Python
+
+Running the `python` command in the Monitor executes the provided code immediately.
+However, it is possible to use these Python scripts to define functions available for later use.
+
+Such functions can be executed with subsequent `python` calls, but you can also expose them directly to the Monitor, if you follow a specific naming convention.
+
+If the name of the function you define starts with the `mc_` prefix, it will become available as a new Monitor command, stripped of this prefix.
+
+For example, consider the following Python definition:
+
+```
+def mc_sleep(time):
+    sleep(float(time))
+```
+
+When executed in Renode, this definition provides a `sleep` function in the Monitor:
+
+```
+(monitor) sleep 5
+```
+
+A small set of predefined Python commands is available in the [monitor.py](https://github.com/renode/renode/blob/master/scripts/monitor.py) file.
+
 ## Python peripherals in a platform description
 
 You can use Python in the `.repl` file of your platform description.
