@@ -269,7 +269,12 @@ class Platform:
                 # maybe it's a using statement
                 m = re.search(USING_LINE_PATTERN, line)
                 if m:
-                    self._usings.append(get_or_create_platform(os.path.join(TOP_DIR, m.group(1))))
+                    match = m.group(1)
+                    if match.startswith('.'):
+                        path = os.path.join(os.path.dirname(self._path), match)
+                    else:
+                        path = os.path.join(TOP_DIR, match)
+                    self._usings.append(get_or_create_platform(path))
                     continue
 
                 # maybe it's a peripheral definition
