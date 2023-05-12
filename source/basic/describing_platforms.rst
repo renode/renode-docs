@@ -52,8 +52,25 @@ To connect a timer to the 31-st interrupt on the ``plic`` interrupt controller, 
 Including files
 ---------------
 
-You can include an existing REPL file in your platform with the ``using`` keyword::
+You can include an existing REPL file in your platform with the ``using`` keyword.
+
+The path will be looked up in each of the directories on the Monitor's internal ``PATH``, which is editable with the ``path`` command.
+By default, the ``PATH`` contains the Renode installation directory, so the platform files distributed with Renode can be included like so::
 
     using "platforms/cpus/miv.repl"
 
-The provided filename can be either a full path or a path relative to the Renode root directory.
+You can also provide an absolute path::
+
+    using "/tmp/platform.repl"
+
+Or a path relative to the REPL file that contains the ``using`` statement::
+
+    using "./platform.repl"
+    using "../other/platform.repl"
+
+.. note::
+
+    On Windows, ``/`` can be used as a path separator in all of these cases.
+    If you want to use Windows-style ``\`` separators, you will need to escape them::
+
+        using "D:\\platforms\\platform1.repl"
