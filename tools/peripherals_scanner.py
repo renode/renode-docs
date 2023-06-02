@@ -142,6 +142,7 @@ def try_get_category(platform):
         "sam_e70": "ATMEL",
         "sifive-fe310":    "SIFIVE",
         "sifive-fu540":    "SIFIVE",
+        "sifive-fu740":    "SIFIVE",
         "sltb001a":    "EFM",
         "sltb004a":    "EFM",
         "slwstk6220a": "EFM",
