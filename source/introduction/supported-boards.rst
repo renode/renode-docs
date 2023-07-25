@@ -23,10 +23,8 @@ Boards supported in this way include:
 
    <style>
    .boards-table { table-layout: fixed; width: 100%; text-align: center; }
-   .boards-table td { line-height: 0; white-space: normal !important; padding: 0!important; }
-   .boards-table img { object-fit: scale-down; height: 400px !important; width: 100%; border: .05rem solid var(--md-typeset-table-color);}
-   .boards-table row { padding: 0; border: .05rem solid var(--md-typeset-table-color);}
-   .boards-table p { line-height: initial; height: 50px; margin: 0; padding: .75rem .75rem 2rem .75rem; border: .05rem solid var(--md-typeset-table-color);}
+   .boards-table td { white-space: normal !important; }
+   .rst-content .boards-table img { object-fit: scale-down; height: 200px !important }
    </style>
 
 .. list-table::
