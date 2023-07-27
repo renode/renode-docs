@@ -84,22 +84,6 @@ sysbus LogAllPeripheralsAccess false
 
 If you want to learn more about logging peripheral accesses in Renode, visit [Using the logger chapter](https://renode.readthedocs.io/en/latest/basic/logger.html)
 
-### Installing RISC-V opcode patterns
-
-Renode offers predefined functions for RISC-V to install the patterns for you.
-To install RISC-V specific opcode patterns, use the functions below:
-
-- `cpu EnableRiscvOpcodesCounting` - to install patterns for general instructions,
-- `cpu EnableCustomOpcodesCounting` - to install patterns for custom RISC-V instructions,
-- `cpu EnableVectorOpcodesCounting` - to install patterns for RISC-V vector instructions.
-
-All those patterns are created from RISC-V opcode definition [files](https://github.com/renode/renode-infrastructure/tree/master/src/Emulator/Cores/RiscV/opcodes).
-You can create a similar file for RISC-V with your instructions and load the patterns using:
-
-```
-cpu EnableRiscvOpcodesCounting @path-to-file
-```
-
 ## Execution tracing
 
 In Renode, you can see what the CPU does at any given time without changing the code or using specialized hardware.
@@ -286,3 +270,20 @@ You can also get the value of a specified counter using:
 ```
 cpu GetOpcodeCounter "<counter-name>"
 ```
+
+### Installing RISC-V opcode patterns
+
+Renode offers predefined functions for RISC-V to install the patterns for you.
+To install RISC-V specific opcode patterns, use the functions below:
+
+- `cpu EnableRiscvOpcodesCounting` - to install patterns for general instructions,
+- `cpu EnableCustomOpcodesCounting` - to install patterns for custom RISC-V instructions,
+- `cpu EnableVectorOpcodesCounting` - to install patterns for RISC-V vector instructions.
+
+All those patterns are created from RISC-V opcode definition [files](https://github.com/renode/renode-infrastructure/tree/master/src/Emulator/Cores/RiscV/opcodes).
+You can create a similar file for RISC-V with your instructions and load the patterns using:
+
+```
+cpu EnableRiscvOpcodesCounting @path-to-file
+```
+
