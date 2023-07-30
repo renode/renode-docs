@@ -60,6 +60,7 @@ def try_get_category(platform):
         "cortex-a53": "GENERIC ARM",
         "cortex-a53-gicv2": "GENERIC ARM",
         "cortex-a53-gicv3": "GENERIC ARM",
+        "cortex-a78": "GENERIC ARM",
         "cortex-r52": "GENERIC ARM",
         "crosslink-nx-evn":    "LITEX",
         "efm32g210":   "EFM",
