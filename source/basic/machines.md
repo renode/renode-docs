@@ -183,13 +183,13 @@ That means the last ELF you load will set up your CPU starting point.
 To override this, you can set the initial values manually, using:
 
 ```
-cpu PC 0xYourValue
+sysbus.cpu PC 0xYourValue
 ```
 
 or, on Cortex-M:
 
 ```
-cpu VectorTableOffset 0xYourValue
+sysbus.cpu VectorTableOffset 0xYourValue
 ```
 ````
 
