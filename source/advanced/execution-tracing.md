@@ -6,6 +6,11 @@ Renode has complete awareness of the internal state of all simulated components 
 Some logging features may significantly impact the simulation's performance, but it does not affect the execution itself.
 ```
 
+```{note}
+Commands listed below assume that you have a platform loaded, a CPU node named `cpu` and that the `using sysbus` command was executed.
+For more details see documentation chapters on [Renode Script syntax](renode-script-syntax) and [Accessing and manipulating peripherals](accessing-and-manipulating-peripherals).
+```
+
 ## Logging executed function names
 
 Renode can log the names of functions currently executed by the guest application.

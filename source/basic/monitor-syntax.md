@@ -307,6 +307,7 @@ Since it is resolved at the Robot Framework level, for Renode, it looks like any
 If you want to learn more about testing with Renode, visit [chapter devoted to this topic](../introduction/testing.md).
 ```
 
+(renode-script-syntax)=
 ## Renode Script syntax
 
 Many of your projects in Renode will involve using the same platforms and commands multiple times.

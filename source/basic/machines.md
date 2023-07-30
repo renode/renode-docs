@@ -112,6 +112,7 @@ sysbus (SystemBus)
 
 The format of `.repl` (Renode platform) files is presented in the {ref}`Describing platforms<describing-platforms>` section.
 
+(accessing-and-manipulating-peripherals)=
 ## Accessing and manipulating peripherals
 
 When you are in the context of a machine in the Monitor you can reference peripherals by name.
