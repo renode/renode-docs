@@ -188,6 +188,7 @@ def try_get_category(platform):
         "zedboard":    "ZYNQ",
         "zedboard-externals":  "ZYNQ",
         "zolertia-firefly":    "ZYNQ",
+        "xilinx_zynqmp_r5":  "ZYNQ",
         "zynq-7000":   "ZYNQ",
     }
 
