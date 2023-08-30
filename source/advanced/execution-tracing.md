@@ -181,7 +181,7 @@ cpu DisableExecutionTracing
 ## Execution metrics
 
 Renode can gather and show you a few different metrics in the form of graphs.
-The metrics that are available out of the box are: 
+The metrics that are available out of the box are:
 * Executed instructions,
 * Exceptions,
 * Memory access,
@@ -217,7 +217,7 @@ If you don't want to write to a file instantly but still want to have some contr
 cpu FlushProfiler
 ```
 
-You can inspect traces generated from Zephyr samples in [Renodepedia](https://antmicro.com/blog/2022/08/renodepedia/) - see the examples for [RISC-V](https://zephyr-dashboard.renode.io/renodepedia/boards/hifive1/?view=software&demo=Hello_World) and [Cortex-M](https://zephyr-dashboard.renode.io/renodepedia/boards/stm32f103_mini/?view=software&demo=Hello_World). 
+You can inspect traces generated from Zephyr samples in [Renodepedia](https://antmicro.com/blog/2022/08/renodepedia/) - see the examples for [RISC-V](https://zephyr-dashboard.renode.io/renodepedia/boards/hifive1/?view=software&demo=Hello_World) and [Cortex-M](https://zephyr-dashboard.renode.io/renodepedia/boards/stm32f103_mini/?view=software&demo=Hello_World).
 
 ## Opcode counting
 
