@@ -1,7 +1,7 @@
 Supported boards
 ================
 
-Renode supports a wide array of hardware platforms, covering multiple architectures, CPU families and providing various I/O capabilities. 
+Renode supports a wide array of hardware platforms, covering multiple architectures, CPU families and providing various I/O capabilities.
 
 You can see a summary of over 200 IoT development boards supported as part of the `Zephyr dashboard effort <https://zephyr-dashboard.renode.io/>`_ and learn more about them in `Renodepedia <https://zephyr-dashboard.renode.io/renodepedia/>`_.
 
@@ -33,9 +33,9 @@ Boards supported in this way include:
    * - .. image:: img/stm32f103.png
 
        `ST Micro STM32 Nucleo-64 <https://www.st.com/en/evaluation-tools/nucleo-f103rb.html>`_
-       
+
        :script:`stm32f103.resc <single-node/stm32f103.resc>`
-       
+
      - .. image:: img/stm_discovery.png
 
        `ST Micro STM32F4 Discovery <https://www.st.com/en/evaluation-tools/stm32f4discovery.html>`_
@@ -51,19 +51,19 @@ Boards supported in this way include:
    * - .. image:: img/efr32mg-better.png
 
        `SiLabs EFR32 Mighty Gecko Wireless Starter Kit <https://www.silabs.com/products/development-tools/wireless/mesh-networking/mighty-gecko-starter-kit>`_
-       
+
        :script:`efr32mg.resc <single-node/efr32mg.resc>`
-       
+
      - .. image:: img/sam_e70.png
-     
+
        `Microchip SAM E70 Xplained Evaluation Kit <https://www.microchip.com/DevelopmentTools/ProductDetails/PartNO/ATSAME70-XPLD>`_
-       
+
        :script:`sam_e70.resc <single-node/sam_e70.resc>`
-       
+
      - .. image:: img/cc2538.png
-     
+
        `TI CC2538 Development Kit <http://www.ti.com/tool/CC2538DK>`_
-       
+
        :script:`cc2538.resc <single-node/cc2538.resc>`
 
    * - .. image:: img/hifive1.png
@@ -87,19 +87,19 @@ Boards supported in this way include:
    * - .. image:: img/tegra3.png
 
        `Toradex Colibri T30 <https://www.toradex.com/computer-on-modules/colibri-arm-family/nvidia-tegra-3>`_
-       
+
        :script:`tegra3.resc <single-node/tegra3.resc>`
 
      - .. image:: img/vegaboard.png
-     
+
        `OpenISA VEGAboard <https://open-isa.org/>`_
 
        :script:`vegaboard_ri5cy.resc <single-node/vegaboard_ri5cy.resc>`
 
      - .. image:: img/c1000.png
-     
+
        `Intel Quark SE Microcontroller Evaluation Kit C1000 <https://click.intel.com/edc/intel-quark-se-microcontroller-evaluation-kit-c1000.html>`_
-       
+
        :script:`quark_c1000.resc <single-node/quark_c1000.resc>`
 
    * - .. image:: img/fomu.png
@@ -146,26 +146,26 @@ Boards supported in this way include:
 
      - .. image:: img/nexys-video.png
 
-       `OpenPOWER Microwatt <https://github.com/antonblanchard/microwatt>`_ on `Digilent Nexys Video <https://reference.digilentinc.com/reference/programmable-logic/nexys-video/start>`_ 
+       `OpenPOWER Microwatt <https://github.com/antonblanchard/microwatt>`_ on `Digilent Nexys Video <https://reference.digilentinc.com/reference/programmable-logic/nexys-video/start>`_
 
        :script:`microwatt.resc <single-node/microwatt.resc>`
 
      - .. image:: img/microchip_icicle.png
 
        `Microchip PolarFire SoC Icicle Kit <https://www.microsemi.com/product-directory/soc-fpgas/5498-polarfire-soc-fpga>`_
-       
+
        :script:`icicle-kit.resc <single-node/icicle-kit.resc>`
 
    * - .. image:: img/nRF52840.png
 
        `Nordic nRF52840 Development Kit <https://www.nordicsemi.com/Software-and-Tools/Development-Kits/nRF52840-DK>`_
-        
+
        `nRF52840.repl <https://github.com/renode/renode/blob/master/platforms/cpus/nrf52840.repl>`_
 
      - .. image:: img/nxp_k64f.png
 
        `NXP FRDM-K64F <https://www.nxp.com/design/development-boards/freedom-development-boards/mcu-boards/freedom-development-platform-for-kinetis-k64-k63-and-k24-mcus:FRDM-K64F>`_
-        
+
        `nxp_k64f.repl <https://github.com/renode/renode/blob/master/platforms/cpus/nxp-k6xf.repl>`_
 
      - .. image:: img/arduino_nano_33_ble.png
@@ -177,7 +177,7 @@ Boards supported in this way include:
    * - .. image:: img/ice40up5k-mdp-env.png
 
        `iCE40 Ultra Plus MDP <http://www.latticesemi.com/products/developmentboardsandkits/ice40ultraplusmobiledevplatform>`_
-        
+
        `ice40up5k-mdp-evn.repl <https://github.com/renode/renode/blob/master/platforms/boards/ice40up5k-mdp-evn.repl>`_
 
      - .. image:: img/crosslink-nx-evn.png
