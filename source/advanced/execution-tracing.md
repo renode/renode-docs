@@ -195,7 +195,7 @@ In Renode, you can display a trace of the guest application's execution in the f
 You can use this to visualize the flow of the application, analyze the relative time taken by each function, and discover potential issues with the implemented functionality or its performance.
 
 ```{note}
-This feature is available on RISC-V, Cortex-A, and Cortex-M CPUs.
+This feature is available on RISC-V, Cortex-A, Cortex-R and Cortex-M CPUs.
 ```
 
 To enable guest profiling, use:
