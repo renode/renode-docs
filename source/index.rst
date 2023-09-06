@@ -55,7 +55,7 @@
    :caption: Advanced topics
    :maxdepth: 2
 
-   advanced/co-simulating-with-verilator
+   advanced/co-simulating-with-a-hdl-simulator
    advanced/building_from_sources
    advanced/platform_description_format
    advanced/execution-tracing

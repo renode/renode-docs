@@ -1,6 +1,6 @@
 # Co-simulating your verilated model
 
-Creating HDL models and co-simulating them in Renode using Verilator is an advanced topic, so be sure to visit the {doc}`../advanced/co-simulating-with-verilator` chapter beforehand.
+Creating HDL models and co-simulating them in Renode using Verilator is an advanced topic, so be sure to visit the {doc}`../advanced/co-simulating-with-a-hdl-simulator` chapter beforehand.
 If you want to use example verilated models as inspiration to build your own ones, visit [Antmicro's GitHub](https://github.com/antmicro/renode-verilator-integration).
 
 ```{note}
