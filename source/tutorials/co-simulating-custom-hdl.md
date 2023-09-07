@@ -135,7 +135,7 @@ cmake -DCMAKE_BUILD_TYPE=Release -DUSER_RENODE_DIR="$RENODE_PATH" ${VERILATOR_PA
 make
 ```
 
-If the build succeeds, `Vtop` is the built verilated peripheral.
+If the build succeeds, `libVtop` is the built verilated peripheral.
 
 ```{note}
 `RENODE_ROOT` and `VERILATOR_ROOT` environment variables can be used instead of CMake `USER_RENODE_DIR` and `USER_VERILATOR_DIR` variables (respectively).
@@ -195,14 +195,19 @@ myVerilatedPeripheral: Verilated.VerilatedUART @ sysbus <0x70000000, +0x100>
 The ``Verilated.BaseDoubleWordVerilatedPeripheral`` type should be used instead of ``Verilated.VerilatedUART`` for Verilated peripherals other than UART.
 ```
 
+```{note}
+The example uses communication based on the library calls integration.
+To use the socket based intergration you should add the ``address`` parameter to the REPL file and use the `Vtop` binary instead.
+```
+
 In Renode, after loading such a platform description with a command either directly in the [Renode monitor](monitor) or with an appropriate [Renode script (.resc) file](scripts), the verilated executable needs to be attached.
-Assuming the `Vtop` executable is located in the Renode root directory, it can be attached with:
+Assuming the `libVtop` binary is located in the Renode root directory, it can be attached with:
 
 ```
-(machine-0) myVerilatedPeripheral SimulationFilePath @Vtop
+(machine-0) myVerilatedPeripheral SimulationFilePath @libVtop
 ```
 
-Otherwise, an absolute path or a path relative to the Renode root directory can be used instead of `Vtop`.
+Otherwise, an absolute path or a path relative to the Renode root directory can be used instead of `libVtop`.
 
 ```{note}
 Paths must start with the `@` symbol or be surrounded by double quotes `"`.
