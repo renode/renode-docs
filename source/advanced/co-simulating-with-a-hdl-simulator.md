@@ -1,26 +1,25 @@
 # Co-simulating with a HDL simulator
 
 Renode includes an integration layer for HDL simulators.
-It allows you to connect your peripheral written in a HDL with interrupts and external interfaces, like UART Rx/Tx lines.
+It allows you to connect an HDL peripheral with interrupts and external interfaces, like UART Rx/Tx lines.
 
-Thanks to the integration using SystemVerilog DPI, Renode can co-simulate with virtually any HDL simulator which supports Direct Programming Interface. 
-Instead of using the DPI based integration you can use another one dedicated for [Verilator](https://veripool.org/verilator/) (an open-source and fast HDL simulator).
+Thanks to the integration using SystemVerilog DPI, Renode can co-simulate with virtually any HDL simulator that supports Direct Programming Interface. 
+If you are using [Verilator](https://veripool.org/verilator/), you can use DPI or a [custom integration layer](https://github.com/renode/renode/tree/master/src/Plugins/VerilatorPlugin/VerilatorIntegrationLibrary/src).
 
 ## Integration layer
 
-There is a dedicated protocol which transfers messages between Renode and simulator using one of two available mechanisms:
-* TCP sockets 
-* by direct calls of functions from dynamically linked binary
+The protocol that transfers messages between Renode and an HDL simulator uses TCP sockets.
+When using Verilator, you can also use direct function calls from dynamically linked binaries.
 
-The integration layer, available as a plugin for Renode, consists of two parts.
-The Renode side consists of [C# classes](https://github.com/renode/renode/tree/master/src/Plugins/VerilatorPlugin), which initiates communication and spawn simulator process if needed.
+Renode side of the integration layer plugin consists of [C# classes](https://github.com/renode/renode/tree/master/src/Plugins/VerilatorPlugin), which initiate communication and spawn simulator process when needed.
 
-The opposite side can use socket connection and one of the following interfaces written in:
-* [SystemVerilog](https://github.com/renode/renode/tree/master/src/Plugins/VerilatorPlugin/VerilatorIntegrationLibrary/hdl) - which connects to your HDL simulation directly, just by signals
-* [C++](https://github.com/renode/renode/tree/master/src/Plugins/VerilatorPlugin/VerilatorIntegrationLibrary/src) - which requires usage of a simulation with a main loop written in C++
+The HDL side can use one of two interfaces:
+* [SystemVerilog interface](https://github.com/renode/renode/tree/master/src/Plugins/VerilatorPlugin/VerilatorIntegrationLibrary/hdl) - which connects directly to your HDL simulation, using only signals
+* [C++ interface](https://github.com/renode/renode/tree/master/src/Plugins/VerilatorPlugin/VerilatorIntegrationLibrary/src) - which requires the use of a simulation with a main loop written in C++.
 
-The second one interface interacts well with Verilator.
-Same as the third option, a C++ interface with a communication using calls of functions available in a dynamically linked library, which essentially is a HDL simulation.
+```{note}
+For Verilator, you should use the C++ interface.
+```
 
 ## Supported buses
 
@@ -30,20 +29,21 @@ Co-simulation in Renode supports the following buses:
 * AXI4
 * AXI4-Lite
 
-The integration dedicated for Verilator supports also the following features:
+Verilator integration also supports the following features:
 
 * Wishbone bus
 * CFU Custom Function Unit interface
 
 ## Using pre-compiled HDL models
 
-The HDL simulation is compiled separately. 
-Renode come with several `.resc` files that use pre-compiled HDL models, corresponding to the sources in the [renode-verilator-integration repository](https://github.com/antmicro/renode-verilator-integration).
+To use an HDL model in Renode simulation, you need to compile it first.
+Renode comes with several `.resc` files that use pre-compiled HDL models, like [Verilated Ibex](https://github.com/renode/renode/blob/master/scripts/single-node/verilated_ibex.resc).
+For more Verilog models, see the [renode-verilator-integration repository](https://github.com/antmicro/renode-verilator-integration).
 
 A script containing a verilated peripheral like [riscv_verilated_liteuart.resc](https://github.com/renode/renode/blob/master/scripts/single-node/riscv_verilated_liteuart.resc) can be loaded and started like any other script, by running e.g.:
 
 ```
-start @path/to/your/script.resc 
+start @path/to/your/script.resc
 ```
 
 ````{note}
@@ -54,24 +54,26 @@ On Linux, to add a FastVDMA HDL model named to peripheral named `dma`, you would
 dma SimulationFilePathLinux @https://dl.antmicro.com/projects/renode/zynq-fastvdma_libVfastvdma-Linux-x86_64-1246779523.so-s_2057616-93e755f7d67bc4d5ca33cce6c88bbe8ea8b3bd31
 ```
 
-You you can use `SimulationFilePathLinux`, `SimulationFilePathMacOS`, and `SimulationFilePathWindows` in the same script;
+You you can use `SimulationFilePathLinux`, `SimulationFilePathMacOS`, and `SimulationFilePathWindows` in the same script if you want to provide different payloads for different OSes.
 Renode will select the one that matches your host OS.
+
+If you are interested in just a single operating system, you can simply use `SimulationFilePath` and Renode will interpret it as a model matching your current OS.
 ````
 
-There are two types of pre-compiled models.
-One with the prefix `V` uses the socket based integration and the another with the name starting with `libV` communicates with Renode via library calls.
-Most of shipped scripts use binaries with the `libV` prefix.
+There are two types of precompiled models:
+* Models prefixed with `V` use the socket based integration
+* Models prefixed with `libV` communicate with Renode via library calls
 
-Renode chooses communication mechanism based on appearance of the `address` parameter of peripheral, required for socket based communication.
-It's typically set in a REPL file.
+Most of the built-in scripts use binaries with the `libV` prefix.
+
+Renode chooses the communication mechanism based on the peripheral's `address` parameter, which is usually set in a REPL file.
+If `address` is specified, your peripheral will use socket-based communication, otherwise it will use library calls.
 
 ## Building your own verilated peripheral models
 
-You can find many examples of verilated peripherals models like CFU, UART, RAM, and even a CPU in the [renode-verilator-integration repository](https://github.com/antmicro/renode-verilator-integration).
-Visit the {doc}`../tutorials/co-simulating-custom-hdl` chapter for detailed instructions how to build the peripherals from that repository or your own verilated peripheral models.
+You can find many examples of verilated peripheral models such as [CFU](https://github.com/antmicro/renode-verilator-integration/tree/master/samples/cfu_basic), [UART](https://github.com/antmicro/renode-verilator-integration/tree/master/samples/uartlite), [RAM](https://github.com/antmicro/renode-verilator-integration/tree/master/samples/ram), and even a [CPU](https://github.com/antmicro/renode-verilator-integration/tree/master/samples/cpu_ibex) in the [renode-verilator-integration repository](https://github.com/antmicro/renode-verilator-integration).
+For detailed instructions on how to build models from the repository or your own, see {doc}`../tutorials/co-simulating-custom-hdl`.
 
-If you need to use simulator different than Verilator, in example [Questa](https://www.intel.com/content/www/us/en/software/programmable/quartus-prime/questa-edition.html), you can build your co-simulation following the instruction from the [renode-dpi-examples repository](https://github.com/antmicro/renode-dpi-examples).
+To use an HDL simulator other than Verilator, such as [Questa](https://www.intel.com/content/www/us/en/software/programmable/quartus-prime/questa-edition.html), follow the instructions in the [renode-dpi-examples repository](https://github.com/antmicro/renode-dpi-examples).
 
-Both repositories contains CMake files which works on Linux and Windows. 
-
-
+Both repositories contain CMake files that work on Linux and Windows.
