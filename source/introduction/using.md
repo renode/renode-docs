@@ -94,7 +94,7 @@ Renode has many built-in `.resc` files, like this [Intel Quark C1000 script](htt
 To load it in Renode, use the ``include`` command with a path:
 
 ```
-include @scripts/single-node/quart_c1000.resc
+include @scripts/single-node/quark_c1000.resc
 ```
 
 If in the above command you use `start` (or just `s`) instead of `include`, the emulation will start immediately after loading the script.
