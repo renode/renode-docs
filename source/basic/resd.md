@@ -7,7 +7,7 @@ For an introduction and description of simple operations on your simulated senso
 Renode Sensor Data (RESD) is a unified and portable way to provide sample data for sensor models implemented in Renode.
 Sensor data described in `.resd` files use standard units and fixed formats for all data types, so they can be used by any existing or future model.
 
-Data stored in a file is divided into independent channels, each of a given type (e.g. temperature or acceleration).
+The data stored in a `.resd` file is divided into independent channels, each of a given type (e.g. temperature or acceleration).
 This allows a single input file to be used for multiple sensors such as IMU.
 It is also possible to include multiple channels of the same type (each identified by a unique channel ID), e.g. two channels for temperature readings.
 
@@ -30,44 +30,33 @@ The file header consists of a 4-byte magic string value `RESD` encoded in ASCII,
 
 Each block header is structured in the following way:
 
-```{list-table} Block header structure
-    :header-rows: 1
+```{csv-table} Block header structure
+:header-rows: 1
+:delim: "|"
 
-
-* - Bytes
-  - 0
-  - 1 - 2
-  - 3 - 4
-  - 5 - 8
-* - Name
-  - Block type
-  - Sample type
-  - Channel id
-  - Data size
+Bytes | 0          | 1 - 2       | 3 - 4      | 5 - 8
+Name  | Block type | Sample type | Channel id | Data size
 ```
 
 ### RESD Block Types
 
 Currently, you can use the following block types in your `.resd` files:
 
-```{list-table} Block types
+```{csv-table} Block types
 :header-rows: 1
+:delim: "|"
 
-* - ID
-  - Block type
-* - 0x0
-  - Reserved
-* - 0x1
-  - [Arbitrary Timestamp Sample Blocks](arbitrary-timestamp-sample-blocks)
-* - 0x2
-  - [Constant Frequency Sample Blocks](constant-frequency-sample-blocks)
+ID  | Block type
+0x0 | Reserved
+0x1 | [Arbitrary Timestamp Sample Blocks](arbitrary-timestamp-sample-blocks)
+0x2 | [Constant Frequency Sample Blocks](constant-frequency-sample-blocks)
 ```
 
 (arbitrary-timestamp-sample-blocks)=
 
 #### Arbitrary timestamp sample blocks
 
-Arbitrary timestamp sample blocks contain a series of samples, each with its own [timestamp].
+Arbitrary timestamp sample blocks contain a series of samples, each with its own [timestamp](timestamps).
 In this type of sample block, you do not specify a period between samples, but instead provide a specific timestamp for each sample to simulate irregular sensor readings.
 
 (constant-frequency-sample-blocks)=
@@ -94,33 +83,18 @@ The `.resd` parser can optionally support a global timestamp addend applied to a
 
 Your `.resd` files can contain the following sample types:
 
-```{list-table} Sample types
+```{csv-table} Sample types
 :header-rows: 1
+:delim: "|"
 
-* - ID
-  - Sample Type
-  - Sample Unit
-* - 0x0000
-  - Reserved
-  - N/A
-* - 0x0001
-  - Temperature
-  - signed 4-byte value in millidegrees (10^-3) Celsius
-* - 0x0002
-  - Acceleration
-  - set of 3 signed 4-byte values in micro g (10^-6)<br> mapped to X, Y, Z dimensions
-* - 0x0003
-  - Angular rate
-  - set of 3 signed 4-byte values in tens of microradians<br> (10^-5)  per second mapped to X, Y, Z dimensions
-* - 0x0004
-  - Voltage
-  - unsigned 4-byte value in microvolts (10^-6) 
-* - 0x0005
-  - ECG
-  - signed 4-byte value in nanovolts (10^-9) 
-* - 0xF000 - 0xFFFF
-  - Custom
-  - defined by model-specific input
+ID              | Sample Type  | Sample Unit
+0x0000          | Reserved     | N/A
+0x0001          | Temperature  | signed 4-byte value in millidegrees (10^-3) Celsius
+0x0002          | Acceleration | set of 3 signed 4-byte values in micro g (10^-6)<br> mapped to X, Y, Z dimensions
+0x0003          | Angular rate | set of 3 signed 4-byte values in tens of microradians<br> (10^-5)  per second mapped to X, Y, Z dimensions
+0x0004          | Voltage      | unsigned 4-byte value in microvolts (10^-6) 
+0x0005          | ECG          | signed 4-byte value in nanovolts (10^-9) 
+0xF000 - 0xFFFF | Custom       | defined by model-specific input
 ```
 
 Keep in mind that sample types other than Custom do not utilize a [metadata](metadata) dictionary (metadata size set to 0).
@@ -137,86 +111,56 @@ Metadata is a binary-encoded dictionary, where each entry consists of a key name
 The first 8 bytes indicate the size of the metadata section and can be set to 0 to indicate that the given block contains no additional metadata.
 
 The key name is a null-terminated string consisting of [a-z0-9_] characters.
-It's followed by a byte that describes a type of value for the given key:
+It's followed by a byte that describes the type of the value for the given key:
 
-```{list-table} Metadata Types
+```{csv-table} Metadata Types
 :header-rows: 1
+:delim: "|"
 
-* - ID
-  - Metadata type
-* - 0x00
-  - Reserved
-* - 0x01
-  - int8
-* - 0x02
-  - uint8
-* - 0x03
-  - int16
-* - 0x04
-  - uint16
-* - 0x05
-  - int32
-* - 0x06
-  - uint32
-* - 0x07
-  - int64
-* - 0x08
-  - uint64
-* - 0x09
-  - float
-* - 0x0A
-  - double
-* - 0x0B
-  - string (null-terminated)
-* - 0x0C
-  - blob
+ID   | Metadata type
+0x00 | Reserved
+0x01 | int8
+0x02 | uint8
+0x03 | int16
+0x04 | uint16
+0x05 | int32
+0x06 | uint32
+0x07 | int64
+0x08 | uint64
+0x09 | float
+0x0A | double
+0x0B | string (null-terminated)
+0x0C | blob
 ```
 
 ```{note}
 In blob type metadata, the first 4 bytes encode the blob content length reset as an unsigned integer.
 ```
 
-For example, the encoding of a metadata section consisting of two entries: a description of type string and data of type blob would look like this
+For example, the encoding of a metadata section consisting of two entries: a description of type string and data of type blob would look like this:
 
-```{list-table} Example metadata string and blob
-   :header-rows: 1
+```{csv-table} Example metadata string and blob
+:header-rows: 1
+:delim: "|"
 
-* - Bytes
-  - Name
-  - Value
-* - 0 - 7
-  - Size
-  - 78
-* - 8 - 19
-  - Key #1 (string)
-  - Description\0
-* - 20
-  - Type #1 (string)
-  - 0x0B
-* - 21 - 59
-  - Value #1
-  - This is a very important sample stream\0
-* - 60 - 64
-  - Key #3 (string)
-  - Data\0
-* - 65
-  - Type #3 (blob)
-  - 0x0C
-* - 66 - 69
-  - Blob size
-  - 0x5
-* - 70 - 74
-  - Blob content
-  - 0xDE 0xAD 0xC0 0xFF 0xEE
+Bytes   | Name             | Value 
+0 - 7   | Size             | 78
+8 - 19  | Key #1 (string)  | Description\0
+20      | Type #1 (string) | 0x0B
+21 - 59 | Value #1         | This is a very important sample stream\0
+60 - 64 | Key #3 (string)  | Data\0
+65      | Type #3 (blob)   | 0x0C
+66 - 69 | Blob size        | 0x5
+70 - 74 | Blob content     | 0xDE 0xAD 0xC0 0xFF 0xEE
 ```
 
 (csv-resd)=
 
 ### CSV - RESD parser usage
 
-[CSV - RESD parser](https://github.com/renode/renode/tree/master/tools/csv2resd) is a tool in the Renode repository that allows you to convert CSV files to the RESD file format.
+The [CSV - RESD parser](https://github.com/renode/renode/tree/master/tools/csv2resd) is a tool in the Renode repository that allows you to convert CSV files to the RESD file format.
 
-To use the tool, you must follow this syntax:
+To use the tool, follow this syntax:
 
 ```
 ./csv2resd.py [GROUP]
@@ -249,159 +193,90 @@ The following instructions show how to use RESD to create a custom sample data e
 The measurements taken by the MAX86171 AFE sensor depend on the channel configuration, e.g. the LED exposure drive current value directly affects the photodiode output.
 Therefore, each MAX86171 AFE sample data block begins with a metadata section containing a dictionary of the following information:
 
-```{list-table} Metadata string and blob example
-   :header-rows: 1
+```{csv-table} Metadata string and blob example
+:header-rows: 1
+:delim: "|"
 
-* - Key name
-  - Type
-  - Description
-* - led_a_exposure
-  - uint16
-  - LED A exposure drive current in mA
-* - led_a_source
-  - uint8
-  - LED A source
-* - led_b_exposure
-  - uint16
-  - LED B exposure drive current in mA
-* - led_b_source
-  - uint8
-  - LED B source
-* - led_c_exposure
-  - uint16
-  - LED C exposure drive current in mA
-* - led_c_source
-  - uint8
-  - LED C source
-* - pd_a_source_flags
-  - uint8
-  - PD A source/flags
-* - pd_a_adc_range
-  - uint32
-  - PD A ADC range
-* - pd_a_dac_offset
-  - int16
-  - PD A DAC offset
-* - pd_b_source_flags
-  - uint8
-  - PD B source/flags
-* - pd_b_adc_range
-  - uint32
-  - PD B ADC range
-* - pd_b_dac_offset
-  - int16
-  - PD B DAC offset
+Key name          | Type   | Description
+led_a_exposure    | uint16 | LED A exposure drive current in mA
+led_a_source      | uint8  | LED A source
+led_b_exposure    | uint16 | LED B exposure drive current in mA
+led_b_source      | uint8  | LED B source
+led_c_exposure    | uint16 | LED C exposure drive current in mA
+led_c_source      | uint8  | LED C source
+pd_a_source_flags | uint8  | PD A source/flags
+pd_a_adc_range    | uint32 | PD A ADC range
+pd_a_dac_offset   | int16  | PD A DAC offset
+pd_b_source_flags | uint8  | PD B source/flags
+pd_b_adc_range    | uint32 | PD B ADC range
+pd_b_dac_offset   | int16  | PD B DAC offset
 ```
 
 #### MAX86171 AFE Sample Data
 
 A single MAX86171 AFE sample is described as a one-byte unsigned value containing a number of active channels followed by a list of measurement frames, each encoded as a four-byte unsigned value:
 
-```{list-table} MAX86171 AFE sample data structure
-   :header-rows: 1
+```{csv-table} MAX86171 AFE sample data structure
+:header-rows: 1
+:delim: "|"
 
-* - Bytes
-  - 0
-  - 1 - 4
-  - 5 - 8
-  - (8N + 1) - (8N + 4)
-* - Values [raw AFE]
-  - Number of frames
-  - Frame #0
-  - Frame #1
-  - Frame #N
+Bytes            | 0                | 1 - 4    | 5 - 8    | (8N + 1) - (8N + 4)
+Values [raw AFE] | Number of frames | Frame #0 | Frame #1 | Frame #N
 ```
 
 An AFE sample in RESD corresponds to a single frame generated by the MAX86171 AFE: two tagged samples are required for each active measurement, as described in the FIFO Description section of the MAX86171 data sheet:
 
-```{list-table} MAX86171 AFE sample details
-   :header-rows: 1
+```{csv-table} MAX86171 AFE sample details
+:header-rows: 1
+:delim: "|"
 
-* - Bits
-  - 31..24
-  - 23..20
-  - 19..0
-* - Values
-  - Reserved
-  - Tag
-  - Value
+Bits   | 31..24   | 23..20 | 19..0
+Values | Reserved | Tag    | Value
 ```
 
 The tag section follows the specification from the FIFO Description section of the sensor's data sheet:
 
-```{list-table} MAX86171 AFE sample details
-   :header-rows: 1
+```{csv-table} MAX86171 AFE sample details
+:header-rows: 1
+:delim: "|"
 
-* - Tag
-  - Description
-* - 0x00
-  - Reserved
-* - 0x01
-  - Measurement 1 Data
-* - 0x02
-  - Measurement 2 Data
-* - 0x03
-  - Measurement 3 Data
-* - 0x04
-  - Measurement 4 Data
-* - 0x05
-  - Measurement 5 Data
-* - 0x06
-  - Measurement 6 Data
-* - 0x07
-  - Measurement 7 Data
-* - 0x08
-  - Measurement 8 Data
-* - 0x09
-  - Measurement 9 Data
-* - 0x0A
-  - Dark Data
-* - 0x0B
-  - ALC Overflow Event
-* - 0x0C
-  - Exposure Overflow Event
-* - 0x0D
-  - Picket Fence Event
-* - 0x0E
-  - Invalid Data
-* - 0x0F
-  - Reserved
+Tag  | Description
+0x00 | Reserved
+0x01 | Measurement 1 Data
+0x02 | Measurement 2 Data
+0x03 | Measurement 3 Data
+0x04 | Measurement 4 Data
+0x05 | Measurement 5 Data
+0x06 | Measurement 6 Data
+0x07 | Measurement 7 Data
+0x08 | Measurement 8 Data
+0x09 | Measurement 9 Data
+0x0A | Dark Data
+0x0B | ALC Overflow Event
+0x0C | Exposure Overflow Event
+0x0D | Picket Fence Event
+0x0E | Invalid Data
+0x0F | Reserved
 ```
 
-Sample with data two measurement OC channel 1 would then look like this:
+A sample with data two measurement OC channel 1 would then look like this:
 
-```{list-table} MAX86171 AFE sample details
-   :header-rows: 1
+```{csv-table} MAX86171 AFE sample details
+:header-rows: 1
+:delim: "|"
 
-* - Bytes
-  - 0
-  - 1 - 4
-  - 5 - 8
-* - Names
-  - No. frames
-  - Frame 1 (Measurement 1)
-  - Frame 2 (Measurement 1)
-* - Values
-  - 0x2
-  - 0x00 0x01 0x12 0x34
-  - 0x00 0x01 0x12 0x34
+Bytes  | 0          | 1 - 4                   | 5 - 8
+Names  | No. frames | Frame 1 (Measurement 1) | Frame 2 (Measurement 1)
+Values | 0x2        | 0x00 0x01 0x12 0x34     | 0x00 0x01 0x12 0x34
 ```
 
 The frames can be decoded as:
 
-```{list-table} MAX86171 AFE decoded frames
-   :header-rows: 1
+```{csv-table} MAX86171 AFE decoded frames
+:header-rows: 1
+:delim: "|"
 
-* - Bits
-  - 31..24
-  - 23..20
-  - 19..0
-* - Names
-  - Reserved
-  - Measurement 1 tag
-  - Measurement value
-* - Values
-  - 0x000
-  - 0x1
-  - 0x1234
+Bits   | 31..24   | 23..20            | 19..0
+Names  | Reserved | Measurement 1 tag | Measurement value
+Values | 0x000    | 0x1               | 0x1234
 ```
