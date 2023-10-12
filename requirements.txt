@@ -1,3 +1,4 @@
+sphinx<6
 sphinx_tabs
 sphinxcontrib-svg2pdfconverter
 myst-parser
