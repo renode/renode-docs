@@ -154,38 +154,6 @@ Bytes   | Name             | Value
 70 - 74 | Blob content     | 0xDE 0xAD 0xC0 0xFF 0xEE
 ```
 
-(csv-resd)=
-
-### CSV - RESD parser usage
-
-The [CSV - RESD parser](https://github.com/renode/renode/tree/master/tools/csv2resd) is a tool in the Renode repository that allows you to convert CSV files to the RESD file format.
-
-To use the tool, follow this syntax:
-
-```
-./csv2resd.py [GROUP]
-GROUP ::= -i <csv-file> [-m <type>:<field(s)>:<target(s)>*:<channel>*] -s <start-time> -f <frequency> -t <timestamp>
-```
-
-The syntax allows multiple group specifications, where --input is a separator between groups.
-You can specify multiple mappings (`-map`) for each `--input`.
-
-The `*` in `--map` indicates that the given property is optional.
-For your `--map` argument to be correct, it must be structured in one of the following ways:
-
-* `--map <type>:<field(s)>`
-* `--map <type>:<field(s)>:<target(s)>`
-* `--map <type>:<field(s)>:<target(s)>:<channel>`
-* `--map <type>:<field>::<channel>`
-
-See `--help` for more information.
-
-If you wanted to extract the columns `temp1` and `temp2` from the file `first.csv` and `temp` from the file `second.csv` and then map them to the temperature channels `0`, `1` and `2` in RESD, respectively, you would run the script with the following parameters:
-
-```
-./csv2resd.py -i first.csv -m temperature:temp1::0 -m temperature:temp2::1 -s 0 -f 1 -i second.csv -m temperature:temp::2 -s 0 -f 1 output.resd
-```
-
 ### Custom Sample Data Example - MAX86171 AFE
 
 The following instructions show how to use RESD to create a custom sample data example based on a real sensor - [MAX86171 AFE](https://www.analog.com/media/en/technical-documentation/data-sheets/MAX86171.pdf).
@@ -280,3 +248,36 @@ Bits   | 31..24   | 23..20            | 19..0
 Names  | Reserved | Measurement 1 tag | Measurement value
 Values | 0x000    | 0x1               | 0x1234
 ```
+
+(csv-resd)=
+
+### CSV - RESD parser usage
+
+The [CSV - RESD parser](https://github.com/renode/renode/tree/master/tools/csv2resd) is a tool in the Renode repository that allows you to convert CSV files to the RESD file format.
+
+To use the tool, follow this syntax:
+
+```
+./csv2resd.py [GROUP]
+GROUP ::= -i <csv-file> [-m <type>:<field(s)>:<target(s)>*:<channel>*] -s <start-time> -f <frequency> -t <timestamp>
+```
+
+The syntax allows multiple group specifications, where --input is a separator between groups.
+You can specify multiple mappings (`-map`) for each `--input`.
+
+The `*` in `--map` indicates that the given property is optional.
+For your `--map` argument to be correct, it must be structured in one of the following ways:
+
+* `--map <type>:<field(s)>`
+* `--map <type>:<field(s)>:<target(s)>`
+* `--map <type>:<field(s)>:<target(s)>:<channel>`
+* `--map <type>:<field>::<channel>`
+
+See `--help` for more information.
+
+If you wanted to extract the columns `temp1` and `temp2` from the file `first.csv` and `temp` from the file `second.csv` and then map them to the temperature channels `0`, `1` and `2` in RESD, respectively, you would run the script with the following parameters:
+
+```
+./csv2resd.py -i first.csv -m temperature:temp1::0 -m temperature:temp2::1 -s 0 -f 1 -i second.csv -m temperature:temp::2 -s 0 -f 1 output.resd
+```
+
