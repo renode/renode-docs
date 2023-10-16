@@ -22,7 +22,7 @@ from antmicro_sphinx_utils.defaults import (
 project = u'Renode - documentation'
 basic_filename = 'renode-docs'
 authors = u'Antmicro'
-copyright = authors + u', 2010-' + str(date.today().year)
+copyright = u'2010-' + str(date.today().year) + ' ' + authors
 
 version = ''
 release = ''
