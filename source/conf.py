@@ -4,6 +4,7 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
 import os
+import posixpath
 from os import environ
 from datetime import date
 from subprocess import check_call
@@ -116,4 +117,16 @@ latex_logo = 'renode-sphinx/logo-latex.pdf'
 latex_additional_files = ['%s/%s.sty' % ('renode-sphinx','renode'),latex_logo]
 
 def setup(app):
+    app.connect('build-finished', on_build_finished)
     check_call("./generate-renode-platforms.sh", shell=True, cwd=os.path.join(os.path.dirname(os.path.realpath(__file__)), '..'))
+
+def on_build_finished(app, exc):
+    if not app.builder or app.builder.name != 'html':
+        return
+
+    if exc is None:
+        bad_js = posixpath.join(app.outdir, "_static", "design-tabs.js")
+        try:
+            os.remove(bad_js)
+        except OSError:
+            pass

@@ -29,8 +29,6 @@ build:
     - make text
     - for file in $(find build/text -type f -name '*.txt'); do mv "$file" "${file%.txt}.rst.txt"; done
     - mv build/text build/html/_sources
-    # ugly hack to prevent collision between `sphinx_design` and `sphinx_inline_tabs` that causes tab sync to be broken, to be fixed
-    - rm build/html/_static/design-tabs.js
     - tar cf $CI_DOCS_ARCHIVE -C build/html/ .
   artifacts:
     paths:
