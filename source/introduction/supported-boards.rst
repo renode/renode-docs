@@ -30,191 +30,222 @@ Boards supported in this way include:
 .. list-table::
    :class: boards-table
 
-   * - .. image:: img/stm32f103.png
+   * - .. card:: `ST Micro STM32 Nucleo-64 <https://www.st.com/en/evaluation-tools/nucleo-f103rb.html>`_
+          :text-align: center
 
-       `ST Micro STM32 Nucleo-64 <https://www.st.com/en/evaluation-tools/nucleo-f103rb.html>`_
+          .. image:: img/stm_discovery.png
+          +++
+          :script:`stm32f4_discovery.resc <single-node/stm32f4_discovery.resc>`
 
-       :script:`stm32f103.resc <single-node/stm32f103.resc>`
+     - .. card:: `ST Micro STM32F4 Discovery <https://www.st.com/en/evaluation-tools/stm32f4discovery.html>`_
+          :text-align: center
 
-     - .. image:: img/stm_discovery.png
+          .. image:: img/stm_discovery.png
+          +++
+          :script:`stm32f4_discovery.resc <single-node/stm32f4_discovery.resc>`
 
-       `ST Micro STM32F4 Discovery <https://www.st.com/en/evaluation-tools/stm32f4discovery.html>`_
+     - .. card:: `ST Micro STM32F7 Discovery <https://www.st.com/en/evaluation-tools/32f746gdiscovery.html>`_
+          :text-align: center
 
-       :script:`stm32f4_discovery.resc <single-node/stm32f4_discovery.resc>`
+          .. image:: img/stm32f746.png
+          +++
+          :script:`stm32f746.resc <single-node/stm32f746.resc>`
 
-     - .. image:: img/stm32f746.png
+   * - .. card:: `SiLabs EFR32 Mighty Gecko Wireless Starter Kit <https://www.silabs.com/products/development-tools/wireless/mesh-networking/mighty-gecko-starter-kit>`_
+          :text-align: center
 
-       `ST Micro STM32F7 Discovery <https://www.st.com/en/evaluation-tools/32f746gdiscovery.html>`_
+          .. image:: img/efr32mg-better.png
+          +++
+          :script:`efr32mg.resc <single-node/efr32mg.resc>`
 
-       :script:`stm32f746.resc <single-node/stm32f746.resc>`
+     - .. card:: `Microchip SAM E70 Xplained Evaluation Kit <https://www.microchip.com/DevelopmentTools/ProductDetails/PartNO/ATSAME70-XPLD>`_
+          :text-align: center
 
-   * - .. image:: img/efr32mg-better.png
+          .. image:: img/sam_e70.png
+          +++
+          :script:`sam_e70.resc <single-node/sam_e70.resc>`
 
-       `SiLabs EFR32 Mighty Gecko Wireless Starter Kit <https://www.silabs.com/products/development-tools/wireless/mesh-networking/mighty-gecko-starter-kit>`_
+     - .. card:: `TI CC2538 Development Kit <http://www.ti.com/tool/CC2538DK>`_
+          :text-align: center
 
-       :script:`efr32mg.resc <single-node/efr32mg.resc>`
+          .. image:: img/cc2538.png
+          +++
+          :script:`cc2538.resc <single-node/cc2538.resc>`
 
-     - .. image:: img/sam_e70.png
+   * - .. card:: `SiFive HiFive1 <https://www.sifive.com/boards/hifive1>`_
+          :text-align: center
 
-       `Microchip SAM E70 Xplained Evaluation Kit <https://www.microchip.com/DevelopmentTools/ProductDetails/PartNO/ATSAME70-XPLD>`_
+          .. image:: img/hifive1.png
+          +++
+          :script:`sifive_fe310.resc <single-node/sifive_fe310.resc>`
 
-       :script:`sam_e70.resc <single-node/sam_e70.resc>`
+     - .. card:: `SiFive HiFive Unleashed <https://www.sifive.com/boards/hifive-unleashed>`_
+          :text-align: center
 
-     - .. image:: img/cc2538.png
+          .. image:: img/hifive_unleashed.png
+          +++
+          :script:`hifive_unleashed.resc <single-node/hifive_unleashed.resc>`
 
-       `TI CC2538 Development Kit <http://www.ti.com/tool/CC2538DK>`_
+     - .. card:: `Microchip PolarFire SoC Hardware Development Platform <https://www.microsemi.com/product-directory/soc-fpgas/5498-polarfire-soc-fpga#getting-started>`_
+          :text-align: center
 
-       :script:`cc2538.resc <single-node/cc2538.resc>`
+          .. image:: img/polarfire.png
+          +++
+          :script:`polarfire-soc.resc <single-node/polarfire-soc.resc>`
 
-   * - .. image:: img/hifive1.png
+   * - .. card:: `Toradex Colibri T30 <https://www.toradex.com/computer-on-modules/colibri-arm-family/nvidia-tegra-3>`_
+          :text-align: center
 
-       `SiFive HiFive1 <https://www.sifive.com/boards/hifive1>`_
+          .. image:: img/tegra3.png
+          +++
+          :script:`tegra3.resc <single-node/tegra3.resc>`
 
-       :script:`sifive_fe310.resc <single-node/sifive_fe310.resc>`
+     - .. card:: `OpenISA VEGAboard <https://open-isa.org/>`_
+          :text-align: center
 
-     - .. image:: img/hifive_unleashed.png
+          .. image:: img/vegaboard.png
+          +++
+          :script:`vegaboard_ri5cy.resc <single-node/vegaboard_ri5cy.resc>`
 
-       `SiFive HiFive Unleashed <https://www.sifive.com/boards/hifive-unleashed>`_
+     - .. card:: `Intel Quark SE Microcontroller Evaluation Kit C1000 <https://click.intel.com/edc/intel-quark-se-microcontroller-evaluation-kit-c1000.html>`_
+          :text-align: center
 
-       :script:`hifive_unleashed.resc <single-node/hifive_unleashed.resc>`
+          .. image:: img/c1000.png
+          +++
+          :script:`quark_c1000.resc <single-node/quark_c1000.resc>`
 
-     - .. image:: img/polarfire.png
+   * - .. card:: `Fomu <https://tomu.im/fomu.html>`_
+          :text-align: center
 
-       `Microchip PolarFire SoC Hardware Development Platform <https://www.microsemi.com/product-directory/soc-fpgas/5498-polarfire-soc-fpga#getting-started>`_
+          .. image:: img/fomu.png
+          +++
+          :script:`renode_etherbone_fomu.resc <complex/fomu/renode_etherbone_fomu.resc>`
 
-       :script:`polarfire-soc.resc <single-node/polarfire-soc.resc>`
+     - .. card:: `LiteX/VexRiscv <https://github.com/litex-hub/linux-on-litex-vexriscv>`_ on `Digilent Arty <https://reference.digilentinc.com/reference/programmable-logic/arty/start>`_
+          :text-align: center
 
-   * - .. image:: img/tegra3.png
+          .. image:: img/arty.png
+          +++
+          :script:`arty_litex_vexriscv.resc <single-node/arty_litex_vexriscv.resc>`
 
-       `Toradex Colibri T30 <https://www.toradex.com/computer-on-modules/colibri-arm-family/nvidia-tegra-3>`_
+     - .. card:: `Xilinx ZedBoard <http://www.zedboard.org/product/zedboard>`_
+          :text-align: center
 
-       :script:`tegra3.resc <single-node/tegra3.resc>`
+          .. image:: img/zedboard.png
+          +++
+          :script:`zedboard.resc <single-node/zedboard.resc>`
 
-     - .. image:: img/vegaboard.png
+   * - .. card:: `ST Micro STM32F103 Blue Pill <https://stm32-base.org/boards/STM32F103C8T6-Blue-Pill>`_
+          :text-align: center
 
-       `OpenISA VEGAboard <https://open-isa.org/>`_
+          .. image:: img/bluepill.png
+          +++
+          :script:`stm32f103.resc <single-node/stm32f103.resc>`
 
-       :script:`vegaboard_ri5cy.resc <single-node/vegaboard_ri5cy.resc>`
+     - .. card:: `Kendryte K210 <https://www.seeedstudio.com/Sipeed-MAix-BiT-for-RISC-V-AI-IoT-p-2872.html>`_
+          :text-align: center
 
-     - .. image:: img/c1000.png
+          .. image:: img/k210.png
+          +++
+          :script:`kendryte_k210.resc <single-node/kendryte_k210.resc>`
 
-       `Intel Quark SE Microcontroller Evaluation Kit C1000 <https://click.intel.com/edc/intel-quark-se-microcontroller-evaluation-kit-c1000.html>`_
+     - .. card:: `Zolertia Firefly <https://zolertia.io/product/firefly/>`_
+          :text-align: center
 
-       :script:`quark_c1000.resc <single-node/quark_c1000.resc>`
+          .. image:: img/zolertia-firefly.png
+          +++
+          :script:`zolertia.resc <single-node/zolertia.resc>`
 
-   * - .. image:: img/fomu.png
+   * - .. card:: `QuickFeather Development Kit <https://www.quicklogic.com/products/eos-s3/quickfeather-development-kit/>`_
+          :text-align: center
 
-       `Fomu <https://tomu.im/fomu.html>`_
+          .. image:: img/quickfeather.png
+          +++
+          :script:`quickfeather.resc <single-node/quickfeather.resc>`
 
-       :script:`renode_etherbone_fomu.resc <complex/fomu/renode_etherbone_fomu.resc>`
+     - .. card:: `OpenPOWER Microwatt <https://github.com/antonblanchard/microwatt>`_ on `Digilent Nexys Video <https://reference.digilentinc.com/reference/programmable-logic/nexys-video/start>`_
+          :text-align: center
 
-     - .. image:: img/arty.png
+          .. image:: img/nexys-video.png
+          +++
+          :script:`microwatt.resc <single-node/microwatt.resc>`
 
-       `LiteX/VexRiscv <https://github.com/litex-hub/linux-on-litex-vexriscv>`_ on `Digilent Arty <https://reference.digilentinc.com/reference/programmable-logic/arty/start>`_
+     - .. card:: `Microchip PolarFire SoC Icicle Kit <https://www.microsemi.com/product-directory/soc-fpgas/5498-polarfire-soc-fpga>`_
+          :text-align: center
 
-       :script:`arty_litex_vexriscv.resc <single-node/arty_litex_vexriscv.resc>`
+          .. image:: img/microchip_icicle.png
+          +++
+          :script:`icicle-kit.resc <single-node/icicle-kit.resc>`
 
-     - .. image:: img/zedboard.png
+   * - .. card:: `Nordic nRF52840 Development Kit <https://www.nordicsemi.com/Software-and-Tools/Development-Kits/nRF52840-DK>`_
+          :text-align: center
 
-       `Xilinx ZedBoard <http://www.zedboard.org/product/zedboard>`_
+          .. image:: img/nRF52840.png
+          +++
+          `nRF52840.repl <https://github.com/renode/renode/blob/master/platforms/cpus/nrf52840.repl>`_
 
-       :script:`zedboard.resc <single-node/zedboard.resc>`
+     - .. card:: `NXP FRDM-K64F <https://www.nxp.com/design/development-boards/freedom-development-boards/mcu-boards/freedom-development-platform-for-kinetis-k64-k63-and-k24-mcus:FRDM-K64F>`_
+          :text-align: center
 
-   * - .. image:: img/bluepill.png
+          .. image:: img/nxp_k64f.png
+          +++
+          `nxp_k64f.repl <https://github.com/renode/renode/blob/master/platforms/cpus/nxp-k6xf.repl>`_
 
-       `ST Micro STM32F103 Blue Pill <https://stm32-base.org/boards/STM32F103C8T6-Blue-Pill>`_
+     - .. card:: `Arduino Nano 33 BLE <https://store.arduino.cc/arduino-nano-33-ble>`_
+          :text-align: center
 
-       :script:`stm32f103.resc <single-node/stm32f103.resc>`
+          .. image:: img/arduino_nano_33_ble.png
+          +++
+          `arduino_nano_33_ble.repl <https://github.com/renode/renode/blob/master/platforms/boards/arduino_nano_33_ble.repl>`_
 
-     - .. image:: img/k210.png
+   * - .. card:: `iCE40 Ultra Plus MDP <http://www.latticesemi.com/products/developmentboardsandkits/ice40ultraplusmobiledevplatform>`_
+          :text-align: center
 
-       `Kendryte K210 <https://www.seeedstudio.com/Sipeed-MAix-BiT-for-RISC-V-AI-IoT-p-2872.html>`_
+          .. image:: img/ice40up5k-mdp-env.png
+          +++
+          `ice40up5k-mdp-evn.repl <https://github.com/renode/renode/blob/master/platforms/boards/ice40up5k-mdp-evn.repl>`_
 
-       :script:`kendryte_k210.resc <single-node/kendryte_k210.resc>`
+     - .. card:: `CrossLink-NX Evaluation Board <https://www.latticesemi.com/en/Products/DevelopmentBoardsAndKits/CrossLink-NXEvaluationBoard>`_
+          :text-align: center
 
-     - .. image:: img/zolertia-firefly.png
+          .. image:: img/crosslink-nx-evn.png
+          +++
+          `crosslink-nx-evn.repl <https://github.com/renode/renode/blob/master/platforms/boards/crosslink-nx-evn.repl>`_
 
-       `Zolertia Firefly <https://zolertia.io/product/firefly/>`_
+     - .. card:: `NXP i.MX RT1064 Evaluation Kit <https://www.nxp.com/design/development-boards/i-mx-evaluation-and-development-boards/mimxrt1064-evk-i-mx-rt1064-evaluation-kit:MIMXRT1064-EVK>`_
+          :text-align: center
 
-       :script:`zolertia.resc <single-node/zolertia.resc>`
+          .. image:: img/imxrt1064.png
+          +++
+          `imxrt1064.repl <https://github.com/renode/renode/blob/master/platforms/cpus/imxrt1064.repl>`_
 
-   * - .. image:: img/quickfeather.png
+   * - .. card:: `BeagleV StarLight <https://beagleboard.org/beaglev>`_
+          :text-align: center
 
-       `QuickFeather Development Kit <https://www.quicklogic.com/products/eos-s3/quickfeather-development-kit/>`_
+          .. image:: img/beaglev_starlight.png
+          +++
+          :script:`beaglev_starlight.resc <single-node/beaglev_starlight.resc>`
 
-       :script:`quickfeather.resc <single-node/quickfeather.resc>`
+     - .. card:: `ARVSOM - Antmicro RISC-V System on Module <https://github.com/antmicro/arvsom>`_
+          :text-align: center
 
-     - .. image:: img/nexys-video.png
+          .. image:: img/arvsom.png
+          +++
+          :script:`arvsom.resc <single-node/arvsom.resc>`
 
-       `OpenPOWER Microwatt <https://github.com/antonblanchard/microwatt>`_ on `Digilent Nexys Video <https://reference.digilentinc.com/reference/programmable-logic/nexys-video/start>`_
+     - .. card:: `GR716 Development Board <https://www.gaisler.com/index.php/products/boards/gr716-boards>`_
+          :text-align: center
 
-       :script:`microwatt.resc <single-node/microwatt.resc>`
+          .. image:: img/gr716.png
+          +++
+          :script:`gr716_zephyr.resc <single-node/gr716_zephyr.resc>`
 
-     - .. image:: img/microchip_icicle.png
+   * - .. card:: `MAX32652 Evaluation Kit <https://www.maximintegrated.com/en/products/microcontrollers/MAX32650-EVKIT.html>`_
+          :text-align: center
 
-       `Microchip PolarFire SoC Icicle Kit <https://www.microsemi.com/product-directory/soc-fpgas/5498-polarfire-soc-fpga>`_
-
-       :script:`icicle-kit.resc <single-node/icicle-kit.resc>`
-
-   * - .. image:: img/nRF52840.png
-
-       `Nordic nRF52840 Development Kit <https://www.nordicsemi.com/Software-and-Tools/Development-Kits/nRF52840-DK>`_
-
-       `nRF52840.repl <https://github.com/renode/renode/blob/master/platforms/cpus/nrf52840.repl>`_
-
-     - .. image:: img/nxp_k64f.png
-
-       `NXP FRDM-K64F <https://www.nxp.com/design/development-boards/freedom-development-boards/mcu-boards/freedom-development-platform-for-kinetis-k64-k63-and-k24-mcus:FRDM-K64F>`_
-
-       `nxp_k64f.repl <https://github.com/renode/renode/blob/master/platforms/cpus/nxp-k6xf.repl>`_
-
-     - .. image:: img/arduino_nano_33_ble.png
-
-       `Arduino Nano 33 BLE <https://store.arduino.cc/arduino-nano-33-ble>`_
-
-       `arduino_nano_33_ble.repl <https://github.com/renode/renode/blob/master/platforms/boards/arduino_nano_33_ble.repl>`_
-
-   * - .. image:: img/ice40up5k-mdp-env.png
-
-       `iCE40 Ultra Plus MDP <http://www.latticesemi.com/products/developmentboardsandkits/ice40ultraplusmobiledevplatform>`_
-
-       `ice40up5k-mdp-evn.repl <https://github.com/renode/renode/blob/master/platforms/boards/ice40up5k-mdp-evn.repl>`_
-
-     - .. image:: img/crosslink-nx-evn.png
-
-       `CrossLink-NX Evaluation Board <https://www.latticesemi.com/en/Products/DevelopmentBoardsAndKits/CrossLink-NXEvaluationBoard>`_
-
-       `crosslink-nx-evn.repl <https://github.com/renode/renode/blob/master/platforms/boards/crosslink-nx-evn.repl>`_
-
-     - .. image:: img/imxrt1064.png
-
-       `NXP i.MX RT1064 Evaluation Kit <https://www.nxp.com/design/development-boards/i-mx-evaluation-and-development-boards/mimxrt1064-evk-i-mx-rt1064-evaluation-kit:MIMXRT1064-EVK>`_
-
-       `imxrt1064.repl <https://github.com/renode/renode/blob/master/platforms/cpus/imxrt1064.repl>`_
-
-   * - .. image:: img/beaglev_starlight.png
-
-       `BeagleV StarLight <https://beagleboard.org/beaglev>`_
-
-       :script:`beaglev_starlight.resc <single-node/beaglev_starlight.resc>`
-
-     - .. image:: img/arvsom.png
-
-       `ARVSOM - Antmicro RISC-V System on Module <https://github.com/antmicro/arvsom>`_
-
-       :script:`arvsom.resc <single-node/arvsom.resc>`
-
-     - .. image:: img/gr716.png
-
-       `GR716 Development Board <https://www.gaisler.com/index.php/products/boards/gr716-boards>`_
-
-       :script:`gr716_zephyr.resc <single-node/gr716_zephyr.resc>`
-
-   * - .. image:: img/max32652-evkit.png
-
-       `MAX32652 Evaluation Kit <https://www.maximintegrated.com/en/products/microcontrollers/MAX32650-EVKIT.html>`_
-
-       :script:`max32652-evkit.resc <single-node/max32652-evkit.resc>`
+          .. image:: img/max32652-evkit.png
+          +++
+          :script:`max32652-evkit.resc <single-node/max32652-evkit.resc>`
 
      -
 
