@@ -158,13 +158,11 @@ Now you need to configure the debug configuration in SoftConsole.
 In the Project Explorer, right click on your project's name, select ``Debug As`` and ``Debug Configurations...``.
 
 .. image:: miv/softconsole-debug.png
-    :scale: 100%
 
 This opens a window, where you need to open the ``Debugger`` tab.
 There, uncheck the checkbox ``Start OpenOCD locally``, as Renode will serve the same purpose as OpenOCD usually does.
 
 .. image:: miv/softconsole-openocd.png
-    :scale: 100%
 
 You must verify that the remote port number in the ``Remote Target`` section is the same as the one provided in the ``StartGdbServer`` command.
 
@@ -176,4 +174,3 @@ By default, you will observe a breakpoint at the beginning of the ``main`` funct
 In SoftConsole you can add your own breakpoints, inspect and change variables and step over your code, while still being able to interact with Renode in the usual way, via the Monitor.
 
 .. image:: miv/softconsole-breakpoint.png
-    :scale: 100%
