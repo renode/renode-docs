@@ -260,4 +260,25 @@ Supported peripherals
 =====================
 
 .. raw:: html
+
+  <style>
+    .peripherals-table tr {
+        height: 2em;
+     }
+    .peripherals-table td,
+    .peripherals-table th {
+        border: 1px solid grey;
+        border-top: 0px;
+        vertical-align: middle;
+    }
+    .peripherals-table {
+        margin-top: 20px;
+        border-top: 1px solid grey;
+    }
+    .peripherals-table table {
+        margin-top: 0px!important;
+    }
+  </style>
+
+.. raw:: html
    :file: renode_supported_peripherals.html
