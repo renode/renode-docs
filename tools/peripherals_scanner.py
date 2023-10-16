@@ -402,7 +402,7 @@ def generate_html():
     res +="""
 <style>
 .category h3 {
-  background-color: #ddd;
+  background-color: #666;
   border: none;
   // color: #404040;
   padding: 10px 20px;

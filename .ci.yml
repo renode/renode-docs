@@ -1,27 +1,50 @@
-image: $DOCKER_IMAGE
+# Triggered only after MR is created/modified/closed and on master
+.common_only: &common_only
+  only:
+    - master
+    - merge_requests
+    - schedules
+  except:
+    variables:
+      - $CI_COMMIT_MESSAGE =~ /\[(skip ci|ci skip|no ci)\]/i
 
-before_script:
-  - python3 -m pip install -r requirements.txt
-  - apt update && apt install -y git librsvg2-bin
+stages:
+  - build
+  - deploy
 
-variables:
-  DOCS_DIR: '.'
-  CONF_PY_STRING: '\nhtml_context = {"conf_py_path": "$DOCS_DIR/source/"}'
+image: $CI_DOCS_DOCKER_IMAGE
 
-build-and-deploy:
-  tags:
-    - docs
+
+build:
+  stage: build
+  tags: ['ace-x86_64']
+  <<: *common_only
+  before_script:
+    - apt update && apt install -y git librsvg2-bin
+    - pip3 install -r requirements.txt
   script:
-    - cd $DOCS_DIR
-    - echo -e $CONF_PY_STRING >> source/conf.py
+    - echo -en "\nhtml_js_files = [ '$ANNOTANT' ]" >> source/conf.py
     - make html
     - rm -R build/html/_sources
     - make text
     - for file in $(find build/text -type f -name '*.txt'); do mv "$file" "${file%.txt}.rst.txt"; done
     - mv build/text build/html/_sources
-    - mv build/html $CI_PROJECT_NAME
-    - cp -r $CI_PROJECT_NAME /opt/docs/
-
+    # ugly hack to prevent collision between `sphinx_design` and `sphinx_inline_tabs` that causes tab sync to be broken, to be fixed
+    - rm build/html/_static/design-tabs.js
+    - tar cf $CI_DOCS_ARCHIVE -C build/html/ .
   artifacts:
     paths:
-      - $DOCS_DIR/$CI_PROJECT_NAME
+      - $CI_DOCS_ARCHIVE
+
+deploy:
+  variables:
+    GIT_STRATEGY: none
+  dependencies:
+    - build
+  stage: deploy
+  tags: ['docs']
+  <<: *common_only
+  script: echo 'Deploying docs'
+  artifacts:
+    paths:
+      - $CI_DOCS_ARCHIVE
