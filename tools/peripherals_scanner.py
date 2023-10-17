@@ -131,6 +131,7 @@ def try_get_category(platform):
         "murax_vexriscv":  "OTHER RISC-V",
         "murax_vexriscv_verilated_uart":   "OTHER RISC-V",
         "nrf52840":    "NORDIC",
+        "nrf52840dk_nrf52840":    "NORDIC",
         "nucleo_wba52cg": "STM",
         "nxp-k6xf":    "NXP KINETIS",
         "opentitan-earlgrey":  "OTHER RISC-V",
