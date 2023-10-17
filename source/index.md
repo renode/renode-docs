@@ -85,4 +85,5 @@ tutorials/fomu-example
 tutorials/usbip
 tutorials/co-simulating-custom-hdl
 tutorials/ble-simulation
+tutorials/ble-hci-integration
 ```
