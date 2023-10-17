@@ -11,6 +11,7 @@ introduction/demo
 introduction/supported-boards
 introduction/troubleshooting
 introduction/testing
+introduction/developing-renode
 ```
 
 
