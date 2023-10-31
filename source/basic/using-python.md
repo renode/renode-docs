@@ -1,9 +1,18 @@
 # Using Python in Renode
 
-## Why use Python in Renode?
+Renode offers several different Python integrations which can be used to extend it, both from the inside and outside.
+It is important to differentiate between them to avoid confusion:
 
-Renode can be extended with Python in many ways, which offers a lot of developer flexibility.
-You can use Python in runtime to do things like reacting to lines on UART, change of user state, peripheral access, or a value appearing in the memory.
+* built-in IronPython integration (this is Python 2 running inside Renode) which is the main focus of this chapter
+* external [pyrenode](https://github.com/antmicro/pyrenode) integration (this is a Python 3 wrapper using RPC calls to call Renode / execute Robot keywords)
+* (NEW!) external [pyrenode3](https://github.com/antmicro/pyrenode3) integration (this is the new, native CLR bindings, esentially a Python 3 wrapper around all of Renode, set to replace the 'older' pyrenode when stabilized)
+
+This chapter currently focuses on the built-in IronPython integration and use of Python from within Renode, hence the Python 2 syntax with old-style `print` statements you will notice throughout.
+Eventually, the internal (Iron)Python integration will either be migrated to IronPython3 or moved over to the the same mechanism `pyrenode3` is using.
+
+In the meantime, documentation will be added for `pyrenode3` to complement this chapter.
+
+Thanks to the IronPython integration, you can use Python in runtime to do things like reacting to lines on UART, change of user state, peripheral access, or a value appearing in the memory.
 
 Python offers a real programming language syntax with its flow control constructs, loops, etc.
 
