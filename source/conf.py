@@ -104,6 +104,8 @@ html_theme_options.update({
 
 html_logo = 'renode-sphinx/logo-400-html.png'
 
+html_favicon = 'favicon.ico'
+
 # -- Options for LaTeX output --------------------------------------------------
 
 (
