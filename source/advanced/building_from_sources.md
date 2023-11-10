@@ -77,7 +77,7 @@ Prior to cloning the repository on *Windows*, git has to be configured appropria
 
 **C# build tools**
 
-1. Download [VS Build Tools 2019](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=16).
+1. Download [VS Build Tools 2019](https://aka.ms/vs/16/release/vs_BuildTools.exe).
 2. Run the installer, select the *Visual Studio Build Tools 2019* product and click *Install* or *Modify*.
 3. Switch to the *Individual components* pane and select:
 
