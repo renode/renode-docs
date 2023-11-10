@@ -8,7 +8,7 @@ This document provides detailed information on how to prepare the build environm
 
 :::{tab} Linux
 
-The following instructions have been tested on Ubuntu 16.04, however there should not be any major issues preventing you from using other (especially Debian-based) distributions as well.
+The following instructions have been tested on Ubuntu 20.04, however there should not be any major issues preventing you from using other (especially Debian-based) distributions as well.
 
 First, install the `mono-complete` package as per the installation instructions for various Linux distributions which can be found on [the Mono project website](https://www.mono-project.com/download/stable/#download-lin).
 
