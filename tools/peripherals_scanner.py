@@ -194,6 +194,7 @@ def try_get_category(platform):
         "zolertia-firefly":    "ZYNQ",
         "xilinx_zynqmp_r5":  "ZYNQ",
         "zynq-7000":   "ZYNQ",
+        "zynqmp":   "ZYNQ",
     }
 
     if platform.get_name() not in mapping:
