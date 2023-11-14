@@ -259,7 +259,8 @@ To use the tool, follow this syntax:
 
 ```
 ./csv2resd.py [GROUP]
-GROUP ::= -i <csv-file> [-m <type>:<field(s)>:<target(s)>*:<channel>*] -s <start-time> -f <frequency> -t <timestamp>
+GROUP ::= -i <csv-file> [-m <type>:<field(s)>:<target(s)>*:<channel>*]
+          -s <start-time> -f <frequency> -t <timestamp> -o <offset> -c <count>
 ```
 
 The syntax allows multiple group specifications, where --input is a separator between groups.
@@ -275,9 +276,20 @@ For your `--map` argument to be correct, it must be structured in one of the fol
 
 See `--help` for more information.
 
-If you wanted to extract the columns `temp1` and `temp2` from the file `first.csv` and `temp` from the file `second.csv` and then map them to the temperature channels `0`, `1` and `2` in RESD, respectively, you would run the script with the following parameters:
+If you wanted to extract the columns `temp1` and `temp2` from the file `first.csv` and first 3 samples `temp` from the file `second.csv` and then map them to the temperature channels `0`, `1` and `2` in RESD, respectively, you would run the script with the following parameters:
 
 ```
-./csv2resd.py -i first.csv -m temperature:temp1::0 -m temperature:temp2::1 -s 0 -f 1 -i second.csv -m temperature:temp::2 -s 0 -f 1 output.resd
+./csv2resd.py \
+    -i first.csv \
+        -m temperature:temp1::0 \
+        -m temperature:temp2::1 \
+        -s 0 \
+        -f 1 \
+    -i second.csv \
+        -m temperature:temp::2 \
+        -s 0 \
+        -f 1 \
+        -c 3 \
+    output.resd
 ```
 
