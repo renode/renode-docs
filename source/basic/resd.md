@@ -293,3 +293,63 @@ If you wanted to extract the columns `temp1` and `temp2` from the file `first.cs
     output.resd
 ```
 
+### RESD introspection
+
+Renode comes with a command for inspecting RESD files without a need to load them to any particular sensor model.
+
+To analyze the content of a RESD file, first load it with:
+
+```
+(monitor) resd load r1 @my_samples.resd
+RESD file from 'my_samples.resd' loaded under identifier 'r1'
+```
+
+Now, you can print information about sample blocks with:
+
+```
+(monitor) resd list-blocks r1
+Blocks in r1:
+1. [00:00:00.000000..00:00:02.000000] Acceleration:0
+2. [00:00:02.000000..00:01:05.500000] Acceleration:0
+(monitor) resd describe-block r1 1
+Index: 1
+Sample type: Acceleration
+Channel ID: 0
+Start Time: 00:00:00.000000
+End Time: 00:00:02.000000
+Duration: 00:00:02.000000
+Samples count: 2
+Period: 00:00:01.000000
+Frequency: 1Hz
+```
+
+You can also dump selected samples (e.g., between timestamps of 2.2 and 2.3 seconds) with:
+```
+(monitor) resd get-samples-range r1 2 "2.2" "2.3"
+00:00:02.203125: [0, 0, 0.1] g
+00:00:02.218750: [0, 0, 0.2] g
+00:00:02.234375: [0, 0, 0.3] g
+00:00:02.250000: [0, 0, 0.2] g
+00:00:02.265625: [0, 0, 0.2] g
+00:00:02.281250: [0, 0, 0.1] g
+00:00:02.296875: [0, 0, 0.0] g
+```
+
+For more details, see the command's help output:
+```
+(monitor) help resd
+resd
+introspection for RESD files
+
+You can use the following commands:
+'resd load NAME PATH'   loads RESD file under identifier NAME
+'resd unload NAME'      unloads RESD file with identifier NAME
+'resd list-blocks NAME' list data blocks from RESD file with identifier NAME
+'resd describe-block NAME INDEX'        show informations about INDEXth block from RESD with identifier NAME
+'resd get-samples NAME INDEX "START_TIME" COUNT'        lists COUNT samples starting at START_TIME from INDEXth block of RESD with identifier NAME
+'resd get-samples-range NAME INDEX "START_TIME" "DURATION"'     lists DURATION samples starting at START_TIME from INDEXth block of RESD with identifier NAME
+'resd get-samples-range NAME INDEX "START_TIME..END_TIME"'      lists samples between START_TIME and END_TIME from INDEXth block of RESD with identifier NAME
+'resd get-prop NAME INDEX PROP' read property PROP from INDEXth block of RESD with identifier NAME
+  possible values for PROP are: SampleType, ChannelID, StartTime, EndTime, Duration, SamplesCount
+```
+
