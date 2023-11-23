@@ -16,7 +16,7 @@ To install the remaining dependencies, use:
 
     sudo apt-get update
     sudo apt-get install git automake autoconf libtool g++ coreutils policykit-1 \
-                  libgtk2.0-dev uml-utilities gtk-sharp2 python3
+                  libgtk2.0-dev uml-utilities gtk-sharp2 python3 python3-pip
 
 :::
 
@@ -93,6 +93,7 @@ Prior to cloning the repository on *Windows*, git has to be configured appropria
 Renode’s source code is available on GitHub:
 
     git clone https://github.com/renode/renode.git
+    cd renode
 
 Submodules will be automatically initialized and downloaded during the build process, so you do not need to do it at this point.
 
