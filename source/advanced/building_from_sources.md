@@ -22,7 +22,7 @@ To install the remaining dependencies, use:
 
     sudo apt update
     sudo apt install git automake autoconf libtool g++ coreutils policykit-1 \
-                  libgtk2.0-dev uml-utilities gtk-sharp2 python3
+                  libgtk2.0-dev uml-utilities gtk-sharp2 python3 python3-pip
 
 ::::
 
@@ -109,6 +109,7 @@ See [the official .NET site](https://dotnet.microsoft.com/en-us/download/dotnet/
 Renode’s source code is available on GitHub:
 
     git clone https://github.com/renode/renode.git
+    cd renode
 
 Submodules will be automatically initialized and downloaded during the build process, so you do not need to do it at this point.
 
