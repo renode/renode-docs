@@ -95,7 +95,7 @@ In Renode, you can see what the CPU does at any given time without changing the 
 To enable execution tracing, use:
 
 ```
-cpu EnableExecutionTracing @path-to-file <mode>
+cpu CreateExecutionTracing "tracer_name" @path-to-file <mode>
 ```
 
 `mode` can be one of the following values:
@@ -154,13 +154,13 @@ This format is faster to encode and produces smaller output files.
 To save to a binary file, use the following:
 
 ```
-cpu EnableExecutionTracing @path-to-file <mode> true
+cpu CreateExecutionTracing "tracer_name" @path-to-file <mode> true
 ```
 
 If you also want to compress the output, you can add another `true` to this command:
 
 ```
-cpu EnableExecutionTracing @path-to-file <mode> true true
+cpu CreateExecutionTracing "tracer_name" @path-to-file <mode> true true
 ```
 
 You can view the content of the binary file by using a script bundled with Renode.
