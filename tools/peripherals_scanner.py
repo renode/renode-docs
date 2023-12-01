@@ -195,6 +195,10 @@ def try_get_category(platform):
         "xilinx_zynqmp_r5":  "ZYNQ",
         "zynq-7000":   "ZYNQ",
         "zynqmp":   "ZYNQ",
+        "cortex-a9_smp": "GENERIC ARM",
+        "cortex-a9": "GENERIC ARM",
+        "cortex-r8_smp": "GENERIC ARM",
+        "cortex-r8": "GENERIC ARM",
     }
 
     if platform.get_name() not in mapping:
