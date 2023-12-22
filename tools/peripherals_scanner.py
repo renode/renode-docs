@@ -199,6 +199,13 @@ def try_get_category(platform):
         "cortex-a9": "GENERIC ARM",
         "cortex-r8_smp": "GENERIC ARM",
         "cortex-r8": "GENERIC ARM",
+        "nuvoton_npcx9": "NUVOTON",
+        "andes_ae350_n25": "ANDES",
+        "R7FA8M1A": "RENESAS",
+        "R7FA2L1A": "RENESAS",
+        "R7FA6M5B": "RENESAS",
+        "R7FA4M1A": "RENESAS",
+        "ck-ra6m5": "RENESAS",
     }
 
     if platform.get_name() not in mapping:
