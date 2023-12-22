@@ -219,9 +219,23 @@ You have to use a UART name that matches your use case.
 
 CPU hooks enable you to code a reaction to reaching a specific stage in code execution.
 The hook can be triggered at the beginning, end of code of an executed block, or any specified point in the application.
-CPU hooks can also react to the interrupts in code and be triggered at the beginning or an end of an interruption.
+CPU hooks can also react to the interrupts in code and be triggered at the beginning or an end of an interruption or when the CPU enters or exits from WFI ("Wait-For-Interrupt") state.
 
-CPU hooks in Renode have access to the following variables:
+All CPU hooks in Renode have access to the following variables:
+
+```{list-table} CPU hooks common variables:
+:header-rows: 1
+:widths: 25 75
+
+* - Variable name
+  - Description
+* - machine
+  - Current machine, allows you to access other components and peripherals
+* - self
+  - CPU executing the current block
+```
+
+Specific hooks can have additional variables available:
 
 ```{list-table} CPU block hooks variables
 :header-rows: 1
@@ -233,12 +247,8 @@ CPU hooks in Renode have access to the following variables:
   - Program counter of the current block
 * - size
   - Size of the block as the number of instructions
-* - machine
-  - Current machine, allows you to access other components and peripherals
 * - cpu
-  - CPU executing the current block
-* - self
-  - Alias for `cpu`
+  - Alias for `self`
 ```
 
 ```{list-table} CPU interrupt hooks variables
@@ -247,12 +257,18 @@ CPU hooks in Renode have access to the following variables:
 
 * - Variable name
   - Description
-* - machine
-  - Current machine, allows you to access other components and peripherals
-* - self
-  - Alias for `cpu`
 * - exceptionIndex
   - Exception index delivered to the CPU
+```
+
+```{list-table} CPU Wait-For-Interrupt hooks variables
+:header-rows: 1
+:widths: 25 75
+
+* - Variable name
+  - Description
+* - isInWfi
+  - Whether the CPU is in WFI when executing the hook
 ```
 
 To use a CPU hook, you need to name `cpu` you want to attach the hook to and specify the method.
@@ -266,6 +282,14 @@ To create a hook that triggers at the end of interrupt:
 
 ```
 (machine) cpu AddHookAtInterruptEnd "print 'Interrupt has ended'"
+```
+
+To create a hook that triggers when the CPU enters or exits "Wait-For-Interrupt" state:
+```
+(machine) cpu AddHookAtWfiStateChange "print 'Entered/Exited WFI'"
+```
+```{note}
+WFI state can be triggered by various CPU instructions depending on the architecture. For example, on Arm, both `WFI` and `WFE` instructions can be used to enter this state.
 ```
 
 To create a hook that triggers at the beginning of an executed block:
