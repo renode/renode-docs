@@ -5,47 +5,51 @@ Debugging software on machines emulated in Renode using GDB is also available fo
 ## Renode script 
 
 ```cpp
-:name: Ambiq Apollo 4
-:description: This script runs the Ambiq Suite's Hello World Uart example on Ambiq Apollo 4.
+# Most of Renode scripts use the bin variable to specify an executable to run.
+$bin ?= $CWD/zephyr/build/zephyr/zephyr.elf
+include @scripts/single-node/stm32l072.resc
 
-using sysbus
-$name?="Ambiq Apollo 4"
-mach create $name
-
-machine LoadPlatformDescription @platforms/cpus/ambiq-apollo4.repl #adjust
-showAnalyzer uart2
-
-$bin?=@build/zephyr/zephyr.elf #adjust
-macro reset
-"""
-    sysbus LoadELF $bin
-"""
-
-runMacro $reset
-
-cpu StartGdbServer 3333
-
-sleep 3
+# It's required to start a GDB server in Renode.
+machine StartGdbServer 3333
 ```
 
 ## Tasks
 
 ```json
 {
-    // See https://go.microsoft.com/fwlink/?LinkId=733558
-    // for the documentation about the tasks.json format
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "Build application", // Feel free to create your own build task.
+            "type": "shell",
+            "command": "west",
+            "args": [
+                "build",
+                "--pristine=auto",
+                "--build-dir",
+                "zephyr/build",
+                "--board",
+                "b_l072z_lrwan1",
+                "zephyr/samples/subsys/shell/shell_module"
+            ],
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "silent"
+            }
+        },
+        {
             "label": "Run Renode",
             "type": "shell",
-            "command": "./renode",
+            "command": "renode",
             "args": [
-                "-e",
-                "set bin @/home/codespace/zephyrproject/zephyr/build/zephyr/zephyr.elf;i @scripts/single-node/stm32l072.resc;machine StartGdbServer 3333 True"], // adjust
-            "options": {
-                "cwd": "/home/codespace/renode" // adjust
-            },
+                "${workspaceFolder}/platform.resc"
+            ],
+            "dependsOn": [
+                "Build application"
+            ],
             "isBackground": true,
             "problemMatcher": {
                 "source": "Renode",
@@ -60,24 +64,9 @@ sleep 3
             },
             "group": "none",
             "presentation": {
-                "reveal": "silent",
-                "panel": "shared"
+                "reveal": "always",
+                "panel": "dedicated"
             }
-        },
-        {
-            "label": "Build application",
-            "type": "shell",
-            "command": "west build --pristine -b b_l072z_lrwan1 samples/subsys/shell/shell_module", // adjust
-            "options": {
-                "cwd": "/home/codespace/zephyrproject/zephyr" // adjust
-            },
-            "problemMatcher": []
-        },
-        {
-            "label": "Build application and run Renode",
-            "dependsOrder": "sequence",
-            "dependsOn": ["Build application", "Run Renode"],
-            "problemMatcher": []
         }
     ]
 }
@@ -87,21 +76,17 @@ sleep 3
 
 ```json
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
         {
-            "cwd": "${workspaceRoot:zephyr}", // adjust
-            "executable": "build/zephyr/zephyr.elf", // adjust
-            "type": "gdb",
-            "request": "attach",
             "name": "Debug application in Renode",
-            "preLaunchTask": "Build application and run Renode",
-            "target": ":3333",
-            "gdbpath": "gdb-multiarch", // adjust
-            "remote": true,
+            "type": "cppdbg",
+            "request": "launch",
+            "preLaunchTask": "Run Renode",
+            "miDebuggerServerAddress": "localhost:3333",
+            "cwd": "${workspaceRoot}",
+            "miDebuggerPath": "gdb-multiarch", // Use an architecture-specific version of GDB instead.
+            "program": "${workspaceRoot}/zephyr/build/zephyr/zephyr.elf" // Binary to debug
         }
     ]
 }
