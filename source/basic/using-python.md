@@ -107,11 +107,9 @@ To define Python peripherals, you can specify the following variables:
 * - initable
   - If `true` the peripheral can be initialized and executes code from the ``isInit`` section
 * - script
-  - Python script you want to execute
-```
-
-```{note}
-You can also supply a path to the `.py` file if you use `filename:` instead of `script:`.
+  - Python script you want to execute (exclusive with ``filename``)
+* - filename
+  - Path to a Python script file implementing the peripheral's logic (exclusive with ``script``)
 ```
 
 When programming a Python peripheral, you have access to the `request` variable, which describes the current transaction.
