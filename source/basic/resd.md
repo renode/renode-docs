@@ -94,6 +94,7 @@ ID              | Sample Type  | Sample Unit
 0x0003          | Angular rate | set of 3 signed 4-byte values in tens of microradians<br> (10^-5)  per second mapped to X, Y, Z dimensions
 0x0004          | Voltage      | unsigned 4-byte value in microvolts (10^-6) 
 0x0005          | ECG          | signed 4-byte value in nanovolts (10^-9) 
+0x0006          | Humidity     | unsigned 4-byte value in per cent mille (PCM or 1 thousandth of a percent) of relative humidity
 0xF000 - 0xFFFF | Custom       | defined by model-specific input
 ```
 
