@@ -38,6 +38,7 @@ basic/using-python
 :maxdepth: 2
 
 debugging/gdb
+debugging/vscode
 ```
 
 
