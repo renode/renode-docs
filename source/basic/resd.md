@@ -95,6 +95,7 @@ ID              | Sample Type  | Sample Unit
 0x0004          | Voltage      | unsigned 4-byte value in microvolts (10^-6) 
 0x0005          | ECG          | signed 4-byte value in nanovolts (10^-9) 
 0x0006          | Humidity     | unsigned 4-byte value in per cent mille (PCM or 1 thousandth of a percent) of relative humidity
+0x0007          | Pressure     | unsigned 8-byte value in milliPascals (10^-3)
 0xF000 - 0xFFFF | Custom       | defined by model-specific input
 ```
 
