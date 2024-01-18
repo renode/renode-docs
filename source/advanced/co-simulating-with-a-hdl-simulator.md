@@ -23,14 +23,18 @@ For Verilator, you should use the C++ interface.
 
 ## Supported buses
 
-Co-simulation in Renode supports the following buses:
+Co-simulation in Renode using DPI integration (SystemVerilog interface) supports the following buses:
 
+* AHB
 * APB3
 * AXI4
 * AXI4-Lite
 
-Verilator integration also supports the following features:
+Verilator integration (C++ interface) supports the following features:
 
+* APB3 bus
+* AXI4 bus
+* AXI4-Lite bus
 * Wishbone bus
 * CFU Custom Function Unit interface
 
