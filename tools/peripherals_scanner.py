@@ -116,6 +116,7 @@ def try_get_category(platform):
         "litex_vexriscv_verilated_liteuart":   "LITEX",
         "litex_vexriscv_zephyr":   "LITEX",
         "litex_zephyr_vexriscv_i2s":   "LITEX",
+        "lpc2294":  "NXP LPC",
         "mars_zx3":    "ZYNQ",
         "mars_zx3-externals":  "ZYNQ",
         "max32652": "MAXIM",
@@ -206,7 +207,6 @@ def try_get_category(platform):
         "R7FA6M5B": "RENESAS",
         "R7FA4M1A": "RENESAS",
         "ck-ra6m5": "RENESAS",
-        "lpc2294": "NXP LPC",
     }
 
     if platform.get_name() not in mapping:
