@@ -53,7 +53,7 @@ Running in a headless environment
 
 Even if you have Renode with a compiled-in GUI support (the default configuration), you can start it in headless mode with::
 
-    $ renode --disable-xwt
+    $ renode --disable-gui
 
 It is similar to telnet mode as the Monitor will be available on port 1234 by default (the port number can be changed with the ``-P`` switch).
 The difference is that in headless mode no graphical windows will be created for analyzers - e.g., UART analyzers will output to log by default.
@@ -73,7 +73,7 @@ In this mode the prompt will be intertwined with log messages::
     (monitor)
 
 .. note::
-    Console mode can be mixed together with headless mode by passing both ``--console`` and ``--disable-xwt``.
+    Console mode can be mixed together with headless mode by passing both ``--console`` and ``--disable-gui``.
 
 UART interactions in the Monitor
 --------------------------------
