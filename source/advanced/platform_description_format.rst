@@ -296,7 +296,8 @@ The simplest format of such attribute is as follows:
     -> destination@number
 
 where ``destination`` is a variable implementing the ``IGPIOReceiver`` interface and ``number`` is the destination interrupt number.
-Note that there is nothing specified on the left side - this is only possible if there is a single property of type ``GPIO`` and this is the one that gets connected.
+Note that there is nothing specified on the left side - this is only possible if there is a single property of type ``GPIO``, or there are multiple properties, but one of them is marked with a ``DefaultInterrupt`` attribute. This is the one that gets connected.
+
 Whenever the user wants to specify which property should be connected, a more general form can be used:
 
 .. code-block:: none
