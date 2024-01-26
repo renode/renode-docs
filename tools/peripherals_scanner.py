@@ -206,6 +206,7 @@ def try_get_category(platform):
         "R7FA6M5B": "RENESAS",
         "R7FA4M1A": "RENESAS",
         "ck-ra6m5": "RENESAS",
+        "lpc2294": "NXP LPC",
     }
 
     if platform.get_name() not in mapping:
