@@ -177,7 +177,6 @@ def try_get_category(platform):
         "stm32f746":   "STM",
         "stm32f7_discovery-bb":    "STM",
         "stm32g0":      "STM",
-        "stm32h743":    "STM",
         "stm32h753":    "STM",
         "stm32l071": "STM",
         "stm32l072": "STM",
