@@ -81,7 +81,7 @@ Prior to cloning the repository on *Windows*, git has to be configured appropria
 2. Run the installer, select the *Visual Studio Build Tools 2019* product and click *Install* or *Modify*.
 3. Switch to the *Individual components* pane and select:
 
-   * *.NET Framework 4.5 targeting pack* in section *.NET*,
+   * *.NET Framework 4.6.2 targeting pack* in section *.NET*,
    * *NuGet targets and build tasks* in section *Code tools*.
 
 4. Add the location of the binaries (`C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\MSBuild\Current\Bin\amd64` by default) to the system `PATH` variable.
