@@ -6,19 +6,25 @@ This document provides detailed information on how to prepare the build environm
 
 ### Core prerequisites
 
-:::{tab} Linux
+::::{tab} Linux
 
 The following instructions have been tested on Ubuntu 20.04, however there should not be any major issues preventing you from using other (especially Debian-based) distributions as well.
 
+:::{tab} Mono
 First, install the `mono-complete` package as per the installation instructions for various Linux distributions which can be found on [the Mono project website](https://www.mono-project.com/download/stable/#download-lin).
+:::
+
+:::{tab} .NET
+First, install the `.NET SDK` package as per the installation instructions, which can be found on [the official .NET site](https://dotnet.microsoft.com/en-us/download/dotnet/6.0). This can as well be installed with the default package manager, using: `sudo apt install dotnet-sdk-6.0`.
+:::
 
 To install the remaining dependencies, use:
 
-    sudo apt-get update
-    sudo apt-get install git automake autoconf libtool g++ coreutils policykit-1 \
+    sudo apt update
+    sudo apt install git automake autoconf libtool g++ coreutils policykit-1 \
                   libgtk2.0-dev uml-utilities gtk-sharp2 python3
 
-:::
+::::
 
 ::::{tab} macOS
 
@@ -77,6 +83,8 @@ Prior to cloning the repository on *Windows*, git has to be configured appropria
 
 **C# build tools**
 
+:::{tab} .NET Framework
+
 1. Download [VS Build Tools 2019](https://aka.ms/vs/16/release/vs_BuildTools.exe).
 2. Run the installer, select the *Visual Studio Build Tools 2019* product and click *Install* or *Modify*.
 3. Switch to the *Individual components* pane and select:
@@ -85,6 +93,14 @@ Prior to cloning the repository on *Windows*, git has to be configured appropria
    * *NuGet targets and build tasks* in section *Code tools*.
 
 4. Add the location of the binaries (`C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\MSBuild\Current\Bin\amd64` by default) to the system `PATH` variable.
+
+:::
+
+:::{tab} .NET
+
+See [the official .NET site](https://dotnet.microsoft.com/en-us/download/dotnet/6.0) for instructions on how to install `.NET SDK`.
+
+:::
 
 ::::
 
@@ -109,6 +125,10 @@ Install the `pip` package manager and some additional modules to enable writing 
 On Windows, the building process described in this section can only be executed in a Cygwin shell.
 :::
 
+:::{note}
+When building Renode with `.NET`, remember to use `--net` switch (`./build.sh --net`).
+:::
+
 To build Renode, run:
 
     ./build.sh
@@ -119,6 +139,7 @@ There are some optional flags you can use:
     -d          build in debug configuration
     -v          verbose mode
     -p          build binary packages (requires some additional dependencies)
+    --net       build with dotnet
 
 You can also build `Renode.sln` from your IDE (like MonoDevelop or Visual Studio), but the `build.sh` script has to be run at least once.
 
