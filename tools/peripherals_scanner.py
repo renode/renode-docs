@@ -147,6 +147,7 @@ def try_get_category(platform):
         "riscv_verilated_uartlite":    "OTHER RISC-V",
         "riscv_virt":   "OTHER RISC-V",
         "s32k118": "NXP S32K",
+        "s32k388": "NXP S32K",
         "sam_e70": "ATMEL",
         "sifive-fe310":    "SIFIVE",
         "sifive-fu540":    "SIFIVE",
