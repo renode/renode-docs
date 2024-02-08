@@ -93,6 +93,7 @@ def try_get_category(platform):
         "fomu":    "LITEX",
         "gr716":   "LEON",
         "gr716-devboard": "LEON",
+        "gr712rc": "LEON",
         "i386":    "X86",
         "ice40up5k-mdp-evn":   "LITEX",
         "imxrt1064":   "NXP I.MX",
@@ -134,6 +135,7 @@ def try_get_category(platform):
         "nrf52840":    "NORDIC",
         "nrf52840dk_nrf52840":    "NORDIC",
         "nucleo_wba52cg": "STM",
+        "nucleo_h753zi": "STM",
         "nxp-k6xf":    "NXP KINETIS",
         "opentitan-earlgrey":  "OTHER RISC-V",
         "opentitan-earlgrey-cw310":  "OTHER RISC-V",
@@ -147,7 +149,7 @@ def try_get_category(platform):
         "riscv_verilated_uartlite":    "OTHER RISC-V",
         "riscv_virt":   "OTHER RISC-V",
         "s32k118": "NXP S32K",
-        "s32k388": "NXP S32K",
+        "nxp-s32k388": "NXP S32K",
         "sam_e70": "ATMEL",
         "sifive-fe310":    "SIFIVE",
         "sifive-fu540":    "SIFIVE",
@@ -176,6 +178,7 @@ def try_get_category(platform):
         "stm32f7_discovery-bb":    "STM",
         "stm32g0":      "STM",
         "stm32h743":    "STM",
+        "stm32h753":    "STM",
         "stm32l071": "STM",
         "stm32l072": "STM",
         "stm32l151":   "STM",
@@ -208,6 +211,8 @@ def try_get_category(platform):
         "R7FA6M5B": "RENESAS",
         "R7FA4M1A": "RENESAS",
         "ck-ra6m5": "RENESAS",
+        "renesas-da14592": "RENESAS",
+        "arduino_uno_r4_minima": "RENESAS",
     }
 
     if platform.get_name() not in mapping:
