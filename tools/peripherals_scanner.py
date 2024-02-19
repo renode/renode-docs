@@ -205,12 +205,14 @@ def try_get_category(platform):
         "cortex-r8": "GENERIC ARM",
         "nuvoton_npcx9": "NUVOTON",
         "andes_ae350_n25": "ANDES",
-        "R7FA8M1A": "RENESAS",
-        "R7FA2L1A": "RENESAS",
-        "R7FA6M5B": "RENESAS",
-        "R7FA4M1A": "RENESAS",
+        "renesas-r7fa8m1a": "RENESAS",
+        "renesas-r7fa2l1a": "RENESAS",
+        "renesas-r7fa2e1a9": "RENESAS",
+        "renesas-r7fa6m5b": "RENESAS",
+        "renesas-r7fa4m1a": "RENESAS",
         "ck-ra6m5": "RENESAS",
         "renesas-da14592": "RENESAS",
+        "ek-ra2e1": "RENESAS",
         "arduino_uno_r4_minima": "RENESAS",
     }
 
