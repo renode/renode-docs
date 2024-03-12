@@ -466,6 +466,8 @@ To create a user state hook that executes Python script when a specific `state` 
 (machine) machine AddUserStateHook "state" "print 'User state has changed to: %s state '"
 ```
 
+(python-riscv)=
+
 ## RISC-V extensions
 
 Renode has extensive support for RISC-V architecture and lets you code extensions using Python.

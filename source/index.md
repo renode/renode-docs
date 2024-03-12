@@ -30,6 +30,7 @@ basic/sensors
 basic/metrics
 basic/running
 basic/using-python
+basic/configuring-a-risc-v-cpu
 ```
 
 
