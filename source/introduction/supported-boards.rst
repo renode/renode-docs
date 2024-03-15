@@ -3,7 +3,7 @@ Supported boards
 
 Renode supports a wide array of hardware platforms, covering multiple architectures, CPU families and providing various I/O capabilities.
 
-You can see a summary of over 200 IoT development boards supported as part of the `Zephyr dashboard effort <https://zephyr-dashboard.renode.io/>`_ and learn more about them in `Renodepedia <https://zephyr-dashboard.renode.io/renodepedia/>`_.
+You can see a summary of over 400 IoT development boards supported as part of the `Zephyr dashboard effort <https://zephyr-dashboard.renode.io/>`_ and learn more about them in `Renodepedia <https://zephyr-dashboard.renode.io/renodepedia/>`_.
 
 In Renodepedia, you can see pre-executed runs of different embedded software binaries as well as use the available artifacts to run the demos yourself.
 
