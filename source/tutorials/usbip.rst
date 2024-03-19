@@ -233,3 +233,39 @@ As Fomu does not have many interfaces we can observe, the uploaded binary is qui
 Looking through the log you will see repeated writes of consecutive values to 0x40000000.
 
 To analyze the loaded binary in more detail you can use Renode's :ref:`GDB debugging capabilities <gdb-debugging>` or extensive :ref:`logging support <using-logger>`.
+
+Use it with WebUSB DFU
++++++++++++++++++++++++++++
+
+You can also use WebUSB Device Firmware Upgrade to upload software directly from web browser. 
+To do that, repeat the same steps as above, but instead of using ``dfu-util``, 
+you can use `web based utility <https://github.com/devanlai/webdfu>`_.
+You will need Chrome or Edge browser as WebUSB is currently only supported in Chromium. 
+Go to ``chrome://usb-internals/`` or ``edge://usb-internals/`` and on the tab `Devices` you should see your virtual Fomu device. 
+
+.. image:: webusb/chrome-usb-internals-devices.png
+    :scale: 100%
+
+Click `Inspect` to see device details and read USB descriptors.
+
+.. image:: webusb/chrome-usb-internals-fomu.png
+    :scale: 100%
+
+
+After you are able to see Fomu on ``usb-internals`` page, 
+go to `this web page <https://devanlai.github.io/webdfu/dfu-util/>`_.
+In the field `Vendor ID(hex)` select `dapboot DFU bootloader` and click `Connect`. 
+
+.. image:: webusb/chrome-webusb-connect.png
+    :scale: 100%
+
+Set transfer size to 1024 and choose ``fomu--test_binary_flash.bin`` binary that you downloaded in the last step. 
+Click `Download` and in a few seconds you should see success message and observe binary running on Fomu in Renode monitor.
+
+.. image:: webusb/chrome-webusb-download.png
+    :scale: 100%
+
+For Chrome or Edge to communicate with a USB device, it must have permission to access the device.
+If Fomu is not listed on `Devices` tab, it means that the current user do not have permission to access the device. 
+Therefore you should setup udev rules to grant permission to use the USB device from a non-privileged account.
+Follow the steps described in `this tutorial <https://mithro-fomu-workshop.readthedocs.io/en/master/requirements.html#setup-udev-rules>`_.
