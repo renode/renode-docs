@@ -472,6 +472,20 @@ To create a user state hook that executes Python script when a specific `state` 
 (machine) machine AddUserStateHook "state" "print 'User state has changed to: %s state '"
 ```
 
+## Python enabled classes
+
+The hooks described in previous sections use special methods that setup the execution environment for your Python script,
+but IronPython also allows you to attach Python functions to C# events.
+
+As an example let's create a trivial Ethernet sniffer:
+
+```
+(machine-0) emulation CreateSwitch "switch"
+(machine-0) python "externals.switch.FrameProcessed += lambda switch, sender, data: sender.LogDebug(str(data))"
+``` 
+
+For an in-depth explanation of setting up the network see the {doc}`Setting up a wired network <../networking/wired>` chapter.
+
 (python-riscv)=
 
 ## RISC-V extensions
