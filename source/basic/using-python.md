@@ -486,6 +486,56 @@ As an example let's create a trivial Ethernet sniffer:
 
 For an in-depth explanation of setting up the network see the {doc}`Setting up a wired network <../networking/wired>` chapter.
 
+### Dummy I2C Slave 
+
+The `Mocks.DummyI2CSlave` peripheral provides a set of methods and events that allow you to implement a simple I2C peripheral.
+
+```{list-table} DummyI2CSlave events
+:header-rows: 1
+:widths: 10 45 45
+
+* - Event name
+  - Description
+  - Argument
+* - DataReceived
+  - Invoked when the peripheral is written to
+  - byte array containing the received data
+* - ReadRequested
+  - Invoked when a read is requested from the peripheral
+  - The number of bytes requested to be read
+* - TransmissionFinished
+  - Invoked when the controller finishes transmission
+  - n/a
+```
+
+The `DataReceived` event doesn't expect any data to be provided, but you can enqueue response bytes using the methods listed below.
+By default, when the internal buffer is empty, the peripheral returns zeros and will pad any enqueued data with zeros when not enough bytes is in the buffer.
+
+```{list-table} DummyI2CSlave methods
+:header-rows: 1
+:widths: 10 45 45
+
+* - Method name
+  - Description
+  - Argument
+* - Reset
+  - Clears the internal buffer, but doesn't remove added events
+  - n/a
+* - EnqueueResponseByte
+  - Enqueues a single byte to the internal buffer
+  - A byte
+* - EnqueueResponseBytes
+  - Enqueues a collection of bytes
+  - A byte enumerable, e.g. an array of bytes
+```
+
+With those available, we can change the dummy I2C peripheral into a simple I2C echo peripheral:
+
+```
+dummy = monitor.Machine["sysbus.i2c.dummy"]
+dummy.DataReceived += lambda data: dummy.EnqueueResponseBytes(data)
+```
+
 (python-riscv)=
 
 ## RISC-V extensions
