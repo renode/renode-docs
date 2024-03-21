@@ -536,6 +536,89 @@ dummy = monitor.Machine["sysbus.i2c.dummy"]
 dummy.DataReceived += lambda data: dummy.EnqueueResponseBytes(data)
 ```
 
+### Virtual Console
+
+The `VirtualConsole` is meant to be a helper for Python scripts as it is supported with the same infrastructure,
+e.g. you can use it in Robot Framework tests with UART keywords and create an analyzer to interact with the console.
+It provides an internal buffer for the received data and methods and events listed below that allow for control from a Python script.
+
+An instance of the console can be created with a Monitor command:
+
+```
+(machine-0) machine CreateVirtualConsole "vconsole"
+(machine-0) showAnalyzer vconsole
+```
+
+or in a `repl` file:
+
+```
+vserial: UART.VirtualConsole @ sysbus
+```
+
+```{list-table} VirtualConsole methods
+:header-rows: 1
+:widths: 10 30 30 30
+
+* - Method name
+  - Description
+  - Returns
+  - Arguments
+* - Clear
+  - Removes all data from the buffer
+  - n/a
+  - n/a
+* - IsEmpty
+  - Tests for data in the buffer
+  - True if no data is in the buffer, false otherwise
+  - n/a
+* - Contains
+  - Checks whether a byte is in the buffer
+  - True if provided byte is in the buffer, false otherwise
+  - The byte to check against
+* - WriteChar
+  - Writes a byte to be received
+  - n/a
+  - The byte to receive
+* - ReadBuffer
+  - Retrieves data from the buffer and removes it
+  - The retrieved data
+  - optional limit to number of bytes returned, defaults to 1 
+* - GetBuffer
+  - Retrieves the buffer without consuming the data
+  - A copy of the buffer
+  - n/a
+* - WriteBufferToMemory
+  - Writes some or all of the bytes from the buffer to the memory at a specified address
+  - Number of bytes written
+  - Address to which the data should be written, limit of the number of bytes to write, optional CPU context (defaults to global)
+* - DisplayChar
+  - Transmits a byte
+  - n/a
+  - The byte to be transmitted
+```
+
+Using the methods listed above and some other hooks for accesses you can implement a polling-based peripheral,
+e.g. the [Segger RTT for Renesas](https://github.com/renode/renode/blob/master/scripts/single-node/renesas-segger-rtt.py),
+which is used in demos (e.g. [scripts/single-node/ek-ra2e1.resc](https://github.com/renode/renode/blob/master/scripts/single-node/ek-ra2e1.resc)) with interactive console
+and in Robot Framework tests using UART keywords (e.g. [tests/platforms/EK-RA2E1.robot](https://github.com/renode/renode/blob/master/tests/platforms/EK-RA2E1.robot)).
+
+```{list-table} VirtualConsole events
+:header-rows: 1
+:widths: 10 45 45
+
+* - Event name
+  - Description
+  - Argument
+* - CharReceived
+  - Invoked when the peripheral transmits a byte
+  - The byte transmitted
+* - CharWritten
+  - Invoked when a byte is pushed to the receive buffer
+  - The byte received by the peripheral
+```
+
+The `VirtualConsole` also has the `Echo` property to enable or disable displaying of received characters.
+
 (python-riscv)=
 
 ## RISC-V extensions
