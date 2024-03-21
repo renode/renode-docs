@@ -437,7 +437,7 @@ To have a functioning Packet interception hook, your machine needs to have a wir
 To create a packet interception hook, run:
 
 ```
-(machine) wireless SetPacketHookFromScript sysbus.radio "if packet[5] == 0x4: print("I'm interested in packets with 0x4 as their sixth byte")"
+(machine) wireless SetPacketHookFromScript sysbus.radio "if packet[5] == 0x4: print('I\'m interested in packets with 0x4 as their sixth byte')"
 ```
 
 You can also execute a script from a file:
