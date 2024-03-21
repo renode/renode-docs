@@ -308,6 +308,12 @@ You can also create a hook for any specified point in the application:
 cpu AddHook 0x60000000 "print 'You have reached a hook'"
 ```
 
+and even combine the previous command with another one to add a hook at a symbol:
+
+```
+cpu AddHook `sysbus GetSymbolAddress "main"` "print 'You have reached the main function'"
+```
+
 (system-bus-hooks)=
 
 ### System bus hooks
