@@ -217,6 +217,7 @@ def try_get_category(platform):
         "ek-ra2e1": "RENESAS",
         "ek-ra8m1": "RENESAS",
         "arduino_uno_r4_minima": "RENESAS",
+        "renesas_ck_ra6m5_sensors_example": "RENESAS",
     }
 
     if platform.get_name() not in mapping:
