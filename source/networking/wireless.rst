@@ -7,6 +7,8 @@ Connecting nodes in a wireless network in Renode is as easy as creating :ref:`wi
 
 Just like with a ``Switch`` object, you can create an abstraction of ``Wireless Medium``, to connect radio interfaces to.
 
+.. _creating-wireless-medium:
+
 Creating a wireless medium
 --------------------------
 

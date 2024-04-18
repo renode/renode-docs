@@ -72,6 +72,8 @@ Please note that this might lead to slight delays in communication.
 The maximum delay is controllable by the `quantum` parameter.
 For details on how the synchronization works and how to configure it, refer to {ref}`the Time framework synchronization section <time-framework_synchronization>` of the documentation.
 
+(can-based-connections)=
+
 ### CAN-based connections
 
 Connecting two machines with the CAN bus is very similar to connecting them with a UART.
