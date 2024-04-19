@@ -79,7 +79,7 @@ Should Print Help
 The `Should Print Help` test case executes the `help` command in Renode's monitor and verifies the result.
 
 Integration with Renode is achieved by adding entries to the settings section.
-The `RENODEKEYWORDS` variable (initialized by the `renode-test` script) contains the path to the [renode-keywords.robot](https://github.com/renode/renode/blob/master/src/Renode/RobotFrameworkEngine/renode-keywords.robot) script responsible for setting up the connection with Renode.
+The `RENODEKEYWORDS` variable (initialized by the `renode-test` script) contains the path to the [renode-keywords.robot](https://github.com/renode/renode/blob/master/tests/renode-keywords.robot) script responsible for setting up the connection with Renode.
 Other settings configure the suite/test setup and teardowns.
 
 It is recommended to copy the above `Settings` section to each new robot test file.
