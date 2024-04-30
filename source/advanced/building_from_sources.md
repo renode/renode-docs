@@ -136,11 +136,21 @@ To build Renode, run:
 
 There are some optional flags you can use:
 
-    -c          clean instead of building
-    -d          build in debug configuration
-    -v          verbose mode
-    -p          build binary packages (requires some additional dependencies)
-    --net       build with dotnet
+    -c                                clean instead of building
+    -d                                build in debug configuration
+    -v                                verbose
+    -p                                create packages after building
+    -n                                create nightly packages after building
+    -t                                create a portable package (experimental, Linux only)
+    -s                                update submodules
+    -b                                custom build properties file
+    -o                                custom output directory
+    --skip-fetch                      skip fetching submodules and additional resources
+    --no-gui                          build with GUI disabled
+    --force-net-framework-version     build against different version of .NET Framework than specified in the solution
+    --net                             build with dotnet
+    -B                                bundle target runtime (default value: linux-x64, requires --net, -t)
+    --profile-build                   build optimized for tlib profiling
 
 Additionally you can directly specify flags which will be passed to the build system after `--`.
 For example, if you wanted to override the `CompilerPath` property you could use::
