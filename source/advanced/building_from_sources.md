@@ -142,6 +142,11 @@ There are some optional flags you can use:
     -p          build binary packages (requires some additional dependencies)
     --net       build with dotnet
 
+Additionally you can directly specify flags which will be passed to the build system after `--`.
+For example, if you wanted to override the `CompilerPath` property you could use::
+
+    ./build.sh -- p:CompilerPath=/path/to/gcc
+
 You can also build `Renode.sln` from your IDE (like MonoDevelop or Visual Studio), but the `build.sh` script has to be run at least once.
 
 ## Creating packages
