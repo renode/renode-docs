@@ -60,6 +60,7 @@ networking/machine-to-machine-connections
 :maxdepth: 2
 
 host-integration/uart
+host-integration/can
 host-integration/arduino
 host-integration/sharing-files
 ```
