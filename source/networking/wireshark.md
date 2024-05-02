@@ -6,7 +6,7 @@ Renode uses the libpcap format to provide data to Wireshark.
 
 ## Logging the whole traffic
 
-Renode supports multiple link layer protocols, i.e. Ethernet, Bluetooth Low Energy and IEEE 802.15.4.
+Renode supports multiple link layer protocols, i.e. Ethernet, Bluetooth Low Energy, IEEE 802.15.4 and CAN.
 Each protocol has its own set of commands to enable logging of all traffic or with filtering.
 
 The `emulation Log<Protocol Name>Traffic` commands will automatically connect Wireshark to all existing and new networks for the given protocol.
@@ -22,6 +22,8 @@ The `emulation Log<Protocol Name>Traffic` commands will automatically connect Wi
   - LogBLETraffic
 * - IEEE 802.15.4
   - LogIEEE802_15_4Traffic
+* - CAN
+  - LogCANTraffic
 ```
 
 You can also manually open Wireshark window, before setting up a network with:
@@ -32,8 +34,8 @@ You can also manually open Wireshark window, before setting up a network with:
 
 ## Observing a specific interface
 
-Inspecting traffic of a specific switch or a wireless medium can be done with `emulation LogToWireshark` command.
-You can also limit the observation to a specific interface connected to that switch or medium.
+Inspecting traffic of a specific switch, bus or a wireless medium can be done with `emulation LogToWireshark` command.
+You can also limit the observation to a specific interface connected to that switch, bus or medium.
 
 
 ```{list-table} Protocol specific filtered logging
@@ -47,6 +49,8 @@ You can also limit the observation to a specific interface connected to that swi
   - BLEMedium
 * - IEEE 802.15.4
   - IEEE802_15_4Medium
+* - CAN
+  - CANHub
 ```
 
 ### Ethernet example
