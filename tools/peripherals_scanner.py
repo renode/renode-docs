@@ -52,6 +52,7 @@ def try_get_category(platform):
         "arvsom":  "STARFIVE",
         "at91rm9200":  "ATMEL",
         "atsamd51g19a": "ATMEL",
+        "beaglev-fire": "PFSOC",
         "beaglev_starlight":   "STARFIVE",
         "brd4162a":    "EFM",
         "cc2538":  "TI",
