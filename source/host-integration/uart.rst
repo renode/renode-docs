@@ -9,6 +9,7 @@ Renode provides two independent mechanisms for exposing virtual UART devices to 
 * using a pty device (Linux/macOS only),
 * over a network socket (available on all platforms).
 
+You can also redirect UART output to a file, but this is does not allow for reading user input.
 
 UART pty terminal
 -----------------
@@ -72,3 +73,21 @@ In order to avoid generating them, pass additional ``false`` argument when creat
 
     (monitor) emulation CreateServerSocketTerminal 3456 "term" false
 
+Redirecting to a file
+---------------------
+
+Renode can redirect UART output to a file on your host.
+To enable this feature, call::
+
+    (machine-0) uart CreateFileBackend @path/to/file
+
+By default, the UART output will be cached by the host IO system.
+If you want the output to be flushed immediately after being sent, use::
+
+    (machine-0) uart CreateFileBackend @path/to/file true
+
+If you want, you can stop this output with::
+
+    (machine-0) uart CloseFileBackend @path/to/file
+
+Keep in mind that subsequent calls to the ``CreateFileBackend`` method will not overwrite the previous file of the same name, but rather copy, appending a consecutive number to its name.
