@@ -12,7 +12,7 @@ Installation
 ------------
 
 The Renode framework is hosted `on GitHub <https://github.com/renode/renode>`_.
-You can download and install it following the process described in the `README <https://github.com/renode/renode/blob/master/README.rst>`_ file, but the easiest way to start is by downloading a binary release from https://github.com/renode/renode/releases.
+You can download and install it following the process described in the `README <https://github.com/renode/renode/blob/master/README.md>`_ file, but the easiest way to start is by downloading a binary release from https://github.com/renode/renode/releases.
 The precompiled packages are provided as deb and rpm packages for Linux, dmg package for macOS and a zip archive for Windows.
 
 Starting Renode

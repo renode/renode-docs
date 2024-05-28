@@ -8,7 +8,7 @@ The following tutorial will walk you through the steps necessary to generate suc
 ## Prerequisites
 
 To generate a report, you need to have Renode installed along with [the execution tracer script](https://github.com/renode/renode/blob/master/tools/execution_tracer/execution_tracer_reader.py).
-On Linux you can simply download a portable package by following [these instructions](https://github.com/renode/renode/blob/master/README.rst#using-the-linux-portable-release).
+On Linux you can simply download a portable package by following [these instructions](https://github.com/renode/renode/blob/master/README.md#using-the-linux-portable-release).
 
 It's assumed that you execute the rest of commands in the directory of the Renode package, otherwise you need to change the path to the appropriate installation location.
 
