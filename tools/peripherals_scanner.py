@@ -61,9 +61,11 @@ def try_get_category(platform):
         "cortex-a53": "GENERIC ARM",
         "cortex-a53-gicv2": "GENERIC ARM",
         "cortex-a53-gicv3": "GENERIC ARM",
+        "cortex-a53-gicv3_smp": "GENERIC ARM",
         "cortex-a78": "GENERIC ARM",
         "cortex-r52": "GENERIC ARM",
         "cortex-r52_smp": "GENERIC ARM",
+        "cortex-r52_smp_4": "GENERIC ARM",
         "cortex-r8": "GENERIC ARM",
         "crosslink-nx-evn":    "LITEX",
         "efm32g210":   "EFM",
@@ -220,6 +222,10 @@ def try_get_category(platform):
         "ek-ra8m1": "RENESAS",
         "arduino_uno_r4_minima": "RENESAS",
         "renesas_ck_ra6m5_sensors_example": "RENESAS",
+        "renesas-ck_ra6m5": "RENESAS",
+        "renesas-ek_ra2e1": "RENESAS",
+        "renesas-ek_ra8m1": "RENESAS",
+        "renesas-rz_t2m_rsk": "RENESAS",
     }
 
     if platform.get_name() not in mapping:
