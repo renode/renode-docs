@@ -103,6 +103,10 @@ To do so, type:
 ```
 tracer_name TrackMemoryAccesses
 ```
+Similarly, to track vector configuration on the RISC-V architecture, use:
+```
+tracer_name TrackVectorConfiguration
+```
 
 `mode` can be one of the following values:
 - `PC` - this mode saves all program counter values.
