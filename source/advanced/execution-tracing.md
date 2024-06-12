@@ -98,6 +98,12 @@ To enable execution tracing, use:
 cpu CreateExecutionTracing "tracer_name" @path-to-file <mode>
 ```
 
+Additionally, you can use the tracer to track memory accesses.
+To do so, type:
+```
+tracer_name TrackMemoryAccesses
+```
+
 `mode` can be one of the following values:
 - `PC` - this mode saves all program counter values.
 Example:
