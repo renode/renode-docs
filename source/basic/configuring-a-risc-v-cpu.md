@@ -59,6 +59,7 @@ All of these are optional.
   - `PrivilegedArchitecture.Priv1_09`
   - `PrivilegedArchitecture.Priv1_10`
   - `PrivilegedArchitecture.Priv1_11`
+  - `PrivilegedArchitecture.Priv1_12` - Currently support for Privileged Architecture v1.12 is experimental and not everything is implemented.
 - `endianness` - specifies the endianness of the CPU, defaulting to little endian
 - `nmiVectorAddress` and `nmiVectorLength` - allow for customizing the non-maskable interrupt vector, if supported by the CPU
 - `allowUnalignedAccesses` - defines if an exception should be raised whenever the software performs an unaligned access on memory. Defaults to `false`
