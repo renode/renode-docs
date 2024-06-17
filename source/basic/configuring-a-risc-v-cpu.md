@@ -55,10 +55,10 @@ There are additional parameters you can pass to the CPU while creating it in the
 All of these are optional.
 
 - `timeProvider` - sets the peripheral to be used as the time provider for the CPU, which is used to populate the `time` CSR. Typically you would provide your instance of the `clint` interrupt controller
-- `privilegeArchitecture` - selects which version of the Privileged Architecture the CPU should follow. The default is 1.11. Available values are:
-  - `PrivilegeArchitecture.Priv1_09`
-  - `PrivilegeArchitecture.Priv1_10`
-  - `PrivilegeArchitecture.Priv1_11`
+- `privilegedArchitecture` - selects which version of the Privileged Architecture the CPU should follow. The default is 1.11. Available values are:
+  - `PrivilegedArchitecture.Priv1_09`
+  - `PrivilegedArchitecture.Priv1_10`
+  - `PrivilegedArchitecture.Priv1_11`
 - `endianness` - specifies the endianness of the CPU, defaulting to little endian
 - `nmiVectorAddress` and `nmiVectorLength` - allow for customizing the non-maskable interrupt vector, if supported by the CPU
 - `allowUnalignedAccesses` - defines if an exception should be raised whenever the software performs an unaligned access on memory. Defaults to `false`
@@ -95,9 +95,9 @@ You can use a C# function for handling custom instruction by using the `InstallC
 public class MyCustomRiscV : RiscV32
 {
     public MyCustomRiscV(IMachine machine, IRiscVTimeProvider timeProvider = null, uint hartId = 0,
-                    PrivilegeArchitecture privilegeArchitecture = PrivilegeArchitecture.Priv1_11,
+                    PrivilegedArchitecture privilegedArchitecture = PrivilegedArchitecture.Priv1_11,
                     Endianess endianness = Endianess.LittleEndian, string cpuType = "rv32imfc_zicsr_zifencei")
-      : base(machine, cpuType, timeProvider, hartId, privilegeArchitecture, endianness, allowUnalignedAccesses : true)
+      : base(machine, cpuType, timeProvider, hartId, privilegedArchitecture, endianness, allowUnalignedAccesses : true)
     {
       // As mentioned, the pattern arguments takes a 16, 32, or 64 character long string.
       // Characters 0 and 1 specify the bits that should be set,
@@ -184,9 +184,9 @@ Let's take the previously defined custom RISC-V CPU and add a custom CSR to it w
 public class MyCustomRiscV : RiscV32
 {
     public MyCustomRiscV(IMachine machine, IRiscVTimeProvider timeProvider = null, uint hartId = 0,
-                    PrivilegeArchitecture privilegeArchitecture = PrivilegeArchitecture.Priv1_11,
+                    PrivilegedArchitecture privilegedArchitecture = PrivilegedArchitecture.Priv1_11,
                     Endianess endianness = Endianess.LittleEndian, string cpuType = "rv32imfc_zicsr_zifencei")
-      : base(machine, cpuType, timeProvider, hartId, privilegeArchitecture, endianness, allowUnalignedAccesses : true)
+      : base(machine, cpuType, timeProvider, hartId, privilegedArchitecture, endianness, allowUnalignedAccesses : true)
     {
       this.random = EmulationManager.Instance.CurrentEmulation.RandomGenerator;
 
