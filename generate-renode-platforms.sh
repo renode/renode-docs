@@ -4,7 +4,13 @@ mkdir -p build/html/introduction
 
 cd build
 if [ ! -d renode ]; then
-    git clone --depth=1 --recursive --shallow-submodules https://github.com/renode/renode
+    if [ -n "$GET_CUSTOM_RENODE_REVISION" ]; then
+        # Allow running external commands to fetch a custom revision of Renode for use in CI during development
+        eval "$GET_CUSTOM_RENODE_REVISION"
+    else
+        # Otherwise, just get the latest source from GitHub
+        git clone --depth=1 --recursive --shallow-submodules https://github.com/renode/renode
+    fi
 fi
 cd ..
 
