@@ -4,6 +4,7 @@
     - master
     - merge_requests
     - schedules
+    - triggers
   except:
     variables:
       - $CI_COMMIT_MESSAGE =~ /\[(skip ci|ci skip|no ci)\]/i
