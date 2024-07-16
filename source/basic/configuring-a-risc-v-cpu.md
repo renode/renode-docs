@@ -67,6 +67,10 @@ All of these are optional.
   - Auto (0) - Checks `mtvec`'s LSB to detect the mode
   - Direct (1) - All exceptions set `PC` to `mtvec`'s `BASE` value
   - Vectored (2) - Asynchronous interrupts set `PC` to `mtvec`'s `BASE + 4 * cause`
+- `privilegeLevels` - specifies implemented privilege levels of the CPU. The default is Machine, Supervisor and User modes. Available values are:
+  - `PrivilegeLevels.Machine`
+  - `PrivilegeLevels.MachineUser`
+  - `PrivilegeLevels.MachineSupervisorUser`
 
 ## Adding a custom RISC-V instruction
 
