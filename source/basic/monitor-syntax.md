@@ -209,6 +209,10 @@ When loading a script, you can use slightly different syntax for multiline varia
     """
 ```
 
+You can also use backquote substitution to store the result of a command:
+* ``` $var=`next_value` ```,
+* ``` $var=`machine ToString` ```.
+
 Variables in Renode are contextual, which means that for each machine you can have different variables with the same name.
 You can access them by their full path.
 To create a variable within the machine context of `machine-0`, you would use:
