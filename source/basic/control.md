@@ -26,7 +26,7 @@ Pausing emulation...
 
 ```{note}
 Although using Renode's native stepping is a viable solution, we recommend using [GDB](https://www.sourceware.org/gdb/) to perform step-by-step execution.
-Using GDB with Renode emulated machines is described in detail in the {ref}`documentation chapter devoted to this issue<gdb-debugging>`.
+Using GDB with Renode emulated machines is described in detail in the [documentation chapter devoted to this issue](../debugging/gdb.md).
 
 More information on how step execution in GDB can be found in the [GDB documentation](https://sourceware.org/gdb/download/onlinedocs/gdb/Continuing-and-Stepping.html).
 ```

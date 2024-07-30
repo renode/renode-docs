@@ -183,7 +183,7 @@ mingw32-make
 
 After building a verilated executable, it's time to attach it to a [Renode machine](working-with-machines), so it is actually used as a peripheral.
 
-First, a dedicated peripheral has to be added to a [Renode platform description (.repl) file](describing-platforms) that is going to be used to configure the machine.
+First, a dedicated peripheral has to be added to a [Renode platform description (.repl) file](../basic/describing_platforms.md) that is going to be used to configure the machine.
 For a Verilated UART peripheral called, e.g., `myVerilatedPeripheral`, add these lines into your `.repl` file:
 
 ```
@@ -230,7 +230,7 @@ The `frequency` parameter expects a value in `Hz`.
 
 This value is used to drive the clock signal of the verilated design and is defined in the virtual time domain.
 It means that each instruction executed by the CPU, configured with a specific `PerformanceInMips` value, leads to a constant number of clock ticks in the design.
-For more details, please see [the chapter on Time Framework](time-framework).
+For more details, please see [the chapter on Time Framework](../advanced/time_framework.md).
 
 Since it would be impractical to trigger clock signals after every instruction executed by the CPU, you can buffer these events and send them when you reach a certain threshold.
 This can be easily configured with the optional `limitBuffer` constructor parameter:

@@ -39,7 +39,9 @@ extensions = list(set(default_extensions + [
     'sphinx_inline_tabs'
 ]))
 
-myst_enable_extensions = default_myst_enable_extensions
+myst_heading_anchors = 3
+
+myst_enable_extensions = list({"deflist", *default_myst_enable_extensions})
 myst_fence_as_directive = default_myst_fence_as_directive
 
 myst_substitutions = {

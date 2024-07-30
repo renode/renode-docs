@@ -1,6 +1,6 @@
 # Developing Renode
 
-Renode has many built-in features to enable debugging of embedded software, e.g. {ref}`debugging with GDB<gdb-debugging>`, but sometimes you might be interested in debugging Renode itself, especially if you are involved in its development
+Renode has many built-in features to enable debugging of embedded software, e.g. [debugging with GDB](../debugging/gdb.md), but sometimes you might be interested in debugging Renode itself, especially if you are involved in its development
 
 ## Debugging with GDB
 

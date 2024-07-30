@@ -70,7 +70,7 @@ It can then be resumed using:
 In order to ensure the determinism of the simulation, bytes sent over an uartHub are buffered and delivered to the receiver at set times.
 Please note that this might lead to slight delays in communication.
 The maximum delay is controllable by the `quantum` parameter.
-For details on how the synchronization works and how to configure it, refer to {ref}`the Time framework synchronization section <time-framework_synchronization>` of the documentation.
+For details on how the synchronization works and how to configure it, refer to [the Time framework synchronization section](../advanced/time_framework.md#synchronization) of the documentation.
 
 (can-based-connections)=
 

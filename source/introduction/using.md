@@ -75,7 +75,7 @@ This is normally done using nested {ref}`scripts` which help encapsulate some of
 
 When the emulation is created and all the necessary elements (including e.g. binaries to be executed) are loaded, the emulation itself can be started - to do this, use the `start` command in the Monitor.
 
-At this point, you will be able to see lots of information about the operation of the emulated environment in the {doc}`logger window <../basic/logger>`, extract additional information and manipulate the running emulation using the Monitor (or plugins such as {doc}`Wireshark <../networking/wireshark>`) - as well as interact with the external interfaces of the emulated machines like UARTs or {ref}`Ethernet controllers <wired-network>`.
+At this point, you will be able to see lots of information about the operation of the emulated environment in the [logger window](../basic/logger.md), extract additional information and manipulate the running emulation using the Monitor (or plugins such as [Wireshark](../networking/wireshark.md) - as well as interact with the external interfaces of the emulated machines like UARTs or [Ethernet controllers](../networking/wired.md).
 
 For some typical commands useful in creating and manipulating machines from the Monitor, you can refer to the {ref}`working-with-machines` section.
 
