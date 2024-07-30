@@ -110,7 +110,7 @@ sysbus (SystemBus)
       <0x70001000, 0x70001017>
 ```
 
-The format of `.repl` (Renode platform) files is presented in the {ref}`Describing platforms<describing-platforms>` section.
+The format of `.repl` (Renode platform) files is presented in the [Describing platform](./describing_platforms.md) section.
 
 (accessing-and-manipulating-peripherals)=
 ## Accessing and manipulating peripherals
