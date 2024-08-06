@@ -22,7 +22,7 @@ The Monitor comes with several built-in features to make the user experience sim
 
 The `help` command provides a list of available built-in commands with a short description:
 
-```
+```none
 (monitor) help
 Available commands:
 Name              | Description
@@ -38,7 +38,7 @@ currentTime       : prints out and logs the current emulation virtual and real t
 
 You can get more detailed information about a selected command by using the `help` command with another built-in command as an argument:
 
-```
+```none
 (monitor) help analyzers
 Usage:
 ------

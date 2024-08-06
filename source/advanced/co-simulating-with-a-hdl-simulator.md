@@ -46,7 +46,7 @@ For more Verilog models, see the [renode-verilator-integration repository](https
 
 A script containing a verilated peripheral like [riscv_verilated_liteuart.resc](https://github.com/renode/renode/blob/master/scripts/single-node/riscv_verilated_liteuart.resc) can be loaded and started like any other script, by running e.g.:
 
-```
+```none
 start @path/to/your/script.resc
 ```
 
@@ -54,7 +54,7 @@ start @path/to/your/script.resc
 The Monitor command which is used in those scripts to load the verilated peripheral model differs slightly depending on your OS.
 On Linux, to add a FastVDMA HDL model named to peripheral named `dma`, you would run:
 
-```
+```none
 dma SimulationFilePathLinux @https://dl.antmicro.com/projects/renode/zynq-fastvdma_libVfastvdma-Linux-x86_64-1246779523.so-s_2057616-93e755f7d67bc4d5ca33cce6c88bbe8ea8b3bd31
 ```
 

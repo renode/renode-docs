@@ -9,7 +9,7 @@ Renode support for BLE has primarily been developed in the context of the [Zephy
 
 You can start with a precompiled demo which will just run two nodes communicating over BLE. Use the following command in the Monitor to do that:
 
-```
+```none
 (monitor) include @scripts/multi-node/nrf52840-ble-zephyr.resc
 ```
 
@@ -23,7 +23,7 @@ Here we will focus on some essentials which are specific to this demo.
 
 To build the relevant samples, after [setting up Zephyr as usual](https://docs.zephyrproject.org/latest/getting_started/index.html) you can use the following commands.
 
-```
+```sh
 cd ~/zephyrproject/zephyr
 west build -b nrf52840dk_nrf52840 -d central samples/bluetooth/central_hr
 cp central/zephyr/zephyr.elf ./zephyr-ble-central_hr.elf
@@ -38,7 +38,7 @@ If you want to run a new build and remove byproducts of the previous build, you 
 
 To use these binaries in the demo shipped with Renode, you can override the relevant variables before you load the script:
 
-```
+```none
 (monitor) $central_bin=@zephyr-ble-central_hr.elf
 (monitor) $peripheral_bin=@zephyr-ble-central_hr.elf
 (monitor) include scripts/multi-node/nrf52840-ble-zephyr.resc
@@ -49,7 +49,7 @@ To use these binaries in the demo shipped with Renode, you can override the rele
 
 Below you can find a full example which creates 2 devices that generate and read heart-rate monitor data over BLE:
 
-```
+```none
 using sysbus
 
 $central_bin?=@zephyr-ble-central_hr.elf
@@ -101,6 +101,6 @@ You can make your simulated machine react to a wireless networking (e.g. BLE) pa
 Such a hook will execute Python code either directly from the Monitor or from a designated file.
 To set up a packet interception hook on the machine from the example above, you would run:
 
-```
+```none
 (peripheral) wireless SetPacketHookFromScript radio "self.DebugLog('Received a packet of {} bytes'.format(len(packet)))"
 ```

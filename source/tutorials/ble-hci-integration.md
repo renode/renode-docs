@@ -16,7 +16,7 @@ We will pick [nRF52840 DK](https://docs.zephyrproject.org/latest/boards/arm/nrf5
 To be able to generate some Zephyr binaries on your system, complete the [Zephyr Getting Started Guide](https://docs.zephyrproject.org/latest/getting_started/index.html) first.
 Next, create a `nrf52840dk_nrf52840_ble_hci_uart.overlay` file in the `zephyr` directory. This file is used to assign the selected UART to the BLE HCI transport. This file should contain the following content:
 
-```
+```dts
 / {
 	chosen {
 		zephyr,bt-uart = &arduino_serial;
@@ -33,7 +33,7 @@ In most cases, it is possible to create similar overlays for other boards that d
 Now, you can use the following command to build the [peripheral_hr](https://docs.zephyrproject.org/latest/samples/bluetooth/peripheral_hr/README.html) sample for the nRF52840 DK.
 The sample is built with the HCI UART transport enabled:
 
-```
+```sh
 west build -p auto -b nrf52840dk_nrf52840 -d hci_peripheral_hr samples/bluetooth/peripheral_hr -- \
  -DCONFIG_BT_HCI=y -DCONFIG_BT_CTLR=n -DCONFIG_BT_H4=y \
  -DCONFIG_BT_EXT_ADV=n -DCONFIG_BT_HCI_ACL_FLOW_CONTROL=n \
@@ -47,7 +47,7 @@ See [the Zephyr RTOS documentation](https://docs.zephyrproject.org/latest/kconfi
 
 To use these binaries in Renode, load your platform and expose the selected UART to the host via the socket terminal for integration with an external BLE controller:
 
-```
+```none
 (machine-0) emulation CreateServerSocketTerminal 3456 "ble_hci_uart" false
 (machine-0) connector Connect sysbus.uart1 ble_hci_uart
 ```
@@ -55,7 +55,7 @@ To use these binaries in Renode, load your platform and expose the selected UART
 You can also use the generic script for the `nrf52840dk_nrf52840` board that is distributed with Renode, you will just need to set some variables for port number (`$port`) and binary path (`$bin`) before loading the script.
 You can run this command from the command line:
 
-```
+```sh
 renode -e "$port=3456; $bin=@/home/user/zephyrproject/zephyr/hci_peripheral_hr/zephyr/zephyr.elf; i @scripts/complex/hci_uart/hci_uart.resc"
 ```
 
@@ -75,7 +75,7 @@ Android Emulator version 33.1.14 or later is required to test the Bluetooth inte
 Before you can set up the Android emulator from the command line, you need to have the `Java Runtime Environment` installed on your system.
 To install the prerequisites on a Debian-based system, use the following command:
 
-```
+```sh
 sudo apt install default-jre unzip wget
 ```
 
@@ -85,7 +85,7 @@ Now, you can run the following commands to set up Android Emulator:
 You can set `BASE_PATH` to the directory, where you want to download Android SDK. 
 ```
 
-```
+```sh
 export BASE_PATH=$HOME
 
 export ANDROID_HOME=$BASE_PATH/android-sdk
@@ -152,25 +152,25 @@ to install it in an isolated environment.
 
 Install the `bumble` module:
 
-```
+```sh
 python -m pip install git+https://github.com/google/bumble.git@8eeb58e467
 ```
 
 To see, if `bumble-hci-bridge` is available as a global tool, run:
 
-```
+```sh
 bumble-hci-bridge --help
 ```
 
 Run Android Emulator:
 
-```
+```sh
 emulator -avd Android0 -accel auto -gpu auto
 ```
 
 Now, you can establish a connection between the Renode device configured in the previous step and the Android emulator using `bumble-hci-bridge`:
 
-```
+```sh
 bumble-hci-bridge tcp-client:127.0.0.1:3456 android-netsim 0x03:0x0031,0x08:0x013,0x08:0x032,0x08:0x016,0x03:0x035
 ```
 
@@ -193,7 +193,7 @@ You can create a virtual Mesh network with multiple Renode instances emulating s
 
 Build the [`mesh` sample](https://github.com/zephyrproject-rtos/zephyr/tree/zephyr-v3.4.0/samples/bluetooth/mesh) that will be loaded in Renode for the `nrf52840dk_nrf52840` platform as follows:
 
-```
+```sh
 west build -p auto -b nrf52840dk_nrf52840 -d hci_mesh samples/bluetooth/mesh -- \
  -DCONFIG_BT_HCI=y -DCONFIG_BT_CTLR=n -DCONFIG_BT_H4=y \
  -DCONFIG_BT_EXT_ADV=n -DCONFIG_BT_HCI_ACL_FLOW_CONTROL=n \
@@ -222,7 +222,7 @@ It can be installed using `apt` package manager.
 
 To build `bluez` from source on a Debian-based system:
 
-```
+```sh
 sudo apt update
 
 sudo apt install -y wget xz-utils git bc libusb-dev libdbus-1-dev libglib2.0-dev libudev-dev libical-dev libreadline-dev autoconf bison flex libssl-dev libncurses-dev libdbus-1-dev python3-docutils cmake udev systemd
@@ -272,7 +272,7 @@ You can call `hciconfig` to make sure that virtual HCIs were created by `btvirt`
 You should see HCIs that belong to virtual bus (`Bus: Virtual`).
 They disappear after you kill the `btvirt` process.
 
-```
+```none
 hci2:	Type: Primary  Bus: Virtual
 	BD Address: 00:AA:01:02:00:02  ACL MTU: 192:1  SCO MTU: 0:0
 	DOWN 
@@ -331,7 +331,7 @@ Next:
 
 The following messages should be printed on the `uart0` console:
 
-```
+```none
 *** Booting Zephyr OS build zephyr-v3.3.0 ***
 Initializing...
 [00:00:00.041,351] <inf> bt_hci_core: bt_dev_show_info: Identity: C8:7F:54:3D:8E:49 (public)
@@ -360,7 +360,7 @@ An external USB BLE adapter (you can build one from [Zephyr HCI USB sample](http
 
 To establish a connection between Renode and the USB BLE adapter using `bumble-hci-bridge`:
 
-```
+```sh
 bumble-hci-bridge tcp-client:127.0.0.1:3456 usb:0
 ```
 
@@ -370,7 +370,7 @@ You may need to change the permissions for the USB device to [access it as a reg
 
 You can connect directly to the HCI socket if the kernel has already registered an interface:
 
-```
+```sh
 sudo capsh --caps="cap_net_admin+eip cap_setpcap,cap_setuid,cap_setgid+ep" --keep=1 --user=\$USER --addamb=cap_net_admin  -- -c "$(which bumble-hci-bridge) tcp-client:127.0.0.1:3456 hci-socket:0"
 ```
 

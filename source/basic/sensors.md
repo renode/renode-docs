@@ -8,13 +8,13 @@ Sensors can be either controlled individually by directly setting their values (
 To control an individual sensor in your Renode machine, you need to access the appropriate property available to the sensor.
 To change the `Temperature` property of a sensor, use:
 
-```
+```none
 (machine-0) spi0.temperatureSensor Temperature 36.6
 ```
 
 This value can then be read by accessing the same property::
 
-```
+```none
 (machine-0) spi0.temperatureSensor Temperature
 36.6
 ```
@@ -28,7 +28,7 @@ It allows you to group and manage sensors that should observe the same environme
 
 To create an environment called `env`, execute:
 
-```
+```none
 (monitor) emulation CreateEnvironment "env"
 ```
 
@@ -37,13 +37,13 @@ Currently, `Environment` supports two parameters: temperature and pressure.
 
 You can set the temperature in the environment by calling:
 
-```
+```none
 (monitor) env Temperature 36.6
 ```
 
 To check the current setting:
 
-```
+```none
 (monitor) env Temperature
 36.6
 ```
@@ -61,7 +61,7 @@ You have to be in a {ref}`machine context <machine-context>` to be able to execu
 
 To add the `temperatureSensor` peripheral, connected via the `i2c` bus, run:
 
-```
+```none
 (machine-0) i2c.temperatureSensor SetEnvironment env
 ```
 
@@ -71,7 +71,7 @@ Only the specified sensor will be added to the `env` environment and will observ
 
 To add the current machine to the environment, run:
 
-```
+```none
 (machine-0) machine SetEnvironment env
 ```
 

@@ -19,21 +19,21 @@ This command also switches the Monitor's context to this new machine.
 
 Executing the same command again will create another machine, called `machine-1`:
 
-```
+```none
 (machine-0) mach create
 (machine-1)
 ```
 
 You can create a machine with a custom name by providing it as the argument:
 
-```
+```none
 (monitor) mach create "my-machine"
 (my-machine)
 ```
 
 To list all created machines together with their names and indices, type:
 
-```
+```none
 (my-machine) help mach
 ```
 
@@ -43,14 +43,14 @@ To list all created machines together with their names and indices, type:
 
 When you want to switch the Monitor's context to another machine type:
 
-```
+```none
 (machine-1) mach set "machine-0"
 (machine-0)
 ```
 
 Instead of the machine's name, you can use its index as well:
 
-```
+```none
 (machine-1) mach set 0
 (machine-0)
 ```
@@ -64,7 +64,7 @@ There is no memory or CPU, so the machine is not yet ready to execute any code.
 
 To list all peripherals, execute:
 
-```
+```none
 (machine-0) peripherals
 Available peripherals:
 
@@ -73,7 +73,7 @@ Available peripherals:
 
 To load a predefined platform (in this example, *Microsemi MiV*), type:
 
-```
+```none
 (machine-0) machine LoadPlatformDescription @platforms/cpus/miv.repl
 (machine-0) peripherals
 Available peripherals:
@@ -121,19 +121,19 @@ The set of available properties and operations depends on the type of peripheral
 
 For example, to check memory size, execute:
 
-```
+```none
 (machine-0) sysbus.ddr Size
 ```
 
 To call an action on the peripheral, use the same syntax but replace `Size` with the action name, e.g., `ZeroAll`:
 
-```
+```none
 (machine-0) sysbus.ddr ZeroAll
 ```
 
 To get the complete list of available properties or actions, just enter the peripheral's name:
 
-```
+```none
 (machine-0) sysbus.ddr
 The following methods are available:
 - Void DebugLog (String message)
@@ -167,13 +167,13 @@ If you do not have a binary at your disposal, you can use this [sample Zephyr Sh
 
 To load a local `.elf` file into memory, execute:
 
-```
+```none
 (machine-0) sysbus LoadELF @my-project.elf
 ```
 
 To load a binary via HTTPS:
 
-```
+```none
 (machine-0) sysbus LoadELF @https://remote-server.com/my-project.elf
 ```
 
@@ -183,13 +183,13 @@ That means the last ELF you load will set up your CPU starting point.
 
 To override this, you can set the initial values manually, using:
 
-```
+```none
 sysbus.cpu PC 0xYourValue
 ```
 
 or, on Cortex-M:
 
-```
+```none
 sysbus.cpu VectorTableOffset 0xYourValue
 ```
 ````
@@ -201,7 +201,7 @@ To load them, use `LoadBinary`, `LoadUImage` or `LoadHEX` accordingly.
 
 If you want to switch to another project, you can drop the whole emulation::
 
-```
+```none
 (machine-0) Clear
 ```
 

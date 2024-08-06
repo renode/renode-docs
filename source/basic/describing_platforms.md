@@ -16,7 +16,7 @@ This has to be a full name with a namespace, but the default namespace, `Antmicr
 
 For example, to create a UART object of type `Antmicro.Renode.Peripherals.UART.MiV_CoreUART`, connected to the system bus at `0x80000000`, use:
 
-```
+```none
 uart0: UART.MiV_CoreUART @ sysbus 0x80000000
 ```
 
@@ -24,7 +24,7 @@ Some peripherals, like the mentioned UART, need parameters to be constructed.
 The REPL format allows you to set the constructor parameters and properties of the peripheral model.
 They are placed below the declaration, with four spaces of indentation:
 
-```
+```none
 uart0: UART.MiV_CoreUART @ sysbus 0x80000000
     clockFrequency: 66000000
 ```
@@ -38,7 +38,7 @@ It is possible, however, to connect peripherals to other buses as well, like I2C
 
 For example, to connect a temperature sensor to an I2C controller called `i2c0` at `0x80`, type:
 
-```
+```none
 sensor: Sensors.SI70xx @ i2c0 0x80
 ```
 
@@ -47,7 +47,7 @@ Renode treats these signals similarly, and allows you to create a connection wit
 
 To connect a timer to the 31-st interrupt on the `plic` interrupt controller, run:
 
-```
+```none
 timer: Timers.MiV_CoreTimer @ sysbus 0x1000000
     -> plic @ 31
 ```

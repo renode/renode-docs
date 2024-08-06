@@ -46,7 +46,7 @@ In order to connect Renode to Arduino IDE/CLI, perform the following steps:
 
 2. Create the Arduino Nano 33 BLE platform in Monitor:
 
-   ```
+   ```none
    (monitor) mach create
    (machine-0) machine LoadPlatformDescription @platforms/boards/arduino_nano_33_ble.repl
    ```
@@ -57,7 +57,7 @@ In order to connect Renode to Arduino IDE/CLI, perform the following steps:
 
 2. Start the USB/IP server in Renode and attach the loader to it:
 
-    ```
+    ```none
    (machine-0) emulation CreateUSBIPServer
    (machine-0) host.usb CreateArduinoLoader sysbus.cpu 0x10000 0 "arduinoLoader"
     ```
@@ -67,14 +67,14 @@ When creating the loader, you can specify the binary load address ([0x10000]{.ti
 
 The values below are the default ones, so you can skip all of them leaving just:
 
-```
+```none
 (machine-0) host.usb CreateArduinoLoader sysbus.cpu
 ```
 :::
 
 3. Once your simulation is fully set-up and you are ready to receive and run the binary, start the loader:
 
-    ```
+    ```none
    (machine-0) arduinoLoader WaitForBinary 120 true
    ```
 
@@ -143,14 +143,14 @@ Please, make sure to select the proper `/dev/ttyACMx` device.
 
 Once the binary is received, you'll see the following message in Monitor:
 
-```
+```none
 (machine-0) arduinoLoader WaitForBinary 120 true
 Binary of size 217088 bytes loaded at 0x10000
 ```
 
 Now you can start the simulation with:
 
-```
+```none
 (machine-0) showAnalyzer sysbus.uart0
 (machine-0) start
 

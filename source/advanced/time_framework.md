@@ -3,7 +3,7 @@
 ## Time and performance units
 
 Time inside the emulation is referred to as *virtual time* (as opposed to *host time* or *real time*) and is expressed in *virtual seconds*.
-Currently, the resolution of *virtual time*, i.e., the minimum expressable time quant, is 10\^-6 *virtual second* or 1 *virtual microsecond*.
+Currently, the resolution of *virtual time*, i.e., the minimum expressible time quant, is 10\^-6 *virtual second* or 1 *virtual microsecond*.
 Performance of the CPU is expressed in *MIPS* units (*millions of instructions per second*) and is an integer value.
 This means that setting the minimum time quant allows the CPU with performance of 1 *MIPS* to execute exactly one instruction.
 
@@ -13,7 +13,7 @@ For CPU with performance higher than 1 *MIPS*, it is possible to execute instruc
 
 Performance of the CPU can be configured with the following command (in this case, set to 120 *MIPS*):
 
-```
+```none
 cpu PerformanceInMips 120
 ```
 
@@ -22,7 +22,7 @@ The default value of the performance setting is 100 *MIPS*.
 ## Time sources and sinks
 
 Objects controlling flow of *virtual time* are called *time sources*.
-By default, there is one *time source*, called *master time source*, assosiated with the emulation.
+By default, there is one *time source*, called *master time source*, associated with the emulation.
 Currently, there is no API to create other *master time sources*, but the framework itself is capable of handling multiple *time domains* (with each *master time source* being a root of the domain).
 
 Objects that are aware of the time flow are called *time sinks*.
@@ -59,7 +59,7 @@ There are several properties provided by a *time source* that can be used to tun
 *Quantum*
 
 :   The amount of *virtual time* between two *synchronization phases*.
-    It is guraranteed that the difference of *virtual time* perceived of two *slaves* is never higher than a *quantum* of its closest common *source*.
+    It is guaranteed that the difference of *virtual time* perceived of two *slaves* is never higher than a *quantum* of its closest common *source*.
     
     The value of *quantum* can be changed between *synchronization phases*, but the new value won't be used until the next grant.
     
@@ -78,7 +78,7 @@ There are also some read-only properties that can be used to monitor the current
 
 *CurrentLoad*
 
-:   Floating-point value being a ratio of *real time* required to emulate a given interval of *virtual time*, calculated as an avarage of *10* samples.
+:   Floating-point value being a ratio of *real time* required to emulate a given interval of *virtual time*, calculated as an average of *10* samples.
 
 *CummulativeLoad*
 
@@ -101,5 +101,5 @@ There are also some read-only properties that can be used to monitor the current
 When any of the members of *time domain* pauses its execution, it will effectively block *virtual time* from passing.
 As a result, all other members will execute to the nearest *synchronization phase* and wait for the paused member to continue.
 
-Sometimes it is convinient to have a member in the *domain* that is disabled, but does not block others - e.g., a CPU that is not clocked in multi-CPU architectures.
+Sometimes it is convenient to have a member in the *domain* that is disabled, but does not block others - e.g., a CPU that is not clocked in multi-CPU architectures.
 The *CPU* class provides the `IsHalted` property that allows to achieve this goal.

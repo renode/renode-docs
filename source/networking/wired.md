@@ -23,7 +23,7 @@ To connect an interface to a switch you have to set a proper [machine context](.
 
 Then, use the `connector` mechanism to attach the interface:
 
-```
+```none
 (machine-0) connector Connect sysbus.ethernet switch1
 ```
 
@@ -33,13 +33,13 @@ Although it is not a common setup, each interface can be connected to many switc
 
 You can disconnect network interfaces from a switch by running:
 
-```
+```none
 (machine-0) connector Disconnect sysbus.ethernet switch1
 ```
 
 To disconnect from all connected switches, use:
 
-```
+```none
 (machine-0) connector DisconnectFromAll sysbus.ethernet
 ```
 
@@ -54,7 +54,7 @@ To enable communication via a switch you must start it manually, either by runni
 
 or, if your emulation is already started, with:
 
-```
+```none
 (monitor) switch1 Start
 ```
 
@@ -65,7 +65,7 @@ If, however, the address is not set or the switch is not aware of an interface w
 
 You can alter this behavior by enabling promiscuous mode for a specified interface:
 
-```
+```none
 (machine-0) switch1 EnablePromiscuousMode sysbus.ethernet
 ```
 
@@ -73,6 +73,6 @@ After this command, the `sysbus.ethernet` interface will receive all packets del
 
 To disable promiscuous mode, run:
 
-```
+```none
 (machine-0) switch1 DisablePromiscuousMode sysbus.ethernet
 ```

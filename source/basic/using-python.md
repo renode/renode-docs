@@ -38,7 +38,7 @@ You can also use the `include` command to load an existing `.py` file:
 
 To provide a multiline Python script from the Monitor or a `.resc` file, use the following notation:
 
-```
+```none
 (monitor) set my_script """
 > print "Hello"
 > print "This is a multiline Python script"
@@ -50,7 +50,7 @@ To provide a multiline Python script from the Monitor or a `.resc` file, use the
 
 Using the `print` Python command will output the text on the Monitor:
 
-```
+```none
 (monitor) python "print 'Hello'"
 Hello
 ```
@@ -73,7 +73,7 @@ def mc_sleep(time):
 
 When executed in Renode, this definition provides a `sleep` function in the Monitor:
 
-```
+```none
 (monitor) sleep 5
 ```
 
@@ -87,7 +87,7 @@ The most common use of Python peripherals is mocking certain blocks that are not
 
 To create a Python peripheral, you need to specify several variables:
 
-```
+```none
 variableName: Python.PythonPeripheral @ sysbus 0x7000F410
     size: 0x4
     initable: false
@@ -442,7 +442,7 @@ To create a packet interception hook, run:
 
 You can also execute a script from a file:
 
-```
+```none
 (machine) wireless SetPacketHookFromFile sysbus.radio @path/to/file.py
 ```
 
@@ -479,7 +479,7 @@ but IronPython also allows you to attach Python functions to C# events.
 
 As an example let's create a trivial Ethernet sniffer:
 
-```
+```none
 (machine-0) emulation CreateSwitch "switch"
 (machine-0) python "externals.switch.FrameProcessed += lambda switch, sender, data: sender.LogDebug(str(data))"
 ``` 
@@ -544,7 +544,7 @@ It provides an internal buffer for the received data and methods and events list
 
 An instance of the console can be created with a Monitor command:
 
-```
+```none
 (machine-0) machine CreateVirtualConsole "vconsole"
 (machine-0) showAnalyzer vconsole
 ```

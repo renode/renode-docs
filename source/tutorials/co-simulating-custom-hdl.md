@@ -13,7 +13,7 @@ To make your own verilated peripheral, in the main cpp file of your verilated mo
 
 You also need to specify the type of external interfaces you want to integrate with Renode - e.g., UART's rx/tx signals.
 
-```
+```cpp
 // uart.h and axilite.h can be found in Renode's VerilatorPlugin
 #include "src/peripherals/uart.h"
 #include "src/buses/axilite.h"
@@ -104,7 +104,7 @@ To run shell commands without any modifications, set all ``*_PATH`` shell variab
 First, put all Verilog and C/C++ source files in `$SRC_PATH`.
 Then, copy the `$RVI_PATH/cmake/CMakeLists.txt.template` as `CMakeLists.txt` to the `$SRC_PATH` directory:
 
-```
+```sh
 # Execute from a directory containing peripheral's source files
 mkdir "$SRC_PATH"
 cp *.v *.c *.cpp "$SRC_PATH"
@@ -129,7 +129,7 @@ Use a space to separate multiple files or arguments replacing ``<*_FILES>`` and 
 Having the CMake source directory prepared, the verilated peripheral can now be built.
 When using CMake, it's best to keep the build files in a separate build directory:
 
-```
+```sh
 mkdir build && cd build
 cmake -DCMAKE_BUILD_TYPE=Release -DUSER_RENODE_DIR="$RENODE_PATH" ${VERILATOR_PATH:+"-DUSER_VERILATOR_DIR=$VERILATOR_PATH"} "$SRC_PATH"
 make
@@ -174,7 +174,7 @@ Additionally, in the most common toolchain setups, the `mingw32-make` command sh
 
 Therefore, on Windows, a verilated peripheral can be built with:
 
-```
+```sh
 cmake -G "MinGW Makefiles" -DCMAKE_SH=CMAKE_SH-NOTFOUND -DCMAKE_BUILD_TYPE=Release -DUSER_RENODE_DIR="$RENODE_PATH" ${VERILATOR_PATH:+"-DUSER_VERILATOR_DIR=$VERILATOR_PATH"} "$SRC_PATH"
 mingw32-make
 ```
@@ -186,7 +186,7 @@ After building a verilated executable, it's time to attach it to a [Renode machi
 First, a dedicated peripheral has to be added to a [Renode platform description (.repl) file](../basic/describing_platforms.md) that is going to be used to configure the machine.
 For a Verilated UART peripheral called, e.g., `myVerilatedPeripheral`, add these lines into your `.repl` file:
 
-```
+```none
 myVerilatedPeripheral: Verilated.VerilatedUART @ sysbus <0x70000000, +0x100>
    frequency: 100000000
 ```
@@ -203,7 +203,7 @@ To use the socket based intergration you should add the ``address`` parameter to
 In Renode, after loading such a platform description with a command either directly in the [Renode monitor](monitor) or with an appropriate [Renode script (.resc) file](scripts), the verilated executable needs to be attached.
 Assuming the `libVtop` binary is located in the Renode root directory, it can be attached with:
 
-```
+```none
 (machine-0) myVerilatedPeripheral SimulationFilePath @libVtop
 ```
 
@@ -235,7 +235,7 @@ For more details, please see [the chapter on Time Framework](../advanced/time_fr
 Since it would be impractical to trigger clock signals after every instruction executed by the CPU, you can buffer these events and send them when you reach a certain threshold.
 This can be easily configured with the optional `limitBuffer` constructor parameter:
 
-```
+```none
 myVerilatedPeripheral: Verilated.VerilatedUART @ sysbus <0x70000000, +0x100>
    frequency: 100000000
    limitBuffer: 10000
@@ -315,7 +315,7 @@ To write a character to the `txd` UART register, add in `__rt_putc_uart` functio
 The "Hello World" code source can be found at [pulp-rt-examples](https://github.com/pulp-platform/pulp-rt-examples/tree/master/hello).
 To compile, run:
 
-```
+```sh
 make all io=uart
 ```
 
@@ -325,14 +325,14 @@ The resulting binary should be created in the `pulp-rt-examples/hello/build/arno
 
 To enable a verilated UART peripheral in the core-v-mcu hello world example, you need to register `VerilatedUART` in [core-v-mcu.repl](https://github.com/renode/renode/blob/master/platforms/cpus/core-v-mcu.repl), e.g.:
 
-```
+```none
 verilated_uart: Verilated.VerilatedUART @ sysbus <0x50000000, +0x100>
    frequency: 100000000
 ```
 
 Then, you have to provide a binary to the Renode simulation in the Renode monitor type:
 
-```
+```none
 (monitor) using sysbus
 (monitor) mach create
 (machine-0) machine LoadPlatformDescription @platforms/cpus/core-v-mcu.repl
@@ -340,26 +340,26 @@ Then, you have to provide a binary to the Renode simulation in the Renode monito
 
 Attach your binary to the simulation:
 
-```
+```none
 (machine-0) sysbus LoadELF @path_to_your_binary
 ```
 
 You can use your verilated UART model:
 
-```
+```none
 (machine-0) verilated_uart SimulationFilePath @path_to_verilated_uart_model
 ```
 
 Or you can use the prebuilt one provided by us:
 
-```
+```none
 (machine-0) $uart?=@https://dl.antmicro.com/projects/renode/verilator--uartlite_trace_off-s_252704-c703fe4dec057a9cbc391a0a750fe9f5777d8a74
 (machine-0) verilated_uart SimulationFilePath $uart
 ```
 
 To enable the UART analyzer window and start simulation, type:
 
-```
+```none
 (machine-0) showAnalyzer verilated_uart
 (machine-0) s
 ```

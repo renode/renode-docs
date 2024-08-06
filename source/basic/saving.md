@@ -9,13 +9,13 @@ No additional binaries or configuration files are required.
 
 To save the emulation state to a file called `statefile.dat`, run:
 
-```
+```none
 (monitor) Save @statefile.dat
 ```
 
 This file can be used with the `Load` command:
 
-```
+```none
 (monitor) Load @statefile.dat
 ```
 
@@ -23,7 +23,7 @@ It is important to remember that a state file created on one version of Renode m
 
 Please note that loading the state file clears the current emulation, and is equivalent to:
 
-```
+```none
 (monitor) Clear
 (monitor) Load @statefile.dat
 ```
@@ -31,7 +31,7 @@ Please note that loading the state file clears the current emulation, and is equ
 ````{note}
 After the state is loaded, you must manually set the Monitor's context and reopen the UART windows:
 
-```
+```none
 (monitor) mach set 0
 (machine-0) showAnalyzer sysbus.uart
 ```

@@ -27,7 +27,7 @@ The above command will:
 
 Below, you can see an example output:
 
-```
+```none
 Preparing suites
 Started Renode instance on port 9999; pid 2293056
 Starting suites

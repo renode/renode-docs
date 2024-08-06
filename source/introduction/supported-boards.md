@@ -10,7 +10,7 @@ On top of that, this chapter contains an (incomplete) list of selected supported
 
 To run example software on any of the below boards, simply run Renode and use:
 
-```
+```none
 s @scripts/PATH/TO/SCRIPT-NAME.resc
 ```
 

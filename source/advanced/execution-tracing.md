@@ -17,13 +17,13 @@ Renode can log the names of functions currently executed by the guest applicatio
 This requires you to use the `sysbus LoadELF @path/to/elf` command to [load your application](https://renode.readthedocs.io/en/latest/basic/machines.html#loading-binaries) or `sysbus LoadSymbolsFrom @path/to/elf` if you prefer executing a binary or a hex file.
 Function names logging can be enabled using:
 
-```
+```none
 cpu LogFunctionNames true
 ```
 
 You can disable function names logging using:
 
-```
+```none
 cpu LogFunctionNames false
 ```
 
@@ -33,13 +33,13 @@ You can also add another `true` at the end of this command to remove duplicate f
 
 To filter function names based on a prefix, add the prefix as a string at the end of the function:
 
-```
+```none
 cpu LogFunctionNames true "uart"
 ```
 
 To use more than one prefix and log functions that start with either of those two prefixes, simply separate them with a space:
 
-```
+```none
 cpu LogFunctionNames true "uart irq"
 ```
 
@@ -59,7 +59,7 @@ This feature allows you to see how your program uses or doesn't use specific par
 
 You can enable this feature by using the following:
 
-```
+```none
 sysbus LogPeripheralAccess <peripheral-name> true
 ```
 
@@ -77,13 +77,13 @@ The logs contain:
 
 You can also log accesses to all peripherals connected to the system bus:
 
-```
+```none
 sysbus LogAllPeripheralsAccess true
 ```
 
 You can disable both peripheral access logging commands by providing `false` instead of `true` as the last parameter:
 
-```
+```none
 sysbus LogAllPeripheralsAccess false
 ```
 
@@ -94,17 +94,20 @@ If you want to learn more about logging peripheral accesses in Renode, visit [Us
 In Renode, you can see what the CPU does at any given time without changing the code or using specialized hardware.
 To enable execution tracing, use:
 
-```
+```none
 cpu CreateExecutionTracing "tracer_name" @path-to-file <mode>
 ```
 
 Additionally, you can use the tracer to track memory accesses.
 To do so, type:
-```
+
+```none
 tracer_name TrackMemoryAccesses
 ```
+
 Similarly, to track vector configuration on the RISC-V architecture, use:
-```
+
+```none
 tracer_name TrackVectorConfiguration
 ```
 
@@ -163,20 +166,20 @@ You can save the output from the `PC`, `Opcode`, and `PCAndOpcode` modes to a bi
 This format is faster to encode and produces smaller output files.
 To save to a binary file, use the following:
 
-```
+```none
 cpu CreateExecutionTracing "tracer_name" @path-to-file <mode> true
 ```
 
 If you also want to compress the output, you can add another `true` to this command:
 
-```
+```none
 cpu CreateExecutionTracing "tracer_name" @path-to-file <mode> true true
 ```
 
 You can view the content of the binary file by using a script bundled with Renode.
 It can be invoked by running this command in your shell:
 
-```
+```sh
 python3 <renode>/tools/execution_tracer/execution_tracer_reader.py path-to-dump-file
 ```
 
@@ -184,7 +187,7 @@ This command will print the file's text content to the standard output.
 
 To disable execution tracing, simply use:
 
-```
+```none
 cpu DisableExecutionTracing
 ```
 
@@ -210,7 +213,7 @@ This feature is available on RISC-V, Cortex-A, Cortex-R and Cortex-M CPUs.
 
 To enable guest profiling, use:
 
-```
+```none
 cpu EnableProfiler <output-format> @path-to-output-file [<flush-instantly>]
 ```
 
@@ -223,7 +226,7 @@ You can also use `cpu EnableProfilerCollapsedStack` and `cpu EnableProfilerPerfe
 By default, Renode will buffer file operations for better performance, but you can instantly write everything to a file by passing `true` as the optional `<flush-instantly>` argument.
 If you don't want to write to a file instantly but still want to have some control over when a flush occurs, use the following command to flush the buffer manually:
 
-```
+```none
 cpu FlushProfiler
 ```
 
@@ -236,7 +239,7 @@ This can be helpful if you want to know if some special instructions, for exampl
 
 To enable opcode counting, use the following command:
 
-```
+```none
 cpu EnableOpcodesCounting true
 ```
 
@@ -251,27 +254,27 @@ They are like a regex that matches the opcode’s bits.
 As an example, you can use the [scripts/single-node/versatile.resc](https://github.com/renode/renode/blob/master/scripts/single-node/versatile.resc) demo to detect ARM’s branch and branch-with-link instructions.
 To load this demo, use:
 
-```
+```none
 include @scripts/single-node/versatile.resc
 ```
 
 To install the counter patterns, we will use these two commands, but you can search for any pattern you want:
 
-```
+```none
 cpu InstallOpcodeCounterPattern "bl" "****1011************************"
 cpu InstallOpcodeCounterPattern "b"  "****1010************************"
 ```
 
 To get the values of the counters printed to the monitor window, use:
 
-```
+```none
 cpu GetAllOpcodesCounters
 ```
 
 The first parameter is the name of the counter, and the second is the pattern.
 After running the demo, you can use:
 
-```
+```none
 ----------------
 |Opcode|Count  |
 ----------------
@@ -282,7 +285,7 @@ After running the demo, you can use:
 
 You can also get the value of a specified counter using:
 
-```
+```none
 cpu GetOpcodeCounter "<counter-name>"
 ```
 
@@ -298,7 +301,7 @@ To install RISC-V specific opcode patterns, use the functions below:
 All those patterns are created from RISC-V opcode definition [files](https://github.com/renode/renode-infrastructure/tree/master/src/Emulator/Cores/RiscV/opcodes).
 You can create a similar file for RISC-V with your instructions and load the patterns using:
 
-```
+```none
 cpu EnableRiscvOpcodesCounting @path-to-file
 ```
 

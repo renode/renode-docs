@@ -50,7 +50,7 @@ The output above informs that Renode is not exporting any devices at the moment.
 
 Let's export a simple USB device - e.g. a mouse:
 
-```
+```none
 (monitor) host.usb AttachUSBMouse
 ```
 
@@ -162,7 +162,7 @@ Configuration Descriptor:
 Now you can control your mouse from Renode.
 Type:
 
-```
+```none
 (monitor) host.usb MoveMouse 100 100
 ```
 
@@ -180,27 +180,27 @@ device where the whole logic (including generating USB descriptors) is executed 
 Renode comes with a definition of the Fomu platform.
 To create a new virtual Fomu instance, type in the Monitor:
 
-```
+```none
 (monitor) mach create
 (machine-0) machine LoadPlatformDescription @platforms/cpus/fomu.repl
 ```
 
 Load the Foboot software:
 
-```
+```none
 (machine-0) sysbus LoadELF @https://antmicro.com/projects/renode/fomu--foboot.elf-s_112080-70b1181d470646a31ebef7300fc8e6dc5447e282
 ```
 
 Create a USB/IP server and export Fomu:
 
-```
+```none
 (machine-0) emulation CreateUSBIPServer
 (machine-0) host.usb Register sysbus.valenty
 ```
 
 Start the emulation:
 
-```
+```none
 (machine-0) start
 ```
 

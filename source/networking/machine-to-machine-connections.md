@@ -17,7 +17,7 @@ A symmetrical connection is represented by a "hub" object to which the communica
 
 To connect two UART devices, you need to create a UART hub, which can be created in the Monitor by executing:
 
-```
+```none
 (monitor) emulation CreateUARTHub "uartHub"
 ```
 
@@ -25,7 +25,7 @@ The UART hub created by this line is named `uartHub`, but you can use any name.
 
 Then, you have to connect your UART devices to the common UART hub using the `connector` mechanism:
 
-```
+```none
 (monitor) mach set 0
 (machine-0) connector Connect sysbus.uart uartHub
 (machine-0) mach set 1
@@ -34,7 +34,7 @@ Then, you have to connect your UART devices to the common UART hub using the `co
 
 To disconnect a device from the `uartHub`, execute:
 
-```
+```none
 (machine-1) connector Disconnect sysbus.uart uartHub
 ```
 
@@ -43,13 +43,13 @@ To enable communication, you must start your hub.
 
 For simplicity, in the default scenario your `uartHub` will start automatically when starting the whole simulation:
 
-```
+```none
 (monitor) start
 ```
 
 In case you need to start your `uarthub` manually (e.g. when adding it to a running simulation):
 
-```
+```none
 (monitor) uartHub Start
 ```
 
@@ -57,13 +57,13 @@ Now, data sent by `sysbus.uart` on `machine-0` will be received by `sysbus.uart`
 
 Your hub can be paused at any moment by executing:
 
-```
+```none
 (monitor) uartHub Pause
 ```
 
 It can then be resumed using:
 
-```
+```none
 (monitor) uartHub Resume
 ```
 
@@ -80,13 +80,13 @@ Connecting two machines with the CAN bus is very similar to connecting them with
 
 First, you need to create a CAN hub in the Monitor:
 
-```
+```none
 (monitor) emulation CreateCANHub "canHub"
 ```
 
 Then, you have to connect both of your devices to the CAN Hub using the `connector` mechanism:
 
-```
+```none
 (monitor) mach set 0
 (machine-0) connector Connect sysbus.can canHub
 (machine-0) mach set 1
@@ -95,7 +95,7 @@ Then, you have to connect both of your devices to the CAN Hub using the `connect
 
 To disconnect a device from the `CANHub`, execute:
 
-```
+```none
 (machine-1) connector Disconnect sysbus.can canHub
 ```
 
@@ -118,7 +118,7 @@ However, you can create two `GPIOConnector` objects with reversed source and des
 
 To create a `GPIOConnector`, use:
 
-```
+```none
 (monitor) emulation CreateGPIOConnector "gpio-con"
 ```
 
@@ -128,8 +128,8 @@ Trying to connect more will always result in an error.
 Next, you need to select GPIO pins available in the machines you want to use in the connection.
 In the example below, we chose to use pin 7 in the `source` machine and pin 4 in the `destination` machine.
 
-```
-(monitor) mach set "source" 
+```none
+(monitor) mach set "source"
 (source) connector Connect sysbus.gpio gpio-con
 (source) gpio-con SelectSourcePin sysbus.gpio 7
 
@@ -142,12 +142,12 @@ In the example below, we chose to use pin 7 in the `source` machine and pin 4 in
 Keep in mind that the signal can only be sent from the `SourcePin` to the `DestinationPin`.
 To create a connection working the other way around, please create another `GPIOConnector`.
 ```
-        
+
 ### USB connections
 
 To be able to create a USB connection between two machines in Renode, first, you need to create a `USBConnector`.
 
-```
+```none
 (monitor) emulation CreateUSBConnector "usb-connector"
 ```
 
@@ -155,7 +155,7 @@ In this type of connection, your machines are assigned the `device` or `controll
 Like in the other connection types, you need to use a `connector` mechanism to connect the `usb-connector` to the USB port on your machine.
 Your device then has to be registered in the `controller` device and connected to its USB.
 
-```
+```none
 (monitor) mach set "device"
 (device) connector Connect sysbus.usb usb-connector
 

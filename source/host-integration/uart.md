@@ -21,7 +21,7 @@ Data written to/read from the pty device by the software running in the real wor
 
 In order to expose a virtual UART device, create the UART pty terminal with the following command in the Monitor:
 
-```
+```none
 (monitor) emulation CreateUartPtyTerminal "term" "/tmp/uart"
 ```
 
@@ -29,7 +29,7 @@ This will create a new file in the host filesystem (`/tmp/uart`) that can be ref
 
 Now you need to [load your platform](#loading-platforms) and connect the newly created UART pty terminal to the simulated UART device:
 
-```
+```none
 (machine-0) connector Connect sysbus.uart0 term
 ```
 
@@ -49,7 +49,7 @@ The data sent to the socket available on a selected port number by the software 
 
 In order to expose a virtual UART device, create a Socket terminal with the following command in the Monitor:
 
-```
+```none
 (monitor) emulation CreateServerSocketTerminal 12345 "term"
 ```
 
@@ -57,7 +57,7 @@ This will open a tcp network port `12345` on the host machine that can be refere
 
 Now, connect the newly created Socket terminal to the simulated UART device:
 
-```
+```none
 (machine-0) connector Connect sysbus.uart0 term
 ```
 
@@ -77,7 +77,7 @@ By default Server Socket will emit the following initial configuration bytes in 
 
 In order to avoid generating them, pass additional `false` argument when creating the Socket terminal:
 
-```
+```none
 (monitor) emulation CreateServerSocketTerminal 12345 "term" false
 ```
 
@@ -86,20 +86,20 @@ In order to avoid generating them, pass additional `false` argument when creatin
 Renode can redirect UART output to a file on your host.
 To enable this feature, call:
 
-```
+```none
 (machine-0) uart CreateFileBackend @uart_file
 ```
 
 By default, the UART output will be cached by the host IO system.
 If you want the output to be flushed immediately after being sent, use:
 
-```
+```none
 (machine-0) uart CreateFileBackend @uart_file_flush true
 ```
 
 If you want, you can stop this output with:
 
-```
+```none
 (machine-0) uart CloseFileBackend @uart_file
 ```
 

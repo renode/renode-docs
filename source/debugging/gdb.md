@@ -11,7 +11,7 @@ This makes the debugging process transparent for the emulated machines.
 
 To start a GDB server on port 3333, run:
 
-```
+```none
 (machine-0) machine StartGdbServer 3333
 ```
 
@@ -37,7 +37,7 @@ There are three ways to start the whole setup.
 
 You can start the emulation manually from Renode's Monitor, typing the usual:
 
-```
+```none
 (machine-0) start
 ```
 
@@ -57,7 +57,7 @@ Alternatively, GDB's `monitor` command may be used to pass the commands to Renod
 The third option, suited for the simplest scenarios, makes Renode start the whole emulation as soon as GDB connects.
 It requires an additional parameter for `StartGdbServer`, named `autostartEmulation`:
 
-```
+```none
 (machine-0) machine StartGdbServer 3333 true
 ```
 
@@ -67,7 +67,7 @@ It requires an additional parameter for `StartGdbServer`, named `autostartEmulat
 By default, the command `StartGdbServer` tries to add all CPUs of a machine to the newly created server, only if all of them are of the same architecture.
 Otherwise, specifying the cluster with `cpuCluster="cluster-name"`, or a specific CPU with `cpu=cpuName` is needed:
 
-```
+```none
 (machine-0) machine StartGdbServer 3333 true cpuCluster="cortex-r5f"
 ```
 
@@ -76,7 +76,7 @@ If an invalid cluster is provided, the list of available clusters will be printe
 However, if you are certain that your debugger can handle heterogeneous CPUs, simply use `cpuCluster="all"` to attach all available cores to the one stub.
 You can also add clusters/CPUs one-by-one:
 
-```
+```none
 (machine-0) machine StartGdbServer 3333 true cpuCluster="cortex-r5f"
 (machine-0) machine StartGdbServer 3333 true cpu=sysbus.apu0
 (machine-0) machine StartGdbServer 3333 true cpu=sysbus.apu2
@@ -89,19 +89,19 @@ This allows you to create more complex setups, with multiple GDB instances runni
 
 To start a GDB server on port 3333 with one CPU, two more paramaters are required - previously mentioned `autostartEmulation`, and `cpu`:
 
-```
+```none
 (machine-0) machine StartGdbServer 3333 true sysbus.cpu1
 ```
 
 To add a second CPU to that server, run:
 
-```
+```none
 (machine-0) machine StartGdbServer 3333 true sysbus.cpu2
 ```
 
 To start a new GDB server on port 3334 with another CPU, run:
 
-```
+```none
 (machine-0) machine StartGdbServer 3334 true sysbus.cpu3
 ```
 

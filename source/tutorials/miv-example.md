@@ -35,7 +35,7 @@ The provided script creates a single machine and loads a sample LiteOS-based app
 
 To run a script, use the `include` command (or `i`, for short), with a path to the script to load, prepended with the `@` sign, like this:
 
-```
+```none
 include @scripts/single-node/miv.resc
 ```
 
@@ -43,7 +43,7 @@ After the script is loaded, you will see a new terminal - a UART window opened b
 
 In the provided scripts, we're using precompiled binaries hosted online, but you can provide your own binaries by setting the `$bin` variable before loading the script:
 
-```
+```none
 $bin=@path/to/application.elf
 ```
 
@@ -132,7 +132,7 @@ By altering the project settings you can connect it to Renode.
 
 Start by running the GDB server in renode:
 
-```
+```none
 (monitor) include @scripts/single-node/miv.resc
 (MI-V) machine StartGdbServer 3333 true
 ```

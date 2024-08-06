@@ -38,7 +38,7 @@ You will find that the `using sysbus` command is used in most of the scripts bun
 Passing the name of the emulation object as a command returns the full list of available methods, properties, and value fields for this object.
 In this list, you can find information on whether the method returns a value, what data types it accepts, and how to use it:
 
-```
+```none
 (machine-0) uart
 The following methods are available:
  - Void AddLineHook (String contains, String pythonScript)
@@ -67,7 +67,7 @@ Usage:
 
 To inspect the parameters of a specific method available to an object, simply provide the name of the object and the method:
 
-```
+```none
 (machine-0) uart WriteWordUsingByte
 The following methods are available:
  - Void WriteWordUsingByte (Int64 address, UInt16 value)
@@ -77,7 +77,7 @@ Usage:
 
 Keep in mind that if a method does not require any parameters, providing its name will invoke it:
 
-```
+```none
 (machine-0) machine GetTimeSourceInfo
 Elapsed Virtual Time: 00:00:00.000000
 Elapsed Host Time: 00:00:00.000000
@@ -87,7 +87,7 @@ Current load: NaN
 
 Many commands require you to specify a parameter after the command when using them:
 
-```
+```none
 using sysbus
 ```
 
@@ -96,13 +96,13 @@ using sysbus
 Objects in Renode have access to different methods, properties, fields, and indexers depending on their type.
 The methods are required to access the parameters of a peripheral, and to do it successfully, you need to follow this syntax:
 
-```
+```none
 (machine) registrationPoint.peripheral MethodName param1 param2
 ```
 
 To read the value of a byte at offset 0 from the `uart` peripheral registered on the `sysbus` you would type:
 
-```
+```none
 (machine-0) sysbus.uart ReadByte 0
 ```
 
@@ -112,33 +112,33 @@ If you want to set a value, you need to use the proper command and value at the 
 
 For example, to set the `CyclesPerInstruction` property to `0x000002`, you would use:
 
-```
+```none
 (machine-0) cpu CyclesPerInstruction 0x000002
 ```
 
 To get the value of this newly set property, you have to use:
 
-```
+```none
 (Mi-V) cpu CyclesPerInstruction
 0x00000002
 ```
 
 Setting indexers is very similar to setting properties, with the main difference being that you have to put your parameters in the square brackets:
 
-```
+```none
 (machine-0) machine IndexerName [param1 param2 ...] Value
 ```
 
 To get the value of the indexer, use:
 
-```
+```none
 (machine-0) machine IndexerName [param1 param2 ...]
 ```
 
 The last type of emulation object attribute is a field.
 Their values can be accessed the same as you access properties:
 
-```
+```none
 (machine-0) machine SystemBusName
 sysbus
 ```
@@ -194,32 +194,34 @@ There are three ways you can create a single line variable in the Monitor:
 The difference between `$var=` and `$var?=` is that the latter indicates a default value if the variable is not set.
 The Monitor also enables you to create multiline variables using the following syntax:
 
-```
+```none
 set var """
 "hello"
 """
 ```
 
-```{note}
+````{note}
 When loading a script, you can use slightly different syntax for multiline variables, with the `"""` mark put below the first line:
 
-    set var
-    """
-    "hello"
-    """
+```none
+set var
+"""
+"hello"
+"""
 ```
+````
 
 Variables in Renode are contextual, which means that for each machine you can have different variables with the same name.
 You can access them by their full path.
 To create a variable within the machine context of `machine-0`, you would use:
 
-```
+```none
 (machine-0) $machine_0.var
 ```
 
 You can also create global variables if you use the `global` prefix:
 
-```
+```none
 (monitor) $global.CWD
 ```
 
@@ -230,7 +232,7 @@ The Monitor gives you access to two special variables: `$ORIGIN` and `$CWD`.
 Other types of variables available in Renode are macros, which enable you to encapsulate fragments of your script and execute them easily.
 You can set a new macro using the `macro` command with the name of the new variable and the commands you want it to execute:
 
-```
+```none
 macro newMacro
 > sysbus LoadELF $bin
 ```
@@ -238,7 +240,7 @@ macro newMacro
 You can create multiline macros using the Monitor multiline syntax.
 You can then execute your newly created macro using the `runMacro` command:
 
-```
+```none
 runMacro $newMacro
 ```
 
@@ -250,7 +252,7 @@ This macro is used whenever the `machine Reset` method is called by the user or 
 Each Renode project will require you to supply the file path to the components necessary for your project.
 The vast majority of them use the `@` sign, which activates autocompletion suggestions and represents a path to a file:
 
-```
+```none
 include @/path/to/platform.repl
 ```
 
@@ -272,7 +274,7 @@ In Renode, you can use paths that are absolute or relative to the current direct
 
 If you want to express a path that is relative to the currently executed Renode script (.resc) you can use the `$ORIGIN` variable:
 
-```
+```none
 include $ORIGIN/my_subscript.resc
 ```
 
@@ -286,7 +288,7 @@ Keep in mind that the `$ORIGIN` variable is only available inside a script - it 
 
 In Monitor, you can use a special `$CWD` variable to provide a path that is relative to the current working directory:
 
-```
+```none
 (machine-0) include $CWD/my_script.resc
 ```
 
@@ -316,7 +318,7 @@ The syntax of `.resc` files is the same as that of the Monitor.
 
 To load a Renode script, use the `include` or `i` command:
 
-```
+```none
 include @/path/to/script.resc
 ```
 
@@ -326,8 +328,8 @@ You can use the `start` command instead of `include` to start your emulation imm
 
 The syntax of a `.resc` file can be exemplified using one of many scripts built into Renode, like [Nordic Semiconductor NRF52840 script](https://github.com/renode/renode/blob/master/scripts/single-node/nrf52840.resc), which we will cover line by line:
 
-```
-:name: NRF52840
+```none
+:name: nRF52840
 :description: This script runs Zephyr Shell demo on NRF52840.
 
 using sysbus
@@ -348,39 +350,39 @@ runMacro $reset
 
 The first two lines are comments, and they are not interpreted by the Monitor:
 
-```
-:name: NRF52840
+```none
+:name: nRF52840
 :description: This script runs Zephyr Shell demo on NRF52840.
 ```
 
 Next, we utilize the `using` command to omit a prefix when referring to a peripheral.
 The command `using sysbus` enables you to refer to the CPU device with `cpu` instead of `sysbus.cpu`:
 
-```
+```none
 using sysbus
 ```
 
 Then, we create a new machine
 
-```
+```none
 mach create
 ```
 
 We load a platform description from the `.repl` file:
 
-```
+```none
 machine LoadPlatformDescription @platforms/cpus/nrf52840.repl
 ```
 
 Now, we load a sample shell binary:
 
-```
+```none
 $bin?=@https://dl.antmicro.com/projects/renode/renode-nrf52840-zephyr_shell_module.elf-gf8d05cf-s_1310072-c00fbffd6b65c6238877c4fe52e8228c2a38bf1f
 ```
 
 Next, we set up an UART analyzer for `uart0`:
 
-```
+```none
 showAnalyzer uart0
 ```
 
@@ -391,12 +393,12 @@ The contents of your macro do not need to be indented with four spaces, but we o
 
 The macro below loads the previously specified ELF file:
 
-```
+```none
     sysbus LoadELF $bin
 ```
 
 Lastly, we call the macro to run it, as it is only executed after it is invoked:
 
-```
+```none
 runMacro $reset
 ```

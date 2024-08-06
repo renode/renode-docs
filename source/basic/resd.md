@@ -260,7 +260,7 @@ The [CSV - RESD parser](https://github.com/renode/renode/tree/master/tools/csv2r
 
 To use the tool, follow this syntax:
 
-```
+```none
 ./csv2resd.py [GROUP]
 GROUP ::= -i <csv-file> [-m <type>:<field(s)>:<target(s)>*:<channel>*]
           -s <start-time> -f <frequency> -t <timestamp> -o <offset> -c <count>
@@ -281,7 +281,7 @@ See `--help` for more information.
 
 If you wanted to extract the columns `temp1` and `temp2` from the file `first.csv` and first 3 samples `temp` from the file `second.csv` and then map them to the temperature channels `0`, `1` and `2` in RESD, respectively, you would run the script with the following parameters:
 
-```
+```none
 ./csv2resd.py \
     -i first.csv \
         -m temperature:temp1::0 \
@@ -302,14 +302,14 @@ Renode comes with a command for inspecting RESD files without a need to load the
 
 To analyze the content of a RESD file, first load it with:
 
-```
+```none
 (monitor) resd load r1 @my_samples.resd
 RESD file from 'my_samples.resd' loaded under identifier 'r1'
 ```
 
 Now, you can print information about sample blocks with:
 
-```
+```none
 (monitor) resd list-blocks r1
 Blocks in r1:
 1. [00:00:00.000000..00:00:02.000000] Acceleration:0
@@ -327,7 +327,7 @@ Frequency: 1Hz
 ```
 
 You can also dump selected samples (e.g., between timestamps of 2.2 and 2.3 seconds) with:
-```
+```none
 (monitor) resd get-samples-range r1 2 "2.2" "2.3"
 00:00:02.203125: [0, 0, 0.1] g
 00:00:02.218750: [0, 0, 0.2] g
@@ -339,7 +339,7 @@ You can also dump selected samples (e.g., between timestamps of 2.2 and 2.3 seco
 ```
 
 For more details, see the command's help output:
-```
+```none
 (monitor) help resd
 resd
 introspection for RESD files

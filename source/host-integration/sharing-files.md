@@ -49,7 +49,7 @@ virtio@100d0000 {
 
 Now you need to add a corresponding extension to the Renode platform definition (the `.repl` file):
 
-```
+```none
 virtio: Storage.VirtIOBlockDevice @ sysbus 0x100d0000
     IRQ -> plic@42
 ```
@@ -60,13 +60,13 @@ Addresses and interrupt line number must be consistent across `.repl` and DTS.
 
 You can set up an underlying image for the VirtIO block device by using:
 
-```
+```none
 virtio LoadImage @drive.img
 ```
 
 By default, Renode loads the image in a non-persistent mode. If you want to make the VirtIO block device persistent add the `true` argument at the end of the command:
 
-```
+```none
 virtio LoadImage @drive.img true
 ```
 
@@ -130,7 +130,7 @@ virtio@100d0000 {
 
 Now you need to add a corresponding extension to the Renode platform definition (the `.repl` file):
 
-```
+```none
 virtio: Storage.VirtIOFSDevice @ sysbus 0x100d0000
     IRQ -> plic@2
 ```
@@ -149,7 +149,7 @@ By default, this creates a USD socket in `/tmp/libfuse-passthrough-hp.sock`.
 
 Create the virtiofs device in Renode:
 
-```
+```none
 virtio Create @/tmp/libfuse-passthrough-hp.sock "tag"
 ```
 
@@ -157,7 +157,7 @@ with `tag` being a name of your choosing.
 
 In guest you can now mount the shared directory:
 
-```
+```none
 # mount -t virtiofs tag /mnt
 ```
 
@@ -178,7 +178,7 @@ To configure TFTP in Renode you need to create a [switch and connect it to your 
 
 Now you can create the TFTP server and connect it to your switch:
 
-```
+```none
 emulation CreateNetworkServer "server" "192.168.100.100"
 connector Connect server switch
 server StartTFTP 69
@@ -197,7 +197,7 @@ Single files can be shared via the TFTP server using the `ServeFile` command.
 `ServeFile` accepts two parameters.
 The first parameter is a path to your host file and the second parameter is the name under which you expose it via TFTP:
 
-```
+```none
 server.tftp ServeFile @path/to/file "filename"
 ```
 
@@ -207,7 +207,7 @@ The second parameter is optional and if it is not specified, the file will be ex
 
 Similarly, you can share directories via TFTP using `ServeDirectory`:
 
-```
+```none
 server.tftp ServeDirectory @path/to/directory
 ```
 

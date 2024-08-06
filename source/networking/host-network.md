@@ -16,13 +16,13 @@ This means that time constraints (e.g. timeouts) placed by applications trying t
 
 To create and open a TAP interface which will be listed on your host system as `tap0` and inside Renode as `host.tap`, run:
 
-```
+```none
 (monitor) emulation CreateTap "tap0" "tap"
 ```
 
 If you want the interface to be retained after Renode closes, add a `true` parameter:
 
-```
+```none
 (monitor) emulation CreateTap "tap0" "tap" true
 ```
 
@@ -48,32 +48,32 @@ You need Administrator Privileges to create a TAP on Windows.
 
 To create a TAP interface on your Windows PC, first, you need to create a new TAP interface in Renode using the usual command:
 
-```
+```none
 (monitor) emulation CreateTap "tap0" "tap"
 ```
 
 Then you need to assign an IP address to your TAP using the command prompt:
 
-```
+```none
 netsh interface ipv4 set address name=tap0 static X.X.X.X
 ```
 
 :::{note}
 You can also create a TAP interface directly using the `tapctl.exe` driver from OpenVPN:
 
-```
+```none
 tapctl.exe create --name tap0
 ```
 
 Then assign it an IP address:
 
-```
+```none
 netsh interface ipv4 set address name=tap0 static X.X.X.X
 ```
 
 Finally, connect it to Renode using:
 
-```
+```none
 (monitor) emulation CreateTap "tap0" "tap"
 ```
 :::
@@ -92,13 +92,13 @@ Assuming you have already [configured the simulated network](./wired.md), you ca
 The TAP interface is created as "paused".
 To enable communication with the host system you must start it manually, either by running:
 
-```
+```none
 (monitor) start
 ```
 
 or, if your emulation is already started, with:
 
-```
+```none
 (monitor) host.tap Start
 ```
 
@@ -107,7 +107,7 @@ or, if your emulation is already started, with:
 If you successfully created a TAP interface, files can be transferred from the host computer to emulation using `wget`.
 To do it you will need to use an IP address associated with the TAP interface on the host machine, for example:
 
-```
+```none
 wget http://192.168.100.1/home/user/file.txt
 ```
 

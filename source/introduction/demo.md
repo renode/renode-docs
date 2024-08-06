@@ -5,7 +5,7 @@ Your Renode installation contains a number of example scripts, located in the [s
 You can run any of those demos using the `include` or `start` command (`i` and `s` for short) with the script's path (by default relative to the Renode installation directory and your current working directory) as a parameter.
 For example, run a single node STM32F4 Discovery demo as follows:
 
-```
+```none
 s @scripts/single-node/stm32f4_discovery.resc
 ```
 

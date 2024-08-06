@@ -26,13 +26,13 @@ By default, messages from all levels but the NOISY level are logged.
 
 To set the global log level to NOISY, type:
 
-```
+```none
 (machine-0) logLevel -1
 ```
 
 To change the log level only for a selected peripheral (in this case - the UART device), type:
 
-```
+```none
 (machine-0) logLevel -1 sysbus.uart
 ```
 
@@ -44,7 +44,7 @@ The current log level can be verified by running `logLevel` without parameters.
 
 This is the output of this command after some configuration:
 
-```
+```none
 (machine-0) logLevel
 Currently set levels:
 Backend           | Emulation element               | Level
@@ -63,7 +63,7 @@ To analyze the output from a long-running emulation, it is often a good idea to 
 
 To achieve that, use the `logFile` command:
 
-```
+```none
 (machine-0) logFile @some_file_name
 ```
 
@@ -72,13 +72,13 @@ From the performance point of view, depending on the scenario, it can be benefic
 
 To set the ERROR log level for a file backend, type:
 
-```
+```none
 (machine-0) logLevel 2 file
 ```
 
 Peripherals can also have different log levels on different backends:
 
-```
+```none
 (machine-0) logLevel 1 file sysbus.uart
 ```
 
@@ -89,19 +89,19 @@ This feature is enabled only for peripherals registered on a system bus.
 
 To enable it, run:
 
-```
+```none
 (machine-0) sysbus LogPeripheralAccess sysbus.uart
 ```
 
 Now, whenever the CPU tries to read or write to this peripheral, you will see a message similar to this one:
 
-```
+```none
 14:32:28.6083 [INFO] uart: ReadByte from 0x0 (TransmitData), returned 0x0.
 ```
 
 To enable logging access to all peripherals, run:
 
-```
+```none
 (machine-0) sysbus LogAllPeripheralsAccess true
 ```
 
@@ -109,7 +109,7 @@ To enable logging access to all peripherals, run:
 
 It is possible to create a trace of every function executed by the binary:
 
-```
+```none
 (machine-0) sysbus.cpu LogFunctionNames true
 ```
 
@@ -127,13 +127,13 @@ As a result, the names of the functions will be printed to the log at `INFO` lev
 
 If you are interested only in a subset of functions, you can limit the results by providing space-separated names prefixes:
 
-```
+```none
 (machine-0) sysbus.cpu LogFunctionNames true "dev kobject"
 ```
 
 You can also avoid logging subsequent duplicate function names by adding another `true` argument either instead of or after the optional function name prefixes:
 
-```
+```none
 (machine-0) sysbus.cpu LogFunctionNames true ["dev kobject"] true
 ```
 
@@ -164,13 +164,13 @@ While changing the {ref}`log level <log-level>` to `ERROR` to hide warnings migh
 The best way to achieve fine-grained logging control in this case is with the `SilenceRange` feature.
 E.g. if you want to disable logging for addresses in the range between `0x80000` and `0x801000`, run:
 
-```
+```none
     sysbus SilenceRange <0x80000 0x1000>
 ```
 
 You can do it from the REPL level in the `sysbus` init section as well:
 
-```
+```none
     sysbus:
         init:
             SilenceRange <0x80000 0x1000>

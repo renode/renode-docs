@@ -10,14 +10,14 @@ In the beginning the emulation is in a *paused* state, which means that no machi
 
 To start the emulation, execute:
 
-```
+```none
 (machine-0) start
 Starting emulation...
 ```
 
 To pause it, type:
 
-```
+```none
 (machine-0) pause
 Pausing emulation...
 ```
@@ -33,19 +33,19 @@ More information on how step execution in GDB can be found in the [GDB documenta
 
 When you need to analyze in detail how the execution of your binary influences the state of the hardware, you can switch to the *stepping* execution mode:
 
-```
+```none
 (machine-0) sysbus.cpu ExecutionMode SingleStepBlocking
 ```
 
 This will stop the emulation after the execution of each instruction. In order to move to the next one, type:
 
-```
+```none
 (machine-0) sysbus.cpu Step
 ```
 
 When you want to return to the *normal* execution mode, type:
 
-```
+```none
 (machine-0) sysbus.cpu ExecutionMode Continuous
 ```
 
@@ -60,7 +60,7 @@ The drawback of the non-blocking mode is that the virtual time will progress bet
 The `Step` command will preserve the current mode when in instruction-by-instruction flow and use the default value (`SingleStepBlocking`) otherwise.
 This behavior can be overridden by selecting the non-blocking mode explicitly:
 
-```
+```none
 (machine-0) sysbus.cpu Step false
 ```
 
@@ -68,7 +68,7 @@ This behavior can be overridden by selecting the non-blocking mode explicitly:
 
 Renode allows you to easily examine the current state of your application:
 
-```
+```none
 (machine-0) sysbus.cpu PC
 0xC01890A8
 ```
@@ -77,7 +77,7 @@ As a result, you will get the hexadecimal address of the instruction currently b
 
 If you want to know the name of the function that is currently being executed (assuming your binary has been compiled with the symbols inside) type:
 
-```
+```none
 (machine-0) sysbus FindSymbolAt `sysbus.cpu PC` # equivalent of 0xC01890A8
 uart_console_write
 ```

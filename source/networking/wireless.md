@@ -16,13 +16,13 @@ Each one creates an abstration of different type of wireless connection. They\'r
 
 To create an IEEE802_15_4 medium called `wireless`, run:
 
-```
+```none
 (monitor) emulation CreateIEEE802_15_4Medium "wireless"
 ```
 
 Analogously for a BLE medium:
 
-```
+```none
 (monitor) emulation CreateBLEMedium "wireless"
 ```
 
@@ -32,7 +32,7 @@ To connect an interface to a wireless medium you have to set a proper [machine c
 
 Then, use the `connector` mechanism to attach the interface:
 
-```
+```none
 (machine-0) connector Connect sysbus.radio wireless
 ```
 
@@ -42,13 +42,13 @@ Although it is not a common setup, each interface can be connected to many media
 
 You can disconnect network interfaces from a wireless medium by running:
 
-```
+```none
 (machine-0) connector Disconnect sysbus.radio wireless
 ```
 
 To disconnect from all connected wireless media, use:
 
-```
+```none
 (machine-0) connector DisconnectFromAll sysbus.radio
 ```
 
@@ -58,7 +58,7 @@ A wireless medium uses 3D coordinates, without any specified unit of distance, t
 
 To set a position of a node to coordinates {X = 3, Y = 5, Z = -8.5}, run:
 
-```
+```none
 (machine-0) wireless SetPosition sysbus.radio 3 5 -8.5
 ```
 
