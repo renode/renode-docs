@@ -10,7 +10,6 @@ The most common base ISA sets supported by Renode are:
 - Atomic Instructions (`A`)
 - Single-Precision Floating-Point (`F`)
 - Double-Precision Floating-Point (`D`)
-- Compressed Instructions (`C`)
 - Control and Status Register Instructions (`Zicsr`)
 - Instruction-Fetch Fence (`Zifencei`)
 
@@ -18,6 +17,7 @@ All of the above constitute the `G` set.
 
 Renode also supports many of the ISA extensions like:
 
+- Compressed Instructions (`C`)
 - Vector Operations (`V`)
 - Bit-manipulation
   - Address generation instructions (`Zba`)
