@@ -147,6 +147,7 @@ def try_get_category(platform):
         "polarfire-soc":   "PFSOC",
         "quark-c1000": "X86",
         "quark_c1000-cc2520":  "X86",
+        "acrn_x86_64": "X86-64",
         "renesas_rz_t2m": "RENESAS",
         "renesas_rz_t2m_rsk": "RENESAS",
         "ri5cy":   "OTHER RISC-V",
