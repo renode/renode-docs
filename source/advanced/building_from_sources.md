@@ -21,7 +21,7 @@ First, install the `.NET SDK` package as per the installation instructions, whic
 To install the remaining dependencies, use:
 
     sudo apt update
-    sudo apt install git automake autoconf libtool g++ coreutils policykit-1 \
+    sudo apt install git automake cmake autoconf libtool g++ coreutils policykit-1 \
                   libgtk2.0-dev uml-utilities gtk-sharp2 python3 python3-pip
 
 ::::
@@ -32,7 +32,7 @@ On macOS, the Mono package can be obtained by using [a download link on the Mono
 
 To install the remaining prerequisites, use:
 
-    brew install binutils gnu-sed coreutils dialog
+    brew install binutils gnu-sed coreutils dialog cmake
     xcode-select --install
 
 :::{note}
@@ -76,10 +76,15 @@ Prior to cloning the repository on *Windows*, git has to be configured appropria
 
 2. Add location of the binaries (`C:\Program Files (x86)\Python38-32` for a 32-bit version of Python 3.8 by default) to the system `PATH` variable.
 
-**C build tools**
+**MinGW**
 
 1. Download `MinGW-w64 8.1.0` with the `x86_64` architecture, `win32` threads and `sjlj` exception handling from [the download site](https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/8.1.0/threads-win32/sjlj/x86_64-8.1.0-release-win32-sjlj-rt_v6-rev0.7z).
 2. Extract the downloaded package and add its `mingw64\bin` directory (for example `C:\mingw-w64\x86_64-8.1.0-release-win32-sjlj-rt_v6-rev0\mingw64\bin`) to the system `PATH` variable.
+
+**CMake**
+
+1. Download `CMake` and install Windows CMake from [the CMake website](https://cmake.org/download/).
+2. Ensure that the installation directory is in the system `PATH`. The installer will offer to do this for you
 
 **C# build tools**
 
