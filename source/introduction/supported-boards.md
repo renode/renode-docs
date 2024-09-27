@@ -2,9 +2,9 @@
 
 Renode supports a wide array of hardware platforms, covering multiple architectures, CPU families and providing various I/O capabilities.
 
-You can see a summary of over 400 IoT development boards supported as part of the [Zephyr dashboard effor](https://zephyr-dashboard.renode.io/) and learn more about them in [Renodepedia](https://zephyr-dashboard.renode.io/renodepedia/).
+You can explore IoT development boards supported as part of the [Zephyr Dashboard](https://zephyr-dashboard.renode.io/) and learn more about them in the [Interactive System Designer](https://designer.antmicro.com).
 
-In Renodepedia, you can see pre-executed runs of different embedded software binaries as well as use the available artifacts to run the demos yourself.
+In the Interactive System Designer, you can see pre-executed runs of different embedded software binaries as well as use the available artifacts to run the demos yourself.
 
 On top of that, this chapter contains an (incomplete) list of selected supported hardware targets with dedicated demos - all of these include sample software binaries that run both on real hardware and in Renode.
 

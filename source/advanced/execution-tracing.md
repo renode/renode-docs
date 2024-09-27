@@ -230,7 +230,7 @@ If you don't want to write to a file instantly but still want to have some contr
 cpu FlushProfiler
 ```
 
-You can inspect traces generated from Zephyr samples in [Renodepedia](https://antmicro.com/blog/2022/08/renodepedia/) - see the examples for [RISC-V](https://zephyr-dashboard.renode.io/renodepedia/boards/hifive1/?view=software&demo=Hello_World) and [Cortex-M](https://zephyr-dashboard.renode.io/renodepedia/boards/stm32f103_mini/?view=software&demo=Hello_World).
+You can inspect traces generated from Zephyr samples in the [Interactive System Designer](https://designer.antmicro.com/) - see the examples for [RISC-V](https://designer.antmicro.com/hardware/devices/hifive1) and [Cortex-M](https://designer.antmicro.com/hardware/devices/stm32f103_mini).
 
 ## Opcode counting
 
