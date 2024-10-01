@@ -321,11 +321,11 @@ tracer TrackMemoryAccesses
 Replace the `cpu` with the core name (from the `repl` file) that you want to analyse.
 ```
 
-The generated `trace.log` file can then be passed to the [Renode Cache Modelling script](https://github.com/renode/renode/tree/master/tools/guest_cache).
-Note that the dependencies listed in `requirements.txt` must be installed prior to running this script.
+The generated `trace.log` file can then be passed to the [Renode Cache Modelling Analyzer](https://github.com/renode/renode/tree/master/tools/guest_cache).
+Note that the dependencies listed in `requirements.txt` must be installed prior to running the analyzer.
 
 
-You can use the script with built-in presets:
+You can use the analyzer with built-in presets:
 
 ```sh
 ./renode_cache_interface.py trace.log presets 'fu740.u74'
