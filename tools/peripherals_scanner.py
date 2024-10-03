@@ -134,6 +134,7 @@ def try_get_category(platform):
         "miv-board-additional-uarts":  "MIV",
         "mpc5567": "NXP PPC",
         "mpfs-icicle-kit": "PFSOC",
+        "msp430f2619": "MSP430",
         "murax_vexriscv":  "OTHER RISC-V",
         "murax_vexriscv_verilated_uart":   "OTHER RISC-V",
         "nrf52840":    "NORDIC",
