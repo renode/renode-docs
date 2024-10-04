@@ -40,6 +40,8 @@ deploy:
   stage: deploy
   tags: ['docs']
   <<: *common_only
+  except:
+    - triggers
   script: echo 'Deploying docs'
   artifacts:
     paths:
