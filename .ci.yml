@@ -21,6 +21,13 @@ build:
     - apt update && apt install -y git librsvg2-bin
     - pip3 install -r requirements.txt
   script:
+    # checkout on the specified version if needed
+    - |
+      if [ -n "$TARGET_VERSION" ]; then
+        echo -e "\n========== DOING CHECKOUT ON VERSION ============"
+        echo "$TARGET_VERSION"
+        git checkout "$TARGET_VERSION"
+      fi
     - echo -en "\nhtml_js_files = [ '$ANNOTANT' ]" >> source/conf.py
     - make html
     - rm -R build/html/_sources
