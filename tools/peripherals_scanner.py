@@ -232,7 +232,8 @@ def try_get_category(platform):
         "renesas-ek_ra2e1": "RENESAS",
         "renesas-ek_ra8m1": "RENESAS",
         "renesas-rz_t2m_rsk": "RENESAS",
-        "sam4s8b": "MICROCHIP"
+        "sam4s8b": "MICROCHIP",
+        "sam4s": "MICROCHIP",
     }
 
     if platform.get_name() not in mapping:
