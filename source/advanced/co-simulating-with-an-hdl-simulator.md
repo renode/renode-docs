@@ -7,13 +7,13 @@ Renode includes two integration methods for HDL co-simulation, allowing you to c
 
 ## Adding co-simulated blocks
 
-The Renode side of the integration layer is a plugin called VerilatorPlugin (the name will be revised to reflect the more general nature of its function in the near future), consisting of [C# classes](https://github.com/renode/renode/tree/master/src/Plugins/VerilatorPlugin), which initiate the communication.
+The Renode side of the integration layer is a plugin called CoSimulationPlugin, consisting of [C# classes](https://github.com/renode/renode/tree/master/src/Plugins/CoSimulationPlugin), which initiate the communication.
 
-Typically an instance of the `VerilatedPeripheral` class (to also be renamed to reflect the more general nature of the co-simulation solution, see above) corresponds to an HDL model.
+Typically an instance of the `CoSimulatedPeripheral` class corresponds to an HDL model.
 To add a co-simulated block to your platform, use the following snippet in your [REPL file](https://renode.readthedocs.io/en/latest/basic/describing_platforms.html#describing-platforms):
 
 ```none
-block: Verilated.VerilatedPeripheral @ sysbus <0x20000000, +0x100000>
+block: CoSimulated.CoSimulatedPeripheral @ sysbus <0x20000000, +0x100000>
 ```
 
 ## DPI-based integration method
@@ -23,11 +23,11 @@ In this case, messages between Renode and an HDL simulator are transmitted over 
 As the DPI layer relies on a TCP socket connection, you need to also specify the `address` parameter for the peripheral:
 
 ```none
-block: Verilated.VerilatedPeripheral @ sysbus <0x20000000, +0x100000>
+block: CoSimulated.CoSimulatedPeripheral @ sysbus <0x20000000, +0x100000>
     address: "127.0.0.1"
 ```
 
-The HDL side uses a [SystemVerilog interface](https://github.com/renode/renode/tree/master/src/Plugins/VerilatorPlugin/VerilatorIntegrationLibrary/hdl) which connects directly to your HDL simulation using signals specific to the bus you are simulating.
+The HDL side uses a [SystemVerilog interface](https://github.com/renode/renode/tree/master/src/Plugins/CoSimulationPlugin/IntegrationLibrary/hdl) which connects directly to your HDL simulation using signals specific to the bus you are simulating.
 
 The HDL simulator has to be running before starting the simulation.
 
@@ -52,7 +52,7 @@ Renode can spawn or link a simulation on its own.
 You shouldn't specify the `address` parameter for a peripheral that is connected as a dynamic library.
 ```
 
-To interface your HDL simulation with Renode you need to connect signals of your HDL design with a [C++ interface](https://github.com/renode/renode/tree/master/src/Plugins/VerilatorPlugin/VerilatorIntegrationLibrary/src).
+To interface your HDL simulation with Renode you need to connect signals of your HDL design with a [C++ interface](https://github.com/renode/renode/tree/master/src/Plugins/CoSimulationPlugin/IntegrationLibrary/src).
 
 ### Supported buses
 

@@ -14,7 +14,7 @@ To make your own verilated peripheral, in the main cpp file of your verilated mo
 You also need to specify the type of external interfaces you want to integrate with Renode - e.g., UART's rx/tx signals.
 
 ```cpp
-// uart.h and axilite.h can be found in Renode's VerilatorPlugin
+// uart.h and axilite.h can be found in Renode's CoSimulationPlugin
 #include "src/peripherals/uart.h"
 #include "src/buses/axilite.h"
 ```
@@ -86,7 +86,7 @@ uart->simulate(atoi(argv[1]), atoi(argv[2]));
 There are a few prerequisites:
 
 * a local copy of [the renode-verilator-integration repository](https://github.com/antmicro/renode-verilator-integration),
-* a local copy of [the Renode repository](https://github.com/renode/renode) because of its [VerilatorIntegrationLibrary](https://github.com/renode/renode/tree/master/src/Plugins/VerilatorPlugin/VerilatorIntegrationLibrary),
+* a local copy of [the Renode repository](https://github.com/renode/renode) because of its [IntegrationLibrary](https://github.com/renode/renode/tree/master/src/Plugins/CoSimulationPlugin/IntegrationLibrary),
 * Verilator >= v4.024.
 
 `$RVI_PATH`, `$RENODE_PATH`, and `$VERILATOR_PATH`, respectively, will be used to refer to the paths of these three prerequisites.
@@ -184,15 +184,15 @@ mingw32-make
 After building a verilated executable, it's time to attach it to a [Renode machine](working-with-machines), so it is actually used as a peripheral.
 
 First, a dedicated peripheral has to be added to a [Renode platform description (.repl) file](../basic/describing_platforms.md) that is going to be used to configure the machine.
-For a Verilated UART peripheral called, e.g., `myVerilatedPeripheral`, add these lines into your `.repl` file:
+For a co-simulated UART peripheral called, e.g., `myCoSimulatedPeripheral`, add these lines into your `.repl` file:
 
 ```none
-myVerilatedPeripheral: Verilated.VerilatedUART @ sysbus <0x70000000, +0x100>
+myCoSimulatedPeripheral: CoSimulated.CoSimulatedUART @ sysbus <0x70000000, +0x100>
    frequency: 100000000
 ```
 
 ```{note}
-The ``Verilated.BaseDoubleWordVerilatedPeripheral`` type should be used instead of ``Verilated.VerilatedUART`` for Verilated peripherals other than UART.
+The ``CoSimulated.CoSimulatedPeripheral`` type should be used instead of ``CoSimulated.CoSimulatedUART`` for co-simulated peripherals other than UART.
 ```
 
 ```{note}
@@ -204,7 +204,7 @@ In Renode, after loading such a platform description with a command either direc
 Assuming the `libVtop` binary is located in the Renode root directory, it can be attached with:
 
 ```none
-(machine-0) myVerilatedPeripheral SimulationFilePath @libVtop
+(machine-0) myCoSimulatedPeripheral SimulationFilePath @libVtop
 ```
 
 Otherwise, an absolute path or a path relative to the Renode root directory can be used instead of `libVtop`.
@@ -236,7 +236,7 @@ Since it would be impractical to trigger clock signals after every instruction e
 This can be easily configured with the optional `limitBuffer` constructor parameter:
 
 ```none
-myVerilatedPeripheral: Verilated.VerilatedUART @ sysbus <0x70000000, +0x100>
+myCoSimulatedPeripheral: CoSimulated.CoSimulatedUART @ sysbus <0x70000000, +0x100>
    frequency: 100000000
    limitBuffer: 10000
 ```
@@ -323,10 +323,10 @@ The resulting binary should be created in the `pulp-rt-examples/hello/build/arno
 
 ### Run in Renode simulation
 
-To enable a verilated UART peripheral in the core-v-mcu hello world example, you need to register `VerilatedUART` in [core-v-mcu.repl](https://github.com/renode/renode/blob/master/platforms/cpus/core-v-mcu.repl), e.g.:
+To enable a verilated UART peripheral in the core-v-mcu hello world example, you need to register `CoSimulatedUART` in [core-v-mcu.repl](https://github.com/renode/renode/blob/master/platforms/cpus/core-v-mcu.repl), e.g.:
 
 ```none
-verilated_uart: Verilated.VerilatedUART @ sysbus <0x50000000, +0x100>
+verilated_uart: CoSimulated.CoSimulatedUART @ sysbus <0x50000000, +0x100>
    frequency: 100000000
 ```
 

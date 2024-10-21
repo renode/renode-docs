@@ -139,11 +139,11 @@ public class MyCustomRiscV : RiscV32
 
 You can connect up to 4 CFUs to every RISC-V core that's simulated in Renode.
 
-After you've compiled your CFU with the Verilator Integration Library (see: [Example CFU project](https://github.com/antmicro/renode-verilator-integration/blob/master/samples/cfu_mnv2/README.md)) you can attach the CFU to your CPU.
+After you've compiled your CFU with the Cosimulation Library (see: [Example CFU project](https://github.com/antmicro/renode-verilator-integration/blob/master/samples/cfu_mnv2/README.md)) you can attach the CFU to your CPU.
 
 To do so, add this line to your .repl:
 ```
-cfu0: Verilated.CFUVerilatedPeripheral @ cpu 0
+cfu0: CoSimulated.CoSimulatedCFU @ cpu 0
 ```
 and this line to your .resc:
 ```
