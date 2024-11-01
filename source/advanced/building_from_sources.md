@@ -15,7 +15,12 @@ First, install the `mono-complete` package as per the installation instructions 
 :::
 
 :::{tab} .NET
-First, install the `.NET SDK` package as per the installation instructions, which can be found on [the official .NET site](https://dotnet.microsoft.com/en-us/download/dotnet/6.0). This can as well be installed with the default package manager, using: `sudo apt install dotnet-sdk-6.0`.
+First, install the `.NET SDK` package as per the installation instructions, which can be found on [the official .NET site](https://dotnet.microsoft.com/en-us/download/dotnet/6.0).
+
+:::{note}
+Make sure to install the `6.0.4xx` branch (e.g. `6.0.427`) as otherwise the build will fail with a `NETSDK1100: Windows is required to build Windows desktop applications` error. On Ubuntu this requires using either the Microsoft package feed or installing manually
+:::
+
 :::
 
 To install the remaining dependencies, use:
