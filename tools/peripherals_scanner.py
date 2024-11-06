@@ -160,6 +160,8 @@ def try_get_category(platform):
         "s32k118": "NXP S32K",
         "nxp-s32k388": "NXP S32K",
         "sam_e70": "MICROCHIP",
+        "sam4s": "MICROCHIP",
+        "sam4s8b": "MICROCHIP",
         "sifive-fe310":    "SIFIVE",
         "sifive-fu540":    "SIFIVE",
         "sifive-fu740":    "SIFIVE",
