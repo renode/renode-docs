@@ -154,6 +154,7 @@ def try_get_category(platform):
         "up_squared_x86_64": "X86-64",
         "renesas_rz_t2m": "RENESAS",
         "renesas_rz_t2m_rsk": "RENESAS",
+        "renesas_rz_g2l": "RENESAS",
         "ri5cy":   "OTHER RISC-V",
         "riscv_verilated_uartlite":    "OTHER RISC-V",
         "riscv_virt":   "OTHER RISC-V",
