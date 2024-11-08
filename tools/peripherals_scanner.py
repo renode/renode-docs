@@ -103,6 +103,7 @@ def try_get_category(platform):
         "i386":    "X86",
         "ice40up5k-mdp-evn":   "LITEX",
         "imxrt1064":   "NXP I.MX",
+        "imxrt500":    "NXP I.MX",
         "kendryte_k210":   "KENDRYTE",
         "leon3":   "GAISLER",
         "leon3-externals": "GAISLER",
