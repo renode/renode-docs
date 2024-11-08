@@ -76,6 +76,7 @@ advanced/platform_description_format
 advanced/execution-tracing
 advanced/time_framework
 advanced/writing-peripherals
+advanced/loading-assembly-to-memory
 ```
 
 
