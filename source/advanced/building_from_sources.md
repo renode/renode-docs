@@ -12,17 +12,25 @@ The following instructions have been tested on Ubuntu 20.04, however there shoul
 
 :::{tab} Mono
 First, install the `mono-complete` package as per the installation instructions for various Linux distributions which can be found on [the Mono project website](https://www.mono-project.com/download/stable/#download-lin).
-:::
-
-:::{tab} .NET
-First, install the `.NET SDK` package as per the installation instructions, which can be found on [the official .NET site](https://dotnet.microsoft.com/en-us/download/dotnet/6.0). This can as well be installed with the default package manager, using: `sudo apt install dotnet-sdk-6.0`.
-:::
 
 To install the remaining dependencies, use:
 
     sudo apt update
     sudo apt install git automake cmake autoconf libtool g++ coreutils policykit-1 \
                   libgtk2.0-dev uml-utilities gtk-sharp2 python3 python3-pip
+                  
+:::
+
+:::{tab} .NET
+First, install the `.NET SDK` package as per the installation instructions, which can be found on [the official .NET site](https://dotnet.microsoft.com/en-us/download/dotnet/6.0). This can as well be installed with the default package manager, using: `sudo apt install dotnet-sdk-6.0`.
+
+To install the remaining dependencies, use:
+
+    sudo apt update
+    sudo apt install git automake cmake autoconf libtool g++ coreutils policykit-1 \
+                  uml-utilities gtk-sharp3 python3 python3-pip
+                  
+:::
 
 ::::
 
