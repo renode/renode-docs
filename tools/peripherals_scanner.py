@@ -164,6 +164,8 @@ def try_get_category(platform):
         "sam_e70": "MICROCHIP",
         "sam4s": "MICROCHIP",
         "sam4s8b": "MICROCHIP",
+        "sam4s16c": "MICROCHIP",
+        "sam4s_xplained": "MICROCHIP",
         "sifive-fe310":    "SIFIVE",
         "sifive-fu540":    "SIFIVE",
         "sifive-fu740":    "SIFIVE",
@@ -237,8 +239,6 @@ def try_get_category(platform):
         "renesas-ek_ra2e1": "RENESAS",
         "renesas-ek_ra8m1": "RENESAS",
         "renesas-rz_t2m_rsk": "RENESAS",
-        "sam4s8b": "MICROCHIP",
-        "sam4s": "MICROCHIP",
     }
 
     if platform.get_name() not in mapping:
