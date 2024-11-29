@@ -29,7 +29,17 @@ block: CoSimulated.CoSimulatedPeripheral @ sysbus <0x20000000, +0x100000>
 
 The HDL side uses a [SystemVerilog interface](https://github.com/renode/renode/tree/master/src/Plugins/CoSimulationPlugin/IntegrationLibrary/hdl) which connects directly to your HDL simulation using signals specific to the bus you are simulating.
 
-The HDL simulator has to be running before starting the simulation.
+For co-simulation, you can pass the external simulator location via the `SimulationPath` property to spawn it automatically by Renode.
+In such case you can pass custom command line parameters using the `SimulationContext` property, e.g. for Verilator:
+
+```none
+block: CoSimulated.CoSimulatedPeripheral @ sysbus <0x20000000, +0x100000>
+    address: "127.0.0.1"
+    SimulationPath: build/verilated
+    SimulationContext: "--custom_features_enabled +RENODE_RECEIVER_PORT={0} +RENODE_SENDER_PORT={1} +RENODE_ADDRESS={2}"
+```
+
+Otherwise, the HDL simulator has to be running before connecting to it.
 
 ### Supported buses
 
