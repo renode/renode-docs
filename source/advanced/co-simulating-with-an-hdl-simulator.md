@@ -53,7 +53,7 @@ Otherwise, the HDL simulator has to be running before connecting to it.
 You can find examples for every supported bus with instructions on building them in the [renode-dpi-examples repository](https://github.com/antmicro/renode-dpi-examples).
 All examples have been tested both with [Verilator](https://www.veripool.org/verilator/) and [Questa](https://www.intel.com/content/www/us/en/software/programmable/quartus-prime/questa-edition.html).
 
-## Custom, direct integration metod (Verilator-only)
+## Custom, direct integration method (Verilator-only)
 
 When using Verilator, you can also compile your HDL simulation as a dynamic library and link it with Renode at runtime, instead of using TCP sockets.
 Renode can spawn or link a simulation on its own.
