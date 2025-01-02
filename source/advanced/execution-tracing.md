@@ -28,7 +28,9 @@ cpu LogFunctionNames false
 ```
 
 ```{note}
-You can also add another `true` at the end of this command to remove duplicate function names from subsequent code blocks and achieve better overall performance.
+You can also add another `true` at the end of this command to remove duplicate function names from subsequent code blocks and achieve better overall performance. 
+
+For even better performance you can use  `cpu LogTranslationBlockFetch true` to only log when a block is translated, not when it is executed.
 ```
 
 To filter function names based on a prefix, add the prefix as a string at the end of the function:
