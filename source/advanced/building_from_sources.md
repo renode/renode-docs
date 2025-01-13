@@ -15,12 +15,7 @@ First, install the `mono-complete` package as per the installation instructions 
 :::
 
 :::{tab} .NET
-First, install the `.NET SDK` package as per the installation instructions, which can be found on [the official .NET site](https://dotnet.microsoft.com/en-us/download/dotnet/6.0).
-
-:::{note}
-Make sure to install the `6.0.4xx` branch (e.g. `6.0.427`) as otherwise the build will fail with a `NETSDK1100: Windows is required to build Windows desktop applications` error. On Ubuntu this requires using either the Microsoft package feed or installing manually
-:::
-
+First, install the `.NET SDK` package as per the installation instructions, which can be found on [the official .NET site](https://dotnet.microsoft.com/en-us/download/dotnet/8.0).
 :::
 
 To install the remaining dependencies, use:
@@ -108,7 +103,7 @@ Prior to cloning the repository on *Windows*, git has to be configured appropria
 
 :::{tab} .NET
 
-See [the official .NET site](https://dotnet.microsoft.com/en-us/download/dotnet/6.0) for instructions on how to install `.NET SDK`.
+See [the official .NET site](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) for instructions on how to install `.NET SDK`.
 
 :::
 
@@ -160,7 +155,14 @@ There are some optional flags you can use:
     --force-net-framework-version     build against different version of .NET Framework than specified in the solution
     --net                             build with dotnet
     -B                                bundle target runtime (default value: linux-x64, requires --net, -t)
+    -F                                select the target framework for which Renode should be built (default value: net8.0)
     --profile-build                   build optimized for tlib profiling
+    --tlib-only                       only build tlib
+    --tlib-arch                       build only single arch (implies --tlib-only)
+    --tlib-export-compile-commands    build tlibs with 'compile_commands.json' (requires --tlib-arch)
+    --host-arch                       build with a specific tcg host architecture (default: i386)
+    --skip-dotnet-target-generation   don't generate 'Directory.Build.targets' file, useful when experimenting with different build settings
+
 
 Additionally you can directly specify flags which will be passed to the build system after `--`.
 For example, if you wanted to override the `CompilerPath` property you could use::
