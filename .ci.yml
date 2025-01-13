@@ -18,7 +18,7 @@ build:
   tags: ['ace-x86_64']
   <<: *common_only
   before_script:
-    - apt update && apt install -y git librsvg2-bin
+    - apt update && apt install -y git librsvg2-bin python3-venv python3-pip python3
     - pip3 install -r requirements.txt
   script:
     # checkout on the specified version if needed
