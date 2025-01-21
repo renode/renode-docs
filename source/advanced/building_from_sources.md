@@ -22,7 +22,7 @@ To install the remaining dependencies, use:
 
     sudo apt update
     sudo apt install git automake cmake autoconf libtool g++ coreutils policykit-1 \
-                  libgtk2.0-dev uml-utilities gtk-sharp2 python3 python3-pip
+                  libgtk-3-dev uml-utilities gtk-sharp3 python3 python3-pip
 
 ::::
 
