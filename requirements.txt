@@ -1,10 +1,4 @@
-sphinx<6
 sphinxcontrib-svg2pdfconverter
 https://github.com/antmicro/antmicro-sphinx-utils/archive/main.zip
 sphinx-inline-tabs
 sphinx-design
-
-# version from utils breaks Sphinx - this is a workaround
-pydantic==2.4.2
-pydantic-core==2.10.1
-
