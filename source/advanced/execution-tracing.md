@@ -180,7 +180,7 @@ You can view the content of the binary file by using a script bundled with Renod
 It can be invoked by running this command in your shell:
 
 ```sh
-python3 <renode>/tools/execution_tracer/execution_tracer_reader.py path-to-dump-file
+python3 <renode>/tools/execution_tracer/execution_tracer_reader.py inspect path-to-dump-file
 ```
 
 This command will print the file's text content to the standard output.

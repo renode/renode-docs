@@ -66,7 +66,7 @@ It's also recommended to use a binary format and compression by setting the four
 
 Finally, you can run the script that generates the report:
 ```bash
-tools/execution_tracer/execution_tracer_reader.py --coverage main.elf --coverage-code main.c --coverage-output main.c.cov trace.bin.gz
+tools/execution_tracer/execution_tracer_reader.py coverage trace.bin.gz --binary main.elf --sources main.c --output main.c.cov
 ```
  
 The output file (`main.c.cov`) should start with the lines shown below.
