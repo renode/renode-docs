@@ -84,3 +84,13 @@ The number before the colon indicates the number of executions of each line.
    28:	}
     0:	
 ```
+
+```{note}
+If no sources are provided using `--sources` argument, the script will attempt to automatically discover their locations based on the DWARF data extracted from the binary.
+
+It might be needed to perform path substitution if the sources' locations changed from the time when the binary was built (or binaries were built on a different machine).
+
+For this `--sub-source-path` argument can be used, by providing `old_path:new_path` for each pair of paths to be substituted; this argument can be provided multiple times.
+```
+
+It's possible for the script to output data in LCOV-compatible format (*.info) by using `--lcov-format` switch.
