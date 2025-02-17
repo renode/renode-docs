@@ -44,6 +44,17 @@ debugging/vscode
 
 
 ```{toctree}
+:caption: Execution tracing
+:maxdepth: 2
+
+execution-tracing/execution-tracing
+execution-tracing/metrics-and-profiling
+execution-tracing/coverage-report
+execution-tracing/guest-cache-modelling
+```
+
+
+```{toctree}
 :caption: Networking
 :maxdepth: 2
 
@@ -73,7 +84,6 @@ host-integration/sharing-files
 advanced/co-simulating-with-an-hdl-simulator
 advanced/building_from_sources
 advanced/platform_description_format
-advanced/execution-tracing
 advanced/time_framework
 advanced/writing-peripherals
 advanced/loading-assembly-to-memory
@@ -91,5 +101,4 @@ tutorials/usbip
 tutorials/co-simulating-custom-hdl
 tutorials/ble-simulation
 tutorials/ble-hci-integration
-tutorials/coverage-report
 ```
