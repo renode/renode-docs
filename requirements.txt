@@ -2,4 +2,3 @@ sphinxcontrib-svg2pdfconverter
 https://github.com/antmicro/antmicro-sphinx-utils/archive/main.zip
 sphinx-inline-tabs
 sphinx-design
-Sphinx<8.2.0 # This is a temporary workaround, remove when it's no longer needed
