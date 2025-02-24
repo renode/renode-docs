@@ -34,7 +34,31 @@ You can also use the `include` command to load an existing `.py` file:
 (monitor) include @path/to/file.py
 ```
 
-## Providing Python scripts from the Monitor
+### Extended context
+
+Scripts ran this way have access to additional variables:
+
+```{list-table} Custom variables in Monitor
+:header-rows: 1
+:widths: 25 75
+
+* - Variable name
+  - Description
+* - `monitor`, `self`
+  - The Monitor instance, e.g. allows for getting current machine with `monitor.Machine`
+* - `externals`
+  - Accessor object for external emulation elements 
+* - `variables`
+  - Accessor object for Monitor variables
+```
+
+The Monitor instance is an C# object, which provides context like currently selected machine, so e.g. the expression `monitor.Machine['sysbus.uart0']` can be used to access the `uart0` peripheral from the machine. 
+
+Accessor objects can be either treated as objects or indexed similarly to a dictionary, i.e. `variables.foo` and `variables['foo']` are equivalent, but the index syntax can accept any string.
+
+Moreover, the scope is shared between executions, so any modifications to the scope, i.e. defined function or variables, will be carried over to all future Python script executions.
+
+### Providing Python scripts from the Monitor
 
 To provide a multiline Python script from the Monitor or a `.resc` file, use the following notation:
 
@@ -55,7 +79,7 @@ Using the `print` Python command will output the text on the Monitor:
 Hello
 ```
 
-## Creating Monitor commands in Python
+### Creating Monitor commands in Python
 
 Running the `python` command in the Monitor executes the provided code immediately.
 However, it is possible to use these Python scripts to define functions available for later use.
