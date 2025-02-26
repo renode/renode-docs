@@ -322,6 +322,27 @@ cpu AddSymbolHook "main" "print 'You have reached the main function'"
 
 to set a hook that will 'follow' the symbol and set additional hooks when it is loaded at a different address. This is useful for software that relocates itself at runtime.
 
+(os-aware-modes)=
+
+### OS-aware modes
+
+OS-aware modes make use of OS-specific behavior to enhance the simulation performance and add quality of life improvements.
+
+```{list-table} OS-aware modes
+:header-rows: 1
+:widths: 10 45 45
+
+* - Mode
+  - U-Boot mode
+  - Zephyr mode
+* - Features
+  - Skips busy loop in `_udelay`, automatically reloads symbols after U-Boot relocates.
+  - Skips busy loop in `z_impl_k_busy_wait`
+* - How to enable?
+  - `cpu EnableUbootMode`
+  - `cpu EnableZephyrMode`
+```
+
 (system-bus-hooks)=
 
 ### System bus hooks
