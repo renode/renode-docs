@@ -314,6 +314,14 @@ and even combine the previous command with another one to add a hook at a symbol
 cpu AddHook `sysbus GetSymbolAddress "main"` "print 'You have reached the main function'"
 ```
 
+Alternatively, you can use
+
+```
+cpu AddSymbolHook "main" "print 'You have reached the main function'"
+```
+
+to set a hook that will 'follow' the symbol and set additional hooks when it is loaded at a different address. This is useful for software that relocates itself at runtime.
+
 (system-bus-hooks)=
 
 ### System bus hooks
@@ -482,11 +490,11 @@ As an example let's create a trivial Ethernet sniffer:
 ```none
 (machine-0) emulation CreateSwitch "switch"
 (machine-0) python "externals.switch.FrameProcessed += lambda switch, sender, data: sender.LogDebug(str(data))"
-``` 
+```
 
 For an in-depth explanation of setting up the network see the {doc}`Setting up a wired network <../networking/wired>` chapter.
 
-### Dummy I2C Slave 
+### Dummy I2C Slave
 
 The `Mocks.DummyI2CSlave` peripheral provides a set of methods and events that allow you to implement a simple I2C peripheral.
 
@@ -582,7 +590,7 @@ vserial: UART.VirtualConsole @ sysbus
 * - ReadBuffer
   - Retrieves data from the buffer and removes it
   - The retrieved data
-  - optional limit to number of bytes returned, defaults to 1 
+  - optional limit to number of bytes returned, defaults to 1
 * - GetBuffer
   - Retrieves the buffer without consuming the data
   - A copy of the buffer
