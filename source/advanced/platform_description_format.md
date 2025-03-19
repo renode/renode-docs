@@ -79,10 +79,10 @@ variableName: TypeName registrationInfo
 All of `TypeName`, `registrationInfo` and `attributes` are optional, but at least one of them must be present.
 If an entry contains a TypeName, then it is a *creating entry* (otherwise it is an *updating entry*).
 
-Each creating entry declares a variable, there can be only one declaration for a given variable and it must be the first entry that is encountered when parsing the file, unless the variable is declared before parsing.
-For example all peripherals that are registered in the machine are also imported as variables and can have their updating entries (but not creating entries).
+Each creating entry declares a variable, there can be only one declaration for a given variable. The declaration can be done anywhere in the file hierarchy.
+All peripherals that are registered in the machine are also imported as variables and can have their updating entries (but not creating entries).
 
-In other words this code is legal:
+Both of the below are legal:
 
 ``` none
 variable1: SomeType
@@ -92,8 +92,6 @@ variable1:
     property: otherValue
 ```
 
-But the following results in an error:
-
 ``` none
 variable1:
     property: value
@@ -102,14 +100,20 @@ variable1: SomeType
     property: otherValue
 ```
 
-The consecutive entries (for the given variable) are called updating because they can update some information provided by the former ones.
-Eventually all entries corresponding to the given variable are *merged* so that the merge result contains attributes from all entries, possibly some invalidated by some other.
+Entries (the ones that do not specify a type) can update and override information provided by the former ones.
+Eventually all entries corresponding to the given variable are *merged* so that the merge result contains attributes from all entries. 
+Some of these can possibly be invalidated (overridden) by another (newer) entry.
 
-TypeName must be provided with the full namespace the type is located in.
+```{note}
+In practice, that means that the "newest" value for an attribute will be selected - that is the one which is provided **last** in the file.
+This also takes into account all files chained by `using` keywords.
+The entry specifying the type is not handled in any special way, nor does it have any priority when selecting properties' values.
+```
+
+TypeName must generally be provided with the full namespace the type is located in.
 However, if the namespace starts with `Antmicro.Renode.Peripherals`, then this part can be omitted.
 
-A creating entry can have an optional prefix `local`, then the variable declared in this entry is called a *local* variable.
-The prefix is only used with a creating entry, not with an updating one.
+A creating entry (not an updating one) can be optionally prepended with `local` - the variable declared in this entry is then called a *local* variable.
 
 For example:
 
@@ -123,31 +127,6 @@ cpu:
 
 If the variable is local, then we can reference it only within that file.
 This will be clearer after reading the next section, but generally if one file depends on another, both can declare same named local variable and they are completely independent, in particular they can have different types.
-
-## Depending on other files
-
-One description can depend on another, in which case it can use all (non-local) variables from that file.
-Note that also all non-local variables from a file we\'re depending on cannot have creating entries.
-In other words, depending on another file is like having it pasted at the top of the file with the exception of local variables.
-
-The `using` keyword is used to declare a dependency:
-
-``` none
-using "path"
-```
-
-The line above is called a *using entry*.
-All using entries have to come before any other entries.
-There is also a syntax that lets the user depend on a file but prepend all variables within that file with a prefix:
-
-``` none
-using "path" prefixed "prefix"
-```
-
-Then `prefix` is applied to each variable in `path`.
-
-Since files mentioned in `path` can further depend on other files, this can sometimes lead to a cycle.
-This is detected by the format interpreter and an error with information about the cycle is generated.
 
 ## Values
 
@@ -390,3 +369,64 @@ point: Point
 variable: SomeType
     SomeProperty: new Point {x: 5; y: 3}
 ```
+
+## Depending on other files
+
+One description can depend on another, in which case it can use all (non-local) variables from that file.
+
+The `using` keyword declares a dependency:
+
+``` none
+using "path"
+```
+
+The line above is called a *using entry*.
+Using entries have to come before any other entries.
+
+You can "prefix" a using entry. This prepends all variable names with the given prefix. 
+For example:
+
+``` none
+using "path" prefixed "prefix"
+```
+
+This will prepend each variable name with "prefix" (e. g. `myvariable` defined in `path` will be visible as `prefixmyvariable`)
+
+Using entries can form arbitrary hierarchies. The only limitation is that there can be no cycles (these are reported as errors).
+
+## Entry override order
+
+As mentioned before, entries can be overriden. Variables are gathered in a certain order, and later ones override the previous.
+First, the `using` entries are processed, top to bottom. Then, entries in the current file are gathered from top to bottom. 
+This process is applied recursively when there are more levels of `usings`.
+
+For example, consider the following platform definition:
+``` none
+// myplatform.repl
+using "a.repl"
+using "b.repl"
+
+variable: SomeType
+```
+
+``` none
+// a.repl
+variable:
+    SomeProperty: "set by a, first"
+
+variable:
+    SomeProperty: "set by a, second"
+```
+
+``` none
+// b.repl
+variable:
+    SomeProperty: "set by b, first"
+
+variable:
+    SomeProperty: "set by b, second"
+```
+
+The final value of `variable.SomeProperty` is "set by b second".
+The reason is, that it's the **last** override of `variable.SomeProperty` available.
+We can override this further in `myplatform.repl`.
