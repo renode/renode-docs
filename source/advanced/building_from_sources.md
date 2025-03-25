@@ -44,22 +44,16 @@ To install the remaining prerequisites, use:
 
 ::::{tab} Windows
 
-Building Renode on Windows is based on Cygwin and requires you to properly set up the system environment.
-
-**Cygwin**
-
-1. Download [Cygwin installer](https://cygwin.com/setup-x86_64.exe).
-2. Install it with an additional module: `openssh`.
+Building Renode on Windows uses MinGW and Git Bash, and requires you to properly set up the system environment.
 
 **Git**
 
-1. Download and install `git` as a **native** application.
+1. Download and install `git` using the default options
    You can get it from [the official website](https://git-scm.com/downloads).
-   You can use either a regular installation or a portable version.
-2. Ensure the installation directory (`C:\Program Files\Git` by default) is in the system `PATH` variable. The installer offers to install a subset of `git` tools in `PATH`, this is the recommended option.
+2. Ensure the installation directory (`C:\Program Files\Git` by default) is in the system `PATH` variable. 
 
 :::{note}
-Prior to cloning the repository on *Windows*, git has to be configured appropriately:
+Prior to cloning the repository on *Windows*, git has to be configured appropriately. Run the following commands in Git Bash to set the options correctly:
 
     git config --global core.autocrlf false
     git config --global core.symlinks true
@@ -67,14 +61,8 @@ Prior to cloning the repository on *Windows*, git has to be configured appropria
 
 **Python 3**
 
-1. Download and install **native** Windows Python 3 framework from [the Python website](https://www.python.org/downloads/).
-
-:::{note}
-   Do not use the module provided by `Cygwin`.
-   If you have Cygwin's version of Python already installed, make sure that the native's version location is included at the beginning of Cygwin's PATH variable.
-:::
-
-2. Add location of the binaries (`C:\Program Files (x86)\Python38-32` for a 32-bit version of Python 3.8 by default) to the system `PATH` variable.
+1. Download and install the Windows version of the Python 3 framework from [the Python website](https://www.python.org/downloads/).
+2. Add location of the binaries to the system `PATH` variable. The installer can do this for you.
 
 **MinGW**
 
@@ -128,7 +116,7 @@ Install the `pip` package manager and some additional modules to enable writing 
 ## Building Renode
 
 :::{note}
-On Windows, the building process described in this section can only be executed in a Cygwin shell.
+On Windows, the building process described in this section can only be executed in Git Bash.
 :::
 
 :::{note}
@@ -202,12 +190,11 @@ No additional prerequisites for macOS.
 
 On Windows 10, it is important to enable .NET 3.5 in the system before installing the WiX Toolset.
 
-The packaging process described in this section can only be executed in a Cygwin shell.
+The packaging process described in this section can only be executed in Git Bash.
 
 :::
 
 1. Download and install the [WiX Toolset installer](https://wixtoolset.org/releases/) (version at least 3.11).
-2. Add the `zip` package to Cygwin.
 
 ::::
 
