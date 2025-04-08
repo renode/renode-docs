@@ -26,6 +26,7 @@ Renode also supports many of the ISA extensions like:
   - Single-bit instructions (`Zbs`)
 - Half-Precision Floating-Point (`Zfh`)
 - Atomic Compare-and-Swap (CAS) (`Zacas`)
+- PMP Enhancements for memory access and execution prevention in Machine mode (`Smepmp`)
 
 Lastly, Renode also supports custom, non standard instruction sets.
 Some of them can be selected like other instruction sets(e.g. `Xandes`), others are defined directly in their respective core classes (e.g. `CV32E40P`).
