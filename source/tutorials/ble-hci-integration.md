@@ -3,6 +3,10 @@
 The Bluetooth Low Energy standard allows the use of different transports (e.g., UART, USB, SPI) for the HCI protocol.
 Integration with an external BLE controller via [HCI UART](https://github.com/zephyrproject-rtos/zephyr/blob/21f473aaecf087e357df19c78ae2bd60aed345dd/samples/bluetooth/hci_uart/README.rst) is supported in Renode and the integration can be used for testing the [BLE host stack in Zephyr RTOS](https://github.com/zephyrproject-rtos/zephyr/blob/21f473aaecf087e357df19c78ae2bd60aed345dd/doc/connectivity/bluetooth/bluetooth-arch.rst#build-types).
 
+```{note}
+This tutorial was tested with [Zephyr 3.4.0](https://github.com/zephyrproject-rtos/zephyr/tree/zephyr-v3.4.0) and accompanying [Zephyr SDK 0.16.1](https://github.com/zephyrproject-rtos/sdk-ng/releases/tag/v0.16.1).
+```
+
 ## Integration with Android Emulator
 
 [Android Emulator](https://developer.android.com/studio/emulator_archive) (a part of the [Android Studio IDE](https://developer.android.com/studio/intro) that can be also installed as a standalone tool) supports Bluetooth communication through the [netsim tool](https://cs.android.com/android/_/android/platform/tools/netsim/+/a31d6d4930154cf0f211b645667056520a2a7209:;bpv=0;bpt=0).
