@@ -123,6 +123,10 @@ On Windows, the building process described in this section can only be executed 
 When building Renode with `.NET`, remember to use `--net` switch (`./build.sh --net`).
 :::
 
+:::{note}
+To build for aarch64/arm64 host (macOS and Linux only) remember to set the host architecture with `--host-arch` (`./build --net --host-arch aarch64`) 
+:::
+
 To build Renode, run:
 
     ./build.sh
@@ -144,6 +148,7 @@ There are some optional flags you can use:
     --net                             build with dotnet
     -B                                bundle target runtime (default value: linux-x64, requires --net, -t)
     -F                                select the target framework for which Renode should be built (default value: net8.0)
+    --host-arch                       set which host architecture C components gets built for (default value: x86_64)
     --profile-build                   build optimized for tlib profiling
     --tlib-only                       only build tlib
     --tlib-arch                       build only single arch (implies --tlib-only)
