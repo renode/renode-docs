@@ -27,8 +27,18 @@ To install the remaining dependencies, use:
 ::::
 
 ::::{tab} macOS
+:::{note}
+For arm64 macOS (Apple Silicon) only .NET is officially supported
+:::
 
+:::{tab} Mono
 On macOS, the Mono package can be obtained by using [a download link on the Mono project website](https://download.mono-project.com/archive/mdk-latest-stable.pkg).
+:::
+
+:::{tab} .NET
+First, install the `.NET SDK` package as per the installation instructions, which can be found on [the official .NET site](https://dotnet.microsoft.com/en-us/download/dotnet/8.0).
+Make sure to install the right architecture, `Arm64` for Apple Silicon, `x64` for Intel
+:::
 
 To install the remaining prerequisites, use:
 
