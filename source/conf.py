@@ -50,8 +50,8 @@ myst_substitutions = {
 
 extlinks = {
     'script'    : ('https://github.com/renode/renode/blob/master/scripts/%s', '%s'),
-    'risrc'     : ('https://github.com/renode/renode-infrastructure/blob/3f1abde88ac5a2dae326b77ab91892f335e78f80/%s', '%s'),
-    'rsrc'      : ('https://github.com/renode/renode/blob/c16c7bceca07734f6f49b4e107d299aa04b8857c/%s' , '%s')
+    'risrc'     : ('https://github.com/renode/renode-infrastructure/blob/2c821396f5505ac80154da016b4f4574aa3c24de/%s', '%s'),
+    'rsrc'      : ('https://github.com/renode/renode/blob/caf18bf7d8da84897886ee7ade7481cb7b0ea7ec/%s' , '%s')
 }
 
 today_fmt = '%Y-%m-%d'

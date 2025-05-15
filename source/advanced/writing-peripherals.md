@@ -2,9 +2,9 @@
 
 Renode allows the user to "model" HW peripherals in several ways:
 
-* {rsrc}`automatic tags from the SVD file </platforms/cpus/nrf52840.repl#L25>` used mainly for logging purposes,
-* {rsrc}`manual tags with return value </platforms/cpus/vybrid.repl#L99>` used for logging and trivial flow control,
-* {rsrc}`Python peripherals </platforms/cpus/tegra3.repl#L131-L134>` used for implementing very simple logic,
+* {rsrc}`automatic tags from the SVD file </platforms/cpus/nrf52840.repl#L115>` used mainly for logging purposes,
+* {rsrc}`manual tags with return value </platforms/cpus/vybrid.repl#L106>` used for logging and trivial flow control,
+* {rsrc}`Python peripherals </platforms/cpus/tegra3.repl#L134-L137>` used for implementing very simple logic,
 * C# models, used to describe advanced peripheral logic and interconnect - described in details below.
 
 ## How does access to the system bus work?
@@ -12,12 +12,12 @@ Renode allows the user to "model" HW peripherals in several ways:
 `read`/`write` operations executed by the CPU (usually in the C implementation in the `tlib` submodule) are either directed to the internal memory or passed to the system bus and handled by the framework at the C# level.
 
 Access to the memory modeled as {risrc}`MappedMemory </src/Emulator/Main/Peripherals/Memory/MappedMemory.cs>` is handled entirely at the C level, all other operations are passed from C to C# via
-{risrc}`TranslationCPU.Read{Byte,Word,DoubleWord}FromBus </src/Emulator/Peripherals/Peripherals/CPU/TranslationCPU.cs#L578-L615>`/
-{risrc}`TranslationCPU.Write{Byte,Word,DoubleWord}ToBus </src/Emulator/Peripherals/Peripherals/CPU/TranslationCPU.cs#L617-L654>` functions.
+{risrc}`TranslationCPU.Read{Byte,Word,DoubleWord,QuadWord}FromBus </src/Emulator/Peripherals/Peripherals/CPU/TranslationCPU.cs#L609-L674>`/
+{risrc}`TranslationCPU.Write{Byte,Word,DoubleWord,QuadWord}ToBus </src/Emulator/Peripherals/Peripherals/CPU/TranslationCPU.cs#L677-L746>` functions.
 
 NOTE: It is possible to change {risrc}`MappedMemory </src/Emulator/Main/Peripherals/Memory/MappedMemory.cs>` type to
-{risrc}`ArrayMemory </src/Emulator/Peripherals/Peripherals/Memory/ArrayMemory.cs>` in order to handle all memory operations at the C# level.
-Keep in mind this might cause a significant drop in performance. Also, executing code from {risrc}`ArrayMemory </src/Emulator/Peripherals/Peripherals/Memory/ArrayMemory.cs>` will not be possible.
+{risrc}`ArrayMemory </src/Emulator/Main/Peripherals/Memory/ArrayMemory.cs>` in order to handle all memory operations at the C# level.
+Keep in mind this might cause a significant drop in performance.
 
 
     ┌──────────────┐  C to C   ┌─────────────┐
@@ -59,13 +59,14 @@ A C# class is considered a peripheral model if it implements the {risrc}`IPeriph
 In order for the peripheral to be attachable to the system bus, it must implement at least one (but can implement a few) of:
 {risrc}`IBytePeripheral </src/Emulator/Main/Peripherals/Bus/IBytePeripheral.cs>`,
 {risrc}`IWordPeripheral </src/Emulator/Main/Peripherals/Bus/IWordPeripheral.cs>`,
-{risrc}`IDoubleWordPeripheral </src/Emulator/Main/Peripherals/Bus/IDoubleWordPeripheral.cs>` interfaces, enabling 8, 16 and 32-bit accesses respectively.
+{risrc}`IDoubleWordPeripheral </src/Emulator/Main/Peripherals/Bus/IDoubleWordPeripheral.cs>`,
+{risrc}`IQuadWordPeripheral </src/Emulator/Main/Peripherals/Bus/IQuadWordPeripheral.cs>` interfaces, enabling 8, 16, 32 and 64-bit accesses respectively.
 
 Double word bus peripherals must implement at least three methods:
 
-* for reading (e.g., {risrc}`ReadDoubleWord </src/Emulator/Main/Peripherals/Bus/IDoubleWordPeripheral.cs#L13>` - called by the system bus in order to read a value from the peripheral,
-* for writing (e.g., {risrc}`WriteDoubleWord </src/Emulator/Main/Peripherals/Bus/IDoubleWordPeripheral.cs#L14>` - called by the system bus in order to write a value to the peripheral,
-* for resetting ({risrc}`Reset </src/Emulator/Main/Peripherals/IPeripheral.cs#L19>`) - called by the framework to restore the state of the peripheral to the initial state.
+* for reading (e.g., {risrc}`ReadDoubleWord </src/Emulator/Main/Peripherals/Bus/IDoubleWordPeripheral.cs#L13>`) - called by the system bus in order to read a value from the peripheral,
+* for writing (e.g., {risrc}`WriteDoubleWord </src/Emulator/Main/Peripherals/Bus/IDoubleWordPeripheral.cs#L14>`) - called by the system bus in order to write a value to the peripheral,
+* for resetting ({risrc}`Reset </src/Emulator/Main/Peripherals/IPeripheral.cs#L23>`) - called by the framework to restore the state of the peripheral to the initial state.
 
 Although it's technically possible to implement `read`/`write` method in any way, the preferred one is to use the Register Framework ({risrc}`the source code </src/Emulator/Main/Core/Structure/Registers>`).
 For an example of usage, see {risrc}`the LiteX UART </src/Emulator/Peripherals/Peripherals/UART/LiteX_UART.cs#L20-L52>`.
@@ -77,12 +78,12 @@ The following section explains how to design a peripheral using the Register Fra
 ## Register modeling guidelines
 
 Create a private enum, preferably named `Registers`, that lists **all** registers supported by the peripheral.
-Conforming to the enum naming convention (or marking it with the {risrc}`RegistersDescription </src/Emulator/Main/Peripherals/Bus/Wrappers/RegisterMapper.cs#L71>` interface) allows the system bus to generate better log messages by including register name in logs generated by `sysbus LogPeripheralAccess`.
+Conforming to the enum naming convention (or marking it with the {risrc}`RegistersDescription </src/Emulator/Main/Peripherals/Bus/Wrappers/RegisterMapper.cs#L72>` interface) allows the system bus to generate better log messages by including register name in logs generated by `sysbus LogPeripheralAccess`.
 
 Use human-readable, PascalCase encoded names (i.e., `InterruptEnable` instead of `IEN`) even if they are referred to differently in the documentation.
 As values of the enum fields, use the offset from the beginning of the peripheral's memory space (i.e., offsets relative to the beginning of the peripheral, **not** absolute addresses).
 Keep in mind that a platform can have multiple peripherals of a given type.
-Please be reasonable here - there are sometimes peripherals with too many registers or registers forming {risrc}`a repeatable pattern </src/Emulator/Cores/RiscV/PlatformLevelInterruptController.cs#L446-L469>` - in such case a creative approach is encouraged.
+Please be reasonable here - there are sometimes peripherals with too many registers or registers forming {risrc}`a repeatable pattern </src/Emulator/Cores/RiscV/PlatformLevelInterruptController.cs#L77-L103>` - in such case a creative approach is encouraged.
 
 Do not **implement** all registers - only those that are actually used by the software and can be therefore tested.
 
@@ -91,9 +92,9 @@ Fields that are not implemented should be marked as tags, reserved or ignored - 
 
 There are different type of fields available in Registers Framework:
 
-* flags - single-bit fields ({risrc}`example </src/Emulator/Peripherals/Peripherals/Timers/LiteX_Timer.cs#L124>`),
-* enum fields - single-or-multiple bit fields where bit patterns encode some non-numeric value ({risrc}`example </src/Emulator/Peripherals/Peripherals/SD/LiteSDCard.cs#L176>`),
-* value fields - single-or-multiple bit fields encoding a numeric value ({risrc}`example </src/Emulator/Peripherals/Peripherals/SD/LiteSDCard.cs#L171>`).
+* flags - single-bit fields ({risrc}`example </src/Emulator/Peripherals/Peripherals/Timers/LiteX_Timer.cs#L125>`),
+* enum fields - single-or-multiple bit fields where bit patterns encode some non-numeric value ({risrc}`example </src/Emulator/Peripherals/Peripherals/SD/LiteSDCard.cs#L138>`),
+* value fields - single-or-multiple bit fields encoding a numeric value ({risrc}`example </src/Emulator/Peripherals/Peripherals/SD/LiteSDCard.cs#L133>`).
 
 For each field you can select an access mode (Read&Write by default) that defines which operations are allowed and how they are handled by the framework.
 Possible basic values (that can be combined together with a bitwise `| OR` operator) are:
@@ -112,16 +113,16 @@ Reading from the write-only field will return the default value of 0 (but will n
 By default each register provides an automatic backing field. It means that the software will read the previously written value (assuming that fields are writable and readable).
 It is possible to access the backing field and modify its value from the code. In order to do that use an `out` parameter - see {risrc}`an example </src/Emulator/Peripherals/Peripherals/UART/LiteX_UART.cs#L42>`.
 
-There are helper methods for generating groups of registers - see the {risrc}`DefineMany </src/Emulator/Peripherals/Peripherals/Timers/LiteX_Timer.cs#L59-L67>` usage example.
+There are helper methods for generating groups of registers - see the {risrc}`DefineMany </src/Emulator/Peripherals/Peripherals/Timers/LiteX_Timer.cs#L60-L68>` usage example.
 
 It is also possible to attach callbacks for situations when the field is:
 
 * written (with any value) ({risrc}`example </src/Emulator/Peripherals/Peripherals/UART/LiteX_UART.cs#L23>`),
-* changed (written with a value different than the current one) ({risrc}`example </src/Emulator/Cores/X86/LAPIC.cs#L163>`),
-* read (the value is taken from the backing field),
+* changed (written with a value different than the current one) ({risrc}`example </src/Emulator/Cores/X86/LAPIC.cs#L172>`),
+* read (the value is taken from the backing field) ({risrc}`example </src/Emulator/Peripherals/Peripherals/Network/LiteX_Ethernet_CSR32.cs#L321>`),
 * read - value provider (the value is generated by the callback itself) ({risrc}`example </src/Emulator/Peripherals/Peripherals/UART/LiteX_UART.cs#L24>`). 
 
-There are also callbacks for the whole register - {risrc}`WriteCallback </src/Emulator/Peripherals/Peripherals/I2C/OpenCoresI2C.cs#L63>` and {risrc}`ReadCallback </src/Emulator/Peripherals/Peripherals/Timers/EFR32_RTCC.cs#L66>`. They are useful when the value of multiple fields is necessary for the callback logic.
+There are also callbacks for the whole register - {risrc}`WriteCallback </src/Emulator/Peripherals/Peripherals/I2C/OpenCoresI2C.cs#L64>` and {risrc}`ReadCallback </src/Emulator/Peripherals/Peripherals/Timers/EFR32_RTCC.cs#L173>`. They are useful when the value of multiple fields is necessary for the callback logic.
 
 ## Bus peripheral size
 
@@ -129,7 +130,7 @@ In most cases the size of the peripheral on the bus is well defined and can be i
 In order to do that, the class must implement the {risrc}`IKnownSize </src/Emulator/Main/Peripherals/IKnownSize.cs>` interface.
 The size encoded in the `Size` property is expressed in bytes.
 
-Note: Peripherals **not** implementing the `IKnownSize` interface can be also used in Renode, but it is required to provide the size each time {rsrc}`the device is registered </platforms/cpus/stm32f746.repl#L13>` (in the repl file).
+Note: Peripherals **not** implementing the `IKnownSize` interface can be also used in Renode, but it is required to provide the size each time {rsrc}`the device is registered </platforms/cpus/stm32f746.repl#L26>` (in the repl file).
 
 ## Testing guidelines
 
