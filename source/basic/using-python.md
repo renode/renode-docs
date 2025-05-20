@@ -24,13 +24,13 @@ They serve as an API between the script and the rest of Renode.
 
 Python code can be executed directly in the Renode Monitor using the `python` command in the Monitor:
 
-```
+```none
 (monitor) python [ py ]
 ```
 
 You can also use the `include` command to load an existing `.py` file:
 
-```
+```none
 (monitor) include @path/to/file.py
 ```
 
@@ -90,7 +90,7 @@ If the name of the function you define starts with the `mc_` prefix, it will bec
 
 For example, consider the following Python definition:
 
-```
+```python
 def mc_sleep(time):
     sleep(float(time))
 ```
@@ -165,7 +165,7 @@ The variable `isInit` is `true` when the peripheral is marked as possible to ini
 
 An example Python peripheral available in mainline Renode is [repeater.py](https://github.com/renode/renode/blob/master/scripts/pydev/repeater.py), returning the same value that was written to it by software:
 
-```
+```python
 if request.isInit:
     lastVal = 0
 elif request.isRead:
@@ -227,7 +227,7 @@ UART hooks in Renode have access to the following variables:
 
 You have to specify the string you want to search for in the UART's output and the Python script that will be executed if the substring appears on UART:
 
-```
+```none
 (machine) uart AddLineHook "searched value" "print 'Found the %s string' % line"
 ```
 
@@ -296,51 +296,53 @@ Specific hooks can have additional variables available:
 To use a CPU hook, you need to name `cpu` you want to attach the hook to and specify the method.
 To create a hook that triggers at the beginning of interrupt:
 
-```
+```none
 (machine) cpu AddHookAtInterruptBegin "print 'Interrupt has started'"
 ```
 
 To create a hook that triggers at the end of interrupt:
 
-```
+```none
 (machine) cpu AddHookAtInterruptEnd "print 'Interrupt has ended'"
 ```
 
 To create a hook that triggers when the CPU enters or exits "Wait-For-Interrupt" state:
-```
+
+```none
 (machine) cpu AddHookAtWfiStateChange "print 'Entered/Exited WFI'"
 ```
+
 ```{note}
 WFI state can be triggered by various CPU instructions depending on the architecture. For example, on Arm, both `WFI` and `WFE` instructions can be used to enter this state.
 ```
 
 To create a hook that triggers at the beginning of an executed block:
 
-```
+```none
 (machine) cpu SetHookAtBlockBegin "print 'Execution of a code block has started'"
 ```
 
 To create a hook that triggers at the end of an executed block:
 
-```
+```none
 (machine) cpu SetHookAtBlockEnd "print 'Execution of a code block has ended'"
 ```
 
 You can also create a hook for any specified point in the application:
 
-```
+```none
 cpu AddHook 0x60000000 "print 'You have reached a hook'"
 ```
 
 and even combine the previous command with another one to add a hook at a symbol:
 
-```
+```none
 cpu AddHook `sysbus GetSymbolAddress "main"` "print 'You have reached the main function'"
 ```
 
 Alternatively, you can use
 
-```
+```none
 cpu AddSymbolHook "main" "print 'You have reached the main function'"
 ```
 
@@ -414,13 +416,13 @@ System bus hooks in Renode have access to the following variables:
 
 To create a system bus hook that executes a Python script after a specific peripheral is accessed to read:
 
-```
+```none
 (machine) sysbus SetHookAfterPeripheralRead peripheral "print '%s peripheral has been accessed to read'"
 ```
 
 To create a system bus hook that executes a Python script before a specific peripheral is accessed to write:
 
-```
+```none
 (machine) sysbus SetHookBeforePeripheralWrite peripheral "print '%s peripheral has been accessed to write'"
 ```
 
@@ -452,7 +454,7 @@ Watchpoint hooks in Renode have access to the following variables:
 
 To create a watchpoint hook that executes a Python script, when a `Read` access with `width` of 32 bits (DoubleWord) appears at `address` 0x70001000, run:
 
-```
+```none
 (machine) sysbus AddWatchpointHook 0x70001000 DoubleWord Read "print '32 bit value appeared at the address 0x70001000'"
 ```
 
@@ -489,7 +491,7 @@ Keep in mind that the hook is executed for the recipient, not the sender.
 To have a functioning Packet interception hook, your machine needs to have a wireless medium.
 To create a packet interception hook, run:
 
-```
+```none
 (machine) wireless SetPacketHookFromScript sysbus.radio "if packet[5] == 0x4: print('I\'m interested in packets with 0x4 as their sixth byte')"
 ```
 
@@ -521,7 +523,7 @@ User state hooks in Renode have access to the following variables:
 
 To create a user state hook that executes Python script when a specific `state` is set:
 
-```
+```none
 (machine) machine AddUserStateHook "state" "print 'User state has changed to: %s state '"
 ```
 
@@ -584,7 +586,7 @@ By default, when the internal buffer is empty, the peripheral returns zeros and 
 
 With those available, we can change the dummy I2C peripheral into a simple I2C echo peripheral:
 
-```
+```python
 dummy = monitor.Machine["sysbus.i2c.dummy"]
 dummy.DataReceived += lambda data: dummy.EnqueueResponseBytes(data)
 ```
@@ -604,7 +606,7 @@ An instance of the console can be created with a Monitor command:
 
 or in a `repl` file:
 
-```
+```none
 vserial: UART.VirtualConsole @ sysbus
 ```
 
@@ -704,13 +706,13 @@ Variable `state` provides you with additional CPU state, mapping user-defined st
 
 Custom instructions from a string can be installed using:
 
-```
+```none
 (machine) sysbus.cpu InstallCustomInstructionHandlerFromString "10110011100011110000111110000010" "cpu.DebugLog('custom instruction executed!')"
 ```
 
 If you want to install a custom instructions from a file, use:
 
-```
+```none
 (machine) sysbus.cpu InstallCustomInstructionHandlerFromFile "10110011100011110000111110000010" "path/to/file.py"
 ```
 
@@ -755,13 +757,13 @@ It has access to various properties:
 
 To install custom Control/Status Register from a string, use:
 
-```
+```none
 (machine) sysbus.cpu RegisterCSRHandlerFromString 0xf0d "print 'CSR has been accessed'"
 ```
 
 To provide a custom CSR from a file, instead use:
 
-```
+```none
 (machine) sysbus.cpu RegisterCSRHandlerFromString 0xf0d "path/to/file.py"
 ```
 
