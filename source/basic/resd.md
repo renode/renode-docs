@@ -263,9 +263,9 @@ The [CSV - RESD parser](https://github.com/renode/renode/tree/master/tools/csv2r
 To use the tool, follow this syntax:
 
 ```none
-./csv2resd.py [GROUP]
+./csv2resd.py [GROUP]... OUTPUT
 GROUP ::= -i <csv-file> [-m <type>:<field(s)>:<target(s)>*:<channel>*]
-          -s <start-time> -f <frequency> -t <timestamp> -o <offset> -c <count>
+          [-s <start-time>] [-f <frequency>] [-t <timestamp>] [-o <offset>] [-c <count>]
 ```
 
 The syntax allows multiple group specifications, where --input is a separator between groups.
