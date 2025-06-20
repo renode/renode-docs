@@ -591,6 +591,8 @@ dummy = monitor.Machine["sysbus.i2c.dummy"]
 dummy.DataReceived += lambda data: dummy.EnqueueResponseBytes(data)
 ```
 
+(virtual-console)=
+
 ### Virtual Console
 
 The `VirtualConsole` is meant to be a helper for Python scripts as it is supported with the same infrastructure,
@@ -673,6 +675,13 @@ and in Robot Framework tests using UART keywords (e.g. [tests/platforms/EK-RA2E1
 ```
 
 The `VirtualConsole` also has the `Echo` property to enable or disable displaying of received characters.
+
+(python-uart-resd-feeder)=
+
+### UART RESD Feeder
+
+The `UARTRESDFeeder` extends `VirtualConsole` with RESD support for feeding UART data into the emulation.
+For more information please refer to the [RESD chapter](uart-resd-feeder).
 
 (python-riscv)=
 

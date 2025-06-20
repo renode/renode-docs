@@ -359,3 +359,100 @@ You can use the following commands:
   possible values for PROP are: SampleType, ChannelID, StartTime, EndTime, Duration, SamplesCount
 ```
 
+(uart-resd-feeder)=
+
+### UART RESD Feeder
+
+The `UARTRESDFeeder` is a special peripheral designed for feeding UART data to emulated UART buses.
+It's based on [Virtual Console](virtual-console) therefore it inherits and extends the Python scripting capability.
+
+An instance of the feeder can be created with a Monitor command:
+
+```none
+(machine-0) machine CreateUARTRESDFeeder "feeder"
+```
+
+or in a `.repl` file:
+
+```none
+feeder: UART.UARTRESDFeeder @ sysbus
+```
+
+#### Usage
+
+This peripheral uses Binary Data samples from `.resd` files as a source of data to be inject into the emulation.
+Such file can be loaded using `FeedDataFromRESD` method.
+
+```none
+(machine-0) feeder FeedDataFromRESD @hci.resd mode=Normal channelId=1 sampleOffsetTime=2500000000
+```
+
+Timing of the data transmission depends on the mode selected while loading a file.
+Every block should also specify the intended mode to be used with.
+A `feeding_mode` metadata can have one of the string values specified for each mode.
+If the metadata is not set to a legal value than a warning will be logged and the block will be used, but if a mismatch with the current mode is detected then the block will be skipped. 
+
+##### Normal mode
+
+Normal mode follows the standard RESD behaviour.
+
+The `feeding_mode` metadata should be set to `normal` with this mode.
+
+##### Trigger mode
+
+Trigger mode relays on the `Trigger` method to be called.
+This action can be interactive as the methods can be called from the Monitor, or scripted with Python.
+Also, before the sample is enqueued, it can be retrieved to be inspected with `TryGetNextTriggerSample` method and skipped with `SkipTriggerSample` method.
+
+When the `Trigger` is called the next sample will be transmitted after a delay.
+The interpretation of the sample's timestamp is changed in this mode and it's used as the delay.
+
+This means that the [arbitrary timestamp type of RESD blocks](arbitrary-timestamp-sample-blocks) is preferred.
+With such interpretation the fixed frequency based block type is unlikely to be useful due to the accumulation of the period in the samples' timestamp.
+That is, the delay since the trigger would be `(n-1) * period + start_time` for the nth sample. 
+
+The `feeding_mode` metadata should be set to `trigger` with this mode.
+
+#### Scripting
+
+The UART RESD Feeder extends Virtual Console's API and changes the echoing behaviour.
+The unchanged parts of the API are not listed here, but rather can be checked in [Virtual Console documentation](virtual-console).
+
+```{csv-table} UARTRESDFeeder properties
+:header-rows: 1
+:delim: "|"
+:width: 100%
+:widths: 10 90
+
+Property name   | Description
+Echo            | Controls automatic transmission of received data. Forced to false when in `RESDMode` and `AllowUserOutput` is not enabled
+AllowUserOutput | Controls user based data transmissions. If false and a RESD file is loaded then `DisplayChar` and echoing won't transmit data.
+RESDMode        | Is true when a data transmission from a RESD file is in progress (read-only)
+```
+
+```{csv-table} UARTRESDFeeder methods
+:header-rows: 1
+:delim: "|"
+:width: 100%
+:widths: 10 30 30 30
+
+Method name             | Description                                                           | Returns                                                                                       | Arguments
+FeedDataFromRESD        | Starts data outputting from a RESD file in a given mode               | n/a                                                                                           | RESD file to use, feeding mode, RESD channel id, sample offset type, value of the offset in ns
+DisplayChar             | Transmits a byte if not in `RESDMode` or `AllowUserOutput` is enabled | n/a                                                                                           | The byte to be transmitted
+Trigger                 | Triggers a scheduled transmission (Trigger mode only)                 | True when data for scheduled transmission exits and action been scheduled, false otherwise    | n/a
+TryGetNextTriggerSample | Retrieves next trigger sample (Trigger mode only)                     | True when next trigger sample exists, false otherwise; delay to the next sample; sample data  | n/a
+SkipTriggerSample       | Skips use of the next trigger sample (Trigger mode only)              | True when next trigger sample exists, false otherwise                                         | n/a
+```
+
+```{csv-table} UARTRESDFeeder events
+:header-rows: 1
+:delim: "|"
+:width: 100%
+:widths: 10 45 45
+
+Event name      | Description                                   | Argument
+SampleWritten   | Invoked when a sample has been transmitted    | n/a
+RESDFileLoaded  | Invoked when RESD file has been loaded        | n/a
+```
+
+A more detailed description can be found in the source file: [UARTRESDFeeder.cs](https://github.com/renode/renode-infrastructure/blob/master/src/Emulator/Main/Peripherals/UART/UARTRESDFeeder.cs).
