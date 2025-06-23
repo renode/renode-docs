@@ -653,7 +653,7 @@ vserial: UART.VirtualConsole @ sysbus
 ```
 
 Using the methods listed above and some other hooks for accesses you can implement a polling-based peripheral,
-e.g. the [Segger RTT for Renesas](https://github.com/renode/renode/blob/master/scripts/single-node/renesas-segger-rtt.py),
+e.g. the [Segger RTT](https://github.com/renode/renode/blob/master/scripts/single-node/segger-rtt.py),
 which is used in demos (e.g. [scripts/single-node/ek-ra2e1.resc](https://github.com/renode/renode/blob/master/scripts/single-node/ek-ra2e1.resc)) with interactive console
 and in Robot Framework tests using UART keywords (e.g. [tests/platforms/EK-RA2E1.robot](https://github.com/renode/renode/blob/master/tests/platforms/EK-RA2E1.robot)).
 
