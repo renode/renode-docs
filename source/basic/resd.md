@@ -97,6 +97,7 @@ ID              | Sample Type           | Sample Unit
 0x0006          | Humidity              | unsigned 4-byte value in per cent mille (PCM or 1 thousandth of a percent) of relative humidity
 0x0007          | Pressure              | unsigned 8-byte value in milliPascals (10^-3)
 0x0008          | Magnetic Flux Density | set of 3 signed 4-byte values in nanoteslas (10^-9) mapped to X, Y, Z dimensions
+0x0009          | Binary Data           | binary data of an arbitrary size
 0xF000 - 0xFFFF | Custom                | defined by model-specific input
 ```
 
