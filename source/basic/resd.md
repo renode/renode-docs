@@ -350,7 +350,7 @@ You can use the following commands:
 'resd load NAME PATH'   loads RESD file under identifier NAME
 'resd unload NAME'      unloads RESD file with identifier NAME
 'resd list-blocks NAME' list data blocks from RESD file with identifier NAME
-'resd describe-block NAME INDEX'        show informations about INDEXth block from RESD with identifier NAME
+'resd describe-block NAME INDEX'        show information about INDEXth block from RESD with identifier NAME
 'resd get-samples NAME INDEX "START_TIME" COUNT'        lists COUNT samples starting at START_TIME from INDEXth block of RESD with identifier NAME
 'resd get-samples-range NAME INDEX "START_TIME" "DURATION"'     lists DURATION samples starting at START_TIME from INDEXth block of RESD with identifier NAME
 'resd get-samples-range NAME INDEX "START_TIME..END_TIME"'      lists samples between START_TIME and END_TIME from INDEXth block of RESD with identifier NAME
