@@ -315,6 +315,7 @@ The keyword `none` can be used for this purpose:
 source -> none
 ```
 
+(init-attributes)=
 ### Init attributes
 
 Init attributes are used to execute monitor commands on the variable.
@@ -339,6 +340,32 @@ init add:
 The difference between them is that during merge phase the first one overrides the given variable\'s previous init attribute (if there is one) and the second one concanates itself to that previous one.
 The final entry is eventually executed: every statement is prepended with the name of the peripheral the variable is tied to and then directly parsed by the Monitor.
 Note that this means that the init section is only legal for variables that are registered.
+
+### Reset attributes
+
+Reset attributes are used to execute monitor commands on the variable *when* the corresponding peripheral is being reset.
+They have one of the following forms:
+
+```none
+reset:
+    monitorStatement1
+    monitorStatement2
+    ...
+    monitorStatementN
+```
+
+```none
+reset add:
+    monitorStatement1
+    monitorStatement2
+    ...
+    monitorStatementN
+```
+
+Similarly to [Init attributes](#init-attributes), the `reset` overwrites the previous reset attribute (if exists), while the `reset add` concatenates itself with the previous one.
+
+Internally, this attribute creates an `<entry>.reset` macro for a given entry, e.g. for the `peripheral` entry, `peripheral.reset` will be defined with contents of the `reset` attribute.
+This macro is run when the peripheral is reset by machine, e.g. as a result of `machine Reset` in the Monitor.
 
 ## Inline objects
 
