@@ -254,7 +254,7 @@ def try_get_category(platform):
         "renesas-rz_t2m_rsk": "RENESAS",
         "vegaboard_ri5cy": "OTHER RISC-V",
         "i386-kvm": "X86",
-        "i386_64-kvm": "X86-64",
+        "x86_64-kvm": "X86-64",
     }
 
     if platform.get_name() not in mapping:
