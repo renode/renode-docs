@@ -3,9 +3,9 @@
 ## Time and performance units
 
 Time inside the emulation is referred to as *virtual time* (as opposed to *host time* or *real time*) and is expressed in *virtual seconds*.
-Currently, the resolution of *virtual time*, i.e., the minimum expressible time quant, is 10\^-6 *virtual second* or 1 *virtual microsecond*.
+Currently, the resolution of *virtual time*, i.e., the minimum expressible time quant, is 10\^-9 *virtual second* or 1 *virtual nanosecond*.
 Performance of the CPU is expressed in *MIPS* units (*millions of instructions per second*) and is an integer value.
-This means that setting the minimum time quant allows the CPU with performance of 1 *MIPS* to execute exactly one instruction.
+This means that setting the time quant to one virtual microsecond allows the CPU with performance of 1 *MIPS* to execute exactly one instruction.
 
 :::{note}
 For CPU with performance higher than 1 *MIPS*, it is possible to execute instruction-by-instruction using a special *stepping* mode.
