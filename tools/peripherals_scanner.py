@@ -110,7 +110,7 @@ def try_get_category(platform):
         "gr716":   "GAISLER",
         "gr716-devboard": "GAISLER",
         "gr712rc": "GAISLER",
-        "i386":    "X86",
+        "x86":     "X86",
         "ice40up5k-mdp-evn":   "LITEX",
         "imxrt1064":   "NXP I.MX",
         "imxrt500":    "NXP I.MX",
@@ -253,7 +253,7 @@ def try_get_category(platform):
         "renesas-ek_ra8m1": "RENESAS",
         "renesas-rz_t2m_rsk": "RENESAS",
         "vegaboard_ri5cy": "OTHER RISC-V",
-        "i386-kvm": "X86",
+        "x86-kvm": "X86",
         "x86_64-kvm": "X86-64",
     }
 
