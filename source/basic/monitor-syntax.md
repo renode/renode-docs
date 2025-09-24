@@ -143,6 +143,39 @@ Their values can be accessed the same as you access properties:
 sysbus
 ```
 
+## Operating on enumerable properties
+
+Some peripherals and properties are enumerable, which means they can contain multiple elements.
+A good example of this is a CPU cluster, which consists of several cores.
+You can operate on all elements of such a collection at once using the `ForEach` and `Select` commands.
+
+The `ForEach` command allows you to execute an action on each element of a collection.
+For example, to halt all cores in `cluster0`, you can run:
+
+```none
+(machine-0) cluster0 ForEach IsHalted true
+```
+
+The `Select` command, on the other hand, allows you to transform each element of a collection.
+For example, to get the value of the X0 register on each core in a cluster:
+
+```none
+(machine-0) cluster0 Select GetRegister "X0"
+[
+0xaaaac4db0770, 0xffff795b42148000, 0x5, 0x5,
+]
+```
+
+Or, to get the `SFDPSignature` of a flash memory as a list of decimal strings, you can use:
+
+```none
+(machine-0) qspi.spiFlash SFDPSignature Select ToString "d"
+[
+83, 70, 68, 80, 6, 1, 0, 255, 255, 255,
+255, 255, 255, 255, 255, 255,
+]
+```
+
 ## Supported data types
 
 The Monitor supports a wide variety of data types:
