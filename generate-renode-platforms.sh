@@ -14,4 +14,4 @@ if [ ! -d renode ]; then
 fi
 cd ..
 
-python3 tools/peripherals_scanner.py --dir build/renode -H > source/introduction/renode_supported_peripherals.html
+python3 build/renode/tools/peripherals_scanner.py --dir build/renode -H > source/introduction/renode_supported_peripherals.html
