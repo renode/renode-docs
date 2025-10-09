@@ -76,8 +76,14 @@ Prior to cloning the repository on *Windows*, git has to be configured appropria
 
 **MinGW**
 
-1. Download `MinGW-w64 8.1.0` with the `x86_64` architecture, `win32` threads and `sjlj` exception handling from [the download site](https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/8.1.0/threads-win32/sjlj/x86_64-8.1.0-release-win32-sjlj-rt_v6-rev0.7z).
-2. Extract the downloaded package and add its `mingw64\bin` directory (for example `C:\mingw-w64\x86_64-8.1.0-release-win32-sjlj-rt_v6-rev0\mingw64\bin`) to the system `PATH` variable.
+:::{note}
+
+The download link is from the `MinGW-W64-builds` project, linked from [the official MinGW-W64 website](https://www.mingw-w64.org/downloads/#mingw-w64-builds)
+
+:::
+
+1. Download `MinGW-w64 15.1.0` with the `x86_64` architecture, `win32` threads [the download site](https://github.com/niXman/mingw-builds-binaries/releases/download/15.1.0-rt_v12-rev0/x86_64-15.1.0-release-win32-seh-msvcrt-rt_v12-rev0.7z).
+2. Extract the downloaded package and add its `mingw64\bin` directory (for example `C:\mingw-w64\mingw64\bin`) to the system `PATH` variable.
 
 **CMake**
 
