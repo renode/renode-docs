@@ -154,7 +154,7 @@ There are some optional flags you can use:
     -v                                verbose
     -p                                create packages after building
     -n                                create nightly packages after building
-    -t                                create a portable package (experimental, Linux only)
+    -t                                create a portable package
     -s                                update submodules
     -b                                custom build properties file
     -o                                custom output directory
