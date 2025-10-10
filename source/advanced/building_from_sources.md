@@ -92,6 +92,12 @@ The download link is from the `MinGW-W64-builds` project, linked from [the offic
 
 **C# build tools**
 
+:::{tab} .NET
+
+See [the official .NET site](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) for instructions on how to install `.NET SDK`.
+
+:::
+
 :::{tab} .NET Framework
 
 1. Download [VS Build Tools 2019](https://aka.ms/vs/16/release/vs_BuildTools.exe).
@@ -102,12 +108,6 @@ The download link is from the `MinGW-W64-builds` project, linked from [the offic
    * *NuGet targets and build tasks* in section *Code tools*.
 
 4. Add the location of the binaries (`C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\MSBuild\Current\Bin\amd64` by default) to the system `PATH` variable.
-
-:::
-
-:::{tab} .NET
-
-See [the official .NET site](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) for instructions on how to install `.NET SDK`.
 
 :::
 
@@ -182,7 +182,7 @@ You can also build `Renode.sln` from your IDE (like MonoDevelop or Visual Studio
 
 ## Creating packages
 
-The build script can create native packages only, i.e., you must run it on Windows to create an `.msi` installer package, on Linux for `.deb`, `.rpm` and `.pkg.tar.xz` packages or on macOS for the `.dmg` image.
+The build script can create native packages only, i.e., you must run it on Windows to create an `.exe` installer package, on Linux for `.deb`, `.rpm` and `.pkg.tar.xz` packages or on macOS for the `.dmg` image.
 
 There is also a separate procedure to create [Conda](https://docs.conda.io/en/latest/) packages, described in a [dedicated README](https://github.com/renode/renode/tree/master/tools/packaging/conda).
 
@@ -209,13 +209,17 @@ No additional prerequisites for macOS.
 
 :::{note}
 
-On Windows 10, it is important to enable .NET 3.5 in the system before installing the WiX Toolset.
-
 The packaging process described in this section can only be executed in Git Bash.
 
 :::
 
-1. Download and install the [WiX Toolset installer](https://wixtoolset.org/releases/) (version at least 3.11).
+:::{note}
+
+Only portable .NET packages are supported on Windows. To build them use `./build.sh --net -t`
+
+:::
+
+1. Download and install [Inno Setup](https://jrsoftware.org/isdl.php) and add it to the Windows system `PATH` variable
 
 ::::
 
@@ -224,6 +228,10 @@ The packaging process described in this section can only be executed in Git Bash
 To build binary packages, run:
 
     ./build.sh -p
+
+To build portable packages (embedding the dotnet runtime into the binary), run:
+
+    ./build.sh --net -t
 
 The packages will have a version assigned to them, defined by the contents of the `tools/version` file.
 
@@ -251,6 +259,6 @@ After completing successfully, the script will print the location of the files c
 
 :::{tab} Windows
 
-`renode/output/packages/renode_<version>.msi`
+`renode/output/packages/RenodeSetup-<version>.exe`
 
 :::
