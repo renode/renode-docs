@@ -143,6 +143,20 @@ Their values can be accessed the same as you access properties:
 sysbus
 ```
 
+## Command substitution with backticks
+
+The Monitor allows you to use the output of one command as an argument to another.
+This can be achieved by enclosing a command in backticks (`` ` ``), similarly to how it’s done in Unix-like shells.
+
+The command inside the backticks is executed first, and its output is then used as an argument in the outer command.
+For example, you can find the symbol at the current program counter (`PC`) of the CPU by running:
+
+```none
+(machine-0) sysbus FindSymbolAt `cpu PC`
+```
+
+In this case, `cpu PC` is executed first, and its output (the current value of the program counter) is then passed to the `sysbus FindSymbolAt` command.
+
 ## Operating on enumerable properties
 
 Some peripherals and properties are enumerable, which means they can contain multiple elements.
