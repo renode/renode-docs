@@ -2,6 +2,10 @@
 
 Renode has many built-in features to enable debugging of embedded software, e.g. [debugging with GDB](../debugging/gdb.md), but sometimes you might be interested in debugging Renode itself, especially if you are involved in its development
 
+:::{note}
+Parts of this chapter are specific to the legacy `mono` runtime.
+:::
+
 ## Debugging with GDB
 
 To start debugging Renode and its components using [GDB](https://www.sourceware.org/gdb/), follow these steps:
@@ -9,7 +13,7 @@ To start debugging Renode and its components using [GDB](https://www.sourceware.
 1. Build Renode in debug configuration.
 
     ```bash
-    ./build.sh -d
+    ./build.sh --mono -d
     ```
 
 1. Launch Renode using Mono with the debugger enabled.
@@ -37,8 +41,8 @@ The main difference between the official and OSS releases is that they use diffe
 
 When launching Renode in VS Code, you can use several ready-to-use configurations (as defined in the [`launch.json` file](https://github.com/renode/renode/blob/master/.vscode/launch.json)):
 
-* `Launch - Release` - equivalent to running `./build.sh` and `./renode` from the console.
-* `Launch - Debug` - builds Renode in the `Debug` configuration (`./build.sh -d`) and launches it under the Mono debugger.
+* `Mono Launch - Release` - equivalent to running `./build.sh --mono` and `./renode` from the console.
+* `Mono Launch - Debug` - builds Renode in the `Debug` configuration (`./build.sh --mono -d`) and launches it under the Mono debugger.
 * `(gdb) Tlib Attach` - required to connect to a previously launched instance of Renode via GDB to debug translation libraries (implementation of emulated cores).
 
 These configurations require the following VS Code extensions:
@@ -51,7 +55,7 @@ These configurations require the following VS Code extensions:
 
 By following the steps below, you will be able to add regular breakpoints in Renode, both in C# and C code.
 
-1. Use the `Launch - Debug` configuration.
+1. Use the `Mono Launch - Debug` configuration.
 It may take a while, as it builds Renode in the debug configuration.
 
 1. When Renode starts, load the platform with a CPU whose code you wish to debug.
