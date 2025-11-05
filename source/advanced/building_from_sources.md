@@ -10,12 +10,12 @@ This document provides detailed information on how to prepare the build environm
 
 The following instructions have been tested on Ubuntu 22.04, however there should not be any major issues preventing you from using other (especially Debian-based) distributions as well.
 
-:::{tab} Mono
-First, install the `mono-complete` package as per the installation instructions for various Linux distributions which can be found on [the Mono project website](https://www.mono-project.com/download/stable/#download-lin).
-:::
-
 :::{tab} .NET
 First, install the `.NET SDK` package as per the installation instructions, which can be found on [the official .NET site](https://dotnet.microsoft.com/en-us/download/dotnet/8.0).
+:::
+
+:::{tab} Mono
+First, install the `mono-complete` package as per the installation instructions for various Linux distributions which can be found on [the Mono project website](https://www.mono-project.com/download/stable/#download-lin).
 :::
 
 To install the remaining dependencies, use:
@@ -31,13 +31,13 @@ To install the remaining dependencies, use:
 For arm64 macOS (Apple Silicon) only .NET is officially supported
 :::
 
-:::{tab} Mono
-On macOS, the Mono package can be obtained by using [a download link on the Mono project website](https://download.mono-project.com/archive/mdk-latest-stable.pkg).
-:::
-
 :::{tab} .NET
 First, install the `.NET SDK` package as per the installation instructions, which can be found on [the official .NET site](https://dotnet.microsoft.com/en-us/download/dotnet/8.0).
 Make sure to install the right architecture, `Arm64` for Apple Silicon, `x64` for Intel
+:::
+
+:::{tab} Mono
+On macOS, the Mono package can be obtained by using [a download link on the Mono project website](https://download.mono-project.com/archive/mdk-latest-stable.pkg).
 :::
 
 To install the remaining prerequisites, use:
@@ -136,11 +136,11 @@ On Windows, the building process described in this section can only be executed 
 :::
 
 :::{note}
-When building Renode with `.NET`, remember to use `--net` switch (`./build.sh --net`).
+When building Renode with `mono`, remember to use `--mono` switch (`./build.sh --mono`).
 :::
 
 :::{note}
-To build for aarch64/arm64 host (macOS and Linux only) remember to set the host architecture with `--host-arch` (`./build --net --host-arch aarch64`) 
+To build for aarch64/arm64 host (macOS and Linux only) remember to set the host architecture with `--host-arch` (`./build.sh --host-arch aarch64`) 
 :::
 
 To build Renode, run:
@@ -162,6 +162,7 @@ There are some optional flags you can use:
     --no-gui                          build with GUI disabled
     --force-net-framework-version     build against different version of .NET Framework than specified in the solution
     --net                             build with dotnet
+    --mono                            build with mono
     -B                                bundle target runtime (default value: linux-x64, requires --net, -t)
     -F                                select the target framework for which Renode should be built (default value: net8.0)
     --host-arch                       set which host architecture C components gets built for (default value: x86_64)
@@ -215,7 +216,7 @@ The packaging process described in this section can only be executed in Git Bash
 
 :::{note}
 
-Only portable .NET packages are supported on Windows. To build them use `./build.sh --net -t`
+Only portable .NET packages are supported on Windows. To build them use `./build.sh -t`
 
 :::
 
@@ -231,7 +232,7 @@ To build binary packages, run:
 
 To build portable packages (embedding the dotnet runtime into the binary), run:
 
-    ./build.sh --net -t
+    ./build.sh -t
 
 The packages will have a version assigned to them, defined by the contents of the `tools/version` file.
 
