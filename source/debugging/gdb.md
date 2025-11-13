@@ -110,3 +110,37 @@ These commands will give you a setup consisting of two GDB servers - on port 333
 Furthermore, the `StartGdbServer` command will prohibit you from adding one CPU to more than one GDB server.
 
 If a CPU was added to a GDB server by providing the `autostartEmulation` and `cpu` parameters, it will be impossible to run the general version of the command on that machine.
+
+## Reverse Execution
+
+Renode supports [GDB reverse execution](https://sourceware.org/gdb/current/onlinedocs/gdb.html/Reverse-Execution.html) for single core emulations.
+
+It is based on [snapshots](../basic/saving.md) mechanism.
+Reverse execution loads a snapshot taken during the emulation and executes simulation up to the desired state.
+In order to enable the use of reverse execution snapshots are taken periodically, but they can also be taken manually, according to users' strategy to make the debugging more efficient.
+You can {ref}`take snapshots <state-saving>` in places that are most convenient for you or use a monitor command which will enable the autosaving functionality for you:
+
+    (machine-0) reverseExecMode true
+
+You can also configure autosaving {ref}`manually <autosaving>` and specify snapshot period.
+
+Once reverse execution is enabled, you can connect GDB and use one of the following commands:
+
+To step back one instruction:
+
+    (gdb) reverse-step
+
+To step back one assembly instruction:
+
+    (gdb) reverse-stepi
+
+To return to the last breakpoint, or to the first snapshot if no breakpoints were set before:
+
+    (gdb) reverse-continue
+
+There are shorthand options for those commands, respectively `rs`, `rsi` and `rc`.
+
+You can also step back more than one instruction. To do that just use an optional argument with number of steps, for example:
+
+    (gdb) rsi 5
+
