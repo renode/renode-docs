@@ -43,6 +43,16 @@ After the state is loaded, you must manually set the Monitor's context and reope
 ```
 ````
 
+(autosaving)=
+## Autosaving
+
+Renode has an autosaving system, which will automatically take a snapshot of the emulation state.
+You can enable autosaving system with specific virtual time interval by using `autoSave` command:
+
+```none
+(monitor) autoSave true "0.2"
+```
+
 ## State saving in tests
 
 It's possible to use the state saving and loading mechanism when defining complex Robot tests.
