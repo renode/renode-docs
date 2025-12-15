@@ -60,6 +60,40 @@ The compiler might also replicate the same code line across several addresses in
 For the purpose of generating a coverage report, same as for debugging, it's recommended to execute the code without any optimizations.
 Generating a report for an optimized binary may create imprecise or even unexpected results.
 
+## Using PC-to-Line# mapping files instead of DWARF info
+
+The execution tracing script also supports using a file describing direct PC to line number mappings. 
+This can be used when integrating retracer with other tools where DWARF information is not available. 
+
+The format is very simple: each line contains a PC value in hexadecimal, a filename/filepath, and a line number.
+The PC value is followed by a space, and the filepath and line number are separated with a single `:`.
+The file can either be just the filename, or a full file path.
+Below are two examples of the format, one with short file names and the other with full paths.
+
+```
+0x800003d8 k210_ops.cpp:252
+0x800003da iostream:74
+0x800003de iostream:74
+0x80000bb6 main.c:6
+0x80000bb8 main.c:6
+0x80000bba main.c:6
+0x80000bbc main.c:6
+0x80000bc0 main.c:6
+```
+or with full filenames
+```
+0x800003d8 /home/dev/repositories/kendryte-standalone-sdk/lib/nncase/v0/runtime/k210/k210_ops.cpp:252
+0x800003da /home/dev/repositories/kendryte-standalone-sdk/toolchain/riscv64-unknown-elf/include/c++/8.2.0/iostream:74
+0x800003de /home/dev/repositories/kendryte-standalone-sdk/toolchain/riscv64-unknown-elf/include/c++/8.2.0/iostream:74
+0x80000bb6 /home/dev/repositories/kendryte-standalone-sdk/src/test2/main.c:6
+0x80000bb8 /home/dev/repositories/kendryte-standalone-sdk/src/test2/main.c:6
+0x80000bba /home/dev/repositories/kendryte-standalone-sdk/src/test2/main.c:6
+0x80000bbc /home/dev/repositories/kendryte-standalone-sdk/src/test2/main.c:6
+0x80000bc0 /home/dev/repositories/kendryte-standalone-sdk/src/test2/main.c:6
+```
+
+To use one of these mapping files for coverage generation, invoke retracer with `--pc2line sample.pclin` instead of `--binary sample.elf`
+
 ## Gathering coverage for a sample program
 
 For the purpose for this tutorial, we prepared a sample program consisting of two files.
