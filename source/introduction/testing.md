@@ -204,7 +204,7 @@ Test cases from a single file are always executed serially (in the order defined
 To do this, run the `renode-test` command with a special switch:
 
 ```
-$ renode-test -j12 my_tests.yaml
+$ renode-test -j12 -t my_tests.yaml
 ```
 
 This will allow you to run up to 12 Renode instances, each running test cases from a different file.
