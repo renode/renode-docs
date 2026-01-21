@@ -22,6 +22,7 @@ introduction/developing-renode
 basic/machines
 basic/describing_platforms
 basic/monitor-syntax
+basic/renode-testing-api
 basic/control
 basic/logger
 basic/saving
