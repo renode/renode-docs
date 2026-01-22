@@ -232,11 +232,12 @@ variable: @none
 
 ## Attributes
 
-There are three kinds of attributes:
+There are four kinds of attributes:
 
 -   constructor or property attributes;
 -   interrupt attributes;
--   init attributes.
+-   init attributes;
+-   reset attributes.
 
 ### Constructor or property attributes
 
