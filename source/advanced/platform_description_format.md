@@ -232,10 +232,11 @@ variable: @none
 
 ## Attributes
 
-There are four kinds of attributes:
+There are five kinds of attributes:
 
 -   constructor or property attributes;
 -   interrupt attributes;
+-   preinit attributes;
 -   init attributes;
 -   reset attributes.
 
@@ -367,6 +368,56 @@ init add:
 The difference between them is that during merge phase the first one overrides the given variable\'s previous init attribute (if there is one) and the second one concanates itself to that previous one.
 The final entry is eventually executed: every statement is prepended with the name of the peripheral the variable is tied to and then directly parsed by the Monitor.
 Note that this means that the init section is only legal for variables that are registered.
+
+### Preinit attributes
+
+Preinit attributes are used to execute monitor commands before the variable is created.
+This is useful for setting up global state or preparing the environment for the creation of the variable (e.g. compiling a peripheral model from C# source).
+These commands are executed in the global context, so they are not automatically prepended with the variable name.
+
+They have one of the following forms:
+
+``` none
+preinit:
+    monitorStatement1
+    monitorStatement2
+    ...
+    monitorStatementN
+```
+
+``` none
+preinit add:
+    monitorStatement1
+    monitorStatement2
+    ...
+    monitorStatementN
+```
+
+Just like [Init attributes](#init-attributes), `preinit` overrides previous `preinit` attributes for the same variable, while `preinit add` appends to them.
+
+The order of execution for `preinit` blocks is as follows: `sysbus` preinit blocks are executed first, then other variables\' preinit blocks are executed in the order the variables appear in the file.
+
+Each preinit block defined in a repl file is executed with the file's directory prepended to the Monitor path, so relative paths are resolved starting from the file's containing directory.
+For example, given a directory structure like
+
+``` none
+.
+├── inner
+│   ├── MyPeripheral.cs
+│   └── myplatform.repl
+└── MyPeripheral.cs
+└── outer.repl
+```
+
+then, if `outer.repl` includes a `using` of `./inner/myplatform.repl`, which contains
+
+``` none
+peripheral: MyPeripheral @ sysbus 0x0
+    preinit:
+        include @MyPeripheral.cs
+```
+
+then the `include` invocation inside `myplatform.repl` will find `inner/MyPeripheral.cs`.
 
 ### Reset attributes
 
