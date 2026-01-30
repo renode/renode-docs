@@ -219,6 +219,8 @@ UART hooks in Renode have access to the following variables:
   - Description
 * - line
   - Current line matching the searched string
+* - machine
+  - Current machine, allows you to access other components and peripherals
 * - uart
   - UART object that produced the line
 * - self
