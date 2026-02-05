@@ -230,6 +230,32 @@ This is done using `@ none` notation, for example:
 variable: @none
 ```
 
+## Core-specific registrations
+
+Normally, when a peripheral is registered on the bus, it is visible to all cores.
+However, it is possible to restrict the registration to a specific core.
+This is done by using inline registration objects instead of a range value.
+
+To specify a core-specific registration, you can use `BusPointRegistration` or `BusRangeRegistration`.
+Example of a core-specific registration:
+
+``` none
+nvic: IRQControllers.NVIC @ sysbus new Bus.BusPointRegistration {
+        address: 0xE000E000;
+        cpu: cpu_m33
+    }
+```
+
+In this example, the `nvic` is only visible at address `0xE000E000` to the `cpu_m33`.
+
+If you need to specify the size of the registration explicitly, you can use `BusRangeRegistration`:
+
+``` none
+sysbus new Bus.BusRangeRegistration { address: 0x81000000; size: 0x1000; cpu: cpu0 }
+```
+
+This is equivalent to the `<address, +size>` range syntax, but allows specifying additional parameters like `cpu`.
+
 ## Attributes
 
 There are five kinds of attributes:
