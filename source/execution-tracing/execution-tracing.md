@@ -99,17 +99,6 @@ To enable execution tracing, use:
 cpu CreateExecutionTracing "tracer_name" @path-to-file <mode>
 ```
 
-You can use the tracer to track additional data. To do so, type:
-
-```none
-tracer_name <tracker_name>
-```
-
-where `tracker_name` can be one of the following:
-
-- `TrackMemoryAccesses` - tracks memory accesses.
-- `TrackVectorConfiguration` - tracks vector configuration for the RISC-V architecture.
-
 `mode` can be one of the following values:
 - `PC` - this mode saves all program counter values.
 Example:
@@ -189,6 +178,19 @@ To disable execution tracing, simply use:
 ```none
 cpu DisableExecutionTracing
 ```
+
+### Tracer add-ons
+
+You can use the tracer to track additional data. To do so, type:
+
+```none
+tracer_name <tracker_name>
+```
+
+where `tracker_name` can be one of the following:
+
+- `TrackMemoryAccesses` - tracks memory accesses.
+- `TrackVectorConfiguration` - tracks vector configuration for the RISC-V architecture.
 
 ## Usage of gathered data
 
