@@ -192,6 +192,18 @@ where `tracker_name` can be one of the following:
 - `TrackMemoryAccesses` - tracks memory accesses.
 - `TrackVectorConfiguration` - tracks vector configuration for the RISC-V architecture.
 - `TrackRiscvAtomics` - tracks Zaamo instruction operands for the RISC-V architecture.
+- `TrackRegisters <registers...> <mask=0x0> <value=0x0> <traceRegistersBefore=true>` - tracks register values.
+  - `<registers...>` can take either register names or indices. If the `<registers...>` field is omitted, then all CPU registers will be tracked.
+  - `<mask>` and `<value>` fields are responsible for specifying instructions for which registers will be written out. Instructions whose opcode matches according to `opcode & mask == value` will be traced. For example, `mask = 0b1111_0000` and `value = 0b1010_0000` will match opcodes such as `0b1010_0000`, `0b1010_1111` or `0b1010_1001` but will not match `0b1000_0000` nor `0b1111_1111`. By default, `mask = 0` and `value = 0` meaning registers will be written out for every instruction.
+  - `<traceRegistersBefore>` allows to enable or disable printing of registers before opcode executes. It is enabled by default, but it might be useful to disable in case we're matching all opcodes, so when `mask == 0` and `value == 0`.
+
+  Usage Example:
+
+    ```none
+    tracer_name TrackRegisters ["R0", "R1", "R3"] 0xE 0xE
+    ```
+
+    Will print out state of registers `R0`, `R1` and `R3` before and after opcode starting with `0b111` executes.
 
 ## Usage of gathered data
 
