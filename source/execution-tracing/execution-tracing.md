@@ -191,6 +191,7 @@ where `tracker_name` can be one of the following:
 
 - `TrackMemoryAccesses` - tracks memory accesses.
 - `TrackVectorConfiguration` - tracks vector configuration for the RISC-V architecture.
+- `TrackRiscvAtomics` - tracks Zaamo instruction operands for the RISC-V architecture.
 
 ## Usage of gathered data
 
