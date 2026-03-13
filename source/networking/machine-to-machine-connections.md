@@ -72,6 +72,21 @@ Please note that this might lead to slight delays in communication.
 The maximum delay is controllable by the `quantum` parameter.
 For details on how the synchronization works and how to configure it, refer to [the Time framework synchronization section](../advanced/time_framework.md#synchronization) of the documentation.
 
+#### Strict Mode
+By default Renode only warns if UARTs with incompatible settings communicate.
+
+Optionally you can enable `StrictMode` with:
+
+```none
+(monitor) uartHub StrictMode True
+```
+In Strict Mode the UART Hub will not forward messages between UARTs with mismatched settings (i.e baud rate, parity type, or stop bits), and instead drop those messages.
+For UARTs with frame info handling (i.e. the model implements the `IUARTWithFrameInfo` interface) strict mode will instead forward all messages with frame info attached.
+Based on this information the peripheral model will handle error conditions and set appropriate flags and interrupts.
+
+Currently frame info handling is supported on the following UARTs:
+* [NXP LPUART](https://github.com/renode/renode-infrastructure/blob/master/src/Emulator/Peripherals/Peripherals/UART/NXP_LPUART.cs)
+
 (can-based-connections)=
 
 ### CAN-based connections
