@@ -1,7 +1,7 @@
 # Machine to machine connections
 
 There are various ways of connecting two machines in Renode.
-Other than {doc}`wired <wired>` and {doc}`wireless <wireless>` networking (decribed in their own chapters), there are several other interfaces available, divided into two categories:
+Other than {doc}`wired <wired>` and {doc}`wireless <wireless>` networking (described in their own chapters), there are several other interfaces available, divided into two categories:
 
 - {ref}`Symmetrical, like UART or CAN<symmetrical-connections>`,
 - {ref}`Asymmetrical, like GPIO or USB<asymmetrical-connections>`.
