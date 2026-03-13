@@ -106,7 +106,7 @@ A small set of predefined Python commands is available in the [monitor.py](https
 ## Python peripherals in a platform description
 
 You can use Python in the `.repl` file of your platform description.
-Several platforms included in Renode like [Zynq 7000](https://github.com/renode/renode/blob/master/platforms/cpus/zynq-7000.repl#L71-L124) use Python peripherals to implement simple logic.
+Several platforms included in Renode like [Tegra 2](https://github.com/renode/renode/blob/master/platforms/cpus/tegra2.repl) use Python peripherals to implement simple logic.
 The most common use of Python peripherals is mocking certain blocks that are not fully implemented but are required by the software.
 
 To create a Python peripheral, you need to specify several variables:
