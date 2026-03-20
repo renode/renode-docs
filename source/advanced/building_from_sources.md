@@ -139,10 +139,6 @@ On Windows, the building process described in this section can only be executed 
 When building Renode with `mono`, remember to use `--mono` switch (`./build.sh --mono`).
 :::
 
-:::{note}
-To build for aarch64/arm64 host (macOS and Linux only) remember to set the host architecture with `--host-arch` (`./build.sh --host-arch aarch64`) 
-:::
-
 To build Renode, run:
 
     ./build.sh
