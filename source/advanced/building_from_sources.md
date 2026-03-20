@@ -146,28 +146,28 @@ To build Renode, run:
 There are some optional flags you can use:
 
     -c                                clean instead of building
-    -d                                build in debug configuration
-    -v                                verbose
+    -d                                build Debug configuration
+    -v                                verbose output
     -p                                create packages after building
-    -n                                create nightly packages after building
     -t                                create a portable package
+    --source-package                  build a source package (dotnet on Linux only)
+    -n                                tag built packages as nightly
     -s                                update submodules
     -b                                custom build properties file
-    -o                                custom output directory
     --skip-fetch                      skip fetching submodules and additional resources
     --no-gui                          build with GUI disabled
-    --force-net-framework-version     build against different version of .NET Framework than specified in the solution
-    --net                             build with dotnet
-    --mono                            build with mono
     -B                                bundle target runtime (default value: linux-x64, requires --net, -t)
     -F                                select the target framework for which Renode should be built (default value: net8.0)
-    --host-arch                       set which host architecture C components gets built for (default value: x86_64)
-    --profile-build                   build optimized for tlib profiling
-    --tlib-only                       only build tlib
-    --tlib-arch                       build only single arch (implies --tlib-only)
-    --tlib-export-compile-commands    build tlibs with 'compile_commands.json' (requires --tlib-arch)
+    --profile-build                   build optimized for profiling
+    --tlib-coverage                   build tlib with coverage reporting
+    --external-lib-only               only build external libraries
+    --external-lib-arch               build only single arch (implies --external-lib-only)
+    --tlib-export-compile-commands    build tlibs with 'compile_commands.json' (requires --external-lib-arch)
     --host-arch                       build with a specific tcg host architecture (default: i386)
     --skip-dotnet-target-generation   don't generate 'Directory.Build.targets' file, useful when experimenting with different build settings
+    --tcg-opcode-backtrace            collect a backtrace for each emitted TCG opcode, to track internal TCG errors (implies Debug configuration)
+    --shared                          build the librenode native library
+    --ui                              rebuild the web-based UI
 
 
 Additionally you can directly specify flags which will be passed to the build system after `--`.
