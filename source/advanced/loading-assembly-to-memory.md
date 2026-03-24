@@ -131,7 +131,7 @@ Renode also gives you option to see how the instructions are being translated. T
 After starting Renode and attaching GDB, move to VSCode and navigate to `src/Infrastructure/src/Emulator/Cores/tlib/arch/riscv/translate.c`
 and set the breakpoint right before the `case OPC_RISC_LUI:`, and use the provided `(gdb) Tlib Attach` launch script.
 
-Search for the Renode process, it should be `mono` or `dotnet` type, attach to it (you may need to elevate your privileges to root, for
+Search for the Renode process, it should be `dotnet` type, attach to it (you may need to elevate your privileges to root, for
 rootless debugging check [YAMA's ptrace_scope](https://www.kernel.org/doc/html/latest/admin-guide/LSM/Yama.html#ptrace-scope)). 
 
 Then do `si` in GDB, which should make your VSCode stop at the previously-set breakpoint.

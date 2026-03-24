@@ -2,8 +2,70 @@
 
 Renode has many built-in features to enable debugging of embedded software, e.g. [debugging with GDB](../debugging/gdb.md), but sometimes you might be interested in debugging Renode itself, especially if you are involved in its development
 
-:::{note}
-Parts of this chapter are specific to the legacy `mono` runtime.
+## VS Code configurations
+
+Visual Studio Code's extensive plugin ecosystem provides a good developer experience for working with the Renode codebase.
+You may decide to use either the official [VS Code](https://code.visualstudio.com/) app from Microsoft or use one of the OSS binary releases [VSCodium](https://github.com/VSCodium/vscodium) or [code-server](https://github.com/coder/code-server).
+The main difference between the official and OSS releases is that they use different extensions gallery, so some extensions may be unavailable for each version.
+
+When launching Renode in VS Code, you can use several ready-to-use configurations (as defined in the [`launch.json` file](https://github.com/renode/renode/blob/master/.vscode/launch.json)):
+
+* `Launch (console)` - launches a previously built Renode under the .NET debugger.
+* `Attach` - attaches the .NET debugger to a running Renode instance.
+* `(gdb) Tlib Attach` - required to connect to a previously launched instance of Renode via GDB to debug translation libraries (implementation of emulated cores).
+
+The workspace also provides build tasks (as defined in the [`tasks.json` file](https://github.com/renode/renode/blob/master/.vscode/tasks.json)):
+
+* `Build - Debug` - equivalent to running `./build.sh -d` from the console.
+* `Build - Release` - equivalent to running `./build.sh` from the console.
+
+These configurations require the following VS Code extensions:
+
+* [ms-dotnettools.csdevkit](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit)
+* [ms-vscode.cpptools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
+
+### Debugging C# code
+
+By following the steps below, you will be able to add regular breakpoints in Renode's C# code.
+
+1. Build Renode in debug configuration (or use the `Build - Debug` task in VS Code).
+
+    ```bash
+    ./build.sh -d
+    ```
+
+1. Use the `Launch (console)` configuration.
+
+1. When Renode starts, you can set breakpoints and debug C# code as usual.
+
+### Debugging C code (translation libraries)
+
+To debug the C implementation of emulated cores, follow the steps below.
+
+1. Build Renode in debug configuration (or use the `Build - Debug` task in VS Code).
+
+    ```bash
+    ./build.sh -d
+    ```
+
+1. Launch Renode with the debug flag enabled.
+
+    ```bash
+    ./renode -d
+    ```
+
+1. When Renode starts, load the platform with a CPU whose code you wish to debug.
+
+1. Use the `(gdb) Tlib Attach` configuration to connect with GDB. 
+
+1. Once started, a popup will appear. In the popup, type in `Renode.dll`.
+
+1. From the drop-down list, select the option ending with `Renode.dll`, as highlighted in the screenshot below.
+
+:::{figure-md}
+![VSCode .NET drop-down list](img/dotnet.png)
+
+VSCode .NET drop-down list
 :::
 
 ## Debugging with GDB
@@ -13,64 +75,16 @@ To start debugging Renode and its components using [GDB](https://www.sourceware.
 1. Build Renode in debug configuration.
 
     ```bash
-    ./build.sh --mono -d
+    ./build.sh -d
     ```
 
-1. Launch Renode using Mono with the debugger enabled.
+1. Launch Renode with the debug flag enabled.
 
     ```bash
     ./renode -d
     ```
 
-1. Connect to Renode via the Mono debugger, e.g. [using VS Code](#vs-code-configurations)
-
-1. Attach GDB to a running Renode process to also debug implementation of cores (in C via GDB).
-    GDB requires specific commands due to Mono using signals for flow control. 
-    The most important command is:
-
-    ```
-    handle SIGXCPU SIG33 SIG35 SIG36 SIG37 SIGPWR nostop noprint
-    ```
-(vs-code-configurations)=
-
-## VS Code configurations
-
-Visual Studio Code's extensive plugin ecosystem provides a good developer experience for working with the Renode codebase.
-You may decide to use either the official [VS Code](https://code.visualstudio.com/) app from Microsoft or use one of the OSS binary releases [VSCodium](https://github.com/VSCodium/vscodium) or [code-server](https://github.com/coder/code-server).
-The main difference between the official and OSS releases is that they use different extensions gallery, so some extensions may be unavailable for each version.
-
-When launching Renode in VS Code, you can use several ready-to-use configurations (as defined in the [`launch.json` file](https://github.com/renode/renode/blob/master/.vscode/launch.json)):
-
-* `Mono Launch - Release` - equivalent to running `./build.sh --mono` and `./renode` from the console.
-* `Mono Launch - Debug` - builds Renode in the `Debug` configuration (`./build.sh --mono -d`) and launches it under the Mono debugger.
-* `(gdb) Tlib Attach` - required to connect to a previously launched instance of Renode via GDB to debug translation libraries (implementation of emulated cores).
-
-These configurations require the following VS Code extensions:
-
-* [ms-dotnettools.csdevkit](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit)
-* [ms-vscode.mono-debug](https://marketplace.visualstudio.com/items?itemName=ms-vscode.mono-debug)
-* [ms-vscode.cpptools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
-
-### Launching Renode and debugging
-
-By following the steps below, you will be able to add regular breakpoints in Renode, both in C# and C code.
-
-1. Use the `Mono Launch - Debug` configuration.
-It may take a while, as it builds Renode in the debug configuration.
-
-1. When Renode starts, load the platform with a CPU whose code you wish to debug.
-
-1. Use the `(gdb) Tlib Attach` configuration to connect with GDB. 
-
-1. Once started, a popup will appear. In the popup, type in `mono`.
-
-1. From the drop-down list, select the option beginning with `/usr/bin/mono --debug --debuger-agent=...`, as highlighted in the screenshot below.
-
-:::{figure-md}
-![VSCode Mono drop-down list](img/mono.png)
-
-VSCode Mono drop-down list
-:::
+1. Attach GDB to a running Renode process to debug implementation of cores (in C via GDB).
 
 ### Useful VS Code extensions
 
@@ -82,9 +96,6 @@ Below, you can find a list of VS Code extensions that may prove useful when work
 * C# support (code completion and debugging)
     * [muhammad-sammy.csharp](https://open-vsx.org/extension/muhammad-sammy/csharp)
     * [ms-dotnettools.csdevkit](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit)
-* Mono debugger
-    * [ms-vscode.mono-debug on Open VSX](https://open-vsx.org/extension/ms-vscode/mono-debug)
-    * [ms-vscode.mono-debug on VS Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-vscode.mono-debug)
 * C support (code completion and debugging)
     * [llvm-vs-code-extensions.vscode-clangd](https://open-vsx.org/extension/llvm-vs-code-extensions/vscode-clangd) and [vadimcn.vscode-lldb](https://open-vsx.org/extension/vadimcn/vscode-lldb)
     * [ms-vscode.cpptools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)

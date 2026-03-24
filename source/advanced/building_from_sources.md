@@ -10,13 +10,7 @@ This document provides detailed information on how to prepare the build environm
 
 The following instructions have been tested on Ubuntu 24.04, however there should not be any major issues preventing you from using other (especially Debian-based) distributions as well.
 
-:::{tab} .NET
 First, install the `.NET SDK` package as per the installation instructions, which can be found on [the official .NET site](https://dotnet.microsoft.com/en-us/download/dotnet/8.0).
-:::
-
-:::{tab} Mono
-First, install the `mono-complete` package as per the installation instructions for various Linux distributions which can be found on [the Mono project website](https://www.mono-project.com/download/stable/#download-lin).
-:::
 
 To install the remaining dependencies, use:
 
@@ -27,18 +21,9 @@ To install the remaining dependencies, use:
 ::::
 
 ::::{tab} macOS
-:::{note}
-For arm64 macOS (Apple Silicon) only .NET is officially supported
-:::
 
-:::{tab} .NET
 First, install the `.NET SDK` package as per the installation instructions, which can be found on [the official .NET site](https://dotnet.microsoft.com/en-us/download/dotnet/8.0).
 Make sure to install the right architecture, `Arm64` for Apple Silicon, `x64` for Intel
-:::
-
-:::{tab} Mono
-On macOS, the Mono package can be obtained by using [a download link on the Mono project website](https://download.mono-project.com/archive/mdk-latest-stable.pkg).
-:::
 
 To install the remaining prerequisites, use:
 
@@ -92,24 +77,7 @@ The download link is from the `MinGW-W64-builds` project, linked from [the offic
 
 **C# build tools**
 
-:::{tab} .NET
-
 See [the official .NET site](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) for instructions on how to install `.NET SDK`.
-
-:::
-
-:::{tab} .NET Framework
-
-1. Download [VS Build Tools 2019](https://aka.ms/vs/16/release/vs_BuildTools.exe).
-2. Run the installer, select the *Visual Studio Build Tools 2019* product and click *Install* or *Modify*.
-3. Switch to the *Individual components* pane and select:
-
-   * *.NET Framework 4.6.2 targeting pack* in section *.NET*,
-   * *NuGet targets and build tasks* in section *Code tools*.
-
-4. Add the location of the binaries (`C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\MSBuild\Current\Bin\amd64` by default) to the system `PATH` variable.
-
-:::
 
 ::::
 
@@ -133,10 +101,6 @@ Install the `pip` package manager and some additional modules to enable writing 
 
 :::{note}
 On Windows, the building process described in this section can only be executed in Git Bash.
-:::
-
-:::{note}
-When building Renode with `mono`, remember to use `--mono` switch (`./build.sh --mono`).
 :::
 
 To build Renode, run:
@@ -175,7 +139,7 @@ For example, if you wanted to override the `CompilerPath` property you could use
 
     ./build.sh -- p:CompilerPath=/path/to/gcc
 
-You can also build `Renode.sln` from your IDE (like MonoDevelop or Visual Studio), but the `build.sh` script has to be run at least once.
+You can also build `Renode.sln` from your IDE (like Visual Studio), but the `build.sh` script has to be run at least once.
 
 ## Creating packages
 
@@ -205,12 +169,6 @@ No additional prerequisites for macOS.
 :::{note}
 
 The packaging process described in this section can only be executed in Git Bash.
-
-:::
-
-:::{note}
-
-Only portable .NET packages are supported on Windows. To build them use `./build.sh -t`
 
 :::
 
