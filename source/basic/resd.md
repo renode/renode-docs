@@ -59,6 +59,10 @@ ID  | Block type
 Arbitrary timestamp sample blocks contain a series of samples, each with its own [timestamp](timestamps).
 In this type of sample block, you do not specify a period between samples, but instead provide a specific timestamp for each sample to simulate irregular sensor readings.
 
+```{note}
+The timestamp of subsequent samples must be strictly increasing.
+```
+
 (constant-frequency-sample-blocks)=
 
 #### Constant frequency sample blocks
