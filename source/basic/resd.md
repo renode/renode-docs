@@ -303,6 +303,21 @@ If you wanted to extract the columns `temp1` and `temp2` from the file `first.cs
     output.resd
 ```
 
+#### CSV Field Types
+
+All fields of a single column must be of the same type. Below is a description of how values in CSV will be interpreted:
+
+```{csv-table} CSV Field Type Rules
+:header-rows: 1
+:delim: "|"
+
+Type | Format Description | Example
+`uintXX`, `intXX` | Deciaml number, may be prefixed with `-` | `123`, `-42`
+`float`, `double` | Floating point decimal number, must contain a single `.` and may be prefixed with `-` | `-5.`, `.128`
+`string` | Sequence of characters enclosed in single quotes (`'...'`) or triple double-quotes (`"""..."""`) | 'hello', `"""world"""`
+`blob`   | Sequence of byte values in hexadecimal prefixed by `#` | `#68656c6c6f`
+```
+
 ### RESD introspection
 
 Renode comes with a command for inspecting RESD files without a need to load them to any particular sensor model.
