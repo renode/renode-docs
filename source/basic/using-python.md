@@ -115,7 +115,7 @@ To create a Python peripheral, you need to specify several variables:
 variableName: Python.PythonPeripheral @ sysbus 0x7000F410
     size: 0x4
     initable: false
-    script: "request.value = 0x60000"
+    script: "request.Value = 0x60000"
 ```
 
 To define Python peripherals, you can specify the following variables:
@@ -129,7 +129,7 @@ To define Python peripherals, you can specify the following variables:
 * - size
   - Size of the peripheral as a hexadecimal value
 * - initable
-  - If `true` the peripheral can be initialized and executes code from the ``isInit`` section
+  - If `true` the peripheral can be initialized and executes code from the ``IsInit`` section
 * - script
   - Python script you want to execute (exclusive with ``filename``)
 * - filename
@@ -145,35 +145,35 @@ The variable `request` in Renode gives you access to the following fields:
 
 * - Field name
   - Description
-* - isInit
+* - IsInit
   - Is `true` during construction of the peripheral if it's marked as "initable"
-* - isRead
+* - IsRead
   - Is `true` when the CPU is trying to read from a peripheral
-* - isWrite
+* - IsWrite
   - Is `true` when the CPU is trying to write to a peripheral
-* - value
-  - When `isWrite == true`, this is the value to be written, when `isRead == true` this is the return value
-* - offset
+* - Value
+  - When `IsWrite == true`, this is the value to be written, when `IsRead == true` this is the return value
+* - Offset
   - Offset within the peripheral
-* - type
+* - Type
   - Width of the access (8bit, 16bit, 32bit)
 ```
 
 ```{note}
-The variable `isInit` is `true` when the peripheral is marked as possible to initialize and is currently being initialized. It can be useful for initializing the internal state of a peripheral.
+The variable `IsInit` is `true` when the peripheral is marked as possible to initialize and is currently being initialized. It can be useful for initializing the internal state of a peripheral.
 ```
 
 An example Python peripheral available in mainline Renode is [repeater.py](https://github.com/renode/renode/blob/master/scripts/pydev/repeater.py), returning the same value that was written to it by software:
 
 ```python
-if request.isInit:
+if request.IsInit:
     lastVal = 0
-elif request.isRead:
-    request.value = lastVal
-elif request.isWrite:
-    lastVal = request.value
+elif request.IsRead:
+    request.Value = lastVal
+elif request.IsWrite:
+    lastVal = request.Value
 
-self.NoisyLog("%s on REPEATER at 0x%x, value 0x%x" % (str(request.type), request.offset, request.value))
+self.NoisyLog("%s on REPEATER at 0x%x, value 0x%x" % (str(request.Type), request.Offset, request.Value))
 ```
 
 There are also other variables that can be used in Python peripherals:
@@ -758,11 +758,11 @@ It has access to various properties:
   - Read of written value
 * - Type
   - Type of request: READ, WRITE, INIT
-* - isInit
+* - IsInit
   - Is `true` during construction of the CPU if it's marked as "initable"
-* - isRead
+* - IsRead
   - Is `true` when the CPU is trying to read from the register
-* - isWrite
+* - IsWrite
   - Is `true` when the CPU is trying to write to the register
 ```
 
