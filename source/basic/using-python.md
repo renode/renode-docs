@@ -155,8 +155,8 @@ The variable `request` in Renode gives you access to the following fields:
   - When `IsWrite == true`, this is the value to be written, when `IsRead == true` this is the return value
 * - Offset
   - Offset within the peripheral
-* - Type
-  - Width of the access (8bit, 16bit, 32bit)
+* - Length
+  - Width of the access (1, 2, 4 or 8 bytes)
 ```
 
 ```{note}
