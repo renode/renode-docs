@@ -214,7 +214,7 @@ Multiple registrations are also supported; this has the following form:
     register1 registrationPoint1;
     register2 registrationPoint2;
     ...
-    registerN registrationPointN
+    registerN registrationPointN;
 } as "alias"
 ```
 
