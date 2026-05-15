@@ -110,6 +110,58 @@ sysbus (SystemBus)
       <0x70001000, 0x70001017>
 ```
 
+Output of the `peripherals` command can be filtered by peripheral name, peripheral model name, or address range.
+
+Filtering by name:
+
+```none
+(machine-0) peripherals uart
+Filtered peripherals:
+sysbus (SystemBus)
+│
+└── uart (MiV_CoreUART)
+        <0x70001000, 0x70001017>
+```
+
+Filtering by model name:
+
+```
+(machine-0) peripherals CoreTimer
+Filtered peripherals:
+sysbus (SystemBus)
+│
+├── timer0 (MiV_CoreTimer)
+│       <0x70003000, 0x7000301B>
+│
+└── timer1 (MiV_CoreTimer)
+        <0x70004000, 0x7000401B>
+```
+
+In case of filtering by `name` and `model name` the search string can be partial, like with `CoreTimer`.
+
+Filtering by address range:
+
+```
+(machine-0) peripherals <0x70000000, 0x7FFFFFFF>
+Filtered peripherals:
+sysbus (SystemBus)
+│
+├── gpioInputs (MiV_CoreGPIO)
+│       <0x70002000, 0x700020A3>
+│
+├── gpioOutputs (MiV_CoreGPIO)
+│       <0x70005000, 0x700050A3>
+│
+├── timer0 (MiV_CoreTimer)
+│       <0x70003000, 0x7000301B>
+│
+├── timer1 (MiV_CoreTimer)
+│       <0x70004000, 0x7000401B>
+│
+└── uart (MiV_CoreUART)
+        <0x70001000, 0x70001017>
+```
+
 The format of `.repl` (Renode platform) files is presented in the [Describing platform](./describing_platforms.md) section.
 
 (accessing-and-manipulating-peripherals)=
