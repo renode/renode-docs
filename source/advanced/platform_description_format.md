@@ -514,15 +514,6 @@ using "path"
 The line above is called a *using entry*.
 Using entries have to come before any other entries.
 
-You can "prefix" a using entry. This prepends all variable names with the given prefix. 
-For example:
-
-``` none
-using "path" prefixed "prefix"
-```
-
-This will prepend each variable name with "prefix" (e. g. `myvariable` defined in `path` will be visible as `prefixmyvariable`)
-
 Using entries can form arbitrary hierarchies. The only limitation is that there can be no cycles (these are reported as errors).
 
 ## Entry override order
