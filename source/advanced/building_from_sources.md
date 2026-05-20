@@ -8,7 +8,7 @@ This document provides detailed information on how to prepare the build environm
 
 ::::{tab} Linux
 
-The following instructions have been tested on Ubuntu 22.04, however there should not be any major issues preventing you from using other (especially Debian-based) distributions as well.
+The following instructions have been tested on Ubuntu 24.04, however there should not be any major issues preventing you from using other (especially Debian-based) distributions as well.
 
 :::{tab} .NET
 First, install the `.NET SDK` package as per the installation instructions, which can be found on [the official .NET site](https://dotnet.microsoft.com/en-us/download/dotnet/8.0).
