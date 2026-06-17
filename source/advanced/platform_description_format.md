@@ -131,7 +131,7 @@ This will be clearer after reading the next section, but generally if one file d
 ## Values
 
 A *value* is a notion widely used in the platform description format.
-There are four kinds of values:
+There are several kinds of values:
 
 - *simple values* that can be further divided into:
   - *strings* delimited by a double quote, with `\"` used as an escaped double quote;
@@ -148,7 +148,8 @@ There are four kinds of values:
     - `<begin, +size>` where `begin` and `size` are decimal or hexadecimal numbers (example: `<0x10000, +0x200>`)
 - *reference values*, which point to a variable and are given just as the name of the variable;
 - *inline objects* that denote an object described in the value itself and not tied to any variable (described [later](#inline-objects));
-- *lists*, which can contain all types of values as described [below](#lists).
+- *lists*, which can contain all types of values as described [below](#lists);
+- *dictionaries*, described [below](#dictionaries).
 
 ### Lists
 A list is a collection of values, enclosed in square brackets and separated by commas.
@@ -176,6 +177,16 @@ as well as inline objects:
 [new Point { x: 640; y: 480 }, new Point { x: 5120; y: 2160 }]
 ```
 
+### Dictionaries
+A dictionary is a collection of key-value pairs.
+It is enclosed in braces and separated by semicolons.
+
+While keys must be of simple type (string, numbers, enumeration value, boolean, reference or range), the values can be any kind of platform description format [value type](#values).
+
+Example of string-numbers mapping with a dictionary:
+``` none
+{ "left": 0; "middle": 1.65; "right": 3.3; }
+```
 
 ## Registration info
 
