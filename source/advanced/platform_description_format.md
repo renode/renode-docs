@@ -134,22 +134,23 @@ A *value* is a notion widely used in the platform description format.
 There are four kinds of values:
 
 - *simple values* that can be further divided into:
-  - strings (delimited by a double quote with `\"` used as an escaped double quote);
-  - multiline strings (delimited by triple quotes `'''` with `\'''` used as escaped triple quotes) (example below);
-  - boolean values (either `true` or `false`);
-  - numbers (decimal or hexadecimal with the `0x` prefix);
-  - ranges (described below)
-- reference values, which point to a variable and are given just as the name of the variable;
-- inline objects that denote an object described in the value itself and not tied to any variable (described later);
-- lists, which can contain all types of values (described later).
+  - *strings* delimited by a double quote, with `\"` used as an escaped double quote;
+  - *multiline strings* delimited by triple quotes `'''`, with `\'''` used as escaped triple quotes. For example:
 
-A range represents an interval and can be supplied in two forms:
+        name: '''this is \'''
+        some 
+        multiline
+        name'''
+  - *boolean values*, either `true` or `false`;
+  - *numbers*, which can be decimal or hexadecimal with the `0x` prefix;
+  - *ranges* representing an interval and that can be supplied in two forms:
+    - `<begin, end>` where `begin` and `end` are decimal or hexadecimal numbers (example: `<0, 100>`)
+    - `<begin, +size>` where `begin` and `size` are decimal or hexadecimal numbers (example: `<0x10000, +0x200>`)
+- *reference values*, which point to a variable and are given just as the name of the variable;
+- *inline objects* that denote an object described in the value itself and not tied to any variable (described [later](#inline-objects));
+- *lists*, which can contain all types of values as described [below](#lists).
 
-- `<begin, end>` or
-- `<begin, +size>` where `begin`, `end` and `size` are decimal or hexadecimal numbers.
-
-Examples: `<0, 100>`, `<0x10000, +0x200>`.
-
+### Lists
 A list is a collection of values, enclosed in square brackets and separated by commas.
 For example, a list of integers can be defined as:
 
@@ -175,14 +176,6 @@ as well as inline objects:
 [new Point { x: 640; y: 480 }, new Point { x: 5120; y: 2160 }]
 ```
 
-Example of a multline string with an escaped delimiter:
-
-``` none
-name: '''this is \'''
-some 
-multiline
-name'''
-```
 
 ## Registration info
 
