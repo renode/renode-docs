@@ -145,6 +145,16 @@ Only these three lines would remain printed in the aforementioned example with b
 17:05:23.8834 [INFO] cpu: Entering function kobject_uevent_env at 0xC014CDA8
 ```
 
+```{note}
+Logging function names can affect the performance of your simulation.
+In some cases you may use a more lightweight function:
+
+`cpu LogTranslationBlockFetch true`
+
+It's not as accurate, as it will report only the symbols that are fetched directly from the memory, i.e. are not executed from Renode internal cache.
+It also does not provide any filtering options.
+```
+
 ## Hushing excessive unhandled access logs
 
 Renode, by default, informs you about unhandled accesses to memory ranges that are not covered by any model.
