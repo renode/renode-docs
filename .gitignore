@@ -3,5 +3,6 @@ build/
 .vscode
 *.pyc
 .venv
+node_modules
 
 source/introduction/renode_supported_peripherals.html

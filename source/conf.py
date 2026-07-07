@@ -122,7 +122,7 @@ latex_additional_files = ['%s/%s.sty' % ('renode-sphinx','renode'),latex_logo]
 
 def setup(app):
     app.connect('build-finished', on_build_finished)
-    check_call("./generate-renode-platforms.sh", shell=True, cwd=os.path.join(os.path.dirname(os.path.realpath(__file__)), '..'))
+    check_call("./generate-renode-resources.sh", cwd=os.path.join(os.path.dirname(os.path.realpath(__file__)), '..'))
 
 def on_build_finished(app, exc):
     if not app.builder or app.builder.name != 'html':

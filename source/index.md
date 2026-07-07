@@ -92,6 +92,14 @@ advanced/loading-assembly-to-memory
 
 
 ```{toctree}
+:caption: API descriptions
+:maxdepth: 2
+
+api-description/external-control
+```
+
+
+```{toctree}
 :caption: Tutorials
 :maxdepth: 2
 
