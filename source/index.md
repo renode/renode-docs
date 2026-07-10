@@ -92,14 +92,6 @@ advanced/loading-assembly-to-memory
 
 
 ```{toctree}
-:caption: API descriptions
-:maxdepth: 2
-
-api-description/external-control
-```
-
-
-```{toctree}
 :caption: Tutorials
 :maxdepth: 2
 
@@ -111,3 +103,12 @@ tutorials/co-simulating-custom-hdl
 tutorials/ble-simulation
 tutorials/ble-hci-integration
 ```
+
+
+```{toctree}
+:caption: API descriptions
+:maxdepth: 2
+
+api-description/external-control
+```
+
