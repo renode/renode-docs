@@ -255,7 +255,7 @@ Boards supported in this way include:
 
 There are of course more, and new ones are being added quickly - Renode makes it easy to create your own platform which reuses the same peripherals / CPUs that exist in other platforms.
 
-We provide commerical services to add new platforms - if you need help in this regard, please write to [support@renode.io](mailto:support@renode.io).
+We provide commercial services to add new platforms - if you need help in this regard, please write to [support@renode.io](mailto:support@renode.io).
 
 # Supported peripherals
 
