@@ -86,6 +86,7 @@ advanced/co-simulating-with-an-hdl-simulator
 advanced/building_from_sources
 advanced/platform_description_format
 advanced/time_framework
+advanced/virtual_time_scheduling_mechanisms
 advanced/writing-peripherals
 advanced/loading-assembly-to-memory
 ```
