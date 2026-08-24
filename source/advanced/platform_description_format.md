@@ -341,6 +341,17 @@ Where `irq1` connects to `irqDest1` etc.
 Again, `irq` s can be names or numbers (if `INumberedGPIOOutput` is implemented) and `irqDest` s have to be numbers.
 Naturally, the arity of sources and destinations has to match.
 
+A single source can be connected to multiple destinations.
+When multiple entries connect the same source to different destinations, all connections are retained.
+In the example below, `variable`\'s `IRQ` will be connected to both `aDestination@1` and `differentDestination@2`:
+
+``` none
+variable:
+    IRQ -> aDestination@1
+variable:
+    IRQ -> differentDestination@2
+```
+
 There is also a possibility of connecting a single source to multiple destinations with the `|` operator, which can be used with every interrupt attribute format:
 
 ``` none
@@ -364,13 +375,21 @@ This notation can also be used with multiple interupts:
 [irq1, irq2, ..., irqN] -> destination#index@[irqDest1, irqDest2, ..., irqDestN]
 ```
 
-Just as in the case of properties, interrupt attributes can update older ones.
-This is done basing on the source interrupt, i.e. if two attributes from different entries use the same source interrupt, only the one from the latter is used.
-Again, as in properties, the user may want to cancel the irq connection without specifying a different one.
-The keyword `none` can be used for this purpose:
+Unlike properties, new connections do not override previous connections.
+To remove previous connections, the `none` keyword can be used as a destination:
 
 ``` none
 source -> none
+```
+
+`none` cannot be used with the `|` operator.
+To replace all previous connections with a new connection, multiple entries are needed:
+
+``` none
+variable:
+    source -> none
+variable:
+    source -> destination@interrupt
 ```
 
 (init-attributes)=
