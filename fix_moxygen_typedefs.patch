@@ -1,0 +1,56 @@
+--- build/api-description/external-control-api.md	2026-09-14 17:27:44.438771541 +0200
++++ build/api-description/external-control-api.md	2026-09-14 17:42:50.046038626 +0200
+@@ -274,7 +274,8 @@
+ ### renode_time_elapsed_callback_t
+ 
+ ```cpp
+-using renode_time_elapsed_callback_t = void(*
++using renode_time_elapsed_callback_t =
++    void (*)(void *ud, renode_time_t *timestamp);
+ ```
+ 
+ Type of the Renode time elapsed callback.
+@@ -284,7 +285,10 @@
+ ### renode_custom_command_callback_t
+ 
+ ```cpp
+-using renode_custom_command_callback_t = renode_custom_command_response_data_t *(*
++using renode_custom_command_callback_t =
++    renode_custom_command_response_data_t * (*)(
++        void *ud,
++        renode_custom_command_event_data_t *event_data);
+ ```
+ 
+ {#renode_sysbus_event_callback_t}
+@@ -292,7 +296,10 @@
+ ### renode_sysbus_event_callback_t
+ 
+ ```cpp
+-using renode_sysbus_event_callback_t = void(*
++using renode_sysbus_event_callback_t =
++    void (*)(
++        void *user_data,
++        renode_sysbus_event_data_t *event_data);
+ ```
+ 
+ {#renode_spi_transmit_callback_t}
+@@ -300,7 +307,8 @@
+ ### renode_spi_transmit_callback_t
+ 
+ ```cpp
+-using renode_spi_transmit_callback_t = uint8_t(*
++using renode_spi_transmit_callback_t =
++    uint8_t (*)(void *user_data, uint8_t mosi);
+ ```
+ 
+ SPI transmit callback: invoked for every byte the master sends to the slave (MOSI). Returns the byte the slave puts on the bus in exchange (MISO) for that beat.
+@@ -313,7 +321,8 @@
+ ### renode_spi_finish_callback_t
+ 
+ ```cpp
+-using renode_spi_finish_callback_t = void(*
++using renode_spi_finish_callback_t =
++    void (*)(void *user_data);
+ ```
+ 
+ SPI finish-transmission callback: invoked when the master ends the transfer (CS deasserted).
