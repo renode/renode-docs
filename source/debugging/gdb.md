@@ -144,3 +144,76 @@ You can also step back more than one instruction. To do that just use an optiona
 
     (gdb) rsi 5
 
+## Multiprocess Debugging
+
+Renode's GDB stub supports the [multiprocess extension](https://sourceware.org/gdb/download/onlinedocs/gdb.html/General-Query-Packets.html#multiprocess-extensions), which enables debugging heterogeneous systems over a single connection using GDB's support for [multiple inferiors](https://sourceware.org/gdb/current/onlinedocs/gdb.html/Inferiors-Connections-and-Programs.html#Inferiors-Connections-and-Programs).
+
+For a general overview of debugging multiple inferior programs in GDB, refer to the [Debugging Multiple Inferiors Connections and Programs](https://sourceware.org/gdb/download/onlinedocs/gdb.html/Inferiors-Connections-and-Programs.html#Inferiors-Connections-and-Programs) chapter in its documentation.
+
+### Starting a multiprocess GDB server
+
+To start a multiprocess-capable GDB server, use the `StartMultiprocessGdbServer` method in the Monitor, like so:
+
+```none
+(machine-0) machine StartMultiprocessGdbServer 3333 [cpu0, cluster1]
+```
+
+This command will start a GDB server on port `3333` with two processes available:
+* `PID 1` - containing a single thread, representing `cpu0`.
+* `PID 2` - containing a thread for each processor that belongs to `cluster1`
+
+:::{note}
+CPU architectures of each of the processes can be completely unrelated, e.g., `PID 1` could be a Cortex-A cluster, while `PID 2` could be a RISC-V processor.
+However, within each process, the architecture should ideally be identical across all of the CPUs.
+
+For such setups, you only need to verify that the GDB client supports the relevant architectures.
+Supported architectures can be listed in GDB by running `set architecture` without an argument, for example:
+
+```none
+(gdb) set architecture
+Requires an argument. Valid arguments are i386, i386:x86-64, i386:x64-32, i8086, i386:intel, i386:x86-64:intel, i386:x64-32:intel, auto.
+```
+:::
+
+### Attaching to processes
+
+To attach to a multiprocess server, run the following in GDB:
+
+```none
+(gdb) target extended-remote :3333
+```
+
+:::{note}
+The `extended-remote` mode is needed to enable process management commands in GDB (e.g., `attach`, `detach`), as they are not available in the regular `remote` mode.
+:::
+
+GDB will automatically attach to `PID 1`.
+
+To attach to other processes, use GDB's inferior management commands, for example:
+
+```none
+(gdb) add-inferior
+[New inferior 2]
+Added inferior 2 on connection 1 (extended-remote :3333)
+
+(gdb) inferior 2
+[Switching to inferior 2 [<null>] (<noexec>)]
+
+(gdb) attach 2
+Attaching to process 2
+```
+
+The process context can be switched at any time using the `inferior` command.
+
+### Running multiple processes at once
+
+Renode's GDB stub currently supports only the [All-Stop](https://sourceware.org/gdb/download/onlinedocs/gdb.html/All_002dStop-Mode.html#All_002dStop-Mode) mode.
+In this mode, by default, all execution commands (i.e. `continue`, `step`, `next`) affect only the currently active inferior. Any CPUs that are a part of a different inferior process will not execute any instructions until an execution command is issued from the inferior to which they belong to.
+
+To enable GDB to start multiple processes at once, enable the `schedule-multiple` option in GDB by running:
+
+```none
+(gdb) set schedule-multiple on
+```
+
+This option can be changed at any point during the debugging session while the emulation is paused.
