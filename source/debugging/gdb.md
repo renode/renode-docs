@@ -148,6 +148,8 @@ You can also step back more than one instruction. To do that just use an optiona
 
 Renode's GDB stub supports the [multiprocess extension](https://sourceware.org/gdb/download/onlinedocs/gdb.html/General-Query-Packets.html#multiprocess-extensions), which enables debugging heterogeneous systems over a single connection using GDB's support for [multiple inferiors](https://sourceware.org/gdb/current/onlinedocs/gdb.html/Inferiors-Connections-and-Programs.html#Inferiors-Connections-and-Programs).
 
+You can refer to the [](../tutorials/multiprocess-debugging.md) chapter for a full example of the multiprocess debugging flow.
+
 For a general overview of debugging multiple inferior programs in GDB, refer to the [Debugging Multiple Inferiors Connections and Programs](https://sourceware.org/gdb/download/onlinedocs/gdb.html/Inferiors-Connections-and-Programs.html#Inferiors-Connections-and-Programs) chapter in its documentation.
 
 ### Starting a multiprocess GDB server
