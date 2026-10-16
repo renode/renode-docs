@@ -90,7 +90,7 @@ On Linux, to add a precompiled FastVDMA HDL model to a peripheral named `dma`, y
 dma SimulationFilePathLinux @https://dl.antmicro.com/projects/renode/zynq-fastvdma_libVfastvdma-Linux-x86_64-1246779523.so-s_2057616-93e755f7d67bc4d5ca33cce6c88bbe8ea8b3bd31
 ```
 
-You you can use `SimulationFilePathLinux`, `SimulationFilePathMacOS`, and `SimulationFilePathWindows` in the same script if you want to provide different payloads for different OSes, making the script multi-platform.
+You can use `SimulationFilePathLinux`, `SimulationFilePathMacOS`, and `SimulationFilePathWindows` in the same script if you want to provide different payloads for different OSes, making the script multi-platform.
 Renode will select the one that matches your host OS.
 
 If you are interested in just a single operating system, you can simply use `SimulationFilePath` and Renode will interpret it as a model matching your current OS.
