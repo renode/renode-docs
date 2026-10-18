@@ -120,7 +120,7 @@ There are some optional flags you can use:
     -b                                custom build properties file
     --skip-fetch                      skip fetching submodules and additional resources
     --no-gui                          build with GUI disabled
-    -B                                bundle target runtime (default value: linux-x64, requires --net, -t)
+    -B                                bundle target runtime (default value: linux-x64, requires -t)
     -F                                select the target framework for which Renode should be built (default value: net8.0)
     --profile-build                   build optimized for profiling
     --tlib-coverage                   build tlib with coverage reporting
