@@ -28,6 +28,7 @@ build_api() (
     cd "${doxygen_dir}"
 
     doxygen && npx moxygen \
+        --nogenerated-by --use-typedef-definitions --prepend-anchor-with-parent \
         --flavor myst \
         --output "${moxygen_output}" \
         --anchors "${anchor_prefix}" \
@@ -36,4 +37,4 @@ build_api() (
 )
 
 # Build External Control API
-build_api build/renode/tools/external_control_client external-control-api.md
+build_api build/renode/tools/external_control_client external-control-api.md external-control-

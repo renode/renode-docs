@@ -22,6 +22,13 @@
 
 {{detaileddescription}}
 
+{{#if (hasDocumentedParams params)}}
+{{headingMarker 4}} Parameters
+
+{{#each (documentedParams params)}}* `{{name}}` {{description}}
+{{/each}}
+{{/if}}
+
 {{/each}}
 {{/each}}
 
