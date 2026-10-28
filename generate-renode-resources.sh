@@ -39,3 +39,10 @@ build_api() (
 
 # Build External Control API
 build_api build/renode/tools/external_control_client external-control-api.md external-control-
+
+# Build Native Interface API
+pushd build/renode/
+    ./build.sh --shared
+popd
+
+build_api build/renode/tools/NativeInterface native-interface-api.md native-interface-

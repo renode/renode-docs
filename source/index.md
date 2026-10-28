@@ -112,5 +112,6 @@ tutorials/multiprocess-debugging
 :maxdepth: 2
 
 api-description/external-control
+api-description/native-interface
 ```
 
