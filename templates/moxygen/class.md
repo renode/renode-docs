@@ -34,7 +34,7 @@
 #### {{label}}
 
 {{#if (hasReturnColumn section)}}
-| Return | Name | Description |
+| Type | Name | Description |
 |--------|------|-------------|
 {{#each members}}| {{returnTypeShort}} | [`{{name}}`](#{{cleanId refid name}}) {{badges}} | {{cell (memberSummary this)}} |
 {{/each}}
