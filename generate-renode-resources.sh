@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
 mkdir -p build/html/introduction
 
 cd build
 if [ ! -d renode ]; then
-    if [ -n "$GET_CUSTOM_RENODE_REVISION" ]; then
+    if [ -v GET_CUSTOM_RENODE_REVISION ]; then
         # Allow running external commands to fetch a custom revision of Renode for use in CI during development
         eval "$GET_CUSTOM_RENODE_REVISION"
     else
