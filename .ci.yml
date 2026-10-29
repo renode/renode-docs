@@ -41,6 +41,7 @@ build:
     - tar cf $CI_DOCS_ARCHIVE -C build/html/ .
   artifacts:
     paths:
+      - build/api-description
       - $CI_DOCS_ARCHIVE
 
 deploy:
