@@ -34,10 +34,6 @@ build:
       fi
     - echo -en "\nhtml_js_files = [ '$ANNOTANT' ]" >> source/conf.py
     - make html
-    - rm -R build/html/_sources
-    - make text
-    - for file in $(find build/text -type f -name '*.txt'); do mv "$file" "${file%.txt}.rst.txt"; done
-    - mv build/text build/html/_sources
     - tar cf $CI_DOCS_ARCHIVE -C build/html/ .
   artifacts:
     paths:
