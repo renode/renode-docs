@@ -36,7 +36,6 @@ build:
         echo "$TARGET_VERSION"
         git checkout "$TARGET_VERSION"
       fi
-    - echo -en "\nhtml_js_files = [ '$ANNOTANT' ]" >> source/conf.py
     - make html
     - tar cf $CI_DOCS_ARCHIVE -C build/html/ .
   artifacts:
