@@ -1,5 +1,5 @@
 {
   "dependencies": {
-    "moxygen": "^2.1.10"
+    "moxygen": "github:antmicro/moxygen#renode"
   }
 }
