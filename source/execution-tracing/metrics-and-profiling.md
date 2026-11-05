@@ -26,22 +26,31 @@ This feature is available for RISC-V, Cortex-A, Cortex-R and Cortex-M CPUs.
 To enable guest profiling, use:
 
 ```none
-cpu EnableProfiler <output-format> @path-to-output-file [<flush-instantly>]
+cpu EnableProfiler <output-format> @path-to-output-file <flushInstantly=false> <enableMultipleTracks=true> <fileSizeLimit> <maximumNestedContexts> <enableFrameTracking=false>
 ```
 
-Renode supports two output formats:
+with the following arguments:
 
-* `CollapsedStack` - a text-based, collapsed stack format that can be viewed interactively using [speedscope](https://www.speedscope.app/)
-* `Perfetto` - a binary format that can be viewed using [Perfetto](https://ui.perfetto.dev/)
+* `<output-format>` - can be set to one of the following profiler types:
 
-You can also use the `cpu EnableProfilerCollapsedStack` and `cpu EnableProfilerPerfetto` commands for the same effect.
+  * `CollapsedStack` - a text-based, collapsed stack format that can be viewed interactively using [speedscope](https://www.speedscope.app/)
+  * `Perfetto` - a binary format that can be viewed using [Perfetto](https://ui.perfetto.dev/)
+  * `TraceEvent` - a JSON format that can be viewed using [Zephelin](https://antmicro.github.io/zephelin-trace-viewer/)
 
-By default, Renode will buffer file operations for better performance, but you can instantly write everything to a file by passing `true` as the optional `<flush-instantly>` argument.
-If you don't want to write to a file instantly but still want to have some control over when a flush occurs, use the following command to flush the buffer manually:
+  As an alternative you can also use the `cpu EnableProfilerCollapsedStack`, `cpu EnableProfilerPerfetto` and `cpu EnableProfilerTraceEvent` commands to achieve the same effect.
 
-```none
-cpu FlushProfiler
-```
+* `@path-to-output-file` - sets path to the output file.
+* `flushInstantly` - setting to `true` forces flush to file after each profiler update. By default, Renode will flush periodically after filling the internal buffer.
+* `enableMultipleTracks` - when set, contexts are assigned to different tracks for profiler formats that support it: Perfetto, TraceEvent. It is enabled for these profilers by default, set to `false` to disable this functionality.
+* `fileSizeLimit` - when set, forces the profiler output to be below the specified size limit. The output written in that way is not always exhaustive and can sometimes miss a few writes still below but close to the limit. Note: for `TraceEvent`, file size can be slightly above the designated limit.
+* `maximumNestedContexts` - limits nested context. A nested context is created by entering an interrupt and removed when leaving that interrupt. Mainly used to stop the profiler early in case of infinite recursion of interrupts.
+* `enableFrameTracking` - tracks the stack by changes to the stack pointer. It allows for detecting changes of context in systems where such changes are hard to detect in different ways - for example, on ARM-based systems. Due to compiler optimizations, this way of tracking can drop access to functions that do not require updates to the stack pointer. It is recommended to use this argument if original tracking is not satisfactory, or if displaying contexts on different tracks is important, such as when running RTOS-based programs with the `Perfetto` profiler.
+
+A given CPU exposes additional methods to control the profiler:
+
+* `cpu FlushProfiler` - force flushes the current profiler buffer to the file
+* `cpu DisableProfiler` - disables the profiler
+* `cpu GetProfilerStack` - returns current stack in `;` separated list - similar to CollapsedStack format
 
 You can inspect traces generated from Zephyr samples in the [System Designer](https://designer.antmicro.com/) platform - see examples for [RISC-V](https://designer.antmicro.com/hardware/devices/hifive1) and [Cortex-M](https://designer.antmicro.com/hardware/devices/stm32f103_mini).
 
