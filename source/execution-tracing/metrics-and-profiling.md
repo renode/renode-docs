@@ -52,7 +52,7 @@ A given CPU exposes additional methods to control the profiler:
 * `cpu DisableProfiler` - disables the profiler
 * `cpu GetProfilerStack` - returns current stack in `;` separated list - similar to CollapsedStack format
 
-You can inspect traces generated from Zephyr samples in the [System Designer](https://designer.antmicro.com/) platform - see examples for [RISC-V](https://designer.antmicro.com/hardware/devices/hifive1) and [Cortex-M](https://designer.antmicro.com/hardware/devices/stm32f103_mini).
+You can inspect traces generated from Zephyr samples on the [verks.ai](https://designer.verks.ai/) platform - see examples for [RISC-V](https://designer.verks.ai/library/devices/hifive1) and [Cortex-M](https://designer.verks.ai/library/devices/stm32f103_mini).
 
 ## Opcode counting
 
