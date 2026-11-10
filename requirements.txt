@@ -1,5 +1,5 @@
 sphinxcontrib-svg2pdfconverter
 https://github.com/antmicro/antmicro-sphinx-utils/archive/main.zip
 sphinx-inline-tabs
-sphinx-design
+sphinx-design<0.8
 pygments-systemrdl
