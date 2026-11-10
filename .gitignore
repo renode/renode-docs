@@ -4,5 +4,6 @@ build/
 *.pyc
 .venv
 node_modules
+venv
 
 source/introduction/renode_supported_peripherals.html
