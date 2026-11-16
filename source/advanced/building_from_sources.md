@@ -10,7 +10,7 @@ This document provides detailed information on how to prepare the build environm
 
 The following instructions have been tested on Ubuntu 24.04, however there should not be any major issues preventing you from using other (especially Debian-based) distributions as well.
 
-First, install the `.NET SDK` package as per the installation instructions, which can be found on [the official .NET site](https://dotnet.microsoft.com/en-us/download/dotnet/8.0).
+First, install the `.NET SDK` package as per the installation instructions, which can be found on [the official .NET site](https://dotnet.microsoft.com/en-us/download/dotnet/10.0).
 
 To install the remaining dependencies, use:
 
@@ -22,7 +22,7 @@ To install the remaining dependencies, use:
 
 ::::{tab} macOS
 
-First, install the `.NET SDK` package as per the installation instructions, which can be found on [the official .NET site](https://dotnet.microsoft.com/en-us/download/dotnet/8.0).
+First, install the `.NET SDK` package as per the installation instructions, which can be found on [the official .NET site](https://dotnet.microsoft.com/en-us/download/dotnet/10.0).
 Make sure to install the right architecture, `Arm64` for Apple Silicon, `x64` for Intel
 
 To install the remaining prerequisites, use:
@@ -77,7 +77,7 @@ The download link is from the `MinGW-W64-builds` project, linked from [the offic
 
 **C# build tools**
 
-See [the official .NET site](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) for instructions on how to install `.NET SDK`.
+See [the official .NET site](https://dotnet.microsoft.com/en-us/download/dotnet/10.0) for instructions on how to install `.NET SDK`.
 
 ::::
 
@@ -121,7 +121,7 @@ There are some optional flags you can use:
     --skip-fetch                      skip fetching submodules and additional resources
     --no-gui                          build with GUI disabled
     -B                                bundle target runtime (default value: linux-x64, requires -t)
-    -F                                select the target framework for which Renode should be built (default value: net8.0)
+    -F                                select the target framework for which Renode should be built (default value: net10.0)
     --profile-build                   build optimized for profiling
     --tlib-coverage                   build tlib with coverage reporting
     --external-lib-only               only build external libraries
