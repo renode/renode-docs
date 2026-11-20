@@ -42,6 +42,17 @@ build-internal:
       - build/html
       - build/api-description
 
+build-external:
+  extends: build-internal
+  variables:
+    GITHUB_REF_NAME: $CI_COMMIT_REF_NAME
+    GITHUB_SHA: $CI_COMMIT_SHA
+  script:
+    - source .venv/bin/activate
+    # Avoid Gitlab-specific docs build due to logic in antmicro-sphinx-utils
+    - unset CI_FULL_PROJECT_URL
+    - make html
+
 deploy-internal:
   variables:
     GIT_STRATEGY: none
@@ -63,3 +74,24 @@ deploy-internal:
   artifacts:
     paths:
       - $CI_DOCS_ARCHIVE
+
+deploy-external:
+  dependencies:
+    - build-external
+  stage: deploy
+  only:
+    refs:
+      - master
+      - triggers
+    variables:
+      - $DEPLOY_DOCS == "true"
+      - $CI_PIPELINE_SOURCE == "push"
+  before_get_sources:
+    - apt update  > /dev/null && apt install -y git python3-venv python3-pip python3 > /dev/null
+  before_script:
+    - python3 -m venv .venv/
+    - source .venv/bin/activate
+    - pip install readthedocs-upload
+  script:
+    - source .venv/bin/activate
+    - readthedocs --verbose upload --project-slug renode --html build/html --version-type branch --version-name latest --privacy-level public
