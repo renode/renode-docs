@@ -34,6 +34,15 @@ To install the remaining prerequisites, use:
    This requires [homebrew](https://brew.sh/) to be installed in your system.
 :::
 
+:::{note}
+   There are additional runtime dependencies for optional features:
+
+    brew install gtk+3 mono-libgdiplus
+
+   `mono-libgdiplus` is required by `System.Drawing.Common` used by `FrameBufferTester`.
+   `gtk+3` is required by [GtkSharp](https://github.com/gtksharp/gtksharp) used by `Xwt` to draw Renode GUI.
+:::
+
 ::::
 
 
