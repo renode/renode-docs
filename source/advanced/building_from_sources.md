@@ -18,6 +18,15 @@ To install the remaining dependencies, use:
     sudo apt install git automake cmake autoconf libtool g++ coreutils policykit-1 \
                   libgtk-3-dev uml-utilities python3 python3-pip
 
+:::{note}
+   There are additional runtime dependencies for optional features:
+
+    sudo apt install libgtk-3-0 libgdiplus
+
+   `libgdiplus` is required by `System.Drawing.Common` used by `FrameBufferTester`.
+   `libgtk-3-0` is required by [GtkSharp](https://github.com/gtksharp/gtksharp) used by `Xwt` to draw Renode GUI.
+:::
+
 ::::
 
 ::::{tab} macOS
